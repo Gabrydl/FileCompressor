@@ -1,0 +1,15 @@
+{
+  "name": "filecompressor",
+  "productName": "FileCompressor",
+  "version": "1.6.0",
+  "description": "FileCompressor: videos, photos, PDFs, audio and Office files, offline.",
+  "main": "main.js",
+  "author": "gabrydl99",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "jszip": "^3.10.2",
+    "mupdf": "^1.28.6",
+    "sharp": "^0.34.5"
+  }
+}
