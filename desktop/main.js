@@ -99,7 +99,7 @@ else {
     fs.rm(PREVIEW_ROOT, { recursive: true, force: true }, () => {});
     createWindow();
     // checks GitHub for a newer version as soon as the app opens
-    require("./updater").start({ repo: "Gabrydl/FileCompressor", asset: "FileCompressor-Windows.zip", exe: "FileCompressor.exe", name: "FileCompressor", getWin: () => win });
+    require("./updater").start({ repo: "Gabrydl/FileCompressor", asset: "FileCompressor-Setup.exe", name: "FileCompressor", getWin: () => win });
   });
   app.on("window-all-closed", () => app.quit());
 }
