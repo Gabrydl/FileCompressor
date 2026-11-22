@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+<title>FileCompressor</title>
+<script>
+(function () {
+  var t = "auto";
+  try { t = JSON.parse(localStorage.getItem("gfc.theme") || '"auto"'); } catch (e) {}
+  if (t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
+})();
+</script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <img src="logo.png" alt="" class="logo">
+    <div class="brand"><h1>FileCompressor</h1><p>Videos, photos, PDFs, audio and Office files, offline</p></div>
+    <div class="top-actions">
+      <button class="btn ghost" id="addFilesTop"><span data-ic="plus"></span><span>Add files</span></button>
+      <button class="btn ghost" id="addFolderTop"><span data-ic="folder"></span><span>Add folder</span></button>
+      <button class="icon-btn" id="historyBtn" aria-label="History" title="History"><span data-ic="history"></span></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch between light and dark" title="Light / dark"></button>
+    </div>
+  </header>
+
+  <main class="files" id="filesPane">
+    <div class="files-head" id="filesHead">
+      <h2 id="filesTitle">Files</h2>
+      <div class="head-btns">
+        <button class="text-btn hidden" id="saveAllBtn">Save all checked</button>
+        <button class="text-btn" id="clearBtn">Clear list</button>
+      </div>
+    </div>
+    <div class="empty" id="empty">
+      <div class="drop-art" aria-hidden="true"><span></span><span></span><span></span></div>
+      <b id="emptyTitle">Drop files or folders here</b>
+      <p class="muted" id="emptySub">or add them with the buttons. Nothing leaves this computer.</p>
+      <div class="empty-btns">
+        <button class="btn primary" id="addFiles"><span data-ic="plus"></span><span>Add files</span></button>
+        <button class="btn" id="addFolder"><span data-ic="folder"></span><span>Add folder</span></button>
+      </div>
+      <p class="muted small" id="pasteHint">Tip: Ctrl+V pastes files copied in Explorer, or a screenshot.</p>
+    </div>
+    <ul class="list" id="list" aria-live="polite"></ul>
+  </main>
+
+  <aside class="settings" id="settings">
+    <section class="block">
+      <div class="block-head"><h3>Quick presets</h3><button class="text-btn" id="savePreset">Save current…</button></div>
+      <p class="help">Pick where the files are going, or set everything yourself below.</p>
+      <div class="chips" id="presets"></div>
+      <p class="help preset-help" id="presetHelp"></p>
+    </section>
+
+    <section class="block">
+      <h3>How small</h3>
+      <div class="seg" id="modeSeg" role="radiogroup" aria-label="How small">
+        <button data-val="PERCENT" role="radio">Percentage</button>
+        <button data-val="SIZE" role="radio">Exact size</button>
+        <button data-val="CONVERT" role="radio">Convert only</button>
+      </div>
+      <div class="mode-pane" data-mode="PERCENT">
+        <div class="range-row">
+          <input type="range" id="percent" min="5" max="90" step="5" aria-label="Final size in percent">
+          <output id="percentOut">30%</output>
+        </div>
+        <p class="help" id="percentHelp"></p>
+      </div>
+      <div class="mode-pane" data-mode="SIZE">
+        <div class="size-row">
+          <label class="field grow"><span>Final size of each file</span>
+            <input type="number" id="targetSize" min="1" max="1000000" step="any" inputmode="decimal"></label>
+          <div class="seg small unit" id="unitSeg" role="radiogroup" aria-label="Unit">
+            <button data-val="KB" role="radio">KB</button><button data-val="MB" role="radio">MB</button>
+          </div>
+        </div>
+        <p class="help" id="sizeHelp"></p>
+      </div>
+      <div class="mode-pane" data-mode="CONVERT">
+        <p class="help">Files change format without aiming for a size. Pick the formats in each tab below. When the container allows it (for example MKV to MP4) the video isn't re-encoded, so no quality is lost. PDF and Office files are skipped.</p>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Settings by file type">
+      <button data-tab="general" role="tab"><span data-ic="settings"></span><span>General</span></button>
+      <button data-tab="photos" role="tab"><span data-ic="image"></span><span>Photos</span></button>
+      <button data-tab="videos" role="tab"><span data-ic="video"></span><span>Videos</span></button>
+      <button data-tab="audio" role="tab"><span data-ic="music"></span><span>Audio</span></button>
+      <button data-tab="pdf" role="tab"><span data-ic="pdf"></span><span>PDF</span></button>
+      <button data-tab="office" role="tab"><span data-ic="office"></span><span>Office</span></button>
+    </nav>
+
+    <!-- ===================================================== General -->
+    <div class="tab-pane" data-pane="general">
+      <section class="block">
+        <h3>Save to</h3>
+        <div class="folder" id="folderBox"><span data-ic="folder"></span><span class="folder-path" id="outPath" data-selectable></span></div>
+        <div class="folder-btns">
+          <button class="btn small" id="changeFolder">Change folder</button>
+          <button class="btn small ghost" id="defaultFolder">Use default</button>
+          <button class="btn small ghost" id="openFolder">Open folder</button>
+        </div>
+        <label class="switch"><input type="checkbox" data-pref="moveOriginals"><span class="track"></span><span>Move originals to the Original folder</span></label>
+        <p class="help" id="saveHelp"></p>
+      </section>
+      <section class="block">
+        <h3>While compressing</h3>
+        <label class="switch"><input type="checkbox" data-pref="preview"><span class="track"></span><span>Check before saving (before/after view)</span></label>
+        <p class="help">Each result waits in the list as "Ready to check": open it, compare pages or pictures side by side, then Save or Discard.</p>
+        <label class="switch"><input type="checkbox" data-pref="skipSmaller"><span class="track"></span><span>Skip files already smaller than the target</span></label>
+        <label class="switch"><input type="checkbox" data-pref="perFile"><span class="track"></span><span>Different settings for each file</span></label>
+        <p class="help">Off: every file uses the settings here. On: open a file in the list to give it its own size and formats.</p>
+      </section>
+      <section class="block">
+        <h3>Shortcuts</h3>
+        <label class="switch"><input type="checkbox" data-pref="explorerMenu"><span class="track"></span><span>"Compress with FileCompressor" in the right-click menu</span></label>
+        <p class="help" id="explorerHelp">In Windows 11 it's under "Show more options". If you move the program folder, it updates the next time the program opens.</p>
+        <label class="switch"><input type="checkbox" data-pref="paste"><span class="track"></span><span>Ctrl+V pastes files and screenshots</span></label>
+        <label class="switch"><input type="checkbox" data-pref="dragOut"><span class="track"></span><span>Drag finished files out of the window</span></label>
+        <p class="help">Drop them straight into WhatsApp, Discord, an email or a folder.</p>
+      </section>
+      <section class="block">
+        <h3>When it's done</h3>
+        <label class="switch"><input type="checkbox" data-pref="notify"><span class="track"></span><span>Windows notification</span></label>
+        <label class="switch"><input type="checkbox" data-pref="sound"><span class="track"></span><span>Sound</span></label>
+        <label class="switch"><input type="checkbox" data-pref="history"><span class="track"></span><span>Keep a history</span></label>
+        <div class="folder-btns"><button class="btn small" id="openHistory"><span data-ic="history"></span><span>History and space saved</span></button></div>
+      </section>
+      <section class="block">
+        <h3>Program</h3>
+        <label class="switch"><input type="checkbox" data-pref="remember"><span class="track"></span><span>Remember the last settings</span></label>
+        <p class="help">Off: size, formats and file-type options go back to the defaults every time the program opens.</p>
+        <div class="seg" id="themeSeg" role="radiogroup" aria-label="Appearance">
+          <button data-val="auto" role="radio">System</button><button data-val="light" role="radio">Light</button><button data-val="dark" role="radio">Dark</button>
+        </div>
+        <p class="help version" id="version"></p>
+      </section>
+    </div>
+
+    <!-- ===================================================== Photos -->
+    <div class="tab-pane" data-pane="photos">
+      <section class="block">
+        <h3>Format</h3>
+        <label class="field inline"><span>Save as</span><select id="imageFormat">
+          <option value="keep">Keep original</option><option value="jpg">JPG</option><option value="png">PNG</option><option value="webp">WebP</option></select></label>
+      </section>
+      <section class="block">
+        <h3>Privacy</h3>
+        <label class="switch"><input type="checkbox" data-opt="photoStripExif"><span class="track"></span><span>Remove GPS location and EXIF data</span></label>
+        <p class="help">Removes where and with which phone the photo was taken. The picture itself doesn't change and stays the right way up.</p>
+      </section>
+      <section class="block">
+        <h3>Size in pixels</h3>
+        <label class="switch"><input type="checkbox" data-opt="photoResize"><span class="track"></span><span>Resize to an exact size</span></label>
+        <div class="px-row" id="pxRow">
+          <label class="field"><span>Max width</span><input type="number" id="photoW" min="0" step="1" placeholder="any"></label>
+          <span class="px-x">×</span>
+          <label class="field"><span>Max height</span><input type="number" id="photoH" min="0" step="1" placeholder="any"></label>
+        </div>
+        <p class="help">The photo fits inside this box and keeps its shape. Leave one side empty to set only the other. Smaller photos aren't enlarged.</p>
+      </section>
+    </div>
+
+    <!-- ===================================================== Videos -->
+    <div class="tab-pane" data-pane="videos">
+      <section class="block">
+        <h3>Video</h3>
+        <label class="field inline"><span>Save as</span><select id="videoFormat">
+          <option value="keep">Keep original</option><option value="mp4">MP4</option><option value="mkv">MKV</option><option value="mov">MOV</option>
+          <option value="webm">WebM</option><option value="mp3">MP3 (audio only)</option><option value="m4a">M4A (audio only)</option></select></label>
+        <label class="field inline"><span>Resolution</span><select id="resolution">
+          <option value="auto">Auto</option><option value="2160">2160p (4K)</option><option value="1440">1440p</option>
+          <option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option><option value="360">360p</option></select></label>
+        <label class="field inline"><span>Frame rate</span><select id="fps">
+          <option value="auto">Auto</option><option value="60">60 fps</option><option value="30">30 fps</option>
+          <option value="25">25 fps</option><option value="24">24 fps</option><option value="15">15 fps</option></select></label>
+        <div class="field inline"><span>Speed</span>
+          <div class="seg small" id="speedSeg" role="radiogroup" aria-label="Speed">
+            <button data-val="fast" role="radio">Fast</button><button data-val="balanced" role="radio">Balanced</button><button data-val="best" role="radio">Best quality</button>
+          </div>
+        </div>
+        <p class="help">Auto lowers resolution and frame rate only when the size you picked needs it. Best quality is slower.</p>
+      </section>
+      <section class="block">
+        <h3>Trim</h3>
+        <label class="switch"><input type="checkbox" data-opt="trim"><span class="track"></span><span>Cut the start or end</span></label>
+        <p class="help">On: open a video (or audio) in the list to set where it starts and ends. The size target counts only the part you keep.</p>
+      </section>
+    </div>
+
+    <!-- ===================================================== Audio -->
+    <div class="tab-pane" data-pane="audio">
+      <section class="block">
+        <h3>Audio</h3>
+        <label class="field inline"><span>Save as</span><select id="audioFormat">
+          <option value="keep">Keep original</option><option value="mp3">MP3</option><option value="m4a">M4A</option><option value="ogg">OGG</option><option value="opus">Opus</option></select></label>
+        <label class="switch"><input type="checkbox" data-opt="audioMono"><span class="track"></span><span>Convert to mono</span></label>
+        <p class="help">Halves the size of voice recordings (lessons, voice notes, calls) with no audible loss. Leave it off for music.</p>
+      </section>
+    </div>
+
+    <!-- ===================================================== PDF -->
+    <div class="tab-pane" data-pane="pdf">
+      <section class="block">
+        <h3>Without quality loss</h3>
+        <label class="switch"><input type="checkbox" data-opt="pdfMeta"><span class="track"></span><span>Remove metadata</span></label>
+        <label class="switch"><input type="checkbox" data-opt="pdfFonts"><span class="track"></span><span>Trim fonts to the letters used</span></label>
+        <label class="switch"><input type="checkbox" data-opt="pdfExtras"><span class="track"></span><span>Remove thumbnails and attachments</span></label>
+        <p class="help">The pages look exactly the same. The file is also packed tighter every time. Digitally signed PDFs are always left untouched, and fonts in fillable forms are kept whole.</p>
+      </section>
+      <section class="block">
+        <h3>Pictures</h3>
+        <label class="switch"><input type="checkbox" data-opt="pdfPhotos"><span class="track"></span><span>Compress photos</span></label>
+        <label class="switch"><input type="checkbox" data-opt="pdfGray"><span class="track"></span><span>Black and white</span></label>
+        <label class="switch"><input type="checkbox" data-opt="pdfAsPictures"><span class="track"></span><span>Rebuild scanned pages as pictures</span></label>
+        <p class="help">Photos are made smaller only as much as needed to reach the size. Black and white shrinks scans a lot. Rebuilding pages as pictures is smallest for scans, but the text can't be selected anymore.</p>
+      </section>
+    </div>
+
+    <!-- ===================================================== Office -->
+    <div class="tab-pane" data-pane="office">
+      <section class="block">
+        <h3>Word, PowerPoint and Excel</h3>
+        <label class="switch"><input type="checkbox" data-opt="officePhotos"><span class="track"></span><span>Compress pictures inside</span></label>
+        <p class="help">The file is always packed tighter. With this on, big pictures inside are also made smaller. Videos and sounds inside are left as they are. Files keep their format.</p>
+      </section>
+    </div>
+  </aside>
+
+  <footer class="action" id="actionBar">
+    <div class="summary" id="summary"><b>Add some files to get started.</b></div>
+    <div class="overall" id="overall"><div id="overallBar"></div></div>
+    <button class="btn primary big" id="goBtn" disabled><span id="goText">Compress</span></button>
+  </footer>
+</div>
+
+<div id="sheet" class="sheet hidden"><div class="sheet-card" id="sheetCard"></div></div>
+<div id="toast" class="toast" role="status"></div>
+<div id="dropveil" class="dropveil"><div><b>Drop to add</b><span>Files or whole folders</span></div></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

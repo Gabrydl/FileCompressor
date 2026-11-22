@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>FileCompressor</title>
+<script>
+(function () {
+  var t = "auto";
+  try { t = JSON.parse(localStorage.getItem("gfc.theme") || '"auto"'); } catch (e) {}
+  if (t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
+})();
+</script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <img src="logo.png" alt="" class="logo">
+    <div class="brand"><h1>FileCompressor</h1><p>Videos, photos, PDFs, audio and Office files, offline</p></div>
+    <div class="top-actions">
+      <button class="btn ghost" id="addFilesTop"><span data-ic="plus"></span><span>Add files</span></button>
+      <button class="btn ghost" id="addFolderTop"><span data-ic="folder"></span><span>Add folder</span></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch between light and dark" title="Light / dark"></button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist">
+    <button data-tab="0" role="tab" class="on">Files<span class="count" id="tabCount"></span></button>
+    <button data-tab="1" role="tab">Settings</button>
+  </nav>
+
+  <div class="pager" id="pager">
+  <main class="files" id="filesPane">
+    <div class="perm hidden" id="permCard">
+      <span data-ic="lock"></span>
+      <div><b>Allow access to all files</b>
+        <p>Needed to move originals into the Original folder, to save in any folder and to read big videos without copying them first.</p></div>
+      <button class="btn small primary" id="permBtn">Allow</button>
+    </div>
+    <button class="recipe" id="recipe" aria-label="Open settings">
+      <span data-ic="sliders"></span>
+      <span class="recipe-tx"><b id="recipeTitle"></b><small id="recipeSub"></small></span>
+      <span data-ic="right"></span>
+    </button>
+    <div class="files-head" id="filesHead">
+      <h2 id="filesTitle">Files</h2>
+      <button class="text-btn" id="clearBtn">Clear list</button>
+    </div>
+    <div class="empty" id="empty">
+      <div class="drop-art" aria-hidden="true"><span></span><span></span><span></span></div>
+      <b id="emptyTitle">Drop files or folders here</b>
+      <p class="muted" id="emptySub">or add them with the buttons. Nothing leaves this computer.</p>
+      <div class="empty-btns">
+        <button class="btn primary" id="addFiles"><span data-ic="plus"></span><span>Add files</span></button>
+        <button class="btn" id="addFolder"><span data-ic="folder"></span><span>Add folder</span></button>
+      </div>
+    </div>
+    <ul class="list" id="list" aria-live="polite"></ul>
+    <div class="add-more" id="addMore">
+      <button class="btn small" id="addFiles2"><span data-ic="plus"></span><span>Add files</span></button>
+      <button class="btn small" id="addFolder2"><span data-ic="folder"></span><span>Add folder</span></button>
+    </div>
+  </main>
+
+  <aside class="settings" id="settings">
+    <section class="block">
+      <h3>Quick presets</h3>
+      <p class="help">Pick where the files are going, or set everything yourself below.</p>
+      <div class="chips" id="presets"></div>
+      <p class="help preset-help" id="presetHelp"></p>
+    </section>
+
+    <section class="block">
+      <h3>How small</h3>
+      <div class="seg" id="modeSeg" role="radiogroup" aria-label="How small">
+        <button data-val="PERCENT" role="radio">Percentage</button>
+        <button data-val="MB" role="radio">Exact size</button>
+        <button data-val="CONVERT" role="radio">Convert only</button>
+      </div>
+      <div class="mode-pane" data-mode="PERCENT">
+        <div class="range-row">
+          <input type="range" id="percent" min="5" max="90" step="5" aria-label="Final size in percent">
+          <output id="percentOut">30%</output>
+        </div>
+        <div class="range-ends"><span>Smallest</span><span>Best quality</span></div>
+        <p class="help" id="percentHelp"></p>
+      </div>
+      <div class="mode-pane" data-mode="MB">
+        <div class="size-row">
+          <label class="field grow"><span>Final size of each file</span>
+            <input type="number" id="targetMb" min="1" max="1000000" step="any" inputmode="decimal"></label>
+          <div class="seg small unit" id="unitSeg" role="radiogroup" aria-label="Unit">
+            <button data-val="KB" role="radio">KB</button><button data-val="MB" role="radio">MB</button>
+          </div>
+        </div>
+        <p class="help" id="sizeHelp"></p>
+      </div>
+      <div class="mode-pane" data-mode="CONVERT">
+        <p class="help">Files change format without aiming for a size. Pick the formats below. When the container allows it (for example MKV to MP4) the video isn't re-encoded, so no quality is lost. PDF and Office files are skipped.</p>
+      </div>
+    </section>
+
+    <nav class="settabs" id="setTabs">
+      <button data-p="general">General</button><button data-p="photos">Photos</button><button data-p="videos">Videos</button>
+      <button data-p="audio">Audio</button><button data-p="pdf">PDF</button>
+    </nav>
+
+    <section class="block" data-pane="videos">
+      <h3>Video</h3>
+      <label class="field inline"><span>Save as</span><select id="videoFormat">
+        <option value="keep">Keep original</option><option value="mp4">MP4</option><option value="mkv">MKV</option><option value="mov">MOV</option>
+        <option value="webm">WebM</option><option value="mp3">MP3 (audio only)</option><option value="m4a">M4A (audio only)</option></select></label>
+      <label class="field inline"><span>Resolution</span><select id="resolution">
+        <option value="auto">Auto</option><option value="2160">2160p (4K)</option><option value="1440">1440p</option>
+        <option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option><option value="360">360p</option></select></label>
+      <label class="field inline"><span>Frame rate</span><select id="fps">
+        <option value="auto">Auto</option><option value="60">60 fps</option><option value="30">30 fps</option>
+        <option value="25">25 fps</option><option value="24">24 fps</option><option value="15">15 fps</option></select></label>
+      <div class="field inline"><span>Speed</span>
+        <div class="seg small" id="speedSeg" role="radiogroup" aria-label="Speed">
+          <button data-val="fast" role="radio">Fast</button><button data-val="balanced" role="radio">Balanced</button><button data-val="best" role="radio">Best quality</button>
+        </div>
+      </div>
+      <p class="help" id="speedHelp">Auto lowers resolution and frame rate only when the size you picked needs it. Best quality is slower.</p>
+    </section>
+
+    <section class="block" data-pane="photos">
+      <h3>Photos</h3>
+      <label class="field inline"><span>Save as</span><select id="imageFormat">
+        <option value="keep">Keep original</option><option value="jpg">JPG</option><option value="png">PNG</option><option value="webp">WebP</option></select></label>
+      <p class="help">Photos are made smaller (quality first, then size in pixels) until they reach the size you picked.</p>
+    </section>
+
+    <section class="block" data-pane="audio">
+      <h3>Audio</h3>
+      <label class="field inline"><span>Save as</span><select id="audioFormat">
+        <option value="keep">Keep original</option><option value="mp3">MP3</option><option value="m4a">M4A</option><option value="ogg">OGG</option><option value="opus">Opus</option></select></label>
+      <p class="help">Opus sounds best at very small sizes (voice notes, lessons).</p>
+    </section>
+
+    <section class="block" data-pane="pdf">
+      <h3>PDF</h3>
+      <label class="switch"><input type="checkbox" id="pdfAsPictures"><span class="track"></span><span>Rebuild scanned pages as pictures</span></label>
+      <p class="help">Off: the pictures and scans inside are re-compressed and the text stays selectable. On: every page becomes one picture, smallest for scans, but the text can't be selected anymore.</p>
+    </section>
+
+    <section class="block" data-pane="general">
+      <h3>Save to</h3>
+      <div class="folder" id="folderBox"><span data-ic="folder"></span><span class="folder-path" id="outPath" data-selectable></span></div>
+      <div class="folder-btns">
+        <button class="btn small" id="changeFolder">Change folder</button>
+        <button class="btn small ghost" id="defaultFolder">Use default</button>
+        <button class="btn small ghost" id="openFolder">Open folder</button>
+      </div>
+      <label class="switch"><input type="checkbox" id="moveOriginals"><span class="track"></span><span>Move originals to the Original folder</span></label>
+      <p class="help" id="saveHelp"></p>
+    </section>
+
+    <section class="block" data-pane="general">
+      <h3>Program</h3>
+      <label class="switch"><input type="checkbox" id="remember"><span class="track"></span><span>Remember the last settings</span></label>
+      <p class="help">Off: size and formats go back to the defaults every time the app opens.</p>
+    </section>
+
+    <section class="block appearance" data-pane="general">
+      <h3>Appearance</h3>
+      <div class="seg" id="themeSeg" role="radiogroup" aria-label="Appearance">
+        <button data-val="auto" role="radio">System</button><button data-val="light" role="radio">Light</button><button data-val="dark" role="radio">Dark</button>
+      </div>
+    </section>
+  </aside>
+  </div>
+
+  <footer class="action" id="actionBar">
+    <div class="summary" id="summary"></div>
+    <div class="overall" id="overall"><div id="overallBar"></div></div>
+    <button class="btn primary big" id="goBtn" disabled><span id="goText">Compress</span></button>
+  </footer>
+</div>
+
+<div id="sheet" class="sheet hidden"><div class="sheet-card" id="sheetCard"></div></div>
+<div id="toast" class="toast" role="status"></div>
+<div id="dropveil" class="dropveil"><div><b>Drop to add</b><span>Files or whole folders</span></div></div>
+
+<script src="host.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
