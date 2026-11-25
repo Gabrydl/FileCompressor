@@ -35,9 +35,16 @@ object Images {
     // ------------------------------------------------------------------ opening
     class Opened(val bmp: Bitmap, val w: Int, val h: Int, val reduced: Boolean)
 
-    private fun open(src: File): Opened {
+    private fun open(srcIn: File, ctx: Ctx): Opened {
+        var src = srcIn
         val o = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         src.inputStream().use { BitmapFactory.decodeStream(it, null, o) }
+        if (o.outWidth <= 0 || o.outHeight <= 0) {
+            // formats Android can't read itself (TIFF, some BMP...): ffmpeg turns the first page into a PNG first
+            val png = File(ctx.tmp, "decoded.png")
+            try { Ff.run(listOf("-i", src.absolutePath, "-frames:v", "1", "-f", "image2", "-c:v", "png", png.absolutePath), ctx) } catch (e: Skip) { throw e } catch (_: Exception) { }
+            if (png.length() > 0) { src = png; o.outWidth = 0; src.inputStream().use { BitmapFactory.decodeStream(it, null, o) } }
+        }
         if (o.outWidth <= 0 || o.outHeight <= 0) throw Fail("couldn't open this picture: unknown format")
         var sample = 1
         while (o.outWidth.toLong() / sample * (o.outHeight.toLong() / sample) > MAX_PIXELS) sample *= 2
@@ -131,7 +138,7 @@ object Images {
             }
         }
         if (ext == "webp" && Gif.isAnimatedWebp(src)) throw Skip("Animated WebP: the phone can't re-compress it without losing the animation, left untouched")
-        val o = open(src)
+        val o = open(src, ctx)
         try {
             val fmt = outFormat(ext, s.imageFormat, o.bmp.hasAlpha())
             val out = outIn.withExt(fmt)
@@ -202,7 +209,7 @@ object Images {
         if (same) throw Skip("same format")
         if (ext == "gif") { val g = Gif.info(src); if (g != null && g.frames > 1) throw Skip("Animated GIF: converting it to a photo format would keep only one frame, left untouched") }
         if (ext == "webp" && Gif.isAnimatedWebp(src)) throw Skip("Animated WebP: left untouched")
-        val o = open(src)
+        val o = open(src, ctx)
         try {
             val want = outFormat(ext, s.imageFormat, o.bmp.hasAlpha())
             val out = outIn.withExt(want)
