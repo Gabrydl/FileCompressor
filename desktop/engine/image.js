@@ -69,8 +69,73 @@ async function render(o, fmt, q, scale, palette) {
   return encoder(img, fmt, q, palette).toBuffer();
 }
 
+// ---------------------------------------------------------------- animated GIF / WebP: keep every frame
+// Quality steps for GIF, best first: fewer colours and more "lossy" (frames reuse the previous pixels when close enough).
+const GIF_STEPS = [
+  { colours: 256, frame: 0, pal: 3 }, { colours: 256, frame: 2, pal: 3 }, { colours: 256, frame: 5, pal: 4 },
+  { colours: 224, frame: 8, pal: 5 }, { colours: 192, frame: 12, pal: 6 }, { colours: 160, frame: 16, pal: 8 },
+  { colours: 128, frame: 22, pal: 10 }, { colours: 96, frame: 30, pal: 12 }, { colours: 64, frame: 32, pal: 16 },
+];
+const WEBP_STEPS = [80, 72, 64, 56, 48, 40, 32].map((q) => ({ q }));
+
+async function animInfo(src) {
+  try {
+    const m = await sharp(src, { failOn: "none", limitInputPixels: false, animated: true }).metadata();
+    return m.pages > 1 ? m : null;
+  } catch (_) { return null; }
+}
+
+async function renderAnim(src, m, fmt, step, scale) {
+  const fh = m.pageHeight || m.height / m.pages;
+  let img = sharp(src, { failOn: "none", limitInputPixels: false, animated: true });
+  if (scale < 1) img = img.resize(Math.max(1, Math.round(m.width * scale)), Math.max(1, Math.round(fh * scale)), { fit: "fill", kernel: "lanczos3" });
+  const keep = { loop: m.loop == null ? 0 : m.loop, ...(m.delay ? { delay: m.delay } : {}) };
+  if (fmt === "webp") return img.webp({ quality: step.q, effort: 4, smartSubsample: true, ...keep }).toBuffer();
+  return img.gif({ colours: step.colours, effort: 4, dither: 0.8, interFrameMaxError: step.frame, interPaletteMaxError: step.pal, reuse: true, ...keep }).toBuffer();
+}
+
+async function compressAnimated(src, out, s, target, ctx, m, fmt) {
+  out = out.replace(/\.[^.]+$/, "." + fmt);
+  const orig = fs.statSync(src).size;
+  const fh = m.pageHeight || m.height / m.pages;
+  const steps = fmt === "webp" ? WEBP_STEPS : GIF_STEPS;
+  const cap = s.photoResize ? Math.min(1, (+s.photoW || Infinity) / m.width, (+s.photoH || Infinity) / fh) : 1;
+  ctx.stage(`Compressing ${m.pages} frames`);
+  let best = null, scale = cap, work = 0;
+  const tick = () => ctx.progress(Math.min(0.95, 0.05 + 0.07 * ++work));
+  for (let round = 0; round < 6; round++) {
+    // best quality step that fits, by halving the list of steps
+    let lo = 0, hi = steps.length - 1, fit = null, worst = null;
+    while (lo <= hi) {
+      if (ctx.signal.aborted) throw new Skip("stopped");
+      const mid = (lo + hi) >> 1;
+      const buf = await renderAnim(src, m, fmt, steps[mid], scale); tick();
+      if (buf.length <= target) { fit = { buf, step: mid, scale }; hi = mid - 1; }
+      else { if (!worst || buf.length < worst.buf.length) worst = { buf, step: mid, scale }; lo = mid + 1; }
+    }
+    if (fit) { best = fit; break; }
+    if (!worst) break;
+    if (!best || worst.buf.length < best.buf.length) best = worst;
+    // even the strongest step is too big: make the frames smaller and try again
+    const next = scale * Math.max(0.5, Math.min(0.92, Math.sqrt(target / best.buf.length) * 1.05));
+    if (next * Math.max(m.width, fh) < 160) break;
+    scale = next;
+  }
+  if (best.buf.length >= orig && cap >= 1) throw new Skip("already well compressed");
+  fs.writeFileSync(out, best.buf);
+  const notes = [`Animation kept (${m.pages} frames)`];
+  if (best.scale < 1) notes.push(`Resized to ${Math.round(m.width * best.scale)}×${Math.round(fh * best.scale)}`);
+  if (best.buf.length > target * 1.05) notes.push("Couldn't fully reach the target without ruining the animation");
+  return { out, size: best.buf.length, note: notes.join(", ") };
+}
+
 async function compress(src, out, s, target, ctx) {
   const ext = path.extname(src).slice(1).toLowerCase();
+  if (ext === "gif" || ext === "webp") {
+    const m = await animInfo(src);
+    const want = !s.imageFormat || s.imageFormat === "keep" ? ext : s.imageFormat;
+    if (m && (want === "gif" || want === "webp")) return compressAnimated(src, out, s, target, ctx, m, want);
+  }
   const o = await open(src, s);
   const fmt = outFormat(ext, s.imageFormat, o.meta.hasAlpha);
   out = out.replace(/\.[^.]+$/, "." + fmt);
