@@ -664,7 +664,7 @@ document.addEventListener("keydown", (e) => {
 
 // ================================================================== update check
 // Looks at the latest GitHub release when the app opens. The version below is set by the build.
-const APP_VERSION = "1.6.0", UPDATE_REPO = "Gabrydl/FileCompressor";
+const APP_VERSION = "1.6.1", UPDATE_REPO = "Gabrydl/FileCompressor";
 function verTuple(v) { return (String(v || "").match(/\d+/g) || ["0"]).slice(0, 3).map(Number); }
 function isNewer(a, b) { const x = verTuple(a), y = verTuple(b); for (let k = 0; k < 3; k++) { if ((x[k] || 0) !== (y[k] || 0)) return (x[k] || 0) > (y[k] || 0); } return false; }
 async function checkUpdates() {
