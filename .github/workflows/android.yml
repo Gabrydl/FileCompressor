@@ -1,11 +1,15 @@
 name: Android APK
 
-# Builds the phone app from android-app/ (Kotlin engine + the android-www page) and keeps the APK as a build artifact.
+# Builds the phone app from android-app/ (Kotlin engine + the android-www page). The APK is kept as a build artifact and
+# in the pre-release "android-build" (never "latest", so installed apps don't offer it as an update).
 # The APK is unsigned here: sign it with keys/filecompressor (tools/apk_repack.py) so it installs over the app on the phone.
 on:
   push:
     paths: ["android-app/**", "android-www/**", ".github/workflows/android.yml"]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -27,3 +31,10 @@ jobs:
         with:
           name: FileCompressor-unsigned
           path: FileCompressor-unsigned.apk
+      - name: Keep it in the android-build pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view android-build > /dev/null 2>&1 || gh release create android-build --prerelease --target "$GITHUB_SHA" \
+            --title "Phone app test build (unsigned)" --notes "Unsigned APK built from android-app/. Sign it with keys/filecompressor before installing."
+          gh release upload android-build FileCompressor-unsigned.apk --clobber
