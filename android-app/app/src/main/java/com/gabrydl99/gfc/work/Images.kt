@@ -318,11 +318,13 @@ object Gif {
         }
     } catch (_: Exception) { false }
 
-    // quality steps, best first: fewer colours and coarser dithering make smaller files; frames are never dropped
-    private class Step(val colors: Int, val dither: String)
+    // quality steps, best first: fewer colours, coarser dithering and some temporal smoothing (film grain makes every
+    // pixel change from frame to frame, which GIF stores badly) give smaller files; frames are never dropped
+    private class Step(val colors: Int, val dither: String, val denoise: String)
     private val STEPS = listOf(
-        Step(256, "sierra2_4a"), Step(256, "bayer:bayer_scale=5"), Step(224, "bayer:bayer_scale=4"), Step(192, "bayer:bayer_scale=3"),
-        Step(160, "bayer:bayer_scale=3"), Step(128, "bayer:bayer_scale=2"), Step(96, "bayer:bayer_scale=2"), Step(64, "bayer:bayer_scale=1"),
+        Step(256, "sierra2_4a", ""), Step(256, "sierra2_4a", "hqdn3d=0:0:4:4,"), Step(224, "bayer:bayer_scale=5", "hqdn3d=0:0:6:6,"),
+        Step(192, "bayer:bayer_scale=4", "hqdn3d=1:1:6:6,"), Step(160, "bayer:bayer_scale=3", "hqdn3d=1:1:8:8,"), Step(128, "bayer:bayer_scale=3", "hqdn3d=2:2:8:8,"),
+        Step(96, "bayer:bayer_scale=2", "hqdn3d=2:2:10:10,"), Step(64, "bayer:bayer_scale=2", "hqdn3d=3:3:12:12,"),
     )
 
     private class Try(val file: File, val size: Long, val step: Int, val scale: Double)
@@ -337,7 +339,7 @@ object Gif {
             val f = File(ctx.tmp, "try${n++}.gif")
             val sc = if (scale < 1) "scale=${max(2, (g.w * scale).roundToInt())}:${max(2, (g.h * scale).roundToInt())}:flags=lanczos," else ""
             Ff.run(listOf("-i", src.absolutePath, "-filter_complex",
-                "[0:v]${sc}split[a][b];[a]palettegen=max_colors=${st.colors}:stats_mode=diff[p];[b][p]paletteuse=dither=${st.dither}:diff_mode=rectangle",
+                "[0:v]${sc}${st.denoise}split[a][b];[a]palettegen=max_colors=${st.colors}:stats_mode=diff[p];[b][p]paletteuse=dither=${st.dither}:diff_mode=rectangle",
                 "-f", "gif", f.absolutePath), ctx, dur, from, to)
             return Try(f, f.length(), step, scale)
         }
