@@ -5,7 +5,7 @@ const fs = require("fs");
 const os = require("os");
 const { execFile } = require("child_process");
 const { pathToFileURL } = require("url");
-const { expand, inspect, finalize, restore, PREVIEW_ROOT } = require("./engine/index");
+const { expand, inspect, finalize, restore, PREVIEW_ROOT, ALL_EXT } = require("./engine/index");
 const media = require("./engine/media");
 const image = require("./engine/image");
 const pdf = require("./engine/pdf");
@@ -106,7 +106,7 @@ else {
 
 // ------------------------------------------------------------------ what the page may ask for
 const MEDIA_FILTER = [
-  { name: "Supported files", extensions: ["mp4", "mkv", "mov", "avi", "webm", "m4v", "wmv", "flv", "3gp", "ts", "mts", "m2ts", "mpg", "mpeg", "ogv", "mp3", "m4a", "aac", "wav", "flac", "ogg", "opus", "wma", "amr", "aiff", "m4b", "jpg", "jpeg", "png", "webp", "heic", "heif", "avif", "bmp", "tif", "tiff", "gif", "jfif", "pdf", "docx", "pptx", "xlsx", "docm", "pptm", "xlsm"] },
+  { name: "Supported files", extensions: ALL_EXT },
   { name: "All files", extensions: ["*"] },
 ];
 ipcMain.handle("pick-files", async () => {

@@ -45,7 +45,7 @@ async function probe(file) {
     p.on("close", () => resolve(s));
   });
   if (out === null) throw new Fail("ffmpeg is missing");
-  const info = { duration: 0, video: null, audio: null, bitrate: 0 };
+  const info = { duration: 0, video: null, audio: null, bitrate: 0, audioCodecs: [], subs: [], cover: "" };
   const d = /Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)/.exec(out);
   if (d) info.duration = (+d[1]) * 3600 + (+d[2]) * 60 + parseFloat(d[3]);
   const br = /bitrate:\s*(\d+)\s*kb\/s/.exec(out);
@@ -58,7 +58,14 @@ async function probe(file) {
       info.video = { codec: v[1].toLowerCase(), w: wh ? +wh[1] : 0, h: wh ? +wh[2] : 0, fps: fps ? parseFloat(fps[1]) : 30 };
     }
     const a = /Stream #\S+.*?Audio:\s*([a-z0-9_]+)(.*)/i.exec(line);
-    if (a && !info.audio) info.audio = { codec: a[1].toLowerCase(), mono: /\bmono\b/.test(a[2]) };
+    if (a) {
+      if (!info.audio) info.audio = { codec: a[1].toLowerCase(), mono: /\bmono\b/.test(a[2]) };
+      info.audioCodecs.push(a[1].toLowerCase());
+    }
+    const sub = /Stream #\S+.*?Subtitle:\s*([a-z0-9_]+)/i.exec(line);
+    if (sub) info.subs.push(sub[1].toLowerCase());
+    const pic = /Stream #\S+.*?Video:\s*([a-z0-9_]+).*attached pic/i.exec(line);
+    if (pic && !info.cover) info.cover = pic[1].toLowerCase();
   }
   const rot = /rotation of (-?[\d.]+) degrees/.exec(out);
   if (rot && info.video && Math.abs(Math.round(parseFloat(rot[1]))) % 180 === 90) [info.video.w, info.video.h] = [info.video.h, info.video.w];
@@ -125,6 +132,33 @@ function videoFilters(info, sz) {
   return f;
 }
 
+
+// ------------------------------------------------------------------ every audio track, subtitles and cover pictures are kept
+const TEXT_SUBS = ["subrip", "srt", "ass", "ssa", "mov_text", "webvtt", "text"];
+/** Subtitle tracks the chosen container can hold: -map and -c:s for each, and how many had to be left out. */
+function subtitleArgs(info, fmt) {
+  const args = [];
+  let kept = 0, dropped = 0;
+  info.subs.forEach((codec, i) => {
+    const text = TEXT_SUBS.includes(codec);
+    let c;
+    if (fmt === "mkv") c = codec === "mov_text" ? "srt" : "copy";
+    else if (fmt === "webm") c = text ? "webvtt" : null;
+    else c = text ? "mov_text" : null;   // mp4, mov
+    if (!c) { dropped++; return; }
+    args.push("-map", `0:s:${i}`, `-c:s:${kept}`, c);
+    kept++;
+  });
+  const note = dropped ? `${dropped} picture subtitle track${dropped > 1 ? "s" : ""} left out (${fmt.toUpperCase()} can't hold ${dropped > 1 ? "them" : "it"}, MKV can)` : "";
+  return { args, note };
+}
+/** The cover picture of a song, when the output format can carry it. */
+function coverArgs(info, fmt) {
+  if (!info.cover) return { args: [], note: "" };
+  if ((fmt === "mp3" || fmt === "m4a") && (info.cover === "mjpeg" || info.cover === "png")) return { args: ["-map", "0:v:0", "-c:v", "copy", "-disposition:v:0", "attached_pic"], note: "" };
+  return { args: [], note: `Cover picture left out (${fmt.toUpperCase()} can't hold it)` };
+}
+
 // ------------------------------------------------------------------ compress a video to a size
 async function compressVideo(src, out, s, target, ctx) {
   const info = await probe(src);
@@ -139,8 +173,10 @@ async function compressVideo(src, out, s, target, ctx) {
   out = out.replace(/\.[^.]+$/, "." + fmt);
   const inp = input(src, s, info);
   const totalKbps = target * 8 / inp.dur / 1000;
-  const aK = info.audio ? audioKbps(totalKbps) : 0;
-  let vK = totalKbps * 0.955 - aK;
+  const nA = Math.max(1, info.audioCodecs.length);
+  const aK = info.audio ? Math.max(32, Math.round(audioKbps(totalKbps) / Math.sqrt(nA))) : 0;
+  let vK = totalKbps * 0.955 - aK * (info.audio ? nA : 0);
+  const sub = subtitleArgs(info, fmt);
   if (vK < 50) throw new Fail("target too small");
   const sz = pickSize(info, s, vK);
   const vf = videoFilters(info, sz);
@@ -156,12 +192,12 @@ async function compressVideo(src, out, s, target, ctx) {
     const vcodec = webm
       ? ["-c:v", "libvpx-vp9", "-b:v", `${Math.round(vK)}k`, "-row-mt", "1", "-deadline", "good", "-cpu-used", VP9_SPEED[speed] || "2", "-pix_fmt", "yuv420p"]
       : ["-c:v", "libx264", "-preset", X264_PRESET[speed] || "medium", "-b:v", `${Math.round(vK)}k`, "-maxrate", `${Math.round(vK * 1.6)}k`, "-bufsize", `${Math.round(vK * 2.5)}k`, "-pix_fmt", "yuv420p"];
-    const base = [...inp.args, "-map", "0:v:0", ...(vf.length ? ["-vf", vf.join(",")] : []), ...vcodec, "-passlogfile", passlog];
+    const base = [...inp.args, "-map", "0:V:0", ...(vf.length ? ["-vf", vf.join(",")] : []), ...vcodec, "-passlogfile", passlog];
     ctx.stage(tries ? "Fine-tuning size" : "Compressing");
     await run([...base, "-pass", "1", "-an", "-f", webm ? "webm" : "mp4", nul], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0, to: 0.45 });
-    const acodec = !info.audio ? ["-an"] : webm ? ["-map", "0:a:0", "-c:a", "libopus", "-b:a", `${aK}k`] : ["-map", "0:a:0", "-c:a", "aac", "-b:a", `${aK}k`];
+    const acodec = !info.audio ? ["-an"] : webm ? ["-map", "0:a", "-c:a", "libopus", "-b:a", `${aK}k`] : ["-map", "0:a", "-c:a", "aac", "-b:a", `${aK}k`];
     const cont = fmt === "mp4" || fmt === "mov" ? ["-movflags", "+faststart"] : [];
-    await run([...base, "-pass", "2", ...acodec, "-map_metadata", "0", ...cont, out], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0.45, to: 1 });
+    await run([...base, "-pass", "2", ...acodec, ...sub.args, "-map_metadata", "0", ...cont, out], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0.45, to: 1 });
     size = fs.statSync(out).size;
     if (size <= target * 1.02 || tries >= 2) break;
     vK = vK * (target / size) * 0.96 - (tries ? 10 : 0);
@@ -169,7 +205,7 @@ async function compressVideo(src, out, s, target, ctx) {
     tries++;
   }
   const note = size > target * 1.05 ? "Couldn't fully reach the target without ruining quality." : "";
-  return { out, size, note: [inp.note, notes.length ? "Resized to " + notes.join(", ") : "", note].filter(Boolean).join(". ") };
+  return { out, size, note: [inp.note, notes.length ? "Resized to " + notes.join(", ") : "", info.audioCodecs.length > 1 ? `${info.audioCodecs.length} audio tracks kept` : "", sub.note, note].filter(Boolean).join(". ") };
 }
 
 // ------------------------------------------------------------------ convert a video (no size goal)
@@ -198,17 +234,18 @@ async function convertVideo(src, out, s, ctx) {
   const okV = fmt === "webm" ? WEBM_V : fmt === "mkv" ? null : MP4_V;
   const okA = fmt === "webm" ? WEBM_A : fmt === "mkv" ? null : MP4_A;
   const copyV = !inp.trimmed && !vf.length && (!okV || okV.includes(info.video.codec));
-  const copyA = !info.audio || !okA || okA.includes(info.audio.codec);
+  const copyA = !info.audio || !okA || info.audioCodecs.every(c => okA.includes(c));
+  const sub = subtitleArgs(info, fmt);
   const speed = s.speed || "balanced";
   const v = copyV ? ["-c:v", "copy", ...(info.video.codec === "hevc" && fmt !== "mkv" ? ["-tag:v", "hvc1"] : [])]
     : fmt === "webm" ? ["-c:v", "libvpx-vp9", "-crf", "32", "-b:v", "0", "-row-mt", "1", "-deadline", "good", "-cpu-used", VP9_SPEED[speed] || "2", "-pix_fmt", "yuv420p"]
       : ["-c:v", "libx264", "-crf", speed === "best" ? "19" : "21", "-preset", X264_PRESET[speed] || "medium", "-pix_fmt", "yuv420p"];
   const a = !info.audio ? ["-an"] : copyA ? ["-c:a", "copy"] : fmt === "webm" ? ["-c:a", "libopus", "-b:a", "128k"] : ["-c:a", "aac", "-b:a", "160k"];
   ctx.stage("Converting");
-  await run([...inp.args, "-map", "0:v:0", ...(info.audio ? ["-map", "0:a:0"] : []), ...(vf.length ? ["-vf", vf.join(",")] : []), ...v, ...a,
+  await run([...inp.args, "-map", "0:V:0", ...(info.audio ? ["-map", "0:a"] : []), ...sub.args, ...(vf.length ? ["-vf", vf.join(",")] : []), ...v, ...a,
     "-map_metadata", "0", ...(fmt === "mp4" || fmt === "mov" ? ["-movflags", "+faststart"] : []), out],
   { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal });
-  return { out, size: fs.statSync(out).size, note: [inp.note, copyV ? "Not re-encoded: no quality lost" : ""].filter(Boolean).join(". ") };
+  return { out, size: fs.statSync(out).size, note: [inp.note, copyV ? "Not re-encoded: no quality lost" : "", info.audioCodecs.length > 1 ? `${info.audioCodecs.length} audio tracks kept` : "", sub.note].filter(Boolean).join(". ") };
 }
 
 // ------------------------------------------------------------------ audio
@@ -242,10 +279,11 @@ async function compressAudio(src, out, s, target, ctx, info = null, note = "") {
   const extra = [];
   if (k < 48 || s.audioMono) extra.push("-ac", "1");
   if (k < 40 && fmt !== "opus") extra.push("-ar", "22050");
+  const cov = info.video ? { args: [], note: "" } : coverArgs(info, fmt);
   ctx.stage("Compressing");
-  await run([...inp.args, "-map", "0:a:0", ...AUDIO_CODEC[fmt](k), ...extra, "-map_metadata", "0", "-vn", out],
+  await run([...inp.args, "-map", "0:a:0", ...AUDIO_CODEC[fmt](k), ...extra, ...(cov.args.length ? cov.args : ["-vn"]), "-map_metadata", "0", out],
     { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal });
-  return { out, size: fs.statSync(out).size, note: [note, inp.note, mono ? "Mono" : ""].filter(Boolean).join(". ") };
+  return { out, size: fs.statSync(out).size, note: [note, inp.note, mono ? "Mono" : "", cov.note].filter(Boolean).join(". ") };
 }
 async function convertAudio(src, out, s, ctx, info = null, note = "") {
   info = info || await probe(src);
@@ -260,10 +298,11 @@ async function convertAudio(src, out, s, ctx, info = null, note = "") {
   const codec = fmt === "mp3" ? ["-c:a", "libmp3lame", "-q:a", "2", "-id3v2_version", "3"]
     : fmt === "m4a" ? (info.audio.codec === "aac" && !mono && !inp.trimmed ? ["-c:a", "copy"] : ["-c:a", "aac", "-b:a", mono ? "96k" : "192k"])
       : fmt === "ogg" ? ["-c:a", "libvorbis", "-q:a", "6"] : ["-c:a", "libopus", "-b:a", "128k"];
+  const cov = info.video ? { args: [], note: "" } : coverArgs(info, fmt);
   ctx.stage("Converting");
-  await run([...inp.args, "-map", "0:a:0", ...codec, ...(mono ? ["-ac", "1"] : []), "-vn", "-map_metadata", "0", ...(fmt === "m4a" ? ["-movflags", "+faststart"] : []), out],
+  await run([...inp.args, "-map", "0:a:0", ...codec, ...(mono ? ["-ac", "1"] : []), ...(cov.args.length ? cov.args : ["-vn"]), "-map_metadata", "0", ...(fmt === "m4a" ? ["-movflags", "+faststart"] : []), out],
     { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal });
-  return { out, size: fs.statSync(out).size, note: [note, inp.note, mono ? "Mono" : ""].filter(Boolean).join(". ") };
+  return { out, size: fs.statSync(out).size, note: [note, inp.note, mono ? "Mono" : "", cov.note].filter(Boolean).join(". ") };
 }
 
 // ------------------------------------------------------------------ for the tick boxes and the before/after view

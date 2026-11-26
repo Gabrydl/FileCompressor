@@ -53,8 +53,14 @@ async function build(zipBytes, maxDim, quality, signal) {
   return { bytes: out, count, media };
 }
 
+/** Digitally signed documents keep their signature only if not a single byte changes, so they are left alone. */
+function isSigned(zip) { return Object.keys(zip.files).some(n => /^_xmlsignatures\//i.test(n) && !zip.files[n].dir); }
+
 async function compress(src, out, s, target, ctx) {
   const bytes = fs.readFileSync(src);
+  let probe;
+  try { probe = await JSZip.loadAsync(bytes); } catch (_) { throw new Fail("This file isn't a valid Office document (or it's password-protected)."); }
+  if (isSigned(probe)) throw new Skip("signed");
   ctx.stage("Compressing pictures");
   let best = null;
   const ladder = s.officePhotos === false ? [[0, 0]] : LADDER;   // 0 = pictures left alone, only packed tighter
@@ -84,7 +90,7 @@ async function inspect(src) {
       pictures++;
       if ((f._data && f._data.uncompressedSize || 0) >= 40000) big++;
     }
-    return { pictures, big, media };
+    return { pictures, big, media, signed: isSigned(zip) };
   } catch (_) { return { unreadable: true }; }
 }
 
