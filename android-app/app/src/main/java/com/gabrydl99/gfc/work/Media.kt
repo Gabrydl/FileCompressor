@@ -19,6 +19,9 @@ object Media {
         var bitrate = 0
         var video: VInfo? = null
         var audio: AInfo? = null
+        val audioCodecs = mutableListOf<String>()
+        val subs = mutableListOf<String>()
+        var cover = ""
     }
 
     // ------------------------------------------------------------------ reading what is inside
@@ -41,7 +44,12 @@ object Media {
                     fps?.groupValues?.get(1)?.toDoubleOrNull() ?: 30.0)
             }
             val a = aRe.find(line)
-            if (a != null && info.audio == null) info.audio = AInfo(a.groupValues[1].lowercase(), Regex("""\bmono\b""").containsMatchIn(a.groupValues[2]))
+            if (a != null) {
+                if (info.audio == null) info.audio = AInfo(a.groupValues[1].lowercase(), Regex("""\bmono\b""").containsMatchIn(a.groupValues[2]))
+                info.audioCodecs.add(a.groupValues[1].lowercase())
+            }
+            Regex("""Stream #\S+.*?Subtitle:\s*([a-z0-9_]+)""", RegexOption.IGNORE_CASE).find(line)?.let { info.subs.add(it.groupValues[1].lowercase()) }
+            if (info.cover.isEmpty()) Regex("""Stream #\S+.*?Video:\s*([a-z0-9_]+).*attached pic""", RegexOption.IGNORE_CASE).find(line)?.let { info.cover = it.groupValues[1].lowercase() }
         }
         Regex("""rotation of (-?[\d.]+) degrees""").find(out)?.let {
             val vi = info.video
@@ -104,6 +112,39 @@ object Media {
 
     private fun fmtNum(d: Double): String = if (d == floor(d)) d.toInt().toString() else "%.3f".format(java.util.Locale.US, d)
 
+    // ------------------------------------------------------------------ every audio track, subtitles and cover pictures are kept
+    private val TEXT_SUBS = listOf("subrip", "srt", "ass", "ssa", "mov_text", "webvtt", "text")
+    private class Extra(val args: List<String>, val note: String)
+
+    /** Subtitle tracks the chosen container can hold: -map and -c:s for each, and how many had to be left out. */
+    private fun subtitleArgs(info: Info, fmt: String): Extra {
+        val args = mutableListOf<String>()
+        var kept = 0
+        var dropped = 0
+        info.subs.forEachIndexed { i, codec ->
+            val text = codec in TEXT_SUBS
+            val c = when (fmt) {
+                "mkv" -> if (codec == "mov_text") "srt" else "copy"
+                "webm" -> if (text) "webvtt" else null
+                else -> if (text) "mov_text" else null
+            }
+            if (c == null) { dropped++; return@forEachIndexed }
+            args += listOf("-map", "0:s:$i", "-c:s:$kept", c)
+            kept++
+        }
+        val note = if (dropped > 0) "$dropped picture subtitle track${if (dropped > 1) "s" else ""} left out (${fmt.uppercase()} can't hold ${if (dropped > 1) "them" else "it"}, MKV can)" else ""
+        return Extra(args, note)
+    }
+
+    /** The cover picture of a song, when the output format can carry it. */
+    private fun coverArgs(info: Info, fmt: String): Extra {
+        if (info.cover.isEmpty() || info.video != null) return Extra(emptyList(), "")
+        if ((fmt == "mp3" || fmt == "m4a") && (info.cover == "mjpeg" || info.cover == "png")) return Extra(listOf("-map", "0:v:0", "-c:v", "copy", "-disposition:v:0", "attached_pic"), "")
+        return Extra(emptyList(), "Cover picture left out (${fmt.uppercase()} can't hold it)")
+    }
+
+    private fun tracksNote(info: Info) = if (info.audioCodecs.size > 1) "${info.audioCodecs.size} audio tracks kept" else ""
+
     // ------------------------------------------------------------------ compress a video to a size
     fun compressVideo(src: File, outIn: File, s: Settings, target: Double, ctx: Ctx): Result {
         val info = probe(src)
@@ -119,8 +160,10 @@ object Media {
         val out = outIn.withExt(fmt)
         val dur = info.duration
         val totalKbps = target * 8 / dur / 1000
-        val aK = if (info.audio != null) audioKbps(totalKbps) else 0
-        var vK = totalKbps * 0.955 - aK
+        val nA = max(1, info.audioCodecs.size)
+        val aK = if (info.audio != null) max(32, (audioKbps(totalKbps) / Math.sqrt(nA.toDouble())).roundToInt()) else 0
+        var vK = totalKbps * 0.955 - aK * (if (info.audio != null) nA else 0)
+        val sub = subtitleArgs(info, fmt)
         if (vK < 50) throw Fail("target too small")
         val sz = pickSize(vi, s, vK)
         val vf = videoFilters(vi, sz)
@@ -137,16 +180,16 @@ object Media {
                 listOf("-c:v", "libvpx-vp9", "-b:v", "${vK.roundToInt()}k", "-row-mt", "1", "-deadline", "good", "-cpu-used", VP9_SPEED[speed] ?: "2", "-pix_fmt", "yuv420p")
             else
                 listOf("-c:v", "libx264", "-preset", X264_PRESET[speed] ?: "medium", "-b:v", "${vK.roundToInt()}k", "-maxrate", "${(vK * 1.6).roundToInt()}k", "-bufsize", "${(vK * 2.5).roundToInt()}k", "-pix_fmt", "yuv420p")
-            val base = listOf("-i", src.absolutePath, "-map", "0:v:0") + (if (vf.isNotEmpty()) listOf("-vf", vf.joinToString(",")) else emptyList()) + vcodec + listOf("-passlogfile", passlog)
+            val base = listOf("-i", src.absolutePath, "-map", "0:V:0") + (if (vf.isNotEmpty()) listOf("-vf", vf.joinToString(",")) else emptyList()) + vcodec + listOf("-passlogfile", passlog)
             ctx.stage(if (tries > 0) "Fine-tuning size" else "Compressing")
             Ff.run(base + listOf("-pass", "1", "-an", "-f", "null", "-"), ctx, dur, 0.0, 0.45)
             val acodec = when {
                 info.audio == null -> listOf("-an")
-                webm -> listOf("-map", "0:a:0", "-c:a", "libopus", "-b:a", "${aK}k")
-                else -> listOf("-map", "0:a:0", "-c:a", "aac", "-b:a", "${aK}k")
+                webm -> listOf("-map", "0:a", "-c:a", "libopus", "-b:a", "${aK}k")
+                else -> listOf("-map", "0:a", "-c:a", "aac", "-b:a", "${aK}k")
             }
             val cont = if (fmt == "mp4" || fmt == "mov") listOf("-movflags", "+faststart") else emptyList()
-            Ff.run(base + listOf("-pass", "2") + acodec + listOf("-map_metadata", "0") + cont + listOf(out.absolutePath), ctx, dur, 0.45, 1.0)
+            Ff.run(base + listOf("-pass", "2") + acodec + sub.args + listOf("-map_metadata", "0") + cont + listOf(out.absolutePath), ctx, dur, 0.45, 1.0)
             size = out.length()
             if (size <= target * 1.02 || tries >= 2) break
             vK = vK * (target / size) * 0.96 - (if (tries > 0) 10 else 0)
@@ -154,7 +197,7 @@ object Media {
             tries++
         }
         val note = if (size > target * 1.05) "Couldn't fully reach the target without ruining quality." else ""
-        return Result(out, size, listOf(if (notes.isNotEmpty()) "Resized to " + notes.joinToString(", ") else "", note).filter { it.isNotEmpty() }.joinToString(". "))
+        return Result(out, size, listOf(if (notes.isNotEmpty()) "Resized to " + notes.joinToString(", ") else "", tracksNote(info), sub.note, note).filter { it.isNotEmpty() }.joinToString(". "))
     }
 
     // ------------------------------------------------------------------ convert a video (no size goal)
@@ -188,7 +231,8 @@ object Media {
         val okA = if (fmt == "webm") WEBM_A else if (fmt == "mkv") null else MP4_A
         val copyV = vf.isEmpty() && (okV == null || vi.codec in okV)
         val au = info.audio
-        val copyA = au == null || okA == null || au.codec in okA
+        val copyA = au == null || okA == null || info.audioCodecs.all { it in okA }
+        val sub = subtitleArgs(info, fmt)
         val speed = s.speed
         val v = when {
             copyV -> listOf("-c:v", "copy") + (if (vi.codec == "hevc" && fmt != "mkv") listOf("-tag:v", "hvc1") else emptyList())
@@ -202,10 +246,10 @@ object Media {
             else -> listOf("-c:a", "aac", "-b:a", "160k")
         }
         ctx.stage("Converting")
-        Ff.run(listOf("-i", src.absolutePath, "-map", "0:v:0") + (if (au != null) listOf("-map", "0:a:0") else emptyList()) +
+        Ff.run(listOf("-i", src.absolutePath, "-map", "0:V:0") + (if (au != null) listOf("-map", "0:a") else emptyList()) + sub.args +
             (if (vf.isNotEmpty()) listOf("-vf", vf.joinToString(",")) else emptyList()) + v + a + listOf("-map_metadata", "0") +
             (if (fmt == "mp4" || fmt == "mov") listOf("-movflags", "+faststart") else emptyList()) + listOf(out.absolutePath), ctx, info.duration)
-        return Result(out, out.length(), if (copyV) "Not re-encoded: no quality lost" else "")
+        return Result(out, out.length(), listOf(if (copyV) "Not re-encoded: no quality lost" else "", tracksNote(info), sub.note).filter { it.isNotEmpty() }.joinToString(". "))
     }
 
     // ------------------------------------------------------------------ audio
@@ -240,9 +284,10 @@ object Media {
         val extra = mutableListOf<String>()
         if (k < 48 && !au.mono) extra += listOf("-ac", "1")
         if (k < 40 && fmt != "opus") extra += listOf("-ar", "22050")
+        val cov = coverArgs(info, fmt)
         ctx.stage("Compressing")
-        Ff.run(listOf("-i", src.absolutePath, "-map", "0:a:0") + audioCodec(fmt, k) + extra + listOf("-map_metadata", "0", "-vn", out.absolutePath), ctx, info.duration)
-        return Result(out, out.length(), note)
+        Ff.run(listOf("-i", src.absolutePath, "-map", "0:a:0") + audioCodec(fmt, k) + extra + (if (cov.args.isNotEmpty()) cov.args else listOf("-vn")) + listOf("-map_metadata", "0", out.absolutePath), ctx, info.duration)
+        return Result(out, out.length(), listOf(note, cov.note).filter { it.isNotEmpty() }.joinToString(". "))
     }
 
     fun convertAudio(src: File, outIn: File, s: Settings, ctx: Ctx, infoIn: Info? = null, note: String = ""): Result {
@@ -258,9 +303,10 @@ object Media {
             "ogg" -> listOf("-c:a", "libvorbis", "-q:a", "6")
             else -> listOf("-c:a", "libopus", "-b:a", "128k")
         }
+        val cov = coverArgs(info, fmt)
         ctx.stage("Converting")
-        Ff.run(listOf("-i", src.absolutePath, "-map", "0:a:0") + codec + listOf("-vn", "-map_metadata", "0") +
+        Ff.run(listOf("-i", src.absolutePath, "-map", "0:a:0") + codec + (if (cov.args.isNotEmpty()) cov.args else listOf("-vn")) + listOf("-map_metadata", "0") +
             (if (fmt == "m4a") listOf("-movflags", "+faststart") else emptyList()) + listOf(out.absolutePath), ctx, info.duration)
-        return Result(out, out.length(), note)
+        return Result(out, out.length(), listOf(note, cov.note).filter { it.isNotEmpty() }.joinToString(". "))
     }
 }

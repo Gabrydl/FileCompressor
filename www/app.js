@@ -1,7 +1,7 @@
 // FileCompressor: the user interface. Runs in the Windows app (window.Desktop) and, in a browser, with a pretend engine for testing.
 import { icon } from "./icons.js";
 
-const VERSION = "1.6.0";
+const VERSION = "1.7.0";
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const KB = 1024, MB = 1024 * 1024;
@@ -292,6 +292,7 @@ function optionsFor(it) {
   } else if (it.kind === "audio") {
     o.push(["audioMono", "Convert to mono", !i.mono, "Already mono"]);
   } else if (it.kind === "office") {
+    if (i.signed) return [["", "Digitally signed: it will be left untouched so the signature stays valid", false, ""]];
     o.push(["officePhotos", i.big ? `Compress pictures inside (${i.big} big ones)` : "Compress pictures inside", !!i.big, "No big pictures inside"]);
   }
   return o;
@@ -315,6 +316,8 @@ function infoLine(it) {
     if (i.form) bits.push("form");
   } else if (it.kind === "image") {
     if (i.w) bits.push(`${i.w}×${i.h}`);
+    if (i.frames) bits.push(`animated, ${i.frames} frames`);
+    if (i.pages) bits.push(`${i.pages} pages`);
     if (i.gps) bits.push("GPS");
     else if (i.exif) bits.push("EXIF");
   } else if (it.kind === "video") {
@@ -323,7 +326,7 @@ function infoLine(it) {
   } else if (it.kind === "audio") {
     if (i.duration) bits.push(clock(Math.round(i.duration)));
     bits.push(i.mono ? "mono" : "stereo");
-  } else if (it.kind === "office" && i.pictures != null) bits.push(i.pictures ? `${i.pictures} pictures` : "no pictures");
+  } else if (it.kind === "office" && i.pictures != null) { if (i.signed) bits.push("signed"); bits.push(i.pictures ? `${i.pictures} pictures` : "no pictures"); }
   if (it.trim && (it.trim.trimStart || it.trim.trimEnd)) bits.push(`cut ${clock(it.trim.trimStart || 0)}–${it.trim.trimEnd ? clock(it.trim.trimEnd) : "end"}`);
   if (it.over && Object.keys(it.over).length) bits.push("own settings");
   return bits.join(" · ");
@@ -380,7 +383,7 @@ function rowHtml(it) {
     sizes = `${human(it.oldSize)} → <b title="${esc(exact(it.newSize))}">${human(it.newSize)}</b><span class="delta">${pct >= 0 ? "−" + pct : "+" + -pct}%</span>`;
   } else if (it.status === "failed") sub = icon("info", "status-ic") + esc(it.why ? it.why.title : "Failed");
   else if (it.status === "skipped") sub = esc(it.reason || "Skipped");
-  else if (it.info && it.info.signed && it.kind === "pdf") sub += ", will be left untouched";
+  else if (it.info && it.info.signed && (it.kind === "pdf" || it.kind === "office")) sub += ", will be left untouched";
   else if (g != null && s.mode === "SIZE" && it.size <= s.targetBytes && s.skipSmaller) sub += ", already below the size you picked";
   else if (g != null) sub += `, about ${human(g)} when done`;
   const fill = it.status === "done" || it.status === "review" ? Math.max(1.5, it.newSize / it.oldSize * 100) : 100;

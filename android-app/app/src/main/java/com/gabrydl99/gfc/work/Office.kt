@@ -20,6 +20,8 @@ object Office {
         zip.use { z ->
             if (z.getEntry("[Content_Types].xml") == null) throw Fail("This file isn't a valid Office document.")
             val names = z.entries().toList().map { it.name }
+            // a digital signature stays valid only if not a single byte changes: such files are left alone
+            if (names.any { it.startsWith("_xmlsignatures/", ignoreCase = true) && !it.endsWith("/") }) throw Skip("signed")
             val replaced = HashMap<String, Pair<String, ByteArray>>()   // old name -> (new name, bytes)
             val renames = LinkedHashMap<String, String>()                // file name -> new file name
             var count = 0

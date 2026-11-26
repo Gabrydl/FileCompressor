@@ -87,11 +87,14 @@ object Engine {
         }
     }
 
+    private val IMAGE_MIME = listOf("jpeg", "jpg", "pjpeg", "png", "webp", "heic", "heif", "heic-sequence", "heif-sequence", "avif", "bmp", "x-ms-bmp", "tiff", "gif")
+
     private fun kindFromMime(m: String?): String? = when {
         m == null -> null
         m.startsWith("video/") -> "VIDEO"
         m.startsWith("audio/") -> "AUDIO"
-        m.startsWith("image/") -> "IMAGE"
+        // only pictures the app can really open (not SVG, icons...)
+        m.substringAfter('/').substringBefore(';').lowercase() in IMAGE_MIME && m.startsWith("image/") -> "IMAGE"
         m == "application/pdf" -> "PDF"
         m.contains("officedocument") -> "OFFICE"
         else -> null
