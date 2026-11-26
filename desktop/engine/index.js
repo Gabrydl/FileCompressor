@@ -10,8 +10,16 @@ const office = require("./office");
 
 const MB = 1024 * 1024;
 
+/** A .ts file is a video only if it starts like one (MPEG transport stream); otherwise it's TypeScript code. */
+function looksLikeTs(file) {
+  let fd;
+  try { fd = fs.openSync(file, "r"); const b = Buffer.alloc(1); return fs.readSync(fd, b, 0, 1, 0) === 1 && b[0] === 0x47; }
+  catch (_) { return false; } finally { if (fd !== undefined) try { fs.closeSync(fd); } catch (_) { /* */ } }
+}
+
 function kindOf(file) {
   const e = path.extname(file).slice(1).toLowerCase();
+  if (e === "ts" && !looksLikeTs(file)) return null;
   if (media.VIDEO_EXT.includes(e)) return "video";
   if (media.AUDIO_EXT.includes(e)) return "audio";
   if (image.IMAGE_EXT.includes(e)) return "image";
@@ -218,4 +226,6 @@ class Runner {
   }
 }
 
-module.exports = { Runner, expand, kindOf, inspect, finalize, restore, moveFile, PREVIEW_ROOT };
+const ALL_EXT = [...media.VIDEO_EXT, ...media.AUDIO_EXT, ...image.IMAGE_EXT, "pdf", ...office.OFFICE_EXT];
+
+module.exports = { Runner, expand, kindOf, ALL_EXT, inspect, finalize, restore, moveFile, PREVIEW_ROOT };

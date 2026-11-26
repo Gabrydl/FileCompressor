@@ -13,6 +13,9 @@ files (the `data` folder with settings and history is kept) and restarts. On the
 ## Source
 - `www/` – Windows interface, `android-www/` – phone interface
 - `desktop/` – Windows shell + engine (ffmpeg, sharp, MuPDF, JSZip), including `updater.js`
+- `android-app/` – the phone app's source: Kotlin engine (same steps as the Windows engine: ffmpeg for video, audio and animated GIFs,
+  Android encoders for photos, PdfBox for PDFs) that shows the `android-www/` page. `.github/workflows/android.yml` builds it
+  (unsigned) into the `android-build` pre-release; sign it with `tools/apk_repack.py ... keys/filecompressor --cn FileCompressor`
 - `android/FileCompressor.apk` – signed phone build, published with the release
 - `tools/apk_repack.py` – puts new `android-www/` pages into the APK and signs it
 - `.github/workflows/release.yml` – builds the Windows zip (npm libraries + ffmpeg are fetched during the build) and publishes release `v<version in desktop/package.json>`
