@@ -4,13 +4,7 @@ Make videos, photos, PDFs, audio and Office files smaller (or convert them), off
 
 ## Download
 
-### [⬇ Download for Windows](https://github.com/Gabrydl/FileCompressor/releases/latest/download/FileCompressor-Setup.exe)
-Installer for Windows 10/11 (no admin needed).
-
-### [⬇ Download the APK for Android](https://github.com/Gabrydl/FileCompressor/releases/latest/download/FileCompressor.apk)
-Open the downloaded file on the phone to install it (allow installing from this source if asked).
-
-Older versions: [all releases](../../releases).
+The Windows installer and the Android APK are published in this repository's Releases section.
 
 ## Updates
 Both apps check the latest release every time they open. On Windows **Update now** downloads the new version, replaces the program
