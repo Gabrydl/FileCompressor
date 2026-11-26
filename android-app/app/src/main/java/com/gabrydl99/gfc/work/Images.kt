@@ -133,11 +133,17 @@ object Images {
             val g = Gif.info(src)
             if (g != null && g.frames > 1) {
                 val want = s.imageFormat
-                if (want == "keep" || want == "gif" || want == "webp") return Gif.compress(src, outIn.withExt("gif"), target, ctx, g, if (want == "webp") "Kept as GIF: the phone can't make animated WebP" else "")
-                notesPre.add("Only the first frame was kept (you chose ${want.uppercase()} for photos)")
+                // an animation stays an animation, also when a preset (Discord, WhatsApp...) asks for JPG photos
+                val why = when (want) {
+                    "keep", "gif" -> ""
+                    "webp" -> "Kept as GIF: the phone can't make animated WebP"
+                    else -> "Animation kept as GIF (${g.frames} frames): ${want.uppercase()} can't hold an animation"
+                }
+                return Gif.compress(src, outIn.withExt("gif"), target, ctx, g, why)
             }
         }
         if (ext == "webp" && Gif.isAnimatedWebp(src)) throw Skip("Animated WebP: the phone can't re-compress it without losing the animation, left untouched")
+        if (ext == "tif" || ext == "tiff") { val n = tiffPages(src); if (n > 1) throw Skip("Multi-page TIFF ($n pages): the phone could save only the first page, left untouched") }
         val o = open(src, ctx)
         try {
             val fmt = outFormat(ext, s.imageFormat, o.bmp.hasAlpha())
@@ -209,6 +215,7 @@ object Images {
         if (same) throw Skip("same format")
         if (ext == "gif") { val g = Gif.info(src); if (g != null && g.frames > 1) throw Skip("Animated GIF: converting it to a photo format would keep only one frame, left untouched") }
         if (ext == "webp" && Gif.isAnimatedWebp(src)) throw Skip("Animated WebP: left untouched")
+        if (ext == "tif" || ext == "tiff") { val n = tiffPages(src); if (n > 1) throw Skip("Multi-page TIFF ($n pages): ${s.imageFormat.uppercase()} would keep only the first page, left untouched") }
         val o = open(src, ctx)
         try {
             val want = outFormat(ext, s.imageFormat, o.bmp.hasAlpha())
@@ -244,6 +251,37 @@ object Images {
         ExifInterface.TAG_GPS_ALTITUDE, ExifInterface.TAG_GPS_ALTITUDE_REF, ExifInterface.TAG_GPS_TIMESTAMP, ExifInterface.TAG_GPS_DATESTAMP,
         ExifInterface.TAG_IMAGE_DESCRIPTION, ExifInterface.TAG_USER_COMMENT,
     )
+
+    /** How many pages a TIFF has (walks the chain of IFDs, nothing is decoded). */
+    fun tiffPages(src: File): Int {
+        return try {
+            java.io.RandomAccessFile(src, "r").use { f ->
+                val h = ByteArray(8)
+                f.readFully(h)
+                val le = h[0] == 'I'.code.toByte() && h[1] == 'I'.code.toByte()
+                if (!le && !(h[0] == 'M'.code.toByte() && h[1] == 'M'.code.toByte())) return 1
+                fun u16(b: ByteArray, p: Int) = if (le) (b[p].toInt() and 255) or ((b[p + 1].toInt() and 255) shl 8) else ((b[p].toInt() and 255) shl 8) or (b[p + 1].toInt() and 255)
+                fun u32(b: ByteArray, p: Int): Long = if (le) (u16(b, p).toLong() or (u16(b, p + 2).toLong() shl 16)) else ((u16(b, p).toLong() shl 16) or u16(b, p + 2).toLong())
+                if (u16(h, 2) != 42) return 1   // BigTIFF and others: treated as one page
+                var off = u32(h, 4)
+                var n = 0
+                val len = f.length()
+                val seen = HashSet<Long>()
+                while (off in 8 until len && n < 10000) {
+                    n++
+                    f.seek(off)
+                    val c = ByteArray(2); f.readFully(c)
+                    val entries = u16(c, 0)
+                    f.seek(off + 2 + entries * 12L)
+                    val nx = ByteArray(4); if (f.read(nx) < 4) break
+                    val next = u32(nx, 0)
+                    if (next == 0L || !seen.add(next)) break
+                    off = next
+                }
+                maxOf(1, n)
+            }
+        } catch (_: Exception) { 1 }
+    }
 
     /** Used by the Office engine: re-encode one embedded picture. Returns null if it can't be read. */
     fun shrinkBytes(buf: ByteArray, maxDim: Int, quality: Int, keepPng: Boolean): Pair<ByteArray, String>? {
