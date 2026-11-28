@@ -1,10 +1,11 @@
-; FileCompressor / PdfEditor installer (NSIS 3, Modern UI 2) - Install / Repair / Uninstall, in 21 languages.
+﻿; FileCompressor / PdfEditor installer (NSIS 3, Modern UI 2) - Install / Repair / Uninstall, in 21 languages.
 ;   makensis -DAPP=<Name> -DVERSION=<x.y.z> -DUNGUID=<{...}_is1> -DSRC=<built app folder> -DOUT=<Setup.exe> installer/App.nsi
 ; Per-user install in %LOCALAPPDATA%\Programs\<Name> (no admin). Settings (the "data" folder) are kept on update and Repair.
 ; It keeps a copy of itself as Setup.exe in the program folder: run it again (or Windows Settings > Apps > Modify) to Repair or Uninstall.
 ;   Setup.exe /REPAIR       repair the installed copy straight away
 ;   Setup.exe /VERYSILENT   (or /S) silent update started by the app's updater: no questions, the app opens again at the end
-; The first screen asks the language (Windows' language preselected); the app opens in that language (lang.txt).
+; The first screen asks the language (English preselected); the app opens in that language (lang.txt).
+; This file must stay UTF-8 WITH BOM: without it makensis reads it as ANSI and the language names in the first window come out garbled.
 
 Unicode true
 ManifestDPIAware true
@@ -63,7 +64,7 @@ Page custom MaintenancePage MaintenanceLeave
 
 !define MUI_LANGDLL_ALLLANGUAGES
 !define MUI_LANGDLL_WINDOWTITLE "${APP}"
-!define MUI_LANGDLL_INFO "Language / Lingua / Idioma / Sprache / Langue / Wika / Jazyk / Język / Kieli / Keel / Језик / Jezik / Език / Язык / Γλώσσα"
+!define MUI_LANGDLL_INFO "Language / Lingua / Idioma / Sprache / Langue / Wika / Jazyk / Język / Kieli / Keel / Jezik / Језик / Език / Язык / Γλώσσα"
 !insertmacro MUI_LANGUAGEEX "lang" "English"
 !insertmacro MUI_LANGUAGEEX "lang" "Italian"
 !insertmacro MUI_LANGUAGEEX "lang" "PortugueseBR"
@@ -121,19 +122,12 @@ Function .onInit
     ${EndIf}
   ${EndIf}
 
-  ; language: the one picked last time, otherwise ask (Windows language preselected)
+  ; language: the one picked last time, otherwise ask (English preselected)
   ReadRegStr $0 HKCU "${REGKEY}" "Language"
   ${If} $0 != ""
     StrCpy $LANGUAGE $0
   ${Else}
-    ; Spanish outside Spain -> Latin American Spanish
-    System::Call 'kernel32::GetUserDefaultUILanguage() i .r1'
-    IntOp $2 $1 & 0x3FF
-    ${If} $2 == 0x0A
-    ${AndIf} $1 != 1034
-    ${AndIf} $1 != 3082
-      StrCpy $LANGUAGE 2058
-    ${EndIf}
+    StrCpy $LANGUAGE ${LANG_ENGLISH}         ; first install: English preselected (any language can be picked)
   ${EndIf}
   StrCpy $LangAsked 0
   ${IfNot} ${Silent}

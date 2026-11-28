@@ -45,6 +45,6 @@ in `android-app/app/build.gradle.kts`, let `android.yml` build the APK, sign it 
 
 ## Languages, Repair and log (FileCompressor 1.8.0 / PdfEditor 1.7.0)
 - The interface is in 21 languages: `www/locales/<code>.txt` (`n|text`, same numbers as `en.txt`). Texts in code go through `T("English")` (`www/i18n.js`); the flag button next to light/dark changes the language.
-- The installer (`installer/App.nsi`, NSIS) asks the language first, with the Windows language preselected. Run `Setup.exe` again (it is kept in the program folder, or use Windows Settings › Apps › Modify) to **Repair** or **Uninstall**. Uninstalling never deletes the Compressed/Original folders.
+- The installer (`installer/App.nsi`, NSIS) asks the language first, with English preselected. Run `Setup.exe` again (it is kept in the program folder, or use Windows Settings › Apps › Modify) to **Repair** or **Uninstall**. Uninstalling never deletes the Compressed/Original folders.
 - Windows: `<App>.log` in the program folder (what was done and every error); "Open the log file" in Settings.
 - `tools/check_translations.bat`: quick offline check of every language, then an optional review by Gemini. Report in `translation_check.txt`.
