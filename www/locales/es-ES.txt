@@ -137,7 +137,7 @@
 137|Los archivos que ya son más pequeños se omiten.
 138|Los archivos que ya son más pequeños se optimizan igualmente sin bajar más.
 139|Todavía se están comprimiendo archivos.
-140|Los archivos cambian de formato sin buscar un tamaño. Elige los formatos en cada pestaña de abajo. Cuando el contenedor lo permite (por ejemplo de MKV a MP4) el vídeo no se recodifica, así que no se pierde calidad. Los PDF y los archivos de Office se omiten.
+140|Los archivos cambian de formato sin buscar un tamaño. Elige los formatos en Avanzado, pestaña por pestaña. Cuando el contenedor lo permite (por ejemplo de MKV a MP4) el vídeo no se recodifica, así que no se pierde calidad. Los PDF y los archivos de Office se omiten.
 141|Archivos o carpetas enteras
 142|Formulario rellenable: las fuentes se conservan completas
 143|Tamaño final en porcentaje
@@ -268,8 +268,8 @@
 268|Restaurar y conservar la copia comprimida
 269|Restaurar el original
 270|¿Restaurar el original?
-271|Los resultados están en la carpeta Compressed
-272|Los resultados van a Compressed como nombre_compressed{0}
+271|Los resultados están en la carpeta que has elegido
+272|Los archivos comprimidos van directamente a esta carpeta como nombre_compressed. Los originales se quedan donde están.
 273|Igual que los demás
 274|Guardar
 275|Guardar todos los revisados
@@ -421,7 +421,7 @@
 421|{0} imágenes
 422|{0} para revisar
 423|{0} para revisar: haz clic en cada uno para comparar y luego guarda.
-424|{0} guardados en la carpeta Compressed.
+424|{0} guardados en la carpeta que has elegido.
 425|{0} {1} de {2}
 426|el {0}% del tamaño
 427|· original restaurado
@@ -436,7 +436,7 @@
 436|Los formatos se quedan como están. Toca para cambiarlos
 437|Más tarde
 438|Registro guardado en Descargas: {0}
-439|Necesario para mover los originales a la carpeta Original, guardar en cualquier carpeta y leer vídeos grandes sin copiarlos antes.
+439|Necesario para guardar en cualquier carpeta y leer vídeos grandes sin copiarlos antes.
 440|Abrir ajustes
 441|Guardar registro
 442|Guarda en un archivo de texto en Descargas lo que hizo la app y cada error
@@ -502,3 +502,11 @@
 502|Espera a que termine el trabajo actual y luego añade más archivos.
 503|{0} pistas de audio conservadas
 504|{0} archivos terminados
+505|Total máx.
+506|sin límite
+507|Tamaño total máximo de todos los archivos
+508|Todos los archivos comprimidos juntos no superarán este tamaño. Los archivos más pesados se reducen más, los demás un poco. Los archivos con su propio tamaño lo conservan.
+509|Avanzado
+510|, unos {0} para no pasar del total
+511|Tamaño solo para este archivo. Déjalo vacío para usar el ajuste de la derecha.
+512|Tamaño solo para este archivo

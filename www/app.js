@@ -3,7 +3,7 @@
 import { icon } from "./icons.js";
 import { T, languageButton } from "./i18n.js";
 
-const VERSION = "1.8.0";
+const VERSION = "1.9.0";
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const KB = 1024, MB = 1024 * 1024;
@@ -83,30 +83,39 @@ document.querySelectorAll("[data-ic]").forEach(el => { el.outerHTML = icon(el.da
 // "comp" = how files are compressed (remembered only if "Remember the last settings" is on); "prefs" = how the program behaves (always remembered)
 const COMP = { mode: "PERCENT", percent: 30, targetSize: 10, sizeUnit: "MB", resolution: "auto", fps: "auto", speed: "balanced", videoFormat: "keep",
   imageFormat: "keep", audioFormat: "keep", photoStripExif: false, photoResize: false, photoW: 1920, photoH: "", trim: false, audioMono: false,
-  pdfMeta: true, pdfFonts: true, pdfExtras: true, pdfPhotos: true, pdfGray: false, pdfAsPictures: false, officePhotos: true, preset: "" };
-const PREFS = { outputDir: "", moveOriginals: false, preview: false, skipSmaller: true, perFile: false, explorerMenu: false, paste: true, dragOut: true,
+  pdfMeta: true, pdfFonts: true, pdfExtras: true, pdfPhotos: true, pdfGray: false, pdfAsPictures: false, officePhotos: true, preset: "",
+  totalMax: "", totalUnit: "GB" };
+const PREFS = { outputDir: "", preview: false, skipSmaller: true, perFile: false, explorerMenu: false, paste: true, dragOut: true,
   notify: true, sound: true, history: true, remember: true, tab: "general" };
 function loadSettings() {
   let comp = storeGet("comp", null), prefs = storeGet("prefs", null);
   if (!comp && !prefs) {
     // from 1.4.0: one "settings" object, and "MB" mode
     const old = storeGet("settings", {});
-    prefs = { outputDir: old.outputDir || "", moveOriginals: !!old.moveOriginals };
+    prefs = { outputDir: old.outputDir || "" };
     comp = { ...old };
     if (old.mode === "MB") { comp.mode = "SIZE"; comp.targetSize = old.targetMb || 10; comp.sizeUnit = "MB"; }
     delete comp.outputDir; delete comp.moveOriginals; delete comp.targetMb;
   }
   prefs = { ...PREFS, ...(prefs || {}) };
+  delete prefs.moveOriginals;   // 1.9.0: originals always stay where they are
   comp = prefs.remember ? { ...COMP, ...(comp || {}) } : { ...COMP };
   return { ...comp, ...prefs };
 }
 const S = loadSettings();
 if (!S.outputDir) S.outputDir = H.defaultOutDir();
+{
+  // up to 1.8 the default was the program folder, with results in its Compressed subfolder: point straight at that subfolder now
+  const d = H.defaultOutDir(), sep = d.includes("\\") ? "\\" : "/";
+  if (S.outputDir.replace(/[\\/]+$/, "") + sep + "Compressed" === d) { S.outputDir = d; save(); }
+}
 function save() {
   storeSet("comp", Object.fromEntries(Object.keys(COMP).map(k => [k, S[k]])));
   storeSet("prefs", Object.fromEntries(Object.keys(PREFS).map(k => [k, S[k]])));
 }
 const targetBytes = (s) => (+s.targetSize || 0) * (s.sizeUnit === "KB" ? KB : MB);
+/** "Total max" above the list, in bytes (0 = no limit). */
+const capBytes = () => { const v = parseFloat(S.totalMax); return v > 0 ? v * (S.totalUnit === "GB" ? 1024 * MB : MB) : 0; };
 
 const PRESETS = [
   { id: "WHATSAPP", label: "WhatsApp", desc: T("About 15 MB per file, MP4 videos and JPG photos: fits WhatsApp's 16 MB limit."), set: { mode: "SIZE", targetSize: 15, sizeUnit: "MB", resolution: "auto", fps: "auto", videoFormat: "mp4", imageFormat: "jpg" } },
@@ -117,7 +126,7 @@ const PRESETS = [
 ];
 // your own presets: everything in "comp" except the preset marker
 let custom = storeGet("customPresets", []);
-const presetKeys = Object.keys(COMP).filter(k => k !== "preset");
+const presetKeys = Object.keys(COMP).filter(k => k !== "preset" && k !== "totalMax" && k !== "totalUnit");
 function allPresets() { return [...PRESETS, ...custom]; }
 function presetDesc(p) {
   if (p.desc) return p.desc;
@@ -220,9 +229,12 @@ function drawSettings() {
   $("pxRow").classList.toggle("off", !S.photoResize);
   $("outPath").textContent = "\u200e" + (H.outLabel ? H.outLabel(S.outputDir).replace(/^Phone storage/, T("Phone storage")) : S.outputDir) + (PHONE && S.outputDir === H.defaultOutDir() ? "  " + T("(default)") : "");
   $("outPath").title = S.outputDir;
-  $("saveHelp").textContent = T("Results go in Compressed as name_compressed{0}", (S.moveOriginals ? T(", originals in Original. Originals are moved only after their compressed copy is saved.") : T(", originals stay where they are.")));
+  $("saveHelp").textContent = T("Compressed files go straight into this folder as name_compressed. Originals stay where they are.");
   seg($("themeSeg"), storeGet("theme", "auto"), v => setTheme(v));
   $("pasteHint").classList.toggle("hidden", !S.paste || PHONE);
+  if (document.activeElement !== $("totalMax")) $("totalMax").value = S.totalMax;
+  $("totalUnit").value = S.totalUnit;
+  $("totalCap").classList.toggle("on", capBytes() > 0);
   drawTabs();
   drawRecipe();
 }
@@ -239,12 +251,29 @@ function drawRecipe() {
   if (S.fps !== "auto") f.push(S.fps + " fps");
   $("recipeSub").textContent = f.length ? f.join(", ") : T("Formats stay as they are. Tap to change");
 }
+// Advanced: closed at every start; the tabs at the top pick which options it shows
+let advOpen = false;
+function drawAdvanced() {
+  $("advBtn").setAttribute("aria-expanded", advOpen);
+  $("advBox").classList.toggle("open", advOpen);
+  const b = document.querySelector(`#tabs button[data-tab="${S.tab}"]`);
+  $("advTab").textContent = b ? b.textContent.trim() : "";
+  if (advOpen) requestAnimationFrame(() => document.querySelectorAll(".tab-pane.on .seg").forEach(s => placeMarker(s, true)));
+}
+$("advBtn").onclick = () => { advOpen = !advOpen; drawAdvanced(); };
 function drawTabs() {
   document.querySelectorAll("#tabs button").forEach(b => { const on = b.dataset.tab === S.tab; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+  drawAdvanced();
   document.querySelectorAll(".tab-pane").forEach(p => p.classList.toggle("on", p.dataset.pane === S.tab));
   requestAnimationFrame(() => document.querySelectorAll(".tab-pane.on .seg").forEach(s => placeMarker(s, true)));
 }
-$("tabs").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; S.tab = b.dataset.tab; save(); drawTabs(); };
+$("tabs").onclick = (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  S.tab = b.dataset.tab; save();
+  if (!advOpen) advOpen = true;
+  drawTabs();
+};
 $("percent").oninput = () => { S.percent = +$("percent").value; S.preset = ""; save(); drawSettings(); drawList(); };
 $("targetSize").oninput = () => { const v = parseFloat($("targetSize").value); if (v > 0) { S.targetSize = v; S.preset = ""; save(); drawSettings(); drawList(); } };
 for (const k of ["resolution", "fps", "videoFormat", "imageFormat", "audioFormat"]) $(k).onchange = () => manual(k, $(k).value);
@@ -262,8 +291,9 @@ document.querySelectorAll("[data-pref]").forEach(el => {
   };
 });
 $("changeFolder").onclick = async () => { const d = await H.chooseOutDir(S.outputDir); if (d) { S.outputDir = d; save(); drawSettings(); } };
-$("defaultFolder").onclick = () => { S.outputDir = H.defaultOutDir(); save(); drawSettings(); toast(T("Back to the default folder.")); };
 $("openFolder").onclick = () => H.openFolder(S.outputDir);
+$("totalMax").oninput = () => { const v = parseFloat($("totalMax").value); S.totalMax = v > 0 ? v : ""; save(); $("totalCap").classList.toggle("on", capBytes() > 0); drawList(); };
+$("totalUnit").onchange = () => { S.totalUnit = $("totalUnit").value; save(); drawSettings(); drawList(); };
 $("version").textContent = "FileCompressor " + VERSION;
 /** Phone: the app's log as a text file in Download (FileCompressor-log-YYYYMMDD-HHMM.txt). */
 function saveLog() {
@@ -406,12 +436,41 @@ async function detect(list) {
     for (const it of part) { it.info = r[it.id] || {}; if (it.status === "waiting") patchRow(it, true, false); }
   }
 }
-function goal(it) {
+/** What the settings on the right (or the file's own size) ask for this file. */
+function baseGoal(it) {
   const s = eff(it);
   if (s.mode === "PERCENT") return it.size * s.percent / 100;
   if (s.mode === "SIZE") return Math.min(it.size, s.targetBytes);
   return null;
 }
+const ownSize = (it) => !!(it.over && it.over.mode === "SIZE" && +it.over.targetSize > 0);
+/**
+ * "Total max": the waiting files together must not go over it. Files with their own size keep it; the others share what is left:
+ * each gets k * size^0.8 (so the heavy ones are cut harder, the light ones a little), never more than the setting on the right asks.
+ * 3% is kept aside because a video can end up a little over its target.
+ */
+let ALLOC = new Map();
+function allocate() {
+  if (running) return;
+  ALLOC = new Map();
+  const cap = capBytes();
+  if (!cap) return;
+  const list = items.filter(i => i.status === "waiting");
+  let fixed = 0;
+  const auto = [];
+  for (const it of list) { if (ownSize(it)) fixed += baseGoal(it) ?? it.size; else auto.push(it); }
+  if (!auto.length) return;
+  const budget = Math.max(0, cap * 0.97 - fixed);
+  const lim = (it) => baseGoal(it) ?? it.size;
+  if (auto.reduce((a, i) => a + lim(i), 0) <= budget) return;   // it already fits with the normal setting
+  const w = (it) => Math.pow(Math.max(1, it.size), 0.8);
+  const total = (k) => auto.reduce((a, i) => a + Math.min(lim(i), k * w(i)), 0);
+  let lo = 0, hi = 1;
+  while (total(hi) < budget && hi < 1e15) hi *= 2;
+  for (let n = 0; n < 80; n++) { const m = (lo + hi) / 2; if (total(m) > budget) hi = m; else lo = m; }
+  for (const it of auto) ALLOC.set(it.id, Math.max(it.size * 0.02, Math.min(lim(it), lo * w(it))));
+}
+function goal(it) { return ALLOC.has(it.id) ? ALLOC.get(it.id) : baseGoal(it); }
 function rowHtml(it) {
   const s = eff(it);
   const g = goal(it);
@@ -428,7 +487,16 @@ function rowHtml(it) {
   else if (it.status === "skipped") sub = esc(it.reason || T("Skipped"));
   else if (it.info && it.info.signed && (it.kind === "pdf" || it.kind === "office")) sub += T(", will be left untouched");
   else if (g != null && s.mode === "SIZE" && it.size <= s.targetBytes && s.skipSmaller) sub += T(", already below the size you picked");
+  else if (ALLOC.has(it.id)) sub += T(", about {0} to stay within the total", human(g));
   else if (g != null) sub += T(", about {0} when done", human(g));
+  if (it.status === "waiting" && !running) {
+    // its own size, typed right here (empty = the setting on the right, or its share of the total)
+    const o = it.over || {};
+    const set = ownSize(it);
+    const unit = (set && o.sizeUnit) || it.unitPick || (it.size < MB ? "KB" : "MB");
+    const ph = g != null ? (unit === "KB" ? Math.max(1, Math.round(g / KB)) : Math.round(g / MB * 10) / 10) : "";
+    sizes += `<span class="arrow">→</span><span class="own-size${set ? " set" : ""}" title="${esc(T("Size for this file only. Leave it empty to use the setting on the right."))}"><input type="number" min="0" step="any" inputmode="decimal" data-own-size value="${set ? esc(o.targetSize) : ""}" placeholder="${ph}" aria-label="${esc(T("Size for this file only"))}"><select data-own-unit aria-label="${esc(T("Unit"))}"><option${unit === "KB" ? " selected" : ""}>KB</option><option${unit === "MB" ? " selected" : ""}>MB</option></select></span>`;
+  }
   const fill = it.status === "done" || it.status === "review" ? Math.max(1.5, it.newSize / it.oldSize * 100) : 100;
   const goalPct = g != null && it.status === "waiting" ? Math.min(100, g / it.size * 100) : null;
   const drag = it.status === "done" && S.dragOut && !it.restored ? ` draggable="true" title="Drag it out of the window to WhatsApp, Discord, an email…"` : "";
@@ -438,6 +506,7 @@ function rowHtml(it) {
     <span class="shrink"><span class="fill" style="width:${fill}%"></span><span class="work" style="width:${it.status === "working" ? Math.round((it.progress || 0) * 100) : 0}%"></span>${goalPct != null ? `<span class="goal" style="left:${goalPct}%"></span>` : ""}</span></li>`;
 }
 function drawList(anim = false) {
+  allocate();
   const list = $("list");
   const known = new Set([...list.children].map(li => +li.dataset.id));
   list.innerHTML = items.map(rowHtml).join("");
@@ -479,11 +548,30 @@ function patchRow(it, statusChanged, shrink = true) {
   if (sm && it.status === "working") sm.textContent = (it.stage || T("Working")) + "… " + Math.round((it.progress || 0) * 100) + "%";
 }
 $("list").onclick = (e) => {
+  if (e.target.closest(".own-size")) return;
   const li = e.target.closest(".row");
   if (!li) return;
   const it = items.find(i => i.id === +li.dataset.id);
   if (it && it.status === "review") reviewSheet(it); else itemSheet(it);
 };
+$("list").addEventListener("change", (e) => {
+  const box = e.target.closest(".own-size");
+  const li = box && box.closest(".row");
+  const it = li && items.find(i => i.id === +li.dataset.id);
+  if (!it || running) return;
+  const inp = box.querySelector("input"), unit = box.querySelector("select").value;
+  const o = { ...(it.over || {}) };
+  const v = parseFloat(inp.value);
+  if (e.target.tagName === "SELECT") {
+    it.unitPick = unit;
+    // same amount in the other unit (20 MB -> 20480 KB)
+    if (ownSize(it)) { const b = targetBytes(o); o.targetSize = unit === "KB" ? Math.max(1, Math.round(b / KB)) : Math.max(0.01, Math.round(b / MB * 100) / 100); o.sizeUnit = unit; }
+  } else if (v > 0) { o.mode = "SIZE"; o.targetSize = v; o.sizeUnit = unit; }
+  else if (o.mode === "SIZE") { delete o.mode; delete o.targetSize; delete o.sizeUnit; }
+  it.over = o;
+  drawList();
+});
+$("list").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.matches("[data-own-size]")) e.target.blur(); });
 $("list").addEventListener("dragstart", (e) => {
   const li = e.target.closest(".row");
   const it = li && items.find(i => i.id === +li.dataset.id);
@@ -527,7 +615,7 @@ function drawAction() {
     return;
   }
   if (!waiting.length && lastRun) {
-    $("summary").innerHTML = `<b>${lastRun.done ? T("{0} done, {1} saved", lastRun.done, human(lastRun.saved)) : T("Nothing was saved")}</b>Results are in the Compressed folder`;
+    $("summary").innerHTML = `<b>${lastRun.done ? T("{0} done, {1} saved", lastRun.done, human(lastRun.saved)) : T("Nothing was saved")}</b>${T("Results are in the folder you chose")}`;
     $("goText").textContent = T("Open folder");
     return;
   }
@@ -547,6 +635,7 @@ $("goBtn").onclick = () => {
 };
 function run(list) {
   if (!list.length || running) return;
+  allocate();
   running = true; lastRun = null;
   if (paneTab !== 0) goPane(0);
   items.forEach(i => { i.run = list.includes(i); });
@@ -555,6 +644,7 @@ function run(list) {
   H.start(list.map(i => {
     const over = { ...(i.over || {}), ...(i.opts || {}) };
     if (i.over && (i.over.targetSize != null || i.over.sizeUnit)) over.targetBytes = targetBytes({ ...S, ...i.over });
+    if (ALLOC.has(i.id)) { over.mode = "SIZE"; over.targetBytes = Math.round(ALLOC.get(i.id)); }
     const trim = S.trim && i.trim ? i.trim : null;
     return { id: i.id, path: i.path, name: i.name, size: i.size, kind: i.kind, over, trim };
   }), base);
@@ -571,7 +661,7 @@ H.onItem((d) => {
 });
 H.onFinished((d) => {
   running = false;
-  lastRun = { done: doneN, saved, compressed: d.outRoot ? d.outRoot.replace(/[\\/]+$/, "") + (d.outRoot.includes("\\") ? "\\" : "/") + T("Compressed") : "" };
+  lastRun = { done: doneN, saved, compressed: d.outRoot || "" };
   const reviews = items.filter(i => i.status === "review").length;
   saved = 0; doneN = 0;
   items.forEach(i => { if (i.status === "working") i.status = "waiting"; });
@@ -798,7 +888,7 @@ async function saveAllReviews() {
   const list = items.filter(i => i.status === "review");
   let ok = 0;
   for (const it of list) if (await saveReview(it)) ok++;
-  toast(T("{0} saved in the Compressed folder.", ok));
+  toast(T("{0} saved in the folder you chose.", ok));
 }
 
 // ================================================================== history and restore

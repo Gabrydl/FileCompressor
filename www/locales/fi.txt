@@ -137,7 +137,7 @@
 137|Jo pienemmät tiedostot ohitetaan.
 138|Jo pienemmät tiedostot optimoidaan silti, tavoittelematta pienempää.
 139|Tiedostoja pakataan vielä.
-140|Tiedostot vaihtavat muotoa tavoittelematta kokoa. Valitse muodot alla olevilta välilehdiltä. Kun säilö sen sallii (esim. MKV:sta MP4:ään), videota ei koodata uudelleen, joten laatu ei heikkene. PDF- ja Office-tiedostot ohitetaan.
+140|Tiedostot vaihtavat muotoa tavoittelematta kokoa. Valitse muodot kohdassa Lisäasetukset välilehti kerrallaan. Kun säilö sen sallii (esim. MKV:sta MP4:ään), videota ei koodata uudelleen, joten laatu ei heikkene. PDF- ja Office-tiedostot ohitetaan.
 141|Tiedostoja tai kokonaisia kansioita
 142|Täytettävä lomake: fontit säilytetään kokonaisina
 143|Lopullinen koko prosentteina
@@ -268,8 +268,8 @@
 268|Palauta ja säilytä pakattu kopio
 269|Palauta alkuperäinen
 270|Palautetaanko alkuperäinen?
-271|Tulokset ovat kansiossa Compressed
-272|Tulokset menevät kansioon Compressed nimellä nimi_compressed{0}
+271|Tulokset ovat valitsemassasi kansiossa
+272|Pakatut tiedostot menevät suoraan tähän kansioon nimellä nimi_compressed. Alkuperäiset pysyvät paikallaan.
 273|Kuten muut
 274|Tallenna
 275|Tallenna kaikki tarkistetut
@@ -421,7 +421,7 @@
 421|{0} kuvaa
 422|{0} tarkistettavana
 423|{0} tarkistettavana: napsauta jokaista verrataksesi ja tallenna sitten.
-424|{0} tallennettu kansioon Compressed.
+424|{0} tallennettu valitsemaasi kansioon.
 425|{0} {1}/{2}
 426|{0} % koosta
 427|· alkuperäinen palautettu
@@ -436,7 +436,7 @@
 436|Muodot pysyvät ennallaan. Muuta napauttamalla
 437|Myöhemmin
 438|Loki tallennettu Lataukset-kansioon: {0}
-439|Tarvitaan alkuperäisten siirtämiseen Original-kansioon, tallentamiseen mihin tahansa kansioon ja suurten videoiden lukemiseen kopioimatta niitä ensin.
+439|Tarvitaan, jotta voi tallentaa mihin tahansa kansioon ja lukea isoja videoita kopioimatta niitä ensin.
 440|Avaa asetukset
 441|Tallenna loki
 442|Tallentaa tekstitiedostona Lataukset-kansioon, mitä sovellus teki, ja jokaisen virheen
@@ -502,3 +502,11 @@
 502|Odota nykyisen ajon valmistumista ja lisää sitten lisää tiedostoja.
 503|{0} ääniraitaa säilytetty
 504|{0} tiedostoa valmis
+505|Yhteensä enint.
+506|ei rajaa
+507|Kaikkien tiedostojen suurin yhteiskoko
+508|Kaikki pakatut tiedostot yhteensä eivät ylitä tätä kokoa. Painavimpia tiedostoja pienennetään eniten, muita vähän. Tiedostot, joilla on oma koko, pitävät sen.
+509|Lisäasetukset
+510|, noin {0}, jotta kokonaisraja ei ylity
+511|Koko vain tälle tiedostolle. Jätä tyhjäksi, niin käytetään oikealla olevaa asetusta.
+512|Koko vain tälle tiedostolle

@@ -113,23 +113,14 @@ async function inspect(file, kind) {
 
 // ------------------------------------------------------------------ saving a result in Compressed (and the original in Original)
 function finalize(it, resultPath, s) {
+  // 1.9.0: the compressed copy goes straight into the chosen folder; the original is never moved or copied
   const outRoot = s.outputDir;
-  const compDir = path.join(outRoot, "Compressed"), origDir = path.join(outRoot, "Original");
-  const ext = path.extname(it.path).slice(1).toLowerCase();
   const base = path.basename(it.path, path.extname(it.path));
-  fs.mkdirSync(compDir, { recursive: true });
+  fs.mkdirSync(outRoot, { recursive: true });
   const outExt = path.extname(resultPath).slice(1);
-  const dest = uniquePath(compDir, base + "_compressed", outExt);
+  const dest = uniquePath(outRoot, base + "_compressed", outExt);
   moveFile(resultPath, dest);
-  let note = "", origTo = "";
-  if (s.moveOriginals) {
-    try {
-      fs.mkdirSync(origDir, { recursive: true });
-      origTo = uniquePath(origDir, base, ext);
-      moveFile(it.path, origTo);
-    } catch (_) { origTo = ""; note = "Couldn't move the original into the Original folder."; }
-  }
-  return { dest, origTo, note };
+  return { dest, origTo: "", note: "" };
 }
 
 /** Put the original back where it was (and remove the compressed copy if asked). */

@@ -201,13 +201,13 @@ async function compressVideo(src, out, s, target, ctx) {
     const vcodec = webm
       ? ["-c:v", "libvpx-vp9", "-b:v", `${Math.round(vK)}k`, "-row-mt", "1", "-deadline", "good", "-cpu-used", VP9_SPEED[speed] || "2", "-pix_fmt", "yuv420p"]
       : ["-c:v", "libx264", "-preset", X264_PRESET[speed] || "medium", "-b:v", `${Math.round(vK)}k`, "-maxrate", `${Math.round(vK * 1.6)}k`, "-bufsize", `${Math.round(vK * 2.5)}k`, "-pix_fmt", "yuv420p"];
-    const base = [...inp.args, "-map", "0:V:0", ...(vf.length ? ["-vf", vf.join(",")] : []), ...vcodec, "-passlogfile", passlog];
+    const base = [...inp.args, "-map", "0:V:0", ...(vf.length ? ["-vf", vf.join(",")] : []), ...vcodec, "-passlogfile:v", passlog];
     ctx.stage(tries ? "Fine-tuning size" : "Compressing");
-    await run([...base, "-pass", "1", "-an", "-f", webm ? "webm" : "mp4", nul], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0, to: 0.45 });
+    await run([...base, "-pass:v", "1", "-an", "-f", webm ? "webm" : "mp4", nul], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0, to: 0.45 });
     const amap = oneTrack ? "0:a:0" : "0:a";
     const acodec = !info.audio ? ["-an"] : webm ? ["-map", amap, "-c:a", "libopus", "-b:a", `${aK}k`] : ["-map", amap, "-c:a", "aac", "-b:a", `${aK}k`];
     const cont = fmt === "mp4" || fmt === "mov" ? ["-movflags", "+faststart"] : [];
-    await run([...base, "-pass", "2", ...acodec, ...sub.args, "-map_metadata", "0", ...cont, out], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0.45, to: 1 });
+    await run([...base, "-pass:v", "2", ...acodec, ...sub.args, "-map_metadata", "0", ...cont, out], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0.45, to: 1 });
     size = fs.statSync(out).size;
     if (size <= target * 1.02 || tries >= 2) break;
     vK = vK * (target / size) * 0.96 - (tries ? 10 : 0);

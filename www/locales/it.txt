@@ -137,7 +137,7 @@
 137|I file già più piccoli vengono saltati.
 138|I file già più piccoli vengono comunque ottimizzati senza puntare più in basso.
 139|Ci sono ancora file in compressione.
-140|I file cambiano formato senza puntare a una dimensione. Scegli i formati in ogni scheda qui sotto. Quando il contenitore lo permette (per esempio da MKV a MP4) il video non viene ricodificato, quindi la qualità non cambia. PDF e file Office vengono saltati.
+140|I file cambiano formato senza puntare a una dimensione. Scegli i formati in Avanzate, scheda per scheda. Quando il contenitore lo permette (per esempio da MKV a MP4) il video non viene ricodificato, quindi la qualità non cambia. PDF e file Office vengono saltati.
 141|File o cartelle intere
 142|Modulo compilabile: i font vengono tenuti interi
 143|Dimensione finale in percentuale
@@ -268,8 +268,8 @@
 268|Ripristina e tieni la copia compressa
 269|Ripristina l'originale
 270|Ripristinare l'originale?
-271|I risultati sono nella cartella Compressed
-272|I risultati vanno in Compressed come nome_compressed{0}
+271|I risultati sono nella cartella che hai scelto
+272|I file compressi vanno direttamente in questa cartella come nome_compressed. Gli originali restano dove sono.
 273|Come gli altri
 274|Salva
 275|Salva tutti quelli controllati
@@ -421,7 +421,7 @@
 421|{0} immagini
 422|{0} da controllare
 423|{0} da controllare: clicca su ognuno per confrontare, poi salva.
-424|{0} salvati nella cartella Compressed.
+424|{0} salvati nella cartella che hai scelto.
 425|{0} {1} di {2}
 426|il {0}% della dimensione
 427|· originale ripristinato
@@ -436,7 +436,7 @@
 436|I formati restano come sono. Tocca per cambiarli
 437|Più tardi
 438|Log salvato in Download: {0}
-439|Serve per spostare gli originali nella cartella Original, salvare in qualsiasi cartella e leggere i video grandi senza prima copiarli.
+439|Serve per salvare in qualsiasi cartella e per leggere i video grandi senza copiarli prima.
 440|Apri le impostazioni
 441|Salva log
 442|Salva in un file di testo in Download cosa ha fatto l'app e ogni errore
@@ -502,3 +502,11 @@
 502|Aspetta che finisca il lavoro in corso, poi aggiungi altri file.
 503|{0} tracce audio mantenute
 504|{0} file completati
+505|Totale max
+506|nessun limite
+507|Dimensione totale massima di tutti i file
+508|Tutti i file compressi insieme non supereranno questa dimensione. I file più pesanti vengono ridotti di più, gli altri un po'. I file con una dimensione propria la mantengono.
+509|Avanzate
+510|, circa {0} per restare nel totale
+511|Dimensione solo per questo file. Lascialo vuoto per usare l'impostazione a destra.
+512|Dimensione solo per questo file

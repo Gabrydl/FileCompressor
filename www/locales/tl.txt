@@ -137,7 +137,7 @@
 137|Nilalaktawan ang mga file na mas maliit na.
 138|Ino-optimize pa rin ang mga file na mas maliit na, nang hindi tumututok nang mas mababa.
 139|May mga file pang kino-compress.
-140|Nagpapalit ng format ang mga file nang walang target na laki. Piliin ang mga format sa bawat tab sa ibaba. Kapag pinapayagan ng container (halimbawa MKV papuntang MP4), hindi nire-re-encode ang video, kaya walang nawawalang kalidad. Nilalaktawan ang mga PDF at Office file.
+140|Nagpapalit ng format ang mga file nang walang target na laki. Piliin ang mga format sa Advanced, bawat tab. Kapag pinapayagan ng container (halimbawa MKV papuntang MP4), hindi nire-re-encode ang video, kaya walang nawawalang kalidad. Nilalaktawan ang mga PDF at Office file.
 141|Mga file o buong folder
 142|Fillable form: buo ang mga font
 143|Huling laki sa porsyento
@@ -268,8 +268,8 @@
 268|Ibalik at itago ang naka-compress na kopya
 269|Ibalik ang orihinal
 270|Ibalik ang orihinal?
-271|Nasa folder na Compressed ang mga resulta
-272|Pumupunta ang mga resulta sa Compressed bilang pangalan_compressed{0}
+271|Nasa folder na pinili mo ang mga resulta
+272|Diretsong napupunta sa folder na ito ang mga na-compress na file bilang pangalan_compressed. Nananatili ang mga orihinal kung nasaan sila.
 273|Kapareho ng iba
 274|I-save
 275|I-save ang lahat ng nasuri
@@ -421,7 +421,7 @@
 421|{0} larawan
 422|{0} susuriin
 423|{0} susuriin: i-click ang bawat isa para ikumpara, saka i-save.
-424|{0} ang na-save sa folder na Compressed.
+424|{0} na-save sa folder na pinili mo.
 425|{0} {1} ng {2}
 426|{0}% ng laki
 427|· naibalik ang orihinal
@@ -436,7 +436,7 @@
 436|Mananatili ang mga format. I-tap para baguhin
 437|Mamaya
 438|Na-save ang log sa Download: {0}
-439|Kailangan para ilipat ang mga orihinal sa folder na Original, mag-save sa kahit anong folder at mabasa ang malalaking video nang hindi muna kinokopya.
+439|Kailangan para makapag-save sa kahit anong folder at mabasa ang malalaking video nang hindi muna kinokopya.
 440|Buksan ang mga setting
 441|I-save ang log
 442|Sine-save bilang text file sa Download ang ginawa ng app at bawat error
@@ -502,3 +502,11 @@
 502|Hintayin matapos ang kasalukuyang proseso, saka magdagdag ng iba pang file.
 503|{0} audio track ang itinira
 504|Tapos na ang {0} file
+505|Kabuuang max
+506|walang limitasyon
+507|Pinakamalaking kabuuang laki ng lahat ng file
+508|Hindi lalampas sa laking ito ang lahat ng na-compress na file nang magkakasama. Mas pinaliliit ang mas mabibigat na file, kaunti lang ang iba. Pinananatili ng mga file na may sariling laki ang laki nila.
+509|Advanced
+510|, mga {0} para manatili sa kabuuan
+511|Laki para sa file na ito lang. Iwanang blangko para gamitin ang setting sa kanan.
+512|Laki para sa file na ito lang

@@ -2,7 +2,8 @@
 //   locales/en.txt   "n|English text"      locales/<code>.txt   "n|translation" (same numbers)
 // T("English {0}", value) gives the text in the chosen language; texts written straight into the page
 // (index.html, pieces of HTML built in code, messages from the engine) are translated as they appear.
-// The language comes from the program (Desktop.lang(), set by the installer or the flag button).
+// The language comes from the program (Desktop.lang(), set by the installer or the flag button);
+// on the phone it is English until another one is picked with the flag button.
 
 export const LANGS = [
   ["ceb", "Bisaya (Cebuano)"], ["bs", "Bosanski"], ["cs", "Čeština"], ["cnr", "Crnogorski"], ["de", "Deutsch"], ["et", "Eesti"],
@@ -16,12 +17,6 @@ function pickLang() {
   let c = "";
   try { c = (window.Desktop && window.Desktop.lang && window.Desktop.lang()) || ""; } catch (_) { /* */ }
   if (!c) try { c = localStorage.getItem("ui.lang") || ""; } catch (_) { /* */ }
-  if (!c && !window.Desktop) {
-    // phone, never chosen: the phone's language when the app has it
-    const n = String(navigator.language || "en").toLowerCase();
-    const b = n.split("-")[0];
-    c = n === "pt-br" ? "pt-BR" : b === "pt" ? "pt-PT" : n === "es-es" ? "es-ES" : b === "es" ? "es-419" : b === "fil" ? "tl" : b === "sh" ? "hr" : b;
-  }
   return CODES.includes(c) ? c : "en";
 }
 export const LANG = pickLang();

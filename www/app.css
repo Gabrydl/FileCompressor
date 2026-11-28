@@ -223,13 +223,14 @@ input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px va
 
 /* ------------------------------------------------------------ settings */
 .settings { padding: 2px max(16px, calc(50% - 330px)) 20px; display: flex; flex-direction: column; gap: 12px; }
-.settings > .block, .settings > .tabs { flex: none; }
+.settings > .block, .settings > .tabs, .settings > .adv-btn { flex: none; }
 .block { background: var(--surface); border-radius: var(--r-l); box-shadow: var(--shadow-1); padding: 14px 16px 16px; }
 .block h3 { font-size: 15px; font-weight: 650; letter-spacing: -.008em; margin-bottom: 4px; }
 .help { font-size: 13px; color: var(--text2); margin-top: 8px; line-height: 1.45; }
 .block > .seg { margin-top: 10px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.chip { height: 34px; padding: 0 14px; border-radius: 17px; font-size: 13.5px; font-weight: 550; box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--text);
+.chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; margin-top: 12px; }
+.chip { height: 34px; padding: 0 10px; display: flex; align-items: center; justify-content: center; text-align: center; min-width: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 17px; font-size: 13.5px; font-weight: 550; box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--text);
   transition: background var(--t), box-shadow var(--t), color var(--t), transform var(--t-fast) var(--ease); }
 .chip:active { transform: scale(.96); }
 .chip.on { background: var(--accent-tint); box-shadow: inset 0 0 0 1.5px var(--accent); color: var(--accent-text); }
@@ -437,3 +438,39 @@ input.bad { border-color: var(--bad); }
 /* things that exist only on a computer (drag out, Ctrl+V, right-click menu...) or only on the phone */
 :root.android .pc-only, :root:not(.android) .phone-only { display: none !important; }
 .link-btn { color: var(--accent-text); font-weight: 600; font-size: 12px; margin-left: 8px; }
+
+/* ------------------------------------------------------------ Advanced (closed at every start) */
+.adv-btn { display: flex; align-items: center; gap: 10px; width: 100%; padding: 13px 16px; border-radius: var(--r-l); background: var(--surface);
+  box-shadow: var(--shadow-1); font-size: 15px; font-weight: 650; color: var(--text); text-align: left; transition: background var(--t-fast); }
+.adv-btn > .ic:first-child { color: var(--accent-text); width: 18px; height: 18px; }
+.adv-btn .adv-tx { flex: none; }
+.adv-btn small { flex: 1; min-width: 0; font-size: 12.5px; font-weight: 500; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.adv-btn .adv-chev { display: inline-flex; color: var(--text3); transition: transform var(--t) var(--ease); }
+.adv-btn .adv-chev .ic { width: 16px; height: 16px; }
+.adv-btn[aria-expanded="true"] .adv-chev { transform: rotate(90deg); }
+@media (hover: hover) { .adv-btn:hover { background: var(--hover); } }
+.adv-box { display: none; flex-direction: column; gap: 12px; }
+.adv-box.open { display: flex; animation: fade-in var(--t-slow) var(--ease) both; }
+
+/* ------------------------------------------------------------ total max size (above the list) */
+.files-head { gap: 10px; }
+.files-head h2 { flex: none; }
+.total-cap { display: flex; align-items: center; gap: 6px; margin-left: auto; font-size: 12.5px; color: var(--text2); white-space: nowrap; }
+.total-cap input { width: 86px; height: 30px; padding: 0 8px; font-size: 13px; }
+.total-cap select { height: 30px; padding: 0 22px 0 8px; font-size: 13px; width: auto; background-position: right 5px center; background-size: 13px; }
+.total-cap.on input { border-color: var(--accent); }
+.files-head .head-btns { flex: none; }
+
+/* ------------------------------------------------------------ own size in each row */
+.own-size { display: inline-flex; align-items: center; gap: 4px; vertical-align: middle; }
+.own-size input { width: 70px; height: 26px; padding: 0 6px; font-size: 12.5px; text-align: right; }
+.own-size select { height: 26px; padding: 0 20px 0 6px; font-size: 12.5px; width: auto; background-position: right 4px center; background-size: 12px; }
+.own-size.set input { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-tint); }
+.row .arrow { margin: 0 6px; color: var(--text3); }
+@media (max-width: 560px) {
+  .files-head { flex-wrap: wrap; }
+  .total-cap { order: 3; width: 100%; margin-left: 0; }
+  .own-size input { width: 58px; }
+  .row.waiting .name { grid-column: 2 / 4; }
+  .row.waiting .sizes { grid-column: 2 / 4; text-align: left; margin-top: -2px; }
+}

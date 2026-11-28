@@ -25,10 +25,12 @@ const { T } = L;
 L.init(WWW, exeDir);
 L.startLog("FileCompressor", exeDir);
 function defaultOutDir() {
-  // results go next to the program (Compressed and Original folders), as before; elsewhere if that place is read-only
-  if (app.isPackaged && writable(exeDir)) return exeDir;
+  // results go in a Compressed folder next to the program, as before; elsewhere if that place is read-only
+  if (app.isPackaged && writable(exeDir)) return path.join(exeDir, "Compressed");
   return path.join(app.getPath("documents"), "FileCompressor");
 }
+// up to 1.8 the default was the program folder itself (results went in its Compressed subfolder): keep them there
+const outDirOf = (d) => (!d || path.resolve(d) === path.resolve(exeDir) ? defaultOutDir() : d);
 
 protocol.registerSchemesAsPrivileged([{ scheme: "app", privileges: { standard: true, secure: true, supportFetchAPI: true, codeCache: true } }]);
 const MIME = { html: "text/html; charset=utf-8", js: "text/javascript; charset=utf-8", css: "text/css; charset=utf-8", png: "image/png", woff2: "font/woff2", svg: "image/svg+xml", json: "application/json" };
@@ -133,6 +135,7 @@ ipcMain.handle("choose-out", async (_e, current) => {
 });
 ipcMain.on("start", (_e, items, settings) => {
   if (worker) return;
+  settings.outputDir = outDirOf(settings.outputDir);
   if (!writable(settings.outputDir)) {
     settings.outputDir = defaultOutDir();
     if (win) win.webContents.send("note", T("The output folder can't be written, so the default folder is used."));
@@ -168,7 +171,7 @@ ipcMain.on("progress", (_e, frac) => { if (win) win.setProgressBar(frac < 0 ? -1
 ipcMain.on("abort", () => { if (worker) worker.postMessage({ type: "abort" }); });
 ipcMain.on("open-path", (_e, p) => { if (p && fs.existsSync(p)) shell.openPath(p); });
 ipcMain.on("show-item", (_e, p) => { if (p && fs.existsSync(p)) shell.showItemInFolder(p); });
-ipcMain.on("open-folder", (_e, p) => { if (!p) return; try { fs.mkdirSync(p, { recursive: true }); } catch (_) { /* */ } shell.openPath(p); });
+ipcMain.on("open-folder", (_e, p) => { if (!p) return; p = outDirOf(p); try { fs.mkdirSync(p, { recursive: true }); } catch (_) { /* */ } shell.openPath(p); });
 ipcMain.on("set-theme", (_e, theme, dark) => {
   nativeTheme.themeSource = theme === "light" || theme === "dark" ? theme : "system";
   if (win) { win.setBackgroundColor(dark ? "#111317" : "#f2f4f7"); saveState({ theme }); }
@@ -243,7 +246,7 @@ ipcMain.handle("preview", async (_e, it, page = 0) => {
 });
 ipcMain.handle("review-save", (_e, it, settings) => {
   try {
-    const f = finalize(it, it.held, settings);
+    const f = finalize(it, it.held, { ...settings, outputDir: outDirOf(settings.outputDir) });
     if (settings.history !== false) addHistory(it, { out: f.dest, origTo: f.origTo, oldSize: it.oldSize, newSize: it.newSize });
     return { ok: true, out: f.dest, origTo: f.origTo, note: f.note };
   } catch (e) { return { ok: false, error: String(e.message || e) }; }

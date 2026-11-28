@@ -137,7 +137,7 @@
 137|Pliki, które już są mniejsze, są pomijane.
 138|Pliki, które już są mniejsze, i tak są optymalizowane, bez celowania niżej.
 139|Pliki są jeszcze kompresowane.
-140|Pliki zmieniają format bez celowania w rozmiar. Wybierz formaty w każdej karcie poniżej. Gdy kontener na to pozwala (np. z MKV do MP4), film nie jest ponownie kodowany, więc nie traci jakości. Pliki PDF i Office są pomijane.
+140|Pliki zmieniają format bez celowania w rozmiar. Wybierz formaty w sekcji Zaawansowane, karta po karcie. Gdy kontener na to pozwala (np. z MKV do MP4), film nie jest ponownie kodowany, więc nie traci jakości. Pliki PDF i Office są pomijane.
 141|Pliki lub całe foldery
 142|Formularz do wypełnienia: czcionki zostają w całości
 143|Rozmiar końcowy w procentach
@@ -268,8 +268,8 @@
 268|Przywróć i zachowaj skompresowaną kopię
 269|Przywróć oryginał
 270|Przywrócić oryginał?
-271|Wyniki są w folderze Compressed
-272|Wyniki trafiają do Compressed jako nazwa_compressed{0}
+271|Wyniki są w wybranym folderze
+272|Skompresowane pliki trafiają prosto do tego folderu jako nazwa_compressed. Oryginały zostają tam, gdzie są.
 273|Tak jak pozostałe
 274|Zapisz
 275|Zapisz wszystkie sprawdzone
@@ -421,7 +421,7 @@
 421|Obrazów: {0}
 422|Do sprawdzenia: {0}
 423|Do sprawdzenia: {0}. Kliknij każdy, żeby porównać, potem zapisz.
-424|Zapisano w folderze Compressed: {0}.
+424|Zapisano {0} w wybranym folderze.
 425|{0} {1} z {2}
 426|{0}% rozmiaru
 427|· przywrócono oryginał
@@ -436,7 +436,7 @@
 436|Formaty zostają bez zmian. Dotknij, aby zmienić
 437|Później
 438|Dziennik zapisany w folderze Pobrane: {0}
-439|Potrzebne, aby przenosić oryginały do folderu Original, zapisywać w dowolnym folderze i odczytywać duże filmy bez wcześniejszego kopiowania.
+439|Potrzebne, by zapisywać w dowolnym folderze i czytać duże filmy bez wcześniejszego kopiowania.
 440|Otwórz ustawienia
 441|Zapisz dziennik
 442|Zapisuje w pliku tekstowym w folderze Pobrane, co zrobiła aplikacja, i każdy błąd
@@ -502,3 +502,11 @@
 502|Poczekaj, aż bieżące zadanie się zakończy, a potem dodaj kolejne pliki.
 503|Zachowano {0} ścieżek dźwiękowych
 504|Gotowe pliki: {0}
+505|Razem maks.
+506|bez limitu
+507|Maksymalny łączny rozmiar wszystkich plików
+508|Wszystkie skompresowane pliki razem nie przekroczą tego rozmiaru. Najcięższe pliki są zmniejszane bardziej, pozostałe trochę. Pliki z własnym rozmiarem go zachowują.
+509|Zaawansowane
+510|, około {0}, by zmieścić się w sumie
+511|Rozmiar tylko dla tego pliku. Zostaw puste, by użyć ustawienia po prawej.
+512|Rozmiar tylko dla tego pliku

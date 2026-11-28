@@ -137,7 +137,7 @@
 137|Juba väiksemad failid jäetakse vahele.
 138|Juba väiksemaid faile optimeeritakse siiski, ilma madalamale sihtimata.
 139|Faile pakitakse veel.
-140|Failid vahetavad vormingut ilma suurust sihtimata. Vali vormingud allolevatel vahekaartidel. Kui konteiner seda lubab (nt MKV-st MP4-ks), videot uuesti ei kodeerita, nii et kvaliteeti ei kaota. PDF- ja Office'i failid jäetakse vahele.
+140|Failid vahetavad vormingut ilma suurust sihtimata. Vali vormingud jaotises Täpsemad, vahekaart vahekaardi haaval. Kui konteiner seda lubab (nt MKV-st MP4-ks), videot uuesti ei kodeerita, nii et kvaliteeti ei kaota. PDF- ja Office'i failid jäetakse vahele.
 141|Failid või terved kaustad
 142|Täidetav vorm: fondid jäetakse terveks
 143|Lõppsuurus protsentides
@@ -268,8 +268,8 @@
 268|Taasta ja jäta pakitud koopia alles
 269|Taasta originaal
 270|Kas taastada originaal?
-271|Tulemused on kaustas Compressed
-272|Tulemused lähevad kausta Compressed nimega nimi_compressed{0}
+271|Tulemused on sinu valitud kaustas
+272|Tihendatud failid lähevad otse sellesse kausta nimega nimi_compressed. Originaalid jäävad oma kohale.
 273|Nagu teised
 274|Salvesta
 275|Salvesta kõik kontrollitud
@@ -421,7 +421,7 @@
 421|{0} pilti
 422|{0} kontrollimiseks
 423|{0} kontrollimiseks: klõpsa igaühel, et võrrelda, siis salvesta.
-424|{0} salvestatud kausta Compressed.
+424|{0} salvestatud sinu valitud kausta.
 425|{0} {1}/{2}
 426|{0}% suurusest
 427|· originaal taastatud
@@ -436,7 +436,7 @@
 436|Vormingud jäävad samaks. Muutmiseks puuduta
 437|Hiljem
 438|Logi salvestati kausta Allalaadimised: {0}
-439|Vajalik originaalide teisaldamiseks kausta Original, salvestamiseks mis tahes kausta ja suurte videote lugemiseks ilma neid enne kopeerimata.
+439|Vajalik, et salvestada mis tahes kausta ja lugeda suuri videoid neid enne kopeerimata.
 440|Ava seaded
 441|Salvesta logi
 442|Salvestab tekstifailina kausta Allalaadimised, mida rakendus tegi, ja iga vea
@@ -502,3 +502,11 @@
 502|Oota, kuni praegune töö lõpeb, ja lisa siis rohkem faile.
 503|{0} helirada jäeti alles
 504|{0} faili valmis
+505|Kokku max
+506|piiranguta
+507|Kõigi failide suurim kogusuurus
+508|Kõik tihendatud failid kokku ei ületa seda suurust. Raskemaid faile vähendatakse rohkem, teisi veidi. Oma suurusega failid säilitavad selle.
+509|Täpsemad
+510|, umbes {0}, et jääda kogusumma piiresse
+511|Suurus ainult selle faili jaoks. Jäta tühjaks, et kasutada paremal olevat seadet.
+512|Suurus ainult selle faili jaoks

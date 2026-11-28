@@ -137,7 +137,7 @@
 137|Datoteke koje su već manje preskaču se.
 138|Datoteke koje su već manje svejedno se optimiziraju, bez ciljanja niže.
 139|Datoteke se još komprimiraju.
-140|Datoteke mijenjaju format bez ciljane veličine. Odaberi formate na svakoj kartici ispod. Kad spremnik to dopušta (npr. MKV u MP4), video se ne kodira ponovno, pa se kvaliteta ne gubi. PDF i Office datoteke se preskaču.
+140|Datoteke mijenjaju format bez ciljane veličine. Odaberi formate u odjeljku Napredno, karticu po karticu. Kad spremnik to dopušta (npr. MKV u MP4), video se ne kodira ponovno, pa se kvaliteta ne gubi. PDF i Office datoteke se preskaču.
 141|Datoteke ili cijele mape
 142|Obrazac za ispunjavanje: fontovi ostaju cijeli
 143|Konačna veličina u postotku
@@ -268,8 +268,8 @@
 268|Vrati i zadrži komprimiranu kopiju
 269|Vrati original
 270|Vratiti original?
-271|Rezultati su u mapi Compressed
-272|Rezultati idu u Compressed kao naziv_compressed{0}
+271|Rezultati su u mapi koju si odabrao
+272|Komprimirane datoteke idu ravno u ovu mapu kao naziv_compressed. Izvornici ostaju gdje jesu.
 273|Isto kao ostale
 274|Spremi
 275|Spremi sve provjerene
@@ -421,7 +421,7 @@
 421|Slika: {0}
 422|Za provjeru: {0}
 423|Za provjeru: {0}. Klikni svaku za usporedbu, pa spremi.
-424|Spremljeno u mapu Compressed: {0}.
+424|{0} spremljeno u mapu koju si odabrao.
 425|{0} {1} od {2}
 426|{0}% veličine
 427|· original vraćen
@@ -436,7 +436,7 @@
 436|Formati ostaju isti. Dodirni za promjenu
 437|Kasnije
 438|Zapisnik spremljen u Preuzimanja: {0}
-439|Potrebno za premještanje izvornika u mapu Original, spremanje u bilo koju mapu i čitanje velikih videozapisa bez prethodnog kopiranja.
+439|Potrebno za spremanje u bilo koju mapu i čitanje velikih videa bez prethodnog kopiranja.
 440|Otvori postavke
 441|Spremi zapisnik
 442|Sprema u tekstnu datoteku u Preuzimanja što je aplikacija radila i svaku pogrešku
@@ -502,3 +502,11 @@
 502|Pričekaj da trenutni posao završi, a zatim dodaj još datoteka.
 503|Zadržano {0} zvučnih zapisa
 504|Gotovo datoteka: {0}
+505|Ukupno maks.
+506|bez ograničenja
+507|Najveća ukupna veličina svih datoteka
+508|Sve komprimirane datoteke zajedno neće prijeći ovu veličinu. Najteže datoteke smanjuju se više, ostale malo. Datoteke s vlastitom veličinom je zadržavaju.
+509|Napredno
+510|, oko {0} da ostane u ukupnom ograničenju
+511|Veličina samo za ovu datoteku. Ostavi prazno za postavku desno.
+512|Veličina samo za ovu datoteku

@@ -137,7 +137,7 @@
 137|Soubory, které už jsou menší, se přeskočí.
 138|Soubory, které už jsou menší, se i tak optimalizují, ale nemíří níž.
 139|Soubory se ještě komprimují.
-140|Soubory změní formát bez cílové velikosti. Formáty zvolte na kartách níže. Když to kontejner dovolí (například z MKV do MP4), video se znovu nekóduje, takže se neztratí kvalita. Soubory PDF a Office se přeskočí.
+140|Soubory změní formát bez cílové velikosti. Formáty zvolte v části Pokročilé, kartu po kartě. Když to kontejner dovolí (například z MKV do MP4), video se znovu nekóduje, takže se neztratí kvalita. Soubory PDF a Office se přeskočí.
 141|Soubory nebo celé složky
 142|Vyplnitelný formulář: písma zůstanou celá
 143|Výsledná velikost v procentech
@@ -268,8 +268,8 @@
 268|Obnovit a ponechat komprimovanou kopii
 269|Obnovit originál
 270|Obnovit originál?
-271|Výsledky jsou ve složce Compressed
-272|Výsledky jdou do Compressed jako nazev_compressed{0}
+271|Výsledky jsou ve zvolené složce
+272|Komprimované soubory jdou rovnou do této složky jako název_compressed. Originály zůstávají tam, kde jsou.
 273|Stejně jako ostatní
 274|Uložit
 275|Uložit všechny zkontrolované
@@ -421,7 +421,7 @@
 421|Obrázků: {0}
 422|Ke kontrole: {0}
 423|Ke kontrole: {0}. Klikněte na každý, porovnejte a pak uložte.
-424|Uloženo do složky Compressed: {0}.
+424|{0} uloženo ve zvolené složce.
 425|{0} {1} z {2}
 426|{0} % velikosti
 427|· originál obnoven
@@ -436,7 +436,7 @@
 436|Formáty zůstanou, jak jsou. Klepnutím je změníte
 437|Později
 438|Protokol uložen do složky Stažené: {0}
-439|Potřebné k přesunu originálů do složky Original, k ukládání do libovolné složky a ke čtení velkých videí bez předchozího kopírování.
+439|Potřeba k ukládání do libovolné složky a ke čtení velkých videí bez předchozího kopírování.
 440|Otevřít nastavení
 441|Uložit protokol
 442|Uloží do textového souboru ve Stažených, co aplikace dělala, a každou chybu
@@ -502,3 +502,11 @@
 502|Počkejte na dokončení aktuálního běhu a pak přidejte další soubory.
 503|Ponecháno {0} zvukových stop
 504|Hotovo souborů: {0}
+505|Celkem max.
+506|bez limitu
+507|Maximální celková velikost všech souborů
+508|Všechny komprimované soubory dohromady tuto velikost nepřekročí. Nejtěžší soubory se zmenší víc, ostatní trochu. Soubory s vlastní velikostí si ji ponechají.
+509|Pokročilé
+510|, asi {0}, aby se vešel do celku
+511|Velikost jen pro tento soubor. Nechte prázdné pro nastavení vpravo.
+512|Velikost jen pro tento soubor

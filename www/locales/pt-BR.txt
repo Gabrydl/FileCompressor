@@ -137,7 +137,7 @@
 137|Arquivos que já são menores são pulados.
 138|Arquivos que já são menores são otimizados mesmo assim, sem mirar mais baixo.
 139|Ainda há arquivos sendo comprimidos.
-140|Os arquivos mudam de formato sem mirar num tamanho. Escolha os formatos em cada aba abaixo. Quando o contêiner permite (por exemplo de MKV para MP4) o vídeo não é recodificado, então não há perda de qualidade. PDFs e arquivos do Office são pulados.
+140|Os arquivos mudam de formato sem mirar num tamanho. Escolha os formatos em Avançado, aba por aba. Quando o contêiner permite (por exemplo de MKV para MP4) o vídeo não é recodificado, então não há perda de qualidade. PDFs e arquivos do Office são pulados.
 141|Arquivos ou pastas inteiras
 142|Formulário preenchível: as fontes são mantidas inteiras
 143|Tamanho final em porcentagem
@@ -268,8 +268,8 @@
 268|Restaurar e manter a cópia comprimida
 269|Restaurar o original
 270|Restaurar o original?
-271|Os resultados estão na pasta Compressed
-272|Os resultados vão para Compressed como nome_compressed{0}
+271|Os resultados estão na pasta que você escolheu
+272|Os arquivos comprimidos vão direto para esta pasta como nome_compressed. Os originais ficam onde estão.
 273|Igual aos outros
 274|Salvar
 275|Salvar todos os conferidos
@@ -421,7 +421,7 @@
 421|{0} imagens
 422|{0} para conferir
 423|{0} para conferir: clique em cada um para comparar e depois salve.
-424|{0} salvos na pasta Compressed.
+424|{0} salvos na pasta que você escolheu.
 425|{0} {1} de {2}
 426|{0}% do tamanho
 427|· original restaurado
@@ -436,7 +436,7 @@
 436|Os formatos ficam como estão. Toque para mudar
 437|Depois
 438|Log salvo em Download: {0}
-439|Necessário para mover os originais para a pasta Original, salvar em qualquer pasta e ler vídeos grandes sem copiá-los antes.
+439|Necessário para salvar em qualquer pasta e ler vídeos grandes sem copiá-los antes.
 440|Abrir configurações
 441|Salvar log
 442|Salva em um arquivo de texto em Download o que o app fez e cada erro
@@ -502,3 +502,11 @@
 502|Espere o trabalho atual terminar e depois adicione mais arquivos.
 503|{0} faixas de áudio mantidas
 504|{0} arquivos concluídos
+505|Total máx.
+506|sem limite
+507|Tamanho total máximo de todos os arquivos
+508|Todos os arquivos comprimidos juntos não passarão deste tamanho. Os arquivos mais pesados são reduzidos mais, os outros um pouco. Arquivos com tamanho próprio o mantêm.
+509|Avançado
+510|, cerca de {0} para ficar dentro do total
+511|Tamanho só para este arquivo. Deixe vazio para usar a configuração à direita.
+512|Tamanho só para este arquivo

@@ -137,7 +137,7 @@
 137|Laktawan ang mga file nga mas gamay na.
 138|Ma-optimize gihapon ang mga file nga mas gamay na, nga dili motumong mas ubos.
 139|Adunay mga file nga gi-compress pa.
-140|Mag-ilis og format ang mga file nga walay target nga gidak-on. Pilia ang mga format sa matag tab sa ubos. Kung tugotan sa container (pananglitan MKV ngadto sa MP4), dili i-re-encode ang video, busa walay mawala nga kalidad. Laktawan ang mga PDF ug Office nga file.
+140|Mag-ilis og format ang mga file nga walay target nga gidak-on. Pilia ang mga format sa Advanced, matag tab. Kung tugotan sa container (pananglitan MKV ngadto sa MP4), dili i-re-encode ang video, busa walay mawala nga kalidad. Laktawan ang mga PDF ug Office nga file.
 141|Mga file o tibuok folder
 142|Fillable form: tibuok ang mga font
 143|Katapusang gidak-on sa porsyento
@@ -268,8 +268,8 @@
 268|Ibalik ug tipigi ang na-compress nga kopya
 269|Ibalik ang orihinal
 270|Ibalik ang orihinal?
-271|Anaa sa folder nga Compressed ang mga resulta
-272|Moadto ang mga resulta sa Compressed isip ngalan_compressed{0}
+271|Anaa sa folder nga imong gipili ang mga resulta
+272|Diretso sa kini nga folder ang mga na-compress nga file isip ngalan_compressed. Magpabilin ang mga orihinal kung asa sila.
 273|Parehas sa uban
 274|I-save
 275|I-save ang tanang nasusi
@@ -421,7 +421,7 @@
 421|{0} ka hulagway
 422|{0} susihon
 423|{0} susihon: i-click ang matag usa aron ikumpara, dayon i-save.
-424|{0} ang na-save sa folder nga Compressed.
+424|{0} na-save sa folder nga imong gipili.
 425|{0} {1} sa {2}
 426|{0}% sa gidak-on
 427|· nabalik ang orihinal
@@ -436,7 +436,7 @@
 436|Magpabilin ang mga format. I-tap aron usbon
 437|Unya
 438|Na-save ang log sa Download: {0}
-439|Gikinahanglan aron mabalhin ang mga orihinal sa folder nga Original, maka-save sa bisan unsang folder ug mabasa ang dagkong video nga dili una kopyahon.
+439|Kinahanglan aron maka-save sa bisan unsang folder ug mabasa ang dagkong video nga dili una kopyahon.
 440|Ablihi ang mga setting
 441|I-save ang log
 442|Gi-save isip text file sa Download ang gibuhat sa app ug matag error
@@ -502,3 +502,11 @@
 502|Hulata nga mahuman ang kasamtangang proseso, dayon pagdugang og laing file.
 503|{0} ka audio track ang gipabilin
 504|Nahuman na ang {0} ka file
+505|Kinatibuk-ang max
+506|walay limitasyon
+507|Kinadak-ang kinatibuk-ang gidak-on sa tanang file
+508|Ang tanang na-compress nga file nga dungan dili molapas niini nga gidak-on. Mas gipagamay ang mas bug-at nga mga file, gamay ra ang uban. Ang mga file nga adunay kaugalingong gidak-on magpabilin niini.
+509|Advanced
+510|, mga {0} aron magpabilin sa kinatibuk-an
+511|Gidak-on para niini nga file lang. Biyai nga blangko aron gamiton ang setting sa tuo.
+512|Gidak-on para niini nga file lang

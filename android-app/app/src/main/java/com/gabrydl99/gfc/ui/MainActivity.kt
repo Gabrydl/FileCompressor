@@ -230,7 +230,7 @@ class MainActivity : ComponentActivity() {
 
     private fun openFolder() {
         val out = File(Engine.outputDir())
-        val dir = File(out, "Compressed").takeIf { it.isDirectory } ?: out
+        val dir = out
         val docId = docIdOf(dir.absolutePath)
         if (docId != null) {
             val uri = DocumentsContract.buildDocumentUri("com.android.externalstorage.documents", docId)

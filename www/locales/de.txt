@@ -137,7 +137,7 @@
 137|Dateien, die schon kleiner sind, werden übersprungen.
 138|Dateien, die schon kleiner sind, werden trotzdem optimiert, ohne kleiner zu zielen.
 139|Es werden noch Dateien komprimiert.
-140|Die Dateien wechseln das Format, ohne auf eine Größe zu zielen. Wähle die Formate in den Reitern unten. Wenn der Container es erlaubt (zum Beispiel MKV zu MP4), wird das Video nicht neu kodiert, es geht also keine Qualität verloren. PDF- und Office-Dateien werden übersprungen.
+140|Die Dateien wechseln das Format, ohne auf eine Größe zu zielen. Wähle die Formate unter Erweitert, Reiter für Reiter. Wenn der Container es erlaubt (zum Beispiel MKV zu MP4), wird das Video nicht neu kodiert, es geht also keine Qualität verloren. PDF- und Office-Dateien werden übersprungen.
 141|Dateien oder ganze Ordner
 142|Ausfüllbares Formular: Schriften bleiben vollständig
 143|Endgröße in Prozent
@@ -268,8 +268,8 @@
 268|Wiederherstellen und komprimierte Kopie behalten
 269|Original wiederherstellen
 270|Original wiederherstellen?
-271|Die Ergebnisse sind im Ordner Compressed
-272|Ergebnisse kommen in Compressed als name_compressed{0}
+271|Die Ergebnisse sind im gewählten Ordner
+272|Komprimierte Dateien kommen direkt in diesen Ordner als name_compressed. Die Originale bleiben, wo sie sind.
 273|Wie die anderen
 274|Speichern
 275|Alle geprüften speichern
@@ -421,7 +421,7 @@
 421|{0} Bilder
 422|{0} zu prüfen
 423|{0} zu prüfen: klicke jede an, um zu vergleichen, und speichere dann.
-424|{0} im Ordner Compressed gespeichert.
+424|{0} im gewählten Ordner gespeichert.
 425|{0} {1} von {2}
 426|{0}% der Größe
 427|· Original wiederhergestellt
@@ -436,7 +436,7 @@
 436|Formate bleiben wie sie sind. Zum Ändern tippen
 437|Später
 438|Protokoll in Download gespeichert: {0}
-439|Nötig, um Originale in den Ordner Original zu verschieben, in jedem Ordner zu speichern und große Videos ohne vorheriges Kopieren zu lesen.
+439|Nötig, um in jedem Ordner zu speichern und große Videos zu lesen, ohne sie vorher zu kopieren.
 440|Einstellungen öffnen
 441|Protokoll speichern
 442|Speichert, was die App getan hat, und jeden Fehler als Textdatei in Download
@@ -502,3 +502,11 @@
 502|Warte, bis der aktuelle Durchlauf fertig ist, und füge dann weitere Dateien hinzu.
 503|{0} Tonspuren behalten
 504|{0} Dateien fertig
+505|Gesamt max.
+506|kein Limit
+507|Maximale Gesamtgröße aller Dateien
+508|Alle komprimierten Dateien zusammen werden diese Größe nicht überschreiten. Die schwersten Dateien werden stärker verkleinert, die anderen ein wenig. Dateien mit eigener Größe behalten sie.
+509|Erweitert
+510|, etwa {0}, um im Gesamtlimit zu bleiben
+511|Größe nur für diese Datei. Leer lassen, um die Einstellung rechts zu verwenden.
+512|Größe nur für diese Datei

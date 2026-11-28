@@ -137,7 +137,7 @@
 137|Files already smaller are skipped.
 138|Files already smaller are still optimized without aiming lower.
 139|Files are still being compressed.
-140|Files change format without aiming for a size. Pick the formats in each tab below. When the container allows it (for example MKV to MP4) the video isn't re-encoded, so no quality is lost. PDF and Office files are skipped.
+140|Files change format without aiming for a size. Pick the formats in Advanced, tab by tab. When the container allows it (for example MKV to MP4) the video isn't re-encoded, so no quality is lost. PDF and Office files are skipped.
 141|Files or whole folders
 142|Fillable form: fonts are kept whole
 143|Final size in percent
@@ -268,8 +268,8 @@
 268|Restore and keep the compressed copy
 269|Restore the original
 270|Restore the original?
-271|Results are in the Compressed folder
-272|Results go in Compressed as name_compressed{0}
+271|Results are in the folder you chose
+272|Compressed files go straight into this folder as name_compressed. Originals stay where they are.
 273|Same as the others
 274|Save
 275|Save all checked
@@ -421,7 +421,7 @@
 421|{0} pictures
 422|{0} ready to check
 423|{0} ready to check: click each one to compare, then save.
-424|{0} saved in the Compressed folder.
+424|{0} saved in the folder you chose.
 425|{0} {1} of {2}
 426|{0}% of the size
 427|· original restored
@@ -436,7 +436,7 @@
 436|Formats stay as they are. Tap to change
 437|Later
 438|Log saved in Download: {0}
-439|Needed to move originals into the Original folder, to save in any folder and to read big videos without copying them first.
+439|Needed to save in any folder and to read big videos without copying them first.
 440|Open settings
 441|Save log
 442|Saves what the app did and every error as a text file in Download
@@ -502,3 +502,11 @@
 502|Wait for the current run to finish, then add more files.
 503|{0} audio tracks kept
 504|{0} files finished
+505|Total max
+506|no limit
+507|Total max size of all files
+508|All the compressed files together will not go over this size. The heavier files are reduced more, the others a little. Files with their own size keep it.
+509|Advanced
+510|, about {0} to stay within the total
+511|Size for this file only. Leave it empty to use the setting on the right.
+512|Size for this file only

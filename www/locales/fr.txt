@@ -137,7 +137,7 @@
 137|Les fichiers déjà plus petits sont ignorés.
 138|Les fichiers déjà plus petits sont quand même optimisés, sans viser plus bas.
 139|Des fichiers sont encore en cours de compression.
-140|Les fichiers changent de format sans viser une taille. Choisis les formats dans chaque onglet ci-dessous. Quand le conteneur le permet (par exemple MKV vers MP4), la vidéo n'est pas réencodée, donc aucune qualité n'est perdue. Les PDF et fichiers Office sont ignorés.
+140|Les fichiers changent de format sans viser une taille. Choisis les formats dans Avancé, onglet par onglet. Quand le conteneur le permet (par exemple MKV vers MP4), la vidéo n'est pas réencodée, donc aucune qualité n'est perdue. Les PDF et fichiers Office sont ignorés.
 141|Fichiers ou dossiers entiers
 142|Formulaire à remplir : les polices sont gardées entières
 143|Taille finale en pourcentage
@@ -268,8 +268,8 @@
 268|Restaurer et garder la copie compressée
 269|Restaurer l'original
 270|Restaurer l'original ?
-271|Les résultats sont dans le dossier Compressed
-272|Les résultats vont dans Compressed sous la forme nom_compressed{0}
+271|Les résultats sont dans le dossier choisi
+272|Les fichiers compressés vont directement dans ce dossier sous le nom nom_compressed. Les originaux restent où ils sont.
 273|Comme les autres
 274|Enregistrer
 275|Enregistrer tous ceux vérifiés
@@ -421,7 +421,7 @@
 421|{0} images
 422|{0} à vérifier
 423|{0} à vérifier : clique sur chacun pour comparer, puis enregistre.
-424|{0} enregistrés dans le dossier Compressed.
+424|{0} enregistrés dans le dossier choisi.
 425|{0} {1} sur {2}
 426|{0}% de la taille
 427|· original restauré
@@ -436,7 +436,7 @@
 436|Les formats restent tels quels. Touchez pour changer
 437|Plus tard
 438|Journal enregistré dans Téléchargements : {0}
-439|Nécessaire pour déplacer les originaux dans le dossier Original, enregistrer dans n'importe quel dossier et lire les grandes vidéos sans les copier d'abord.
+439|Nécessaire pour enregistrer dans n'importe quel dossier et lire les grandes vidéos sans les copier d'abord.
 440|Ouvrir les réglages
 441|Enregistrer le journal
 442|Enregistre ce que l'appli a fait et chaque erreur dans un fichier texte dans Téléchargements
@@ -502,3 +502,11 @@
 502|Attendez la fin du traitement en cours, puis ajoutez d'autres fichiers.
 503|{0} pistes audio gardées
 504|{0} fichiers terminés
+505|Total max.
+506|sans limite
+507|Taille totale maximale de tous les fichiers
+508|Tous les fichiers compressés ensemble ne dépasseront pas cette taille. Les fichiers les plus lourds sont réduits davantage, les autres un peu. Les fichiers avec leur propre taille la gardent.
+509|Avancé
+510|, environ {0} pour rester dans le total
+511|Taille pour ce fichier uniquement. Laisse vide pour utiliser le réglage à droite.
+512|Taille pour ce fichier uniquement

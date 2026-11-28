@@ -1,7 +1,7 @@
 {
   "name": "filecompressor",
   "productName": "FileCompressor",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "FileCompressor: videos, photos, PDFs, audio and Office files, offline.",
   "main": "main.js",
   "author": "gabrydl99",

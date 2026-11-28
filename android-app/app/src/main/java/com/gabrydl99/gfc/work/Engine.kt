@@ -414,7 +414,7 @@ object Engine {
         JSONObject().put("ok", true).put("path", back)
     } catch (e: Exception) { JSONObject().put("ok", false).put("error", e.message ?: e.javaClass.simpleName) }
 
-    // ------------------------------------------------------------------ saving a result in Compressed (and the original in Original)
+    // ------------------------------------------------------------------ saving a result in the chosen folder
     private fun uniqueFile(dir: File, base: String, ext: String): File {
         var f = File(dir, "$base.$ext")
         var k = 2
@@ -429,25 +429,13 @@ object Engine {
     }
 
     private fun finalize(it: Item, result: File, s: Settings, notes: MutableList<String>): File {
-        val root = File(outDirOf(s))
-        val comp = File(root, "Compressed")
+        // 1.9.0: the compressed copy goes straight into the chosen folder; the original is never moved or copied
+        val comp = File(outDirOf(s))
         if (!comp.isDirectory && !comp.mkdirs()) throw Fail("EACCES: couldn't create the folder " + comp.absolutePath)
         val base = it.name.substringBeforeLast('.')
         val dest = uniqueFile(comp, base + "_compressed", result.extLower())
         try { moveFile(result, dest) } catch (e: Exception) { throw Fail("EACCES: couldn't write " + dest.absolutePath + " (" + e.message + ")") }
         val scan = mutableListOf(dest.absolutePath)
-        if (s.moveOriginals) {
-            val p = it.path
-            if (p != null) {
-                try {
-                    val od = File(root, "Original").apply { mkdirs() }
-                    val to = uniqueFile(od, base, it.name.extLower())
-                    moveFile(File(p), to)
-                    it.moved = to.absolutePath
-                    scan += listOf(to.absolutePath, p)
-                } catch (_: Exception) { notes.add("Couldn't move the original into the Original folder.") }
-            } else notes.add("The original was left where it is (the app that shared it doesn't allow moving it).")
-        }
         try { MediaScannerConnection.scanFile(app, scan.toTypedArray(), null, null) } catch (_: Exception) { }
         return dest
     }
