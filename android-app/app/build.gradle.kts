@@ -18,9 +18,9 @@ android {
         applicationId = "com.gabrydl99.gfc"
         minSdk = 26
         targetSdk = 35
-        // must stay above the APK already on the phone (100000), so it installs as an update
-        versionCode = (project.findProperty("appCode") as String?)?.toInt() ?: 107000
-        versionName = (project.findProperty("appVersion") as String?) ?: "1.7.0"
+        // must stay above the APK already on the phone (107000 = 1.7.0), so it installs as an update
+        versionCode = (project.findProperty("appCode") as String?)?.toInt() ?: 108000
+        versionName = (project.findProperty("appVersion") as String?) ?: "1.8.0"
     }
 
     sourceSets["main"].assets.srcDir(wwwOut)

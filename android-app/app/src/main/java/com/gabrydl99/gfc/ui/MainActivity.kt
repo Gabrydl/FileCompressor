@@ -31,6 +31,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.webkit.WebViewAssetLoader
+import com.gabrydl99.gfc.work.AppLog
 import com.gabrydl99.gfc.work.CompressService
 import com.gabrydl99.gfc.work.Engine
 import java.io.File
@@ -263,6 +264,11 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface fun encoders(): String = "libx264,libvpx-vp9,aac,libmp3lame,libopus,libvorbis"
         @JavascriptInterface fun initialSettings(): String = Engine.settingsJson()
         @JavascriptInterface fun putSettings(json: String?) { if (json != null) Engine.putSettings(json) }
+        @JavascriptInterface fun log(level: String?, msg: String?) { AppLog.line(level ?: "INFO", msg ?: "") }
+        /** "OK:<file name>" when the log was saved in Download, otherwise "ERR:<reason>". */
+        @JavascriptInterface fun saveLog(): String = try { "OK:" + AppLog.saveToDownloads(this@MainActivity) } catch (e: Throwable) {
+            AppLog.error("Save log failed", e); "ERR:" + (e.message ?: e.javaClass.simpleName)
+        }
     }
 
     companion object {

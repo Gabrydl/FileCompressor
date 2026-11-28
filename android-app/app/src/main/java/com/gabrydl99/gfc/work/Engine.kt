@@ -214,6 +214,7 @@ object Engine {
         it.reset()
         it.status = "WORKING"; it.stage = "Starting"
         val s = settings()
+        AppLog.line("INFO", "Start: ${it.name} (${it.kind}, ${it.size} bytes), mode ${s.mode}")
         try {
             ctx.check()
             val src: File = if (it.path != null && File(it.path).canRead()) File(it.path) else {
@@ -257,14 +258,17 @@ object Engine {
             it.notes = notes
             it.progress = 1.0
             it.status = "DONE"
+            AppLog.line("INFO", "Done: ${it.name}, ${it.origSize} -> ${it.newSize} bytes, saved as ${it.out}" + (if (notes.isEmpty()) "" else " (" + notes.joinToString("; ") + ")"))
         } catch (e: Skip) {
-            if (e.message == "stopped") it.status = "STOPPED"
-            else { it.skip = true; it.message = skipReason(e.message); it.status = "FAILED" }
+            if (e.message == "stopped") { it.status = "STOPPED"; AppLog.line("INFO", "Stopped: ${it.name}") }
+            else { it.skip = true; it.message = skipReason(e.message); it.status = "FAILED"; AppLog.line("INFO", "Skipped: ${it.name}: ${it.message}") }
         } catch (e: OutOfMemoryError) {
             it.message = "Not enough memory"; it.why = diagnose("memory", it.kind); it.status = "FAILED"
+            AppLog.line("ERROR", "Failed: ${it.name}: not enough memory")
         } catch (e: Throwable) {
             val msg = e.message ?: e.javaClass.simpleName
             it.message = msg; it.why = diagnose(msg, it.kind); it.status = "FAILED"
+            AppLog.error("Failed: ${it.name} (${it.why?.title ?: "?"})", e)
         } finally {
             tmp.deleteRecursively()
         }

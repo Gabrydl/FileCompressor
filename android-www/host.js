@@ -145,5 +145,11 @@
     clear: function () { op(12); },
     setTheme: function (t, dark) { op(10, dark ? "1" : "0"); },
     ready: function () { ready = true; tick(); },
+    log: function (level, msg) { try { A.log(String(level), String(msg)); } catch (e) { /* */ } },
+    // saves the app's log as a text file in Download: { ok: true, name } or { ok: false, error }
+    saveLog: function () {
+      try { var r = String(A.saveLog()); return r.indexOf("OK:") === 0 ? { ok: true, name: r.slice(3) } : { ok: false, error: r.replace(/^ERR:/, "") }; }
+      catch (e) { return { ok: false, error: String(e && e.message || e) }; }
+    },
   };
 })();

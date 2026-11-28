@@ -550,6 +550,7 @@ H.onFinished((d) => {
   drawList();
   if (d.crashed) items.forEach(i => { if (i.run && i.status === "waiting") { i.status = "failed"; i.why = { title: "Not enough memory", causes: ["The file is very large (for example a huge photo or PDF) and the engine stopped."], tips: ["Close other programs and try again, or process this file on its own."] }; } });
   drawList();
+  if (d.crashed) logLine("ERROR", "The engine stopped unexpectedly");
   toast(d.crashed ? "The engine stopped unexpectedly." : d.stopped ? "Stopped." : lastRun.done ? "Compression finished." : "Finished.");
 });
 
@@ -609,12 +610,28 @@ function whySheet(it) {
   return sheet(`<h3>${esc(w.title)}</h3><p class="sub">${esc(it.name)}</p>
     <h4>Possible causes</h4><ul>${w.causes.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
     <h4>What to try</h4><ul>${w.tips.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
-    <div class="btns"><button class="btn small ghost" data-retry>${icon("retry")}<span>Try again</span></button><button class="btn small primary" data-ok>OK</button></div>`,
+    <div class="btns">${H.saveLog ? `<button class="btn small ghost" data-savelog>${icon("save")}<span>Save log</span></button>` : ""}<button class="btn small ghost" data-retry>${icon("retry")}<span>Try again</span></button><button class="btn small primary" data-ok>OK</button></div>`,
   card => {
     card.querySelector("[data-ok]").onclick = () => closeSheet();
+    const sl = card.querySelector("[data-savelog]");
+    if (sl) sl.onclick = () => saveLog();
     card.querySelector("[data-retry]").onclick = () => { closeSheet(); Object.assign(it, { status: "waiting", progress: 0, why: null }); drawList(); run([it]); };
   });
 }
+
+// ================================================================== log
+// Everything the engine does is written to the app's log by the app itself; the page adds its own errors.
+// "Save log" puts a copy in Download as FileCompressor-log-YYYYMMDD-HHMM.txt.
+function logLine(level, msg) { try { if (H.log) H.log(level, msg); } catch (e) { /* */ } }
+function saveLog() {
+  if (!H.saveLog) return;
+  const r = H.saveLog();
+  if (r.ok) toast(`Log saved in Download: ${r.name}`, 4500);
+  else toast(`Couldn't save the log: ${r.error}`, 5000);
+}
+window.addEventListener("error", e => logLine("ERROR", `Page: ${e.message} (${(e.filename || "").split("/").pop()}:${e.lineno})`));
+window.addEventListener("unhandledrejection", e => logLine("ERROR", `Page: ${e.reason && e.reason.stack || e.reason}`));
+if ($("saveLogBtn")) { if (H.saveLog) $("saveLogBtn").onclick = saveLog; else $("saveLogBtn").closest(".folder-btns").remove(); }
 
 // ================================================================== toast
 let toastTimer = 0;
@@ -664,7 +681,7 @@ document.addEventListener("keydown", (e) => {
 
 // ================================================================== update check
 // Looks at the latest GitHub release when the app opens. The version below is set by the build.
-const APP_VERSION = "1.7.0", UPDATE_REPO = "Gabrydl/FileCompressor";
+const APP_VERSION = "1.8.0", UPDATE_REPO = "Gabrydl/FileCompressor";
 function verTuple(v) { return (String(v || "").match(/\d+/g) || ["0"]).slice(0, 3).map(Number); }
 function isNewer(a, b) { const x = verTuple(a), y = verTuple(b); for (let k = 0; k < 3; k++) { if ((x[k] || 0) !== (y[k] || 0)) return (x[k] || 0) > (y[k] || 0); } return false; }
 async function checkUpdates() {
