@@ -72,6 +72,10 @@ function diagnose(msg, kind) {
   if (m.includes("ffmpeg is missing")) return D("The video engine is missing", ["The ffmpeg.exe file next to the program was removed or blocked by the antivirus."], ["Extract the whole zip again and keep every file in the folder.", "If the antivirus quarantined ffmpeg.exe, restore it and allow it."]);
   if (m.includes("password")) return D("The file is locked with a password", ["The file is protected, so its content can't be read or rewritten."], ["Open it with the password and save or print a copy without protection, then try again."]);
   if (m.includes("trim leaves")) return D("The trim is too short", ["Start and end are less than half a second apart."], ["Open the file's options and set a longer part to keep."]);
+  if (m.includes("needs at least")) {
+    const x = /(\d+) min long, it needs at least (\d+) MB/.exec(msg) || ["", "?", "?"];
+    return D("The size you picked is too small for this video", [`This video is ${x[1]} min long: at this size it needs at least ${x[2]} MB.`], ["Pick a bigger size in MB, or a higher percentage.", "Or trim it to the part you need (file options, Trim)."]);
+  }
   if (m.includes("target too small")) return D("The size you picked is too small", ["At that size there are too few bits per second left for a watchable video or audio."], ["Pick a higher percentage or a bigger size in MB.", kind === "video" ? "Or lower the resolution yourself in the Video block." : "Or convert it to Opus, which sounds better at small sizes."]);
   if (m.includes("no audio") || m.includes("no streams")) return D("There's no sound in this file", ["The file has no audio track to compress or extract."], ["If it's a video, choose a video format instead of MP3/M4A."]);
   if (m.includes("couldn't read the length")) return D("The file couldn't be read", ["The file may be damaged or only partly downloaded."], ["Check that the file plays correctly in a player.", "Try 'Convert only' to MP4 first, then compress the converted file."]);

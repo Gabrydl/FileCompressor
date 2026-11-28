@@ -1,0 +1,504 @@
+1|„Komprimiraj s FileCompressorom” u izborniku desnog klika
+2|(sada {0}×{1})
+3|(još provjeravam…)
+4|, oko {0} na kraju
+5|, već ispod odabrane veličine
+6|, za provjeru prije spremanja
+7|, komprimirana kopija izbrisana.
+8|, ili pritisni Ctrl+V.
+9|, originali u Original. Originali se premještaju tek nakon što je njihova komprimirana kopija spremljena.
+10|, originali ostaju gdje jesu.
+11|, ostat će netaknut
+12|1 datoteka
+13|1 datoteka, {0}
+14|1 stranica
+15|1 fotografija
+16|MP4 u 1080p pri 30 fps i JPG fotografije, otprilike pola veličine.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|ukupno ušteđeno <b>{0}</b>, 1 datoteka
+24|ukupno ušteđeno <b>{0}</b>, datoteka: {1}
+25|Prekini
+26|Oko 15 MB po datoteci, MP4 videozapisi i JPG fotografije: stane u WhatsAppovo ograničenje od 16 MB.
+27|Oko 18 MB po datoteci, da stane u privitak e-pošte od 25 MB.
+28|Oko 19 MB po datoteci, MP4 videozapisi i JPG fotografije: stane u Discordovo besplatno ograničenje od 20 MB.
+29|Oko {0} na kraju
+30|Dodaj mapu
+31|Dodaj datoteke
+32|Dodaj mapu
+33|Dodaj datoteke za početak.
+34|Dodano u izbornik desnog klika.
+35|Poslije
+36|Sve datoteke
+37|Zadržano svih {0} stranica
+38|Već ispod odabrane veličine
+39|Već je u tom formatu
+40|Već je na popisu.
+41|Već je mono
+42|Već dobro komprimirano, nije se moglo smanjiti
+43|Animirani {0}: {1} bi zadržao samo jedan kadar, ostavljeno netaknuto
+44|Animacija zadržana ({0} kadrova)
+45|Animacija zadržana kao {0} ({1} kadrova): {2} ne podržava animaciju
+46|Izgled
+47|Pri toj veličini ostaje premalo bitova u sekundi za gledljiv video ili zvuk.
+48|Zvuk
+49|Samo zvuk, izvučen iz videozapisa
+50|Auto
+51|Auto smanjuje rezoluciju i broj sličica u sekundi samo kad odabrana veličina to traži. Najbolja kvaliteta je sporija.
+52|Vraćeno na zadanu mapu.
+53|Uravnoteženo
+54|Prije
+55|Najbolja kvaliteta
+56|Crno-bijelo
+57|Ondje se ne može spremiti
+58|Odustani
+59|Promijeni mapu
+60|Promijeni postavke
+61|Provjeri prije spremanja (prikaz prije/poslije)
+62|Provjeri
+63|Provjeri otvara li se datoteka ispravno u čitaču PDF-a.
+64|Provjeri reproducira li se datoteka ispravno u playeru.
+65|Provjeri prvu
+66|Odaberi drugu odredišnu mapu gumbom „Promijeni mapu”.
+67|Čišćenje (bez gubitka kvalitete)
+68|Očisti povijest
+69|Isprazni popis
+70|Klikni datoteku za usporedbu prije i poslije
+71|Klikni sliku da je vidiš veću.
+72|Klikni za usporedbu prije i poslije, pa spremi
+73|Zatvori
+74|Zatvori druge programe i pokušaj ponovno, ili obradi ovu datoteku zasebno.
+75|Zatvori programe koji koriste datoteku.
+76|Usporedi prije i poslije
+77|Komprimiraj
+78|Komprimiraj fotografije
+79|Komprimiraj fotografije ({0} unutra)
+80|Komprimiraj slike unutra
+81|Komprimiraj slike unutra ({0} velikih)
+82|Komprimiraj s FileCompressorom
+83|Komprimirano
+84|Komprimiranje
+85|Komprimiranje fotografija
+86|Komprimiranje slika
+87|Komprimiranje {0} kadrova
+88|Komprimiranje {0} stranica
+89|Pretvori
+90|Samo pretvori
+91|Pretvori u mono
+92|Pretvaranje
+93|Nije se moglo dodati u izbornik desnog klika.
+94|Cilj se nije mogao potpuno dosegnuti bez uništavanja kvalitete.
+95|Cilj se nije mogao potpuno dosegnuti bez uništavanja animacije
+96|Cilj se nije mogao potpuno dosegnuti bez uništavanja stranica
+97|Cilj se nije mogao potpuno dosegnuti bez uništavanja slike
+98|Cilj se nije mogao potpuno dosegnuti bez uništavanja slika
+99|Cilj se nije mogao potpuno dosegnuti bez uništavanja slika.
+100|Original se nije mogao premjestiti u mapu Original.
+101|Ovaj PDF nije moguće otvoriti
+102|Ovaj PDF nije moguće otvoriti ({0})
+103|Vraćanje nije uspjelo: {0}
+104|Spremanje nije uspjelo: {0}
+105|Naslovna slika izostavljena ({0} je ne podržava)
+106|Ctrl+V lijepi datoteke i snimke zaslona
+107|Odreži početak ili kraj
+108|Tamno
+109|Izbriši ovaj predložak
+110|Različite postavke za svaku datoteku
+111|Digitalno potpisano: ostat će netaknuto da potpis ostane valjan
+112|Digitalno potpisano: ostavljeno netaknuto da potpis ostane valjan
+113|Odbaci
+114|Odbačeno, original netaknut
+115|Discord
+116|Ponovi s trenutačnim postavkama
+117|Gotovo
+118|Gotovo: 1 datoteka, ušteđeno {0}.
+119|Gotovo: datoteka {0}, ušteđeno {1}.
+120|Povlačenje gotovih datoteka iz prozora
+121|Ispusti datoteke ili mape ovdje
+122|Ispusti ih bilo gdje u prozoru{0}
+123|Ispusti ih izravno u WhatsApp, Discord, e-poštu ili mapu.
+124|Ispusti za dodavanje
+125|EXIF uklonjen
+126|Svaka datoteka završi na oko {0}% svoje veličine: video od 1 GB postaje oko {1}, PDF od 600 KB oko {2} KB.
+127|Svaki rezultat čeka na popisu kao „Za provjeru”: otvori ga, usporedi stranice ili slike jednu pored druge, pa Spremi ili Odbaci.
+128|E-pošta
+129|Kraj (m:ss)
+130|Svaka datoteka svodi se na oko {0} {1}.
+131|Točna veličina
+132|Ponovno raspakiraj cijeli zip i ostavi sve datoteke u mapi.
+133|Nije uspjelo
+134|Brzo
+135|FileCompressor.log u mapi programa: što je napravljeno i svaka pogreška
+136|Datoteke
+137|Datoteke koje su već manje preskaču se.
+138|Datoteke koje su već manje svejedno se optimiziraju, bez ciljanja niže.
+139|Datoteke se još komprimiraju.
+140|Datoteke mijenjaju format bez ciljane veličine. Odaberi formate na svakoj kartici ispod. Kad spremnik to dopušta (npr. MKV u MP4), video se ne kodira ponovno, pa se kvaliteta ne gubi. PDF i Office datoteke se preskaču.
+141|Datoteke ili cijele mape
+142|Obrazac za ispunjavanje: fontovi ostaju cijeli
+143|Konačna veličina u postotku
+144|Konačna veličina svake datoteke
+145|Fino podešavanje veličine
+146|Završeno.
+147|Fontovi zadržani cijeli (obrazac za ispunjavanje)
+148|Na primjer: E-pošta 300 KB
+149|Format
+150|Samo promjena formata
+151|Broj sličica u sekundi
+152|Oslobodi malo prostora ili odaberi drugu odredišnu mapu.
+153|Od sljedećeg pokretanja postavke se vraćaju na zadane.
+154|GPS lokacija i EXIF uklonjeni
+155|Općenito
+156|Prepolovi veličinu glasovnih snimki (predavanja, glasovne poruke, pozivi) bez čujnog gubitka. Za glazbu ostavi isključeno.
+157|Povijest
+158|Povijest i ušteđeni prostor
+159|Povijest očišćena.
+160|Koliko smanjiti
+161|Ako je video, odaberi video format umjesto MP3/M4A.
+162|Ako je antivirus stavio ffmpeg.exe u karantenu, vrati ga i dopusti ga.
+163|U Windowsima 11 nalazi se pod „Prikaži više mogućnosti”. Ako premjestiš mapu programa, ažurira se pri sljedećem pokretanju.
+164|Instagram
+165|Možda je to stara .doc/.ppt/.xls datoteka preimenovana u .docx/.pptx/.xlsx.
+166|Možda je zaštićena lozinkom.
+167|Možda koristi neobičan kodek ili je zaštićena od kopiranja (DRM, kao kupljeni filmovi).
+168|Premještena je, preimenovana ili izbrisana nakon dodavanja na popis.
+169|Vodi povijest
+170|Zadrži samo dio
+171|Zadrži original
+172|Nastavi
+173|Zadržava se {0}: od {1} do {2}.
+174|Jezik
+175|Ostavi polje prazno da zadržiš početak ili kraj.
+176|Svijetlo
+177|Svijetlo / tamno
+178|Zaštićeno lozinkom: ne može se pročitati
+179|M4A (samo zvuk)
+180|MP3 (samo zvuk)
+181|MP4 do 1080p, oko 40% izvorne veličine.
+182|Maks. visina
+183|Maks. širina
+184|Premjesti originale u mapu Original
+185|Višestranični TIFF ({0} stranica): {1} bi zadržao samo prvu stranicu, ostavljeno netaknuto
+186|Višestranični TIFF sa stranicama različitih veličina: ostavljeno netaknuto
+187|Naziv
+188|Sljedeća stranica
+189|Nema EXIF podataka
+190|Nema velikih slika
+191|Nema ugrađenih fontova
+192|Nema metapodataka
+193|Nema fotografija
+194|Nema slika za pretvaranje u sivo
+195|Bez gubitka kvalitete
+196|Bez gubitka kvalitete: metapodaci uklonjeni, fontovi skraćeni
+197|Bez gubitka kvalitete{0}
+198|Nema videa unutra, spremljeno kao M4A zvuk
+199|Nema ništa
+200|Nema dovoljno memorije
+201|Nema ništa za lijepljenje: kopiraj datoteke u Exploreru ili najprije napravi snimku zaslona.
+202|Ništa nije ušteđeno
+203|Još ništa. Komprimirane datoteke pojavljuju se ovdje.
+204|Isključeno: svaka datoteka koristi ove postavke. Uključeno: otvori datoteku na popisu da joj daš vlastitu veličinu i formate.
+205|Isključeno: veličina, formati i opcije po vrsti datoteke vraćaju se na zadane pri svakom pokretanju programa.
+206|Office
+207|Office datoteke ne mogu se ovdje prikazati. Otvori rezultat da ga provjeriš.
+208|Uključeno: otvori video (ili zvuk) na popisu da postaviš gdje počinje i završava. Ciljana veličina računa samo dio koji zadržiš.
+209|Otvori
+210|Otvori mapu
+211|Otvori je u Fotografijama ili Paintu, ponovno je spremi kao JPG ili PNG i pokušaj opet.
+212|Otvori je u Wordu, PowerPointu ili Excelu i spremi novu .docx/.pptx/.xlsx kopiju.
+213|Otvori je lozinkom i spremi ili ispiši kopiju bez zaštite, pa pokušaj ponovno.
+214|Otvori rezultat
+215|Otvori opcije datoteke i postavi duži dio za zadržavanje.
+216|Otvori datoteku zapisnika
+217|Opcije za ovu datoteku
+218|Opcije za ovu datoteku{0}
+219|Opus
+220|Ili je pretvori u Opus, koji bolje zvuči pri malim veličinama.
+221|Ili sam smanji rezoluciju u bloku Video.
+222|Ili je odreži na dio koji ti treba (opcije datoteke, Odreži).
+223|Ili upotrijebi Dijeli → FileCompressor iz Galerije, WhatsAppa ili Datoteka. Ništa ne napušta ovaj mobitel.
+224|Original vraćen
+225|Original vraćen{0}
+226|PDF i Office datoteke mogu se samo komprimirati
+227|Stranica {0} od {1}
+228|Postotak
+229|Postotak
+230|Fotografija
+231|Fotografije
+232|Fotografije se smanjuju samo koliko treba da se dosegne veličina. Crno-bijelo jako smanjuje skenove. Ponovna izrada stranica kao slika najmanja je za skenove, ali tekst se više ne može označiti.
+233|Odaberi veću veličinu u MB ili veći postotak.
+234|Odaberi veći postotak ili veću veličinu u MB.
+235|Odaberi kamo idu datoteke ili sve postavi sam ispod.
+236|Slike
+237|Reproduciraj
+238|Mogući uzroci
+239|Predložak „{0}” spremljen.
+240|Prethodna stranica
+241|Ispiši je u novi PDF, pa pokušaj ponovno.
+242|Privatnost
+243|Program
+244|Brzi predlošci
+245|Čitanje PDF-a
+246|Za provjeru
+247|Ponovno izradi stranice kao slike
+248|Ponovno izradi skenirane stranice kao slike
+249|Ponovna izrada stranica kao slika
+250|Smanjeno na 256 boja
+251|Zapamti zadnje postavke
+252|Ukloni EXIF podatke
+253|Ukloni GPS lokaciju i EXIF (ima GPS)
+254|Ukloni GPS lokaciju i EXIF podatke
+255|Ukloni s popisa
+256|Ukloni je s popisa i dodaj ponovno.
+257|Ukloni metapodatke
+258|Ukloni sličice i privitke
+259|Ukloni sličice i privitke{0}
+260|Uklonjeno iz izbornika desnog klika.
+261|Uklanja gdje je i kojim mobitelom fotografija snimljena. Sama slika se ne mijenja i ostaje ispravno okrenuta.
+262|Zamijeni trenutačnim postavkama
+263|Promijeni na točnu veličinu
+264|Promijeni veličinu na {0} × {1} px{2}
+265|Promijenjeno na širinu {0} px
+266|Rezolucija
+267|Vrati i izbriši komprimiranu kopiju
+268|Vrati i zadrži komprimiranu kopiju
+269|Vrati original
+270|Vratiti original?
+271|Rezultati su u mapi Compressed
+272|Rezultati idu u Compressed kao naziv_compressed{0}
+273|Isto kao ostale
+274|Spremi
+275|Spremi sve provjerene
+276|Spremi svih {0} bez provjere
+277|Spremi kao
+278|Spremi kao predložak
+279|Spremi trenutačne…
+280|Spremi rezultate u
+281|Spremi u
+282|Spremljeno kao {0}
+283|Spremljeno kao {0} (iz {1})
+284|Postavke po vrsti datoteke
+285|Prečaci
+286|Prikaži u mapi
+287|Veličina za ovu datoteku
+288|Veličina u pikselima
+289|Veličina, formati i opcije svake kartice spremaju se pod ovim nazivom. Desnom tipkom klikni jedan od svojih predložaka da ga promijeniš ili izbrišeš.
+290|Preskoči datoteke već manje od cilja
+291|Preskočeno
+292|Neke rijetke varijante (neobični TIFF ili HEIC) nisu podržane.
+293|Nešto je neočekivano pošlo po zlu
+294|Zvuk
+295|Brzina
+296|Početak (m:ss)
+297|Početak i kraj razmaknuti su manje od pola sekunde.
+298|Zaustavi i zatvori
+299|Zaustaviti sada? Nedovršeni originali ostaju netaknuti.
+300|Zaustavljeno, original netaknut
+301|Zaustavljeno.
+302|Zaustavljanje…
+303|Podržane datoteke
+304|Prebaci između svijetlog i tamnog
+305|Sustav
+306|Dodirni za dodavanje datoteka
+307|Telegram
+308|PDF samo s tekstom: manji ne može biti bez gubitka kvalitete
+309|Office datoteka nije se mogla otvoriti
+310|PDF se nije mogao otvoriti
+311|Disk je pun
+312|Kraj mora biti nakon početka.
+313|Mehanizam se neočekivano zaustavio.
+314|Datoteka ffmpeg.exe pokraj programa uklonjena je ili ju je blokirao antivirus.
+315|Datoteka se nije mogla pročitati
+316|Datoteka nema zvučni zapis za komprimiranje ili izvlačenje.
+317|Datoteka se uvijek bolje sažima. Kad je ovo uključeno, smanjuju se i velike slike unutra. Videozapisi i zvukovi unutra ostaju kakvi jesu. Datoteke zadržavaju format.
+318|Datoteka je zaštićena lozinkom
+319|Datoteka je zaštićena pa se njezin sadržaj ne može pročitati ni prepisati.
+320|Datoteka je vrlo velika (npr. golema fotografija ili PDF) i mehanizam se zaustavio.
+321|Datoteka je vrlo velika (npr. golema fotografija ili PDF).
+322|Datoteke više nema
+323|Datoteka je možda oštećena ili u varijanti koju program ne podržava.
+324|Datoteka je možda oštećena ili nepotpuna (npr. prekinuto preuzimanje ili kopiranje).
+325|Datoteka je možda oštećena ili samo djelomično preuzeta.
+326|Datoteka je možda oštećena ili unatoč nastavku zapravo nije slika.
+327|Datoteka možda ima oštećene vremenske oznake ili neobičnu strukturu.
+328|Originala više nema u mapi Original.
+329|U odredišnu mapu ne može se pisati pa se koristi zadana mapa.
+330|Odredišna mapa možda je samo za čitanje ili zaštićena, ili je datoteka otvorena u drugom programu.
+331|Stranice izgledaju potpuno isto. Datoteka se i svaki put bolje sažima. Digitalno potpisani PDF-ovi uvijek ostaju netaknuti, a fontovi u obrascima za ispunjavanje ostaju cijeli.
+332|Fotografija stane u ovaj okvir i zadrži oblik. Ostavi jednu stranu praznu da postaviš samo drugu. Manje fotografije se ne povećavaju.
+333|Slika se nije mogla otvoriti
+334|Odabrana veličina je premala
+335|Odabrana veličina je premala za ovaj video
+336|Rez je prekratak
+337|Nedostaje video mehanizam
+338|Video/zvučni mehanizam nije mogao pročitati ni zapisati ovu datoteku
+339|Cijela datoteka traje {0}. Ostavi polje prazno da zadržiš početak ili kraj.
+340|Unutra nema slika za komprimiranje.
+341|Nema dovoljno slobodnog prostora za komprimiranu kopiju.
+342|U ovoj datoteci nema zvuka
+343|Ovaj PDF je zaštićen lozinkom.
+344|Ova datoteka ne može se ovdje prikazati{0}
+345|Ova datoteka nije valjan Office dokument (ili je zaštićena lozinkom).
+346|Ova datoteka nije valjan Office dokument.
+347|Te datoteke nisu podržane.
+348|Savjet: Ctrl+V lijepi datoteke kopirane u Exploreru ili snimku zaslona.
+349|Odreži
+350|Skrati fontove
+351|Skrati fontove na korištena slova
+352|Najprije pokušaj „Samo pretvori” u MP4, pa komprimiraj pretvorenu datoteku.
+353|Pokušaj ponovno
+354|Pokušaj ponovno samo s tom datotekom.
+355|Jedinica
+356|Najprije upotrijebi „Samo pretvori” u MP4, pa komprimiraj pretvorenu datoteku.
+357|Koristi zadano
+358|Video
+359|Videozapisi
+360|Videozapisi, fotografije, PDF-ovi, zvuk i Office datoteke, izvanmrežno
+361|Videozapisi i zvukovi ugrađeni u datoteku ostavljeni su kakvi su bili.
+362|Pričekaj da popis završi.
+363|Što pokušati
+364|Kad završi
+365|Tijekom komprimiranja
+366|Zašto nije uspjelo?
+367|Windows nije dopustio zapisivanje datoteke
+368|Windows ne dopušta pisanje u tu mapu. Odaberi drugu.
+369|Obavijest sustava Windows
+370|Bez gubitka kvalitete
+371|Word, PowerPoint i Excel
+372|U tijeku
+373|Upiši vrijeme kao minute:sekunde, npr. 1:30.
+374|Tvoj predložak: {0}.
+375|oko {0} {1} po datoteci
+376|već dobro komprimirano
+377|animirano, {0} kadrova
+378|privitci uklonjeni
+379|ispod cilja
+380|ne može se pročitati
+381|ne može se pretvoriti
+382|ova se slika nije mogla otvoriti: {0}
+383|trajanje se nije moglo pročitati
+384|trajanje ovog zvuka nije se moglo pročitati
+385|rez {0}–{1}
+386|ffmpeg nije mogao obraditi datoteku: nema zapisa
+387|ffmpeg nije mogao obraditi datoteku: nema videa
+388|ffmpeg nije mogao obraditi datoteku: nečitljivo
+389|ffmpeg nije mogao obraditi datoteku: {0}
+390|nedostaje ffmpeg
+391|fontovi skraćeni
+392|samo promjena formata
+393|vraća se iz mape Original tamo gdje je bila.
+394|zadržano kao TIFF: {0} može imati samo jednu stranicu
+395|metapodaci uklonjeni
+396|nema zvučnog zapisa
+397|nema slika
+398|ili ih dodaj gumbima. Ništa ne napušta ovo računalo.
+399|vlastite postavke
+400|stranice kao slike
+401|za provjeru
+402|isti format
+403|cilj je premalen
+404|cilj je premalen: ovaj video traje {0} min, treba mu najmanje {1} MB
+405|samo tekst
+406|kraj
+407|rez ostavlja manje od pola sekunde
+408|sličice uklonjene
+409|nepoznata pogreška
+410|nepoznat format
+411|nepoznat format {0}
+412|{0} ({1} bajtova)
+413|gotovo {0}, ušteđeno {1}
+414|Preskočeno datoteka: {0} (vrsta nije podržana).
+415|Datoteka: {0}
+416|Datoteka: {0}, {1}
+417|{0} vraća se iz mape Original tamo gdje je bila.
+418|Stranica: {0}
+419|Fotografija: {0}
+420|Izostavljeni slikovni titlovi: {0} ({2} ih ne podržava, MKV da)
+421|Slika: {0}
+422|Za provjeru: {0}
+423|Za provjeru: {0}. Klikni svaku za usporedbu, pa spremi.
+424|Spremljeno u mapu Compressed: {0}.
+425|{0} {1} od {2}
+426|{0}% veličine
+427|· original vraćen
+428|Ovaj video traje {0} min: pri ovoj veličini treba mu najmanje {1} MB.
+429|(zadano)
+430|Oko {0} {1} po datoteci
+431|Dopusti
+432|Dopusti pristup svim datotekama
+433|Samo pretvorba, bez ciljane veličine
+434|Zapisnik nije moguće spremiti: {0}
+435|Preuzmi verziju {0}
+436|Formati ostaju isti. Dodirni za promjenu
+437|Kasnije
+438|Zapisnik spremljen u Preuzimanja: {0}
+439|Potrebno za premještanje izvornika u mapu Original, spremanje u bilo koju mapu i čitanje velikih videozapisa bez prethodnog kopiranja.
+440|Otvori postavke
+441|Spremi zapisnik
+442|Sprema u tekstnu datoteku u Preuzimanja što je aplikacija radila i svaku pogrešku
+443|Postavke
+444|Podijeli rezultat
+445|Dostupno je ažuriranje
+446|Verzija {0} je spremna (imaš {1}). Otvori preuzetu datoteku da je instaliraš preko ove aplikacije; postavke ostaju.
+447|do {0}p
+448|{0} zvuk
+449|{0} videozapisi
+450|{0} % izvorne veličine
+451|1 datoteka gotova
+452|Dodaj datoteke pomoću
+453|Dopusti pristup svim datotekama kad aplikacija zatraži.
+454|Animirani GIF: pretvorba u format fotografije zadržala bi samo jedan kadar, ostavljeno netaknuto
+455|Animirani WebP: ostavljeno netaknuto
+456|Animirani WebP: telefon ga ne može ponovno sažeti bez gubitka animacije, ostavljeno netaknuto
+457|Animacija zadržana kao GIF ({0} kadrova): {1} ne podržava animaciju
+458|Ova se datoteka ne može otvoriti.
+459|Odaberi drugu odredišnu mapu u Postavkama.
+460|Zatvori druge aplikacije i pokušaj ponovno ili obradi ovu datoteku zasebno.
+461|Sažimanje {0} od {1}
+462|Sažimanje
+463|Cilj nije bilo moguće posve postići bez uništavanja kvalitete
+464|Izvornik nije moguće premjestiti u mapu Original
+465|Ponovno instaliraj aplikaciju iz najnovijeg izdanja.
+466|Možda koristi neobičan kodek ili je zaštićena od kopiranja (DRM).
+467|Zadržano kao GIF: telefon ne može izraditi animirani WebP
+468|Mono
+469|Višestranični TIFF ({0} stranica): telefon bi mogao spremiti samo prvu stranicu, ostavljeno netaknuto
+470|Nijedna aplikacija na telefonu ne može otvoriti ovu datoteku.
+471|Nije pronađen preglednik za otvaranje poveznice.
+472|Nije pronađen upravitelj datoteka.
+473|U toj mapi nema datoteka koje aplikacija može sažeti.
+474|Bez gubitka kvalitete: {0}
+475|Nije ponovno kodirano: bez gubitka kvalitete
+476|Zadržan je samo prvi zvučni zapis, da stane u veličinu
+477|Otvori je u Galeriji, spremi ili podijeli kopiju kao JPG pa pokušaj ponovno.
+478|Ili sam smanji razlučivost u Postavkama.
+479|Pohrana telefona
+480|Odaberi mapu u pohrani telefona ili na SD kartici.
+481|Odaberi veći postotak ili veću veličinu.
+482|Zaštićeni PDF (ograničenja uređivanja): ostavljeno netaknuto
+483|Čitanje datoteke
+484|Promijenjena veličina na {0}
+485|Rezultati su u {0}
+486|Spremi bez provjere
+487|Spremanje
+488|Podijeli
+489|Pokretanje
+490|Pokretanje…
+491|Aplikacija možda nema pristup svim datotekama ili je odredišna mapa zaštićena.
+492|Aplikacija je instalirana bez video pogona ili ga je telefon blokirao.
+493|Datoteke više nema.
+494|Datoteka je možda oštećena ili u varijanti koju aplikacija ne podržava.
+495|Izvornik je ostao gdje jest (aplikacija koja ga je podijelila ne dopušta premještanje)
+496|Telefon nije dopustio zapisivanje datoteke
+497|Pohrana telefona je puna
+498|Izrezano {0}–{1}
+499|Vrlo velika slika: otvorena u manjoj veličini
+500|Vrlo niska kvaliteta: videozapis je dug za ovu veličinu
+501|Videozapisi/zvukovi ugrađeni u datoteku ostali su isti
+502|Pričekaj da trenutni posao završi, a zatim dodaj još datoteka.
+503|Zadržano {0} zvučnih zapisa
+504|Gotovo datoteka: {0}

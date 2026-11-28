@@ -19,6 +19,11 @@ const FFMPEG = app.isPackaged
 // Portable: settings in a "data" folder next to the exe when that place can be written
 function writable(dir) { try { fs.mkdirSync(dir, { recursive: true }); fs.accessSync(dir, fs.constants.W_OK); return true; } catch (_) { return false; } }
 if (app.isPackaged && writable(path.join(exeDir, "data"))) app.setPath("userData", path.join(exeDir, "data"));
+// languages (www/locales) and the log file FileCompressor.log in the program folder
+const L = require("./i18n_main");
+const { T } = L;
+L.init(WWW, exeDir);
+L.startLog("FileCompressor", exeDir);
 function defaultOutDir() {
   // results go next to the program (Compressed and Original folders), as before; elsewhere if that place is read-only
   if (app.isPackaged && writable(exeDir)) return exeDir;
@@ -55,6 +60,7 @@ function createWindow() {
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, spellcheck: false },
   });
   if (st.max) win.maximize();
+  L.watchWindow(win);
   win.once("ready-to-show", () => win.show());
   win.loadURL("app://filecompressor/index.html");
   win.webContents.setWindowOpenHandler(({ url }) => { if (/^https?:/i.test(url)) shell.openExternal(url); return { action: "deny" }; });
@@ -63,8 +69,8 @@ function createWindow() {
     saveState();
     if (worker) {
       e.preventDefault();
-      const r = await dialog.showMessageBox(win, { type: "question", buttons: ["Keep working", "Stop and close"], defaultId: 0, cancelId: 0,
-        title: "FileCompressor", message: "Files are still being compressed.", detail: "Stop now? Originals that were not finished stay untouched." });
+      const r = await dialog.showMessageBox(win, { type: "question", buttons: [T("Keep working"), T("Stop and close")], defaultId: 0, cancelId: 0,
+        title: "FileCompressor", message: T("Files are still being compressed."), detail: T("Stop now? Originals that were not finished stay untouched.") });
       if (r.response === 1) { try { worker.kill(); } catch (_) { /* */ } worker = null; win.destroy(); }
     }
   });
@@ -106,36 +112,43 @@ else {
 
 // ------------------------------------------------------------------ what the page may ask for
 const MEDIA_FILTER = [
-  { name: "Supported files", extensions: ALL_EXT },
-  { name: "All files", extensions: ["*"] },
+  { name: T("Supported files"), extensions: ALL_EXT },
+  { name: T("All files"), extensions: ["*"] },
 ];
 ipcMain.handle("pick-files", async () => {
-  const r = await dialog.showOpenDialog(win, { title: "Add files", properties: ["openFile", "multiSelections"], filters: MEDIA_FILTER });
+  const r = await dialog.showOpenDialog(win, { title: T("Add files"), properties: ["openFile", "multiSelections"], filters: MEDIA_FILTER });
   return r.canceled ? [] : expand(r.filePaths).files;
 });
 ipcMain.handle("pick-folder", async () => {
-  const r = await dialog.showOpenDialog(win, { title: "Add a folder", properties: ["openDirectory"] });
+  const r = await dialog.showOpenDialog(win, { title: T("Add a folder"), properties: ["openDirectory"] });
   return r.canceled ? null : expand(r.filePaths);
 });
 ipcMain.handle("expand", (_e, paths) => expand(paths));
 ipcMain.on("default-out", (e) => { e.returnValue = defaultOutDir(); });
 ipcMain.handle("choose-out", async (_e, current) => {
-  const r = await dialog.showOpenDialog(win, { title: "Save results in", defaultPath: current || undefined, properties: ["openDirectory", "createDirectory"] });
+  const r = await dialog.showOpenDialog(win, { title: T("Save results in"), defaultPath: current || undefined, properties: ["openDirectory", "createDirectory"] });
   if (r.canceled || !r.filePaths[0]) return null;
-  if (!writable(r.filePaths[0])) { dialog.showErrorBox("Can't save there", "Windows doesn't allow writing in that folder. Choose another one."); return null; }
+  if (!writable(r.filePaths[0])) { dialog.showErrorBox(T("Can't save there"), T("Windows doesn't allow writing in that folder. Choose another one.")); return null; }
   return r.filePaths[0];
 });
 ipcMain.on("start", (_e, items, settings) => {
   if (worker) return;
   if (!writable(settings.outputDir)) {
     settings.outputDir = defaultOutDir();
-    if (win) win.webContents.send("note", "The output folder can't be written, so the default folder is used.");
+    if (win) win.webContents.send("note", T("The output folder can't be written, so the default folder is used."));
   }
   worker = utilityProcess.fork(path.join(__dirname, "engine", "worker.js"), [], { serviceName: "FileCompressor engine", stdio: "ignore" });
   let finished = false;
   const byId = new Map(items.map(i => [i.id, i]));
   worker.on("message", (m) => {
     if (m.type === "item" && m.data.status === "done" && settings.history !== false) addHistory(byId.get(m.data.id), m.data);
+    if (m.type === "item" && (m.data.status === "done" || m.data.status === "failed" || m.data.status === "skipped")) {
+      const it = byId.get(m.data.id) || {};
+      if (m.data.status === "failed") L.log("error", `failed: ${it.path || it.name} (${it.kind}, ${settings.mode}): ${m.data.error}`);
+      else if (m.data.status === "skipped") L.log("info", `skipped: ${it.name}: ${m.data.reason}`);
+      else L.log("info", `done: ${it.name} ${m.data.oldSize} -> ${m.data.newSize} bytes${m.data.note ? " (" + m.data.note + ")" : ""}`);
+    }
+    if (m.type === "finished") L.log("info", `finished: ${m.data.done || 0} done${m.data.stopped ? ", stopped by the user" : ""}`);
     if (!win) return;
     if (m.type === "item") win.webContents.send("item", m.data);
     else if (m.type === "finished") { finished = true; win.webContents.send("finished", m.data); try { worker.kill(); } catch (_) { /* */ } }
@@ -143,10 +156,12 @@ ipcMain.on("start", (_e, items, settings) => {
   });
   worker.on("exit", () => {
     // the engine crashed (for example out of memory): tell the page so the list is not stuck
+    if (!finished) L.log("error", "the engine stopped unexpectedly (out of memory or crashed)");
     if (!finished && win) win.webContents.send("finished", { crashed: true, outRoot: settings.outputDir });
     worker = null;
     if (win) win.setProgressBar(-1);
   });
+  L.log("info", `start: ${items.length} file(s), mode ${settings.mode}${settings.mode === "SIZE" ? " " + settings.targetBytes + " bytes" : settings.mode === "PERCENT" ? " " + settings.percent + "%" : ""}`);
   worker.postMessage({ type: "start", items, settings, ffmpeg: FFMPEG });
 });
 ipcMain.on("progress", (_e, frac) => { if (win) win.setProgressBar(frac < 0 ? -1 : frac); });
@@ -158,6 +173,10 @@ ipcMain.on("set-theme", (_e, theme, dark) => {
   nativeTheme.themeSource = theme === "light" || theme === "dark" ? theme : "system";
   if (win) { win.setBackgroundColor(dark ? "#111317" : "#f2f4f7"); saveState({ theme }); }
 });
+ipcMain.on("lang-get", (e) => { e.returnValue = L.getLang(); });
+ipcMain.on("lang-set", (e, c) => { e.returnValue = L.setLang(c); L.log("info", "language: " + c); });
+ipcMain.on("log", (_e, level, msg) => L.log(level === "error" ? "error" : "info", "page: " + msg));
+ipcMain.on("open-log", () => { const f = L.logFile(); if (f && fs.existsSync(f)) shell.openPath(f); });
 ipcMain.on("ready", () => { readyForFiles = true; if (pendingPaths.length && win) win.webContents.send("open-paths", pendingPaths); pendingPaths = []; });
 
 // ------------------------------------------------------------------ history (data/history.json next to the program)
@@ -285,7 +304,7 @@ async function setExplorerMenu(on) {
   let ok = true;
   for (const k of MENU_KEYS) {
     if (!on) { await reg(["delete", k, "/f"]); continue; }
-    ok = (await reg(["add", k, "/ve", "/d", "Compress with FileCompressor", "/f"])) && ok;
+    ok = (await reg(["add", k, "/ve", "/d", T("Compress with FileCompressor"), "/f"])) && ok;
     ok = (await reg(["add", k, "/v", "Icon", "/d", `"${exe}"`, "/f"])) && ok;
     ok = (await reg(["add", k, "/v", "MultiSelectModel", "/d", "Player", "/f"])) && ok;
     ok = (await reg(["add", k + "\\command", "/ve", "/d", `"${exe}" "%1"`, "/f"])) && ok;

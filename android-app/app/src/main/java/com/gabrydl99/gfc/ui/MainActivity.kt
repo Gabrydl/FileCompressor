@@ -31,8 +31,13 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.webkit.WebViewAssetLoader
+import com.gabrydl99.gfc.work.AppLog
 import com.gabrydl99.gfc.work.CompressService
 import com.gabrydl99.gfc.work.Engine
+import com.gabrydl99.gfc.work.Preview
+import com.gabrydl99.gfc.work.Tr
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import kotlin.concurrent.thread
 import kotlin.math.roundToInt
@@ -95,7 +100,15 @@ class MainActivity : ComponentActivity() {
             setSupportMultipleWindows(false)
         }
         web.webViewClient = object : WebViewClient() {
-            override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? = assets.shouldInterceptRequest(request.url)
+            override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
+                val u = request.url
+                if (u.host == HOST && (u.path ?: "").startsWith("/local/")) {
+                    // pictures of the before/after view and the files it plays (only those Preview handed out)
+                    val f = Preview.fileOf(u.lastPathSegment ?: "") ?: return WebResourceResponse("text/plain", "utf-8", 404, "Not found", emptyMap(), null)
+                    return try { WebResourceResponse(mimeOf(f), null, f.inputStream()) } catch (_: Exception) { null }
+                }
+                return assets.shouldInterceptRequest(u)
+            }
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                 if (request.url.host == HOST) return false
                 openExternal(request.url)
@@ -153,10 +166,10 @@ class MainActivity : ComponentActivity() {
 
     private fun add(list: List<Uri>) = thread {
         val skipped = Engine.addUris(list)
-        if (skipped > 0) toast("$skipped file(s) skipped: type not supported.")
+        if (skipped > 0) toast(Tr.t("{0} file(s) skipped: type not supported.", skipped))
     }
 
-    private fun toast(t: String) = runOnUiThread { Toast.makeText(this, t, Toast.LENGTH_LONG).show() }
+    private fun toast(t: String) = runOnUiThread { Toast.makeText(this, Tr.t(t), Toast.LENGTH_LONG).show() }
 
     // ------------------------------------------------------------------ what the page asks for
     private fun doOp(code: Int, arg: String) {
@@ -168,7 +181,7 @@ class MainActivity : ComponentActivity() {
                     putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
                     putExtra(Intent.EXTRA_MIME_TYPES, MIMES)
                 }
-                try { pickFiles.launch(Intent.createChooser(i, "Add files with")) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
+                try { pickFiles.launch(Intent.createChooser(i, Tr.t("Add files with"))) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
             }
             2 -> try { pickFolder.launch(null) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
             3 -> try { pickOut.launch(null) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
@@ -210,7 +223,7 @@ class MainActivity : ComponentActivity() {
         val f = File(p)
         if (!f.exists()) { toast("The file isn't there anymore."); return }
         val uri = try { FileProvider.getUriForFile(this, "$packageName.files", f) } catch (_: Exception) { toast("Can't open this file."); return }
-        val i = if (share) Intent.createChooser(Intent(Intent.ACTION_SEND).setType(mimeOf(f)).putExtra(Intent.EXTRA_STREAM, uri).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), "Share")
+        val i = if (share) Intent.createChooser(Intent(Intent.ACTION_SEND).setType(mimeOf(f)).putExtra(Intent.EXTRA_STREAM, uri).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), Tr.t("Share"))
         else Intent(Intent.ACTION_VIEW).setDataAndType(uri, mimeOf(f)).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         try { startActivity(i) } catch (_: ActivityNotFoundException) { toast("No app on the phone can open this file.") }
     }
@@ -229,7 +242,7 @@ class MainActivity : ComponentActivity() {
                 } catch (_: Exception) { }
             }
         }
-        toast("Results are in " + dir.absolutePath.replace(Environment.getExternalStorageDirectory().absolutePath, "Phone storage"))
+        toast(Tr.t("Results are in {0}", dir.absolutePath.replace(Environment.getExternalStorageDirectory().absolutePath, Tr.t("Phone storage"))))
     }
 
     private fun docIdOf(path: String): String? {
@@ -263,6 +276,43 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface fun encoders(): String = "libx264,libvpx-vp9,aac,libmp3lame,libopus,libvorbis"
         @JavascriptInterface fun initialSettings(): String = Engine.settingsJson()
         @JavascriptInterface fun putSettings(json: String?) { if (json != null) Engine.putSettings(json) }
+        @JavascriptInterface fun log(level: String?, msg: String?) { AppLog.line(level ?: "INFO", msg ?: "") }
+        @JavascriptInterface fun setLang(code: String?) { Tr.setLang(this@MainActivity, code ?: "") }
+        /** Slow work asked by the page: runs on its own thread, the answer comes back through window.__gfcReply(id, json). */
+        @JavascriptInterface fun call(id: Int, method: String?, arg: String?) {
+            thread {
+                val res: String = try {
+                    when (method) {
+                        "start" -> {
+                            Engine.prepare(arg ?: "{}")
+                            runOnUiThread { doOp(5, "") }
+                            "true"
+                        }
+                        "inspect" -> {
+                            val ids = JSONArray(arg ?: "[]")
+                            val o = JSONObject()
+                            for (k in 0 until ids.length()) o.put(ids.getInt(k).toString(), Engine.inspect(ids.getInt(k)))
+                            o.toString()
+                        }
+                        "preview" -> { val j = JSONObject(arg ?: "{}"); Preview.make(j.getJSONObject("item"), j.optInt("page")).toString() }
+                        "reviewSave" -> { val j = JSONObject(arg ?: "{}"); Engine.reviewSave(j.getInt("id"), (j.optJSONObject("settings") ?: JSONObject()).toString()).toString() }
+                        "reviewDiscard" -> { Engine.reviewDiscard(arg ?: ""); "true" }
+                        "history" -> { val h = Engine.history(); val r = JSONArray(); for (k in h.length() - 1 downTo 0) r.put(h.get(k)); r.toString() }
+                        "historyClear" -> { Engine.historyClear(); "true" }
+                        "restore" -> { val j = JSONObject(arg ?: "{}"); Engine.restore(j.getJSONObject("entry"), j.optBoolean("removeCopy")).toString() }
+                        else -> "null"
+                    }
+                } catch (e: Throwable) {
+                    AppLog.error("Page call $method failed", e)
+                    JSONObject().put("ok", false).put("error", e.message ?: e.javaClass.simpleName).toString()
+                }
+                runOnUiThread { if (!isDestroyed) web.evaluateJavascript("window.__gfcReply&&window.__gfcReply($id, ${JSONObject.quote(res)})", null) }
+            }
+        }
+        /** "OK:<file name>" when the log was saved in Download, otherwise "ERR:<reason>". */
+        @JavascriptInterface fun saveLog(): String = try { "OK:" + AppLog.saveToDownloads(this@MainActivity) } catch (e: Throwable) {
+            AppLog.error("Save log failed", e); "ERR:" + (e.message ?: e.javaClass.simpleName)
+        }
     }
 
     companion object {

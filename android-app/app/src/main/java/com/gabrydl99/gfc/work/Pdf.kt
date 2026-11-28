@@ -104,9 +104,9 @@ object Pdf {
     }
 
     /** Lossless clean-up: nothing visible changes. */
-    private fun cleanup(doc: PDDocument): List<String> {
+    private fun cleanup(doc: PDDocument, meta: Boolean, extras: Boolean): List<String> {
         val done = mutableListOf<String>()
-        try {
+        if (meta) try {
             val trailer = doc.document.trailer
             val info = trailer.getDictionaryObject(COSName.INFO) as? COSDictionary
             if (info != null && info.size() > 0) { trailer.removeItem(COSName.INFO); done.add("metadata removed") }
@@ -115,7 +115,7 @@ object Pdf {
             root.removeItem(COSName.getPDFName("PieceInfo"))
         } catch (_: Exception) { }
         var thumbs = 0
-        try {
+        if (extras) try {
             for (p in doc.pages) {
                 val d = p.cosObject
                 if (d.containsKey(COSName.getPDFName("Thumb"))) { d.removeItem(COSName.getPDFName("Thumb")); thumbs++ }
@@ -123,7 +123,7 @@ object Pdf {
             }
         } catch (_: Exception) { }
         if (thumbs > 0) done.add("thumbnails removed")
-        try {
+        if (extras) try {
             val names = doc.documentCatalog.cosObject.getDictionaryObject(COSName.NAMES) as? COSDictionary
             if (names != null && names.containsKey(COSName.EMBEDDED_FILES)) { names.removeItem(COSName.EMBEDDED_FILES); done.add("attachments removed") }
         } catch (_: Exception) { }
@@ -142,8 +142,8 @@ object Pdf {
         return done
     }
 
-    private fun shrink(doc: PDDocument, img: PDImageXObject, maxDim: Int, quality: Int): PDImageXObject? {
-        if (!isPhoto(img)) return null
+    private fun shrink(doc: PDDocument, img: PDImageXObject, maxDim: Int, quality: Int, gray: Boolean = false): PDImageXObject? {
+        if (!isPhoto(img) && !(gray && !img.isStencil && img.width.toLong() * img.height >= 4096)) return null
         val c = img.cosObject
         if (c.containsKey(COSName.SMASK) || c.containsKey(COSName.MASK)) return null
         val raw = rawLen(img)
@@ -151,10 +151,10 @@ object Pdf {
         try {
             val s = min(1.0, maxDim.toDouble() / max(bmp.width, bmp.height))
             val b1 = if (s < 1) Images.scaled(bmp, max(1, (bmp.width * s).roundToInt()), max(1, (bmp.height * s).roundToInt())) else bmp
-            val b2 = if (b1.hasAlpha()) Images.flattenWhite(b1) else b1
+            val b2 = if (gray) grayOf(b1) else if (b1.hasAlpha()) Images.flattenWhite(b1) else b1
             try {
                 val n = JPEGFactory.createFromImage(doc, b2, quality / 100f)
-                if (n.cosObject.length > raw * 0.9) return null
+                if (n.cosObject.length > raw * 0.9 && !gray) return null
                 return n
             } finally {
                 if (b2 !== b1) b2.recycle()
@@ -163,21 +163,33 @@ object Pdf {
         } finally { bmp.recycle() }
     }
 
+    /** The picture in shades of grey, on white. */
+    private fun grayOf(b: Bitmap): Bitmap {
+        val out = Bitmap.createBitmap(b.width, b.height, Bitmap.Config.ARGB_8888)
+        val c = android.graphics.Canvas(out)
+        c.drawColor(Color.WHITE)
+        val p = android.graphics.Paint(android.graphics.Paint.FILTER_BITMAP_FLAG)
+        p.colorFilter = android.graphics.ColorMatrixColorFilter(android.graphics.ColorMatrix().apply { setSaturation(0f) })
+        c.drawBitmap(b, 0f, 0f, p)
+        return out
+    }
+
     private class Built(val file: File, val count: Int, val done: List<String>)
 
-    private fun build(src: File, out: File, pic: Pair<Int, Int>?, ctx: Ctx): Built {
+    private fun build(src: File, out: File, pic: Pair<Int, Int>?, ctx: Ctx, s: Settings): Built {
         val doc = load(src)
         try {
-            val done = cleanup(doc)
+            val done = cleanup(doc, s.pdfMeta, s.pdfExtras)
             var count = 0
-            if (pic != null) count = walkImages(doc) { img -> ctx.check(); shrink(doc, img, pic.first, pic.second) }
+            val photos = pic != null && s.pdfPhotos
+            if (photos || s.pdfGray) count = walkImages(doc) { img -> ctx.check(); shrink(doc, img, if (photos) pic!!.first else 99999, if (photos) pic!!.second else 85, s.pdfGray) }
             doc.save(out)
             return Built(out, count, done)
         } finally { doc.close() }
     }
 
     /** Every page becomes one JPEG picture (smallest for scans; text is no longer selectable). */
-    private fun asPictures(src: File, out: File, dpi: Int, quality: Int, ctx: Ctx) {
+    private fun asPictures(src: File, out: File, dpi: Int, quality: Int, ctx: Ctx, gray: Boolean = false) {
         val pfd = ParcelFileDescriptor.open(src, ParcelFileDescriptor.MODE_READ_ONLY)
         val r = try { PdfRenderer(pfd) } catch (e: Exception) { pfd.close(); throw Fail("Couldn't open this PDF (" + e.message + ")") }
         val doc = PDDocument()
@@ -191,7 +203,9 @@ object Pdf {
                 page.render(bmp, null, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT)
                 page.close()
                 val bos = ByteArrayOutputStream()
-                bmp.compress(Bitmap.CompressFormat.JPEG, quality, bos)
+                val pic = if (gray) grayOf(bmp) else bmp
+                pic.compress(Bitmap.CompressFormat.JPEG, quality, bos)
+                if (pic !== bmp) pic.recycle()
                 bmp.recycle()
                 val pg = PDPage(PDRectangle(wPt.toFloat(), hPt.toFloat()))
                 doc.addPage(pg)
@@ -221,7 +235,7 @@ object Pdf {
             for ((i, step) in PAGE_LADDER.withIndex()) {
                 ctx.check()
                 val f = File(ctx.tmp, "p${k++}.pdf")
-                asPictures(src, f, step.first, step.second, ctx)
+                asPictures(src, f, step.first, step.second, ctx, s.pdfGray)
                 keep(f, 1, listOf("pages as pictures"))
                 ctx.progress((i + 1).toDouble() / PAGE_LADDER.size)
                 if (f.exists() && f.length() <= target) break
@@ -229,15 +243,15 @@ object Pdf {
         } else {
             // 1) lossless: never changes how the pages look
             ctx.stage("Cleaning up (no quality loss)")
-            val b0 = build(src, File(ctx.tmp, "p${k++}.pdf"), null, ctx)
+            val b0 = build(src, File(ctx.tmp, "p${k++}.pdf"), null, ctx, s)
             keep(b0.file, b0.count, b0.done)
             ctx.progress(0.15)
             // 2) photos, step by step, only when still above the target
-            if (info.photos > 0 && bestFile!!.length() > target) {
+            if (info.photos > 0 && s.pdfPhotos && bestFile!!.length() > target) {
                 ctx.stage("Compressing photos")
                 for ((i, step) in LADDER.withIndex()) {
                     ctx.check()
-                    val r = build(src, File(ctx.tmp, "p${k++}.pdf"), step, ctx)
+                    val r = build(src, File(ctx.tmp, "p${k++}.pdf"), step, ctx, s)
                     val size = r.file.length()
                     keep(r.file, r.count, r.done)
                     ctx.progress(0.15 + 0.85 * (i + 1) / LADDER.size)
@@ -246,13 +260,61 @@ object Pdf {
             }
         }
         val best = bestFile ?: throw Fail("Couldn't open this PDF")
-        if (best.length() >= orig * 0.995) throw Skip("already well compressed")
+        if (best.length() >= orig * 0.995 && !s.pdfGray) throw Skip("already well compressed")
         best.renameTo(out)
         val size = out.length()
         val notes = mutableListOf<String>()
-        val lossless = !s.pdfAsPictures && bestCount == 0
+        val lossless = !s.pdfAsPictures && bestCount == 0 && !s.pdfGray
+        if (s.pdfGray) notes.add("Black and white")
         if (lossless) notes.add("No quality lost" + if (bestDone.isNotEmpty()) ": " + bestDone.joinToString(", ") else "")
         if (size > target * 1.05) notes.add(if (info.photos > 0 || s.pdfAsPictures) "Couldn't fully reach the target without ruining the pictures" else "Text-only PDF: this is as small as it gets without quality loss")
         return Result(out, size, notes.joinToString(". "))
+    }
+
+    // ------------------------------------------------------------------ for the tick boxes and the before/after view
+    fun inspectFile(src: File): org.json.JSONObject {
+        val j = org.json.JSONObject()
+        val doc = try { PDDocument.load(src, MemoryUsageSetting.setupTempFileOnly()) }
+        catch (e: InvalidPasswordException) { return j.put("locked", true) }
+        catch (e: Exception) { return j.put("unreadable", true) }
+        try {
+            if (doc.isEncrypted) j.put("locked", true)
+            val info = inspect(doc)
+            var fonts = 0
+            val seen = IdentityHashMap<COSBase, Boolean>()
+            try { for (p in doc.pages) { val r = p.resources ?: continue; for (n in r.fontNames) { val f = r.getFont(n) ?: continue; if (seen.put(f.cosObject, true) == null && f.isEmbedded) fonts++ } } } catch (_: Exception) { }
+            var thumbs = 0
+            try { for (p in doc.pages) if (p.cosObject.containsKey(COSName.getPDFName("Thumb"))) thumbs++ } catch (_: Exception) { }
+            var attachments = 0
+            try {
+                val names = doc.documentCatalog.cosObject.getDictionaryObject(COSName.NAMES) as? COSDictionary
+                val ef = names?.getDictionaryObject(COSName.EMBEDDED_FILES) as? COSDictionary
+                val arr = ef?.getDictionaryObject(COSName.NAMES) as? com.tom_roush.pdfbox.cos.COSArray
+                attachments = if (arr != null) arr.size() / 2 else if (ef != null) 1 else 0
+            } catch (_: Exception) { }
+            val meta = try {
+                val inf = doc.document.trailer.getDictionaryObject(COSName.INFO) as? COSDictionary
+                (inf != null && inf.size() > 0) || doc.documentCatalog.cosObject.containsKey(COSName.METADATA)
+            } catch (_: Exception) { false }
+            j.put("pages", doc.numberOfPages).put("photos", info.photos).put("fonts", fonts).put("metadata", meta)
+                .put("thumbs", thumbs).put("attachments", attachments).put("form", info.form).put("signed", info.signed)
+        } finally { doc.close() }
+        return j
+    }
+
+    /** One page as PNG (for the before/after view); returns the number of pages. */
+    fun renderPage(pfd: ParcelFileDescriptor, page: Int, maxSide: Int, out: File): Int {
+        PdfRenderer(pfd).use { r ->
+            val n = r.pageCount
+            r.openPage(page.coerceIn(0, n - 1)).use { pg ->
+                val sc = maxSide.toDouble() / max(pg.width, pg.height)
+                val bmp = Bitmap.createBitmap(max(1, (pg.width * sc).roundToInt()), max(1, (pg.height * sc).roundToInt()), Bitmap.Config.ARGB_8888)
+                bmp.eraseColor(Color.WHITE)
+                pg.render(bmp, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                out.outputStream().use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
+                bmp.recycle()
+            }
+            return n
+        }
     }
 }
