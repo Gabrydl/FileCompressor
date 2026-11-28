@@ -33,15 +33,22 @@ object Engine {
         @Volatile var message = ""
         @Volatile var why: Why? = null
         @Volatile var skip = false
+        @Volatile var held = ""                 // result kept aside until the user says Save (preview mode)
+        @Volatile var queued = false            // part of the run the page started
+        @Volatile var over: JSONObject? = null  // this file's own settings, tick boxes and trim
 
-        fun reset() { status = "WAITING"; progress = 0.0; stage = ""; newSize = 0; origSize = 0; out = ""; notes = emptyList(); moved = ""; message = ""; why = null; skip = false }
+        fun reset() { status = "WAITING"; progress = 0.0; stage = ""; newSize = 0; origSize = 0; out = ""; notes = emptyList(); moved = ""; message = ""; why = null; skip = false; held = "" }
 
         fun json(): JSONObject = JSONObject().put("id", id).put("name", name).put("size", size).put("kind", kind).put("status", status)
             .put("progress", progress).put("stage", stage).put("newSize", newSize).put("origSize", origSize).put("out", out)
             .put("notes", JSONArray(notes)).put("moved", moved).put("message", message).put("skip", skip).put("why", why?.json() ?: JSONObject.NULL)
+            .put("held", held).put("queued", queued)
     }
 
     private val items = ArrayList<Item>()
+    fun item(id: Int): Item? = synchronized(this) { items.find { it.id == id } }
+    /** The settings of the run in progress (sent by the page with Start). */
+    @Volatile private var runSettings = Settings(JSONObject())
     private var seq = 0
     @Volatile var running = false
     @Volatile var abortRequested = false
@@ -59,6 +66,7 @@ object Engine {
 
     fun defaultOutDir(): String = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "FileCompressor").absolutePath
     fun outputDir(): String = settings().outputDir.ifEmpty { defaultOutDir() }
+    private fun outDirOf(s: Settings): String = s.outputDir.ifEmpty { outputDir() }
     fun setOutputDir(d: String) {
         val j = try { JSONObject(settingsJson()) } catch (_: Exception) { JSONObject() }
         j.put("outputDir", d)
@@ -130,7 +138,7 @@ object Engine {
     }
 
     fun remove(id: Int) = synchronized(this) { items.removeAll { it.id == id && it.status != "WORKING" } }
-    fun clear() = synchronized(this) { if (!running) items.clear() }
+    fun clear() = synchronized(this) { if (!running) { items.forEach { if (it.held.isNotEmpty()) File(it.held).parentFile?.deleteRecursively() }; items.clear() } }
     fun requeue(id: Int) = synchronized(this) { items.find { it.id == id && it.status != "WORKING" }?.reset() }
 
     // ------------------------------------------------------------------ where a picked file really is
@@ -189,16 +197,38 @@ object Engine {
         app.contentResolver.query(u, arrayOf(MediaStore.MediaColumns.DATA), sel, args, null)?.use { c -> if (c.moveToFirst() && !c.isNull(0)) c.getString(0) else null }
 
     // ------------------------------------------------------------------ the run (called by CompressService on its own thread)
-    fun waiting(): List<Item> = synchronized(this) { items.filter { it.status == "WAITING" } }
-    fun counts(): Pair<Int, Int> = synchronized(this) { items.count { it.status != "WAITING" && it.status != "WORKING" } to items.size }
+    /** The page's Start: the settings and, for every file of the run, its own settings. Finished files are put back in the queue. */
+    fun prepare(json: String) {
+        val j = JSONObject(json)
+        val base = j.optJSONObject("settings") ?: JSONObject()
+        runSettings = Settings(base)
+        if (base.optString("outputDir").isNotEmpty()) setOutputDir(base.optString("outputDir"))
+        val list = j.optJSONArray("items") ?: JSONArray()
+        synchronized(this) {
+            items.forEach { it.queued = false }
+            for (k in 0 until list.length()) {
+                val o = list.getJSONObject(k)
+                val it = items.find { i -> i.id == o.optInt("id") } ?: continue
+                if (it.status == "WORKING") continue
+                if (it.status != "WAITING") it.reset()
+                it.over = JSONObject().also { m ->
+                    o.optJSONObject("over")?.let { x -> for (key in x.keys()) m.put(key, x.get(key)) }
+                    o.optJSONObject("trim")?.let { x -> for (key in x.keys()) m.put(key, x.get(key)) }
+                }
+                it.queued = true
+            }
+        }
+        AppLog.line("INFO", "Run of ${list.length()} file(s), mode ${runSettings.mode}")
+    }
+    fun counts(): Pair<Int, Int> = synchronized(this) { val q = items.filter { it.queued }; q.count { it.status != "WAITING" && it.status != "WORKING" } to q.size }
 
     fun runQueue(onChange: (Item?) -> Unit) {
         abortRequested = false
         running = true
         try {
             while (true) {
-                val it = synchronized(this) { items.firstOrNull { it.status == "WAITING" } } ?: break
-                if (abortRequested) { synchronized(this) { items.filter { i -> i.status == "WAITING" }.forEach { i -> i.status = "STOPPED" } }; break }
+                val it = synchronized(this) { items.firstOrNull { it.status == "WAITING" && it.queued } } ?: break
+                if (abortRequested) { synchronized(this) { items.filter { i -> i.status == "WAITING" && i.queued }.forEach { i -> i.status = "STOPPED" } }; break }
                 processOne(it)
                 onChange(it)
             }
@@ -213,7 +243,7 @@ object Engine {
         val ctx = Ctx(it, tmp)
         it.reset()
         it.status = "WORKING"; it.stage = "Starting"
-        val s = settings()
+        val s = runSettings.merged(it.over)
         AppLog.line("INFO", "Start: ${it.name} (${it.kind}, ${it.size} bytes), mode ${s.mode}")
         try {
             ctx.check()
@@ -227,7 +257,9 @@ object Engine {
             it.origSize = size
             val ext = it.name.extLower()
             val tmpOut = File(tmp, "out." + ext.ifEmpty { "bin" })
-            val wanted = when (s.mode) { "PERCENT" -> size * s.percent / 100.0; "MB" -> s.targetMb * MB; else -> 0.0 }
+            val wanted = when (s.mode) { "PERCENT" -> size * s.percent / 100.0; "SIZE" -> s.targetBytes; else -> 0.0 }
+            // something else than size was asked (trim, exact pixels, no EXIF, mono, grey...): never skip as "already small"
+            val extra = s.trimStart > 0 || s.trimEnd > 0 || (it.kind == "IMAGE" && (s.photoResize || s.photoStripExif)) || (it.kind == "AUDIO" && s.audioMono) || (it.kind == "PDF" && s.pdfGray)
             var target = wanted
             val r: Result
             if (s.mode == "CONVERT") {
@@ -238,7 +270,10 @@ object Engine {
                     else -> throw Skip("cannot convert")
                 }
             } else {
-                if (s.mode == "MB" && size <= wanted) throw Skip("below target")
+                if (s.mode == "SIZE" && size <= wanted) {
+                    if (s.skipSmaller && !extra) throw Skip("below target")
+                    target = size * (if (it.kind == "PDF" || it.kind == "OFFICE") 1.0 else 0.95)
+                }
                 if (target <= 0) target = size * 0.3
                 r = when (it.kind) {
                     "VIDEO" -> Media.compressVideo(src, tmpOut, s, target, ctx)
@@ -247,17 +282,31 @@ object Engine {
                     "PDF" -> Pdf.compress(src, tmpOut, s, target, ctx)
                     else -> Office.compress(src, tmpOut, s, target, ctx)
                 }
-                if (r.size >= size) throw Skip("already well compressed")
+                if (r.size >= size && !extra) throw Skip("already well compressed")
             }
-            ctx.stage("Saving")
             val notes = mutableListOf<String>()
             if (r.note.isNotEmpty()) notes.add(r.note)
+            if (s.preview) {
+                // kept aside until the user looks at it and says "Save"
+                val keep = File(app.filesDir, "preview/${it.id}-${System.currentTimeMillis()}").apply { mkdirs() }
+                val held = File(keep, it.name.substringBeforeLast('.') + "_compressed." + r.out.extLower())
+                moveFile(r.out, held)
+                it.held = held.absolutePath
+                it.newSize = held.length()
+                it.notes = notes
+                it.progress = 1.0
+                it.status = "REVIEW"
+                AppLog.line("INFO", "Ready to check: ${it.name}, ${it.origSize} -> ${it.newSize} bytes")
+                return
+            }
+            ctx.stage("Saving")
             val dest = finalize(it, r.out, s, notes)
             it.out = dest.absolutePath
             it.newSize = dest.length()
             it.notes = notes
             it.progress = 1.0
             it.status = "DONE"
+            if (s.history) addHistory(it)
             AppLog.line("INFO", "Done: ${it.name}, ${it.origSize} -> ${it.newSize} bytes, saved as ${it.out}" + (if (notes.isEmpty()) "" else " (" + notes.joinToString("; ") + ")"))
         } catch (e: Skip) {
             if (e.message == "stopped") { it.status = "STOPPED"; AppLog.line("INFO", "Stopped: ${it.name}") }
@@ -274,6 +323,97 @@ object Engine {
         }
     }
 
+    // ------------------------------------------------------------------ preview mode: save or throw away what was kept aside
+    fun reviewSave(id: Int, settingsJson: String): JSONObject {
+        val it = item(id) ?: return JSONObject().put("ok", false).put("error", "not in the list")
+        val held = File(it.held)
+        if (it.held.isEmpty() || !held.exists()) return JSONObject().put("ok", false).put("error", "the checked copy isn't there anymore")
+        return try {
+            val s = Settings(JSONObject(settingsJson)).merged(it.over)
+            val notes = it.notes.toMutableList()
+            val before = notes.size
+            val dest = finalize(it, held, s, notes)
+            try { held.parentFile?.deleteRecursively() } catch (_: Exception) { }
+            it.out = dest.absolutePath; it.held = ""; it.notes = notes; it.status = "DONE"
+            if (s.history) addHistory(it)
+            AppLog.line("INFO", "Saved after checking: ${it.name} as ${it.out}")
+            JSONObject().put("ok", true).put("out", it.out).put("origTo", it.moved).put("note", notes.drop(before).joinToString(". "))
+        } catch (e: Exception) { JSONObject().put("ok", false).put("error", e.message ?: e.javaClass.simpleName) }
+    }
+    fun reviewDiscard(held: String) {
+        if (held.isEmpty()) return
+        val f = File(held)
+        val root = File(app.filesDir, "preview").absolutePath
+        if (f.absolutePath.startsWith(root)) try { f.parentFile?.deleteRecursively() } catch (_: Exception) { }
+        synchronized(this) { items.filter { it.held == held }.forEach { it.held = ""; it.status = "FAILED"; it.skip = true; it.message = skipReason("discarded") } }
+    }
+
+    // ------------------------------------------------------------------ what is inside a file (tick boxes)
+    /** A file the engine can read directly: its own path, or a copy in the cache for files shared by other apps. */
+    fun readable(it: Item): File {
+        if (it.path != null && File(it.path).canRead()) return File(it.path)
+        val c = File(app.cacheDir, "look/${it.id}." + it.name.extLower().ifEmpty { "bin" })
+        if (!c.exists() || c.length() != it.size) {
+            c.parentFile?.mkdirs()
+            (app.contentResolver.openInputStream(it.uri) ?: throw Fail("The file isn't there anymore")).use { i -> c.outputStream().use { o -> i.copyTo(o, 1 shl 16) } }
+        }
+        return c
+    }
+    fun inspect(id: Int): JSONObject {
+        val it = item(id) ?: return JSONObject()
+        return try {
+            val f = readable(it)
+            when (it.kind) {
+                "PDF" -> Pdf.inspectFile(f)
+                "IMAGE" -> Images.inspect(f)
+                "VIDEO", "AUDIO" -> Media.inspect(f)
+                "OFFICE" -> Office.inspect(f)
+                else -> JSONObject()
+            }
+        } catch (e: Throwable) { JSONObject().put("unreadable", true) }
+    }
+
+    // ------------------------------------------------------------------ history (files/history.json) and putting originals back
+    private val histFile get() = File(app.filesDir, "history.json")
+    @Synchronized fun history(): JSONArray = try { JSONArray(histFile.readText()) } catch (_: Exception) { JSONArray() }
+    @Synchronized private fun writeHistory(h: JSONArray) {
+        val keep = JSONArray()
+        for (k in maxOf(0, h.length() - 2000) until h.length()) keep.put(h.get(k))
+        try { histFile.writeText(keep.toString()) } catch (_: Exception) { }
+    }
+    @Synchronized private fun addHistory(it: Item) {
+        val h = history()
+        h.put(JSONObject().put("id", "${System.currentTimeMillis()}-${it.id}").put("name", it.name).put("kind", it.kind.lowercase()).put("path", it.path ?: "")
+            .put("out", it.out).put("origTo", it.moved).put("oldSize", it.origSize).put("newSize", it.newSize).put("at", System.currentTimeMillis()))
+        writeHistory(h)
+    }
+    @Synchronized fun historyClear() = writeHistory(JSONArray())
+    /** The original goes back from Original to where it was (and the compressed copy is deleted if asked). */
+    @Synchronized fun restore(entry: JSONObject, removeCopy: Boolean): JSONObject = try {
+        val origTo = entry.optString("origTo"); val path = entry.optString("path"); val out = entry.optString("out")
+        var back = path
+        if (origTo.isNotEmpty() && File(origTo).exists()) {
+            if (path.isEmpty()) throw Fail("The app doesn't know where the original was")
+            var dest = File(path)
+            if (dest.exists()) dest = uniqueFile(dest.parentFile!!, dest.name.substringBeforeLast('.') + " (restored)", dest.extLower())
+            dest.parentFile?.mkdirs()
+            moveFile(File(origTo), dest)
+            back = dest.absolutePath
+        } else if (path.isEmpty() || !File(path).exists()) throw Fail("The original isn't in the Original folder anymore.")
+        if (removeCopy && out.isNotEmpty()) File(out).delete()
+        try { MediaScannerConnection.scanFile(app, listOf(back, origTo, out).filter { it.isNotEmpty() }.toTypedArray(), null, null) } catch (_: Exception) { }
+        val h = history()
+        for (k in 0 until h.length()) {
+            val x = h.getJSONObject(k)
+            if (x.optString("id") == entry.optString("id") || (x.optString("out") == out && x.optString("path") == path)) {
+                x.put("restored", true).put("origTo", "").put("path", back); if (removeCopy) x.put("out", "")
+            }
+        }
+        writeHistory(h)
+        AppLog.line("INFO", "Original restored: $back")
+        JSONObject().put("ok", true).put("path", back)
+    } catch (e: Exception) { JSONObject().put("ok", false).put("error", e.message ?: e.javaClass.simpleName) }
+
     // ------------------------------------------------------------------ saving a result in Compressed (and the original in Original)
     private fun uniqueFile(dir: File, base: String, ext: String): File {
         var f = File(dir, "$base.$ext")
@@ -289,7 +429,7 @@ object Engine {
     }
 
     private fun finalize(it: Item, result: File, s: Settings, notes: MutableList<String>): File {
-        val root = File(outputDir())
+        val root = File(outDirOf(s))
         val comp = File(root, "Compressed")
         if (!comp.isDirectory && !comp.mkdirs()) throw Fail("EACCES: couldn't create the folder " + comp.absolutePath)
         val base = it.name.substringBeforeLast('.')

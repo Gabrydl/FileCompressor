@@ -1,0 +1,428 @@
+1|"I-compress gamit ang FileCompressor" sa right-click menu
+2|(karon {0}×{1})
+3|(gisusi pa…)
+4|, mga {0} human
+5|, mas gamay na sa gipiling gidak-on
+6|, susihon una i-save
+7|, gipapas ang na-compress nga kopya.
+8|, o pindota ang Ctrl+V.
+9|, ang mga orihinal sa Original. Ibalhin ra ang mga orihinal human ma-save ang ilang na-compress nga kopya.
+10|, magpabilin ang mga orihinal kung asa sila.
+11|, dili hilabtan
+12|1 ka file
+13|1 ka file, {0}
+14|1 ka panid
+15|1 ka litrato
+16|1080p nga MP4 sa 30 fps ug JPG nga litrato, mga katunga sa gidak-on.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|<b>{0}</b> ang natipigan sa tanan, 1 ka file
+24|<b>{0}</b> ang natipigan sa tanan, {1} ka file
+25|Hunonga
+26|Mga 15 MB matag file, MP4 nga video ug JPG nga litrato: kasulod sa 16 MB nga limit sa WhatsApp.
+27|Mga 18 MB matag file, aron kasulod sa 25 MB nga attachment sa email.
+28|Mga 19 MB matag file, MP4 nga video ug JPG nga litrato: kasulod sa libre nga 20 MB nga limit sa Discord.
+29|Mga {0} human
+30|Pagdugang og folder
+31|Pagdugang og mga file
+32|Pagdugang og folder
+33|Pagdugang og mga file aron magsugod.
+34|Nadugang sa right-click menu.
+35|Human
+36|Tanang file
+37|Natipigan ang tanang {0} ka panid
+38|Mas gamay na sa gipiling gidak-on
+39|Anaa na sa maong format
+40|Anaa na sa lista.
+41|Mono na
+42|Maayo nang pagka-compress, dili na mapagamay pa
+43|Animated nga {0}: usa ra ka frame ang tipigan sa {1}, wala hilabti
+44|Natipigan ang animation ({0} ka frame)
+45|Natipigan ang animation isip {0} ({1} ka frame): dili makaya sa {2} ang animation
+46|Hitsura
+47|Sa maong gidak-on, gamay ra kaayo ang bits matag segundo para sa maayong video o audio.
+48|Audio
+49|Audio ra, gikuha gikan sa video
+50|Auto
+51|Ang Auto mopaubos lang sa resolution ug frame rate kung kinahanglan sa gipiling gidak-on. Mas hinay ang Labing maayong kalidad.
+52|Mibalik sa default nga folder.
+53|Balanse
+54|Una
+55|Labing maayong kalidad
+56|Itom ug puti
+57|Dili maka-save didto
+58|Kanselaha
+59|Ilisi ang folder
+60|Usba ang settings
+61|Susiha una i-save (view nga una/human)
+62|Susiha kini
+63|Tan-awa kung maayo ba ang pag-abli sa file sa PDF reader.
+64|Tan-awa kung maayo ba ang pag-play sa file sa player.
+65|Susiha ang una
+66|Pagpili og laing destination folder gamit ang "Ilisi ang folder".
+67|Paglimpyo (walay nawala nga kalidad)
+68|Papasa ang history
+69|Limpyohi ang lista
+70|I-click ang usa ka file aron ikumpara ang una ug human
+71|I-click ang litrato aron makita kini nga mas dako.
+72|I-click aron ikumpara ang una ug human, dayon i-save
+73|Sirad-i
+74|Sirad-i ang ubang programa ug sulayi pag-usab, o iproseso kining file nga mag-inusara.
+75|Sirad-i ang mga programa nga naggamit sa file.
+76|Ikumpara ang una ug human
+77|I-compress
+78|I-compress ang mga litrato
+79|I-compress ang mga litrato ({0} sa sulod)
+80|I-compress ang mga hulagway sa sulod
+81|I-compress ang mga hulagway sa sulod ({0} dagko)
+82|I-compress gamit ang FileCompressor
+83|Na-compress
+84|Gi-compress
+85|Gi-compress ang mga litrato
+86|Gi-compress ang mga hulagway
+87|Gi-compress ang {0} ka frame
+88|Gi-compress ang {0} ka panid
+89|I-convert
+90|I-convert lang
+91|I-convert sa mono
+92|Gi-convert
+93|Wala madugang sa right-click menu.
+94|Wala hingpit naabot ang target nga dili madaot ang kalidad.
+95|Wala hingpit naabot ang target nga dili madaot ang animation
+96|Wala hingpit naabot ang target nga dili madaot ang mga panid
+97|Wala hingpit naabot ang target nga dili madaot ang hulagway
+98|Wala hingpit naabot ang target nga dili madaot ang mga hulagway
+99|Wala hingpit naabot ang target nga dili madaot ang mga hulagway.
+100|Wala mabalhin ang orihinal sa folder nga Original.
+101|Dili maabli kining PDF
+102|Dili maabli kining PDF ({0})
+103|Wala mabalik: {0}
+104|Wala ma-save: {0}
+105|Wala iapil ang cover nga hulagway (dili kini makaya sa {0})
+106|Ang Ctrl+V mag-paste og mga file ug screenshot
+107|Putla ang sinugdanan o katapusan
+108|Ngitngit
+109|Papasa kining preset
+110|Lain-laing settings sa matag file
+111|Adunay digital signature: dili hilabtan aron magpabilin nga valid ang pirma
+112|Adunay digital signature: wala hilabti aron magpabilin nga valid ang pirma
+113|Ilabay
+114|Gilabay, wala hilabti ang orihinal
+115|Discord
+116|Buhata pag-usab gamit ang kasamtangang settings
+117|Human na
+118|Human na: 1 ka file, {0} ang natipigan.
+119|Human na: {0} ka file, {1} ang natipigan.
+120|I-drag pagawas sa window ang mga nahuman nga file
+121|I-drop dinhi ang mga file o folder
+122|I-drop bisan asa sa window{0}
+123|I-drop direkta sa WhatsApp, Discord, email o folder.
+124|I-drop aron idugang
+125|Gikuha ang EXIF
+126|Ang matag file mahimong mga {0}% sa iyang gidak-on: ang 1 GB nga video mahimong mga {1}, ang 600 KB nga PDF mga {2} KB.
+127|Naghulat sa lista ang matag resulta isip "Susihon": ablihi, ikumpara ang mga panid o hulagway nga magtapad, dayon I-save o Ilabay.
+128|Email
+129|Katapusan (m:ss)
+130|Ang matag file himoon nga mga {0} {1}.
+131|Eksaktong gidak-on
+132|I-extract pag-usab ang tibuok zip ug ibilin ang tanang file sa folder.
+133|Napakyas
+134|Paspas
+135|FileCompressor.log, sa folder sa programa: unsay nahimo ug matag error
+136|Mga file
+137|Laktawan ang mga file nga mas gamay na.
+138|Ma-optimize gihapon ang mga file nga mas gamay na, nga dili motumong mas ubos.
+139|Adunay mga file nga gi-compress pa.
+140|Mag-ilis og format ang mga file nga walay target nga gidak-on. Pilia ang mga format sa matag tab sa ubos. Kung tugotan sa container (pananglitan MKV ngadto sa MP4), dili i-re-encode ang video, busa walay mawala nga kalidad. Laktawan ang mga PDF ug Office nga file.
+141|Mga file o tibuok folder
+142|Fillable form: tibuok ang mga font
+143|Katapusang gidak-on sa porsyento
+144|Katapusang gidak-on sa matag file
+145|Gi-adjust ang gidak-on
+146|Nahuman.
+147|Tibuok ang mga font (fillable form)
+148|Pananglitan: Email 300 KB
+149|Format
+150|Pag-ilis og format ra
+151|Kapaspas sa frame
+152|Pagbakante og luna o pagpili og laing destination folder.
+153|Sugod sa sunod nga pag-abli, mobalik sa default ang settings.
+154|Gikuha ang GPS location ug EXIF
+155|Kinatibuk-an
+156|Tunga ang gidak-on sa mga voice recording (klase, voice note, tawag) nga walay madungog nga kakulangan. Biyai nga naka-off para sa musika.
+157|History
+158|History ug natipigan nga luna
+159|Gipapas ang history.
+160|Unsa ka gamay
+161|Kung video kini, pagpili og video format imbes MP3/M4A.
+162|Kung gi-quarantine sa antivirus ang ffmpeg.exe, ibalik kini ug tugoti.
+163|Sa Windows 11, anaa kini sa "Show more options". Kung imong ibalhin ang folder sa programa, ma-update kini sa sunod nga pag-abli.
+164|Instagram
+165|Basin daan nga .doc/.ppt/.xls nga file kini nga giilisan og ngalan ngadto sa .docx/.pptx/.xlsx.
+166|Basin protektado kini og password.
+167|Basin naggamit kini og dili kasagarang codec o adunay copy protection (DRM, sama sa gipalit nga mga salida).
+168|Gibalhin, giilisan og ngalan o gipapas kini human idugang sa lista.
+169|Pagtipig og history
+170|Usa ra ka bahin ang tipigan
+171|Tipigi ang orihinal
+172|Padayon
+173|Gitipigan ang {0}: gikan {1} hangtod {2}.
+174|Pinulongan
+175|Biyai nga blangko ang usa ka kahon aron tipigan ang sinugdanan o katapusan.
+176|Hayag
+177|Hayag / ngitngit
+178|Protektado og password: dili mabasa
+179|M4A (audio ra)
+180|MP3 (audio ra)
+181|MP4 hangtod 1080p, mga 40% sa orihinal nga gidak-on.
+182|Max nga gitas-on
+183|Max nga gilapdon
+184|Ibalhin ang mga orihinal sa folder nga Original
+185|Multi-page nga TIFF ({0} ka panid): ang una ra nga panid ang tipigan sa {1}, wala hilabti
+186|Multi-page nga TIFF nga lain-lain ang gidak-on sa panid: wala hilabti
+187|Ngalan
+188|Sunod nga panid
+189|Walay EXIF data
+190|Walay dagkong hulagway
+191|Walay naka-embed nga font
+192|Walay metadata
+193|Walay litrato
+194|Walay hulagway nga himoong gray
+195|Walay nawala nga kalidad
+196|Walay nawala nga kalidad: gikuha ang metadata, gipamubo ang mga font
+197|Walay nawala nga kalidad{0}
+198|Walay video sa sulod, na-save isip M4A nga audio
+199|Wala sa sulod
+200|Kulang ang memory
+201|Walay i-paste: kopyaha ang mga file sa Explorer, o pagkuha una og screenshot.
+202|Walay natipigan
+203|Wala pa. Dinhi makita ang mga na-compress nga file.
+204|Off: parehas ang settings sa tanang file. On: ablihi ang usa ka file sa lista aron hatagan kini og kaugalingong gidak-on ug format.
+205|Off: mobalik sa default ang gidak-on, format ug mga opsyon sa matag klase sa file matag abli sa programa.
+206|Office
+207|Dili mapakita dinhi ang mga Office nga file. Ablihi ang resulta aron susihon kini.
+208|On: ablihi ang usa ka video (o audio) sa lista aron itakda kung asa kini magsugod ug mohuman. Ang bahin nga imong gitipigan ra ang ihap sa target nga gidak-on.
+209|Ablihi
+210|Ablihi ang folder
+211|Ablihi kini sa Photos o Paint, i-save pag-usab isip JPG o PNG, dayon sulayi pag-usab.
+212|Ablihi kini sa Word, PowerPoint o Excel ug i-save ang bag-ong .docx/.pptx/.xlsx nga kopya.
+213|Ablihi kini gamit ang password ug i-save o i-print ang kopya nga walay proteksyon, dayon sulayi pag-usab.
+214|Ablihi ang resulta
+215|Ablihi ang mga opsyon sa file ug pagbutang og mas taas nga bahin nga tipigan.
+216|Ablihi ang log file
+217|Mga opsyon para niining file
+218|Mga opsyon para niining file{0}
+219|Opus
+220|O i-convert kini sa Opus, nga mas nindot paminawon sa gagmay nga gidak-on.
+221|O ikaw mismo ang mopaubos sa resolution sa block nga Video.
+222|O putla kini sa bahin nga imong kinahanglan (mga opsyon sa file, Putla).
+223|O gamita ang Share → FileCompressor gikan sa Gallery, WhatsApp o Files. Walay mogawas niining phone.
+224|Nabalik ang orihinal
+225|Nabalik ang orihinal{0}
+226|Ang mga PDF ug Office nga file mahimo ra nga i-compress
+227|Panid {0} sa {1}
+228|Porsyento
+229|Porsyento
+230|Litrato
+231|Mga litrato
+232|Gipagamay ra ang mga litrato kutob sa gikinahanglan aron maabot ang gidak-on. Dako ang mogamay sa mga scan kung black and white. Pinakagamay para sa mga scan ang paghimo pag-usab sa mga panid isip hulagway, apan dili na mapili ang text.
+233|Pagpili og mas dakong gidak-on sa MB, o mas taas nga porsyento.
+234|Pagpili og mas taas nga porsyento o mas dakong gidak-on sa MB.
+235|Pilia kung asa moadto ang mga file, o ikaw na ang magtakda sa tanan sa ubos.
+236|Mga hulagway
+237|I-play
+238|Posibleng hinungdan
+239|Na-save ang preset nga "{0}".
+240|Miaging panid
+241|I-print kini sa bag-ong PDF, dayon sulayi pag-usab.
+242|Privacy
+243|Programa
+244|Dali nga preset
+245|Gibasa ang PDF
+246|Susihon
+247|Himoa pag-usab ang mga panid isip hulagway
+248|Himoa pag-usab ang mga na-scan nga panid isip hulagway
+249|Gihimo pag-usab ang mga panid isip hulagway
+250|Gipaubos sa 256 ka kolor
+251|Hinumdumi ang katapusang settings
+252|Kuhaa ang EXIF data
+253|Kuhaa ang GPS location ug EXIF (adunay GPS)
+254|Kuhaa ang GPS location ug EXIF data
+255|Kuhaa sa lista
+256|Kuhaa kini sa lista ug idugang pag-usab.
+257|Kuhaa ang metadata
+258|Kuhaa ang mga thumbnail ug attachment
+259|Kuhaa ang mga thumbnail ug attachment{0}
+260|Gikuha sa right-click menu.
+261|Gikuha kung asa ug unsang phone ang gigamit sa pagkuha sa litrato. Dili mausab ang mismong hulagway ug magpabilin kini nga sakto ang posisyon.
+262|Ilisan sa kasamtangang settings
+263|I-resize sa eksaktong gidak-on
+264|I-resize sa {0} × {1} px{2}
+265|Na-resize sa {0} px nga gilapdon
+266|Resolution
+267|Ibalik ug papasa ang na-compress nga kopya
+268|Ibalik ug tipigi ang na-compress nga kopya
+269|Ibalik ang orihinal
+270|Ibalik ang orihinal?
+271|Anaa sa folder nga Compressed ang mga resulta
+272|Moadto ang mga resulta sa Compressed isip ngalan_compressed{0}
+273|Parehas sa uban
+274|I-save
+275|I-save ang tanang nasusi
+276|I-save ang tanang {0} nga dili susihon
+277|I-save isip
+278|I-save isip preset
+279|I-save ang kasamtangan…
+280|I-save ang mga resulta sa
+281|I-save sa
+282|Na-save isip {0}
+283|Na-save isip {0} (gikan sa {1})
+284|Settings sumala sa klase sa file
+285|Mga shortcut
+286|Ipakita sa folder
+287|Gidak-on para niining file
+288|Gidak-on sa pixel
+289|Ma-save niining ngalan ang gidak-on, mga format ug mga opsyon sa matag tab. I-right-click ang usa sa imong mga preset aron usbon o papason kini.
+290|Laktawi ang mga file nga mas gamay na sa target
+291|Gilaktawan
+292|Dili suportado ang pipila ka talagsaong variant (dili kasagarang TIFF o HEIC).
+293|Adunay wala damha nga sayop
+294|Tingog
+295|Kapaspas
+296|Sinugdanan (m:ss)
+297|Ubos sa tunga sa segundo ang gilay-on sa sinugdanan ug katapusan.
+298|Hunonga ug sirad-i
+299|Hunongon na? Dili hilabtan ang mga orihinal nga wala pa nahuman.
+300|Gihunong, wala hilabti ang orihinal
+301|Gihunong.
+302|Gihunong…
+303|Suportadong mga file
+304|Mag-ilis sa hayag ug ngitngit
+305|System
+306|I-tap aron magdugang og mga file
+307|Telegram
+308|PDF nga text ra: dili na kini mogamay pa nga walay mawala nga kalidad
+309|Dili maabli ang Office nga file
+310|Dili maabli ang PDF
+311|Puno na ang disk
+312|Kinahanglan human sa sinugdanan ang katapusan.
+313|Kalit nga mihunong ang engine.
+314|Gikuha o gibabagan sa antivirus ang ffmpeg.exe tapad sa programa.
+315|Dili mabasa ang file
+316|Walay audio track ang file nga ma-compress o makuha.
+317|Kanunay nga mas hugot ang pagka-pack sa file. Kung naka-on kini, gipagamay usab ang dagkong hulagway sa sulod. Dili hilabtan ang mga video ug tingog sa sulod. Magpabilin ang format sa mga file.
+318|Protektado og password ang file
+319|Protektado ang file, busa dili mabasa o masulat pag-usab ang sulod niini.
+320|Dako kaayo ang file (pananglitan dako kaayong litrato o PDF) ug mihunong ang engine.
+321|Dako kaayo ang file (pananglitan dako kaayong litrato o PDF).
+322|Wala na ang file
+323|Basin guba ang file o anaa sa variant nga dili makaya sa programa.
+324|Basin guba o kulang ang file (pananglitan naputol nga download o kopya).
+325|Basin guba ang file o bahin ra ang na-download.
+326|Basin guba ang file, o dili gyud hulagway bisan ingon niana ang extension.
+327|Basin guba ang mga timestamp sa file o lahi ang istruktura niini.
+328|Wala na sa folder nga Original ang orihinal.
+329|Dili masulatan ang destination folder, busa ang default nga folder ang gigamit.
+330|Basin read-only o protektado ang destination folder, o abli ang file sa laing programa.
+331|Eksaktong parehas ang hitsura sa mga panid. Mas hugot usab ang pagka-pack sa file matag higayon. Dili gayud hilabtan ang mga PDF nga adunay digital signature, ug tibuok ang mga font sa fillable form.
+332|Masulod ang litrato niining kahon ug magpabilin ang porma niini. Biyai nga blangko ang usa ka kilid aron itakda ra ang usa. Dili padak-on ang mas gagmay nga litrato.
+333|Dili maabli ang hulagway
+334|Gamay kaayo ang gipiling gidak-on
+335|Gamay kaayo ang gipiling gidak-on para niining video
+336|Mubo kaayo ang putol
+337|Nawala ang video engine
+338|Wala mabasa o masulat sa video/audio engine kining file
+339|{0} ang gitas-on sa tibuok file. Biyai nga blangko ang usa ka kahon aron tipigan ang sinugdanan o katapusan.
+340|Walay hulagway sa sulod nga i-compress.
+341|Kulang ang bakanteng luna aron isulat ang na-compress nga kopya.
+342|Walay tingog kining file
+343|Protektado og password kining PDF.
+344|Dili mapakita dinhi kining file{0}
+345|Dili valid nga Office document kining file (o protektado og password).
+346|Dili valid nga Office document kining file.
+347|Dili suportado kadtong mga file.
+348|Tip: Ang Ctrl+V mag-paste sa mga file nga gikopya sa Explorer, o og screenshot.
+349|Putla
+350|Pamuboa ang mga font
+351|Pamuboa ang mga font sa mga letra nga gigamit
+352|Sulayi una ang "I-convert lang" ngadto sa MP4, dayon i-compress ang na-convert nga file.
+353|Sulayi pag-usab
+354|Sulayi pag-usab ang file nga mag-inusara.
+355|Unit
+356|Gamita una ang "I-convert lang" ngadto sa MP4, dayon i-compress ang na-convert nga file.
+357|Gamita ang default
+358|Video
+359|Mga video
+360|Mga video, litrato, PDF, audio ug Office nga file, offline
+361|Wala hilabti ang mga video ug audio nga naka-embed sa file.
+362|Hulata nga mahuman ang lista.
+363|Unsay sulayan
+364|Kung nahuman na
+365|Samtang nag-compress
+366|Nganong napakyas?
+367|Wala tugoti sa Windows ang pagsulat sa file
+368|Wala tugoti sa Windows ang pagsulat niadtong folder. Pagpili og lain.
+369|Notification sa Windows
+370|Walay nawala nga kalidad
+371|Word, PowerPoint ug Excel
+372|Gibuhat
+373|Isulat ang oras isip minuto:segundo, pananglitan 1:30.
+374|Imong preset: {0}.
+375|mga {0} {1} matag file
+376|maayo nang pagka-compress
+377|animated, {0} ka frame
+378|gikuha ang mga attachment
+379|ubos sa target
+380|dili mabasa
+381|dili ma-convert
+382|dili maabli kining hulagway: {0}
+383|dili mabasa ang gitas-on
+384|dili mabasa ang gitas-on niining audio
+385|putol {0}–{1}
+386|wala maproseso sa ffmpeg ang file: walay stream
+387|wala maproseso sa ffmpeg ang file: walay video
+388|wala maproseso sa ffmpeg ang file: dili mabasa
+389|wala maproseso sa ffmpeg ang file: {0}
+390|nawala ang ffmpeg
+391|gipamubo ang mga font
+392|pag-ilis og format ra
+393|mobalik gikan sa folder nga Original sa kaniadto niining dapit.
+394|gitipigan isip TIFF: usa ra ka panid ang makaya sa {0}
+395|gikuha ang metadata
+396|walay audio track
+397|walay hulagway
+398|o idugang gamit ang mga button. Walay mogawas niining computer.
+399|kaugalingong settings
+400|mga panid isip hulagway
+401|susihon
+402|parehas nga format
+403|gamay kaayo ang target
+404|gamay kaayo ang target: {0} min kining video, kinahanglan og dili moubos sa {1} MB
+405|text ra
+406|ang katapusan
+407|ubos sa tunga sa segundo ang mabilin sa putol
+408|gikuha ang mga thumbnail
+409|wala mailhing error
+410|wala mailhing format
+411|wala mailhing format {0}
+412|{0} ({1} bytes)
+413|{0} nahuman, {1} ang natipigan
+414|{0} ka file ang gilaktawan: dili suportado ang klase.
+415|{0} ka file
+416|{0} ka file, {1}
+417|Mobalik ang {0} gikan sa folder nga Original sa kaniadto niining dapit.
+418|{0} ka panid
+419|{0} ka litrato
+420|{0} ka subtitle track nga hulagway ang wala iapil (dili makaya sa {2}, makaya sa MKV)
+421|{0} ka hulagway
+422|{0} susihon
+423|{0} susihon: i-click ang matag usa aron ikumpara, dayon i-save.
+424|{0} ang na-save sa folder nga Compressed.
+425|{0} {1} sa {2}
+426|{0}% sa gidak-on
+427|· nabalik ang orihinal
+428|{0} min kining video: niining gidak-on, kinahanglan og dili moubos sa {1} MB.

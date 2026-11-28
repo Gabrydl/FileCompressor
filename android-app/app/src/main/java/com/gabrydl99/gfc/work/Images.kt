@@ -125,6 +125,16 @@ object Images {
 
     private class Best(val buf: ByteArray, val scale: Double, val palette: Boolean = false)
 
+    /** Largest scale allowed by "Resize to W × H px" (1 = no limit). */
+    private fun capOf(s: Settings, w: Int, h: Int): Double {
+        if (!s.photoResize) return 1.0
+        val cw = if (s.photoW > 0) s.photoW / w else Double.POSITIVE_INFINITY
+        val ch = if (s.photoH > 0) s.photoH / h else Double.POSITIVE_INFINITY
+        return min(1.0, min(cw, ch))
+    }
+    private fun hasExif(src: File): Boolean = try { val e = ExifInterface(src.absolutePath); EXIF_TAGS.any { e.getAttribute(it) != null } } catch (_: Exception) { false }
+    private fun hasGps(src: File): Boolean = try { ExifInterface(src.absolutePath).getAttribute(ExifInterface.TAG_GPS_LATITUDE) != null } catch (_: Exception) { false }
+
     // ------------------------------------------------------------------ compress to a size
     fun compress(src: File, outIn: File, s: Settings, target: Double, ctx: Ctx): Result {
         val ext = src.extLower()
@@ -151,7 +161,10 @@ object Images {
             val orig = src.length()
             ctx.stage("Compressing")
             var best: Best? = null
-            var scale = 1.0
+            val cap = capOf(s, o.w, o.h)
+            val strip = s.photoStripExif && hasExif(src)
+            val gps = strip && hasGps(src)
+            var scale = cap
             var palette = false
             var round = 0
             fun render(q: Int, sc: Double, pal: Boolean): ByteArray {
@@ -197,10 +210,12 @@ object Images {
             }
             val b = best!!
             val sameFmt = fmt == (if (ext == "jpeg" || ext == "jfif") "jpg" else ext)
-            if (b.buf.size >= orig && sameFmt && notesPre.isEmpty()) throw Skip("already well compressed")
+            val changed = cap < 1 || strip
+            if (b.buf.size >= orig && sameFmt && notesPre.isEmpty() && !changed) throw Skip("already well compressed")
             out.writeBytes(b.buf)
-            copyExif(src, out, fmt)
+            if (!s.photoStripExif) copyExif(src, out, fmt)
             val notes = notesPre.toMutableList()
+            if (strip) notes.add(if (gps) "GPS location and EXIF removed" else "EXIF removed")
             if (o.reduced) notes.add("Very large picture: opened at a lower size")
             if (b.palette) notes.add("Reduced to 256 colors")
             if (b.scale < 1) notes.add("Resized to ${(o.w * b.scale).roundToInt()}×${(o.h * b.scale).roundToInt()}")
@@ -212,7 +227,8 @@ object Images {
     fun convert(src: File, outIn: File, s: Settings, ctx: Ctx): Result {
         val ext = src.extLower()
         val same = s.imageFormat == "keep" || s.imageFormat == (if (ext == "jpeg") "jpg" else ext)
-        if (same) throw Skip("same format")
+        val strip = s.photoStripExif && hasExif(src)
+        if (same && !s.photoResize && !strip) throw Skip("same format")
         if (ext == "gif") { val g = Gif.info(src); if (g != null && g.frames > 1) throw Skip("Animated GIF: converting it to a photo format would keep only one frame, left untouched") }
         if (ext == "webp" && Gif.isAnimatedWebp(src)) throw Skip("Animated WebP: left untouched")
         if (ext == "tif" || ext == "tiff") { val n = tiffPages(src); if (n > 1) throw Skip("Multi-page TIFF ($n pages): ${s.imageFormat.uppercase()} would keep only the first page, left untouched") }
@@ -220,10 +236,17 @@ object Images {
         try {
             val want = outFormat(ext, s.imageFormat, o.bmp.hasAlpha())
             val out = outIn.withExt(want)
+            val cap = capOf(s, o.w, o.h)
+            if (same && cap >= 1 && !strip) throw Skip("same format")
             ctx.stage("Converting")
-            out.writeBytes(encode(o.bmp, want, if (want == "webp") 85 else 92))
-            copyExif(src, out, want)
-            return Result(out, out.length(), if (o.reduced) "Very large picture: opened at a lower size" else "")
+            val b = if (cap < 1) scaled(o.bmp, max(1, (o.w * cap).roundToInt()), max(1, (o.h * cap).roundToInt())) else o.bmp
+            try { out.writeBytes(encode(b, want, if (want == "webp") 85 else 92)) } finally { if (b !== o.bmp) b.recycle() }
+            if (!s.photoStripExif) copyExif(src, out, want)
+            val notes = mutableListOf<String>()
+            if (o.reduced) notes.add("Very large picture: opened at a lower size")
+            if (cap < 1) notes.add("Resized to ${(o.w * cap).roundToInt()}×${(o.h * cap).roundToInt()}")
+            if (strip) notes.add(if (hasGps(src)) "GPS location and EXIF removed" else "EXIF removed")
+            return Result(out, out.length(), notes.joinToString(", "))
         } finally { o.bmp.recycle() }
     }
 
@@ -281,6 +304,34 @@ object Images {
                 maxOf(1, n)
             }
         } catch (_: Exception) { 1 }
+    }
+
+    // ------------------------------------------------------------------ for the tick boxes and the before/after view
+    fun inspect(src: File): org.json.JSONObject {
+        val j = org.json.JSONObject()
+        val o = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        try { src.inputStream().use { BitmapFactory.decodeStream(it, null, o) } } catch (_: Exception) { }
+        var w = o.outWidth; var h = o.outHeight
+        try {
+            val ori = ExifInterface(src.absolutePath).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+            if (ori in listOf(ExifInterface.ORIENTATION_ROTATE_90, ExifInterface.ORIENTATION_ROTATE_270, ExifInterface.ORIENTATION_TRANSPOSE, ExifInterface.ORIENTATION_TRANSVERSE)) { val t = w; w = h; h = t }
+        } catch (_: Exception) { }
+        val ext = src.extLower()
+        if (ext == "gif") Gif.info(src)?.let { g -> if (w <= 0) { w = g.w; h = g.h }; if (g.frames > 1) j.put("frames", g.frames) }
+        if (ext == "tif" || ext == "tiff") { val n = tiffPages(src); if (n > 1) j.put("pages", n) }
+        if (w > 0) j.put("w", w).put("h", h)
+        return j.put("exif", hasExif(src)).put("gps", hasGps(src))
+    }
+
+    /** A PNG no bigger than [maxSide] (upright), for the before/after view. */
+    fun previewPng(src: File, out: File, maxSide: Int, ctx: Ctx): Pair<Int, Int> {
+        val o = open(src, ctx)
+        try {
+            val sc = min(1.0, maxSide.toDouble() / max(o.w, o.h))
+            val b = if (sc < 1) scaled(o.bmp, max(1, (o.w * sc).roundToInt()), max(1, (o.h * sc).roundToInt())) else o.bmp
+            try { out.writeBytes(encode(b, "png", 100)) } finally { if (b !== o.bmp) b.recycle() }
+            return o.w to o.h
+        } finally { o.bmp.recycle() }
     }
 
     /** Used by the Office engine: re-encode one embedded picture. Returns null if it can't be read. */

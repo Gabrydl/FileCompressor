@@ -1,0 +1,428 @@
+1|„Komprimovat pomocí FileCompressor“ v nabídce pravého tlačítka
+2|(teď {0}×{1})
+3|(ještě se kontroluje…)
+4|, po dokončení asi {0}
+5|, už pod zvolenou velikostí
+6|, ke kontrole před uložením
+7|, komprimovaná kopie smazána.
+8|, nebo stiskněte Ctrl+V.
+9|, originály do Original. Originály se přesunou až po uložení jejich komprimované kopie.
+10|, originály zůstanou na místě.
+11|, zůstane nedotčen
+12|1 soubor
+13|1 soubor, {0}
+14|1 stránka
+15|1 fotka
+16|MP4 v 1080p při 30 fps a fotky JPG, zhruba poloviční velikost.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|celkem ušetřeno <b>{0}</b>, 1 soubor
+24|celkem ušetřeno <b>{0}</b>, souborů: {1}
+25|Přerušit
+26|Asi 15 MB na soubor, videa MP4 a fotky JPG: vejde se do limitu 16 MB na WhatsAppu.
+27|Asi 18 MB na soubor, aby se vešel do přílohy e-mailu 25 MB.
+28|Asi 19 MB na soubor, videa MP4 a fotky JPG: vejde se do bezplatného limitu 20 MB na Discordu.
+29|Po dokončení asi {0}
+30|Přidat složku
+31|Přidat soubory
+32|Přidat složku
+33|Začněte přidáním souborů.
+34|Přidáno do nabídky pravého tlačítka.
+35|Po
+36|Všechny soubory
+37|Všech {0} stránek zachováno
+38|Už pod zvolenou velikostí
+39|Už je v tomto formátu
+40|Už je v seznamu.
+41|Už je mono
+42|Už dobře komprimováno, menší to nešlo
+43|Animovaný {0}: {1} by zachoval jen jeden snímek, ponecháno beze změny
+44|Animace zachována ({0} snímků)
+45|Animace zachována jako {0} ({1} snímků): {2} animaci neumí
+46|Vzhled
+47|Při této velikosti zbývá na sledovatelné video nebo zvuk příliš málo bitů za sekundu.
+48|Zvuk
+49|Jen zvuk, vytažený z videa
+50|Auto
+51|Auto snižuje rozlišení a snímkovou frekvenci jen tehdy, když to zvolená velikost vyžaduje. Nejlepší kvalita je pomalejší.
+52|Zpět na výchozí složku.
+53|Vyvážené
+54|Před
+55|Nejlepší kvalita
+56|Černobíle
+57|Sem nelze uložit
+58|Zrušit
+59|Změnit složku
+60|Změnit nastavení
+61|Zkontrolovat před uložením (zobrazení před/po)
+62|Zkontrolovat
+63|Ověřte, že se soubor správně otevírá ve čtečce PDF.
+64|Ověřte, že se soubor správně přehrává v přehrávači.
+65|Zkontrolovat první
+66|Zvolte jinou cílovou složku tlačítkem „Změnit složku“.
+67|Úklid (bez ztráty kvality)
+68|Vymazat historii
+69|Vyprázdnit seznam
+70|Kliknutím na soubor porovnáte před a po
+71|Kliknutím na obrázek ho zvětšíte.
+72|Kliknutím porovnáte před a po, pak uložte
+73|Zavřít
+74|Zavřete ostatní programy a zkuste to znovu, nebo zpracujte tento soubor samostatně.
+75|Zavřete programy, které soubor používají.
+76|Porovnat před a po
+77|Komprimovat
+78|Komprimovat fotky
+79|Komprimovat fotky ({0} uvnitř)
+80|Komprimovat obrázky uvnitř
+81|Komprimovat obrázky uvnitř ({0} velkých)
+82|Komprimovat pomocí FileCompressor
+83|Komprimované
+84|Komprimuje se
+85|Komprimují se fotky
+86|Komprimují se obrázky
+87|Komprimuje se {0} snímků
+88|Komprimuje se {0} stránek
+89|Převést
+90|Jen převést
+91|Převést na mono
+92|Převádí se
+93|Nepodařilo se přidat do nabídky pravého tlačítka.
+94|Cíl se nepodařilo úplně splnit bez zničení kvality.
+95|Cíl se nepodařilo úplně splnit bez zničení animace
+96|Cíl se nepodařilo úplně splnit bez zničení stránek
+97|Cíl se nepodařilo úplně splnit bez zničení obrázku
+98|Cíl se nepodařilo úplně splnit bez zničení obrázků
+99|Cíl se nepodařilo úplně splnit bez zničení obrázků.
+100|Original se nepodařilo přesunout do složky Original.
+101|Toto PDF nelze otevřít
+102|Toto PDF nelze otevřít ({0})
+103|Obnovení se nezdařilo: {0}
+104|Uložení se nezdařilo: {0}
+105|Obrázek obalu vynechán ({0} ho nepodporuje)
+106|Ctrl+V vkládá soubory a snímky obrazovky
+107|Oříznout začátek nebo konec
+108|Tmavý
+109|Smazat tuto předvolbu
+110|Jiné nastavení pro každý soubor
+111|Digitálně podepsáno: zůstane nedotčeno, aby podpis zůstal platný
+112|Digitálně podepsáno: ponecháno beze změny, aby podpis zůstal platný
+113|Zahodit
+114|Zahozeno, originál nedotčen
+115|Discord
+116|Udělat znovu s aktuálním nastavením
+117|Hotovo
+118|Hotovo: 1 soubor, ušetřeno {0}.
+119|Hotovo: souborů {0}, ušetřeno {1}.
+120|Přetáhnout hotové soubory z okna
+121|Sem přetáhněte soubory nebo složky
+122|Pusťte je kamkoli do okna{0}
+123|Pusťte je rovnou do WhatsAppu, Discordu, e-mailu nebo složky.
+124|Pusťte pro přidání
+125|EXIF odstraněna
+126|Každý soubor skončí na asi {0}% své velikosti: video 1 GB bude mít asi {1}, PDF 600 KB asi {2} KB.
+127|Každý výsledek čeká v seznamu jako „Ke kontrole“: otevřete ho, porovnejte stránky nebo obrázky vedle sebe a pak Uložit nebo Zahodit.
+128|E-mail
+129|Konec (m:ss)
+130|Každý soubor se zmenší na asi {0} {1}.
+131|Přesná velikost
+132|Rozbalte znovu celý zip a nechte všechny soubory ve složce.
+133|Nezdařilo se
+134|Rychle
+135|FileCompressor.log ve složce programu: co se udělalo a každá chyba
+136|Soubory
+137|Soubory, které už jsou menší, se přeskočí.
+138|Soubory, které už jsou menší, se i tak optimalizují, ale nemíří níž.
+139|Soubory se ještě komprimují.
+140|Soubory změní formát bez cílové velikosti. Formáty zvolte na kartách níže. Když to kontejner dovolí (například z MKV do MP4), video se znovu nekóduje, takže se neztratí kvalita. Soubory PDF a Office se přeskočí.
+141|Soubory nebo celé složky
+142|Vyplnitelný formulář: písma zůstanou celá
+143|Výsledná velikost v procentech
+144|Výsledná velikost každého souboru
+145|Dolaďuje se velikost
+146|Hotovo.
+147|Písma ponechána celá (vyplnitelný formulář)
+148|Například: E-mail 300 KB
+149|Formát
+150|Jen změna formátu
+151|Snímková frekvence
+152|Uvolněte místo nebo zvolte jinou cílovou složku.
+153|Od příštího spuštění se nastavení vrátí na výchozí.
+154|Poloha GPS a EXIF odstraněny
+155|Obecné
+156|Zmenší na polovinu nahrávky hlasu (přednášky, hlasové zprávy, hovory) bez slyšitelné ztráty. U hudby nechte vypnuté.
+157|Historie
+158|Historie a ušetřené místo
+159|Historie vymazána.
+160|Jak zmenšit
+161|Pokud jde o video, zvolte místo MP3/M4A formát videa.
+162|Pokud antivirus dal ffmpeg.exe do karantény, obnovte ho a povolte.
+163|Ve Windows 11 je pod „Zobrazit další možnosti“. Když přesunete složku programu, aktualizuje se při příštím spuštění.
+164|Instagram
+165|Může to být starý soubor .doc/.ppt/.xls přejmenovaný na .docx/.pptx/.xlsx.
+166|Může být chráněn heslem.
+167|Může používat neobvyklý kodek nebo mít ochranu proti kopírování (DRM, jako koupené filmy).
+168|Po přidání do seznamu byl přesunut, přejmenován nebo smazán.
+169|Vést historii
+170|Ponechat jen část
+171|Ponechat originál
+172|Pokračovat
+173|Ponechává se {0}: od {1} do {2}.
+174|Jazyk
+175|Nechte pole prázdné, chcete-li ponechat začátek nebo konec.
+176|Světlý
+177|Světlý / tmavý
+178|Chráněno heslem: nelze přečíst
+179|M4A (jen zvuk)
+180|MP3 (jen zvuk)
+181|MP4 do 1080p, asi 40 % původní velikosti.
+182|Max. výška
+183|Max. šířka
+184|Přesouvat originály do složky Original
+185|Vícestránkový TIFF ({0} stránek): {1} by zachoval jen první stránku, ponecháno beze změny
+186|Vícestránkový TIFF se stránkami různých velikostí: ponecháno beze změny
+187|Název
+188|Další stránka
+189|Žádná data EXIF
+190|Žádné velké obrázky
+191|Žádná vložená písma
+192|Žádná metadata
+193|Žádné fotky
+194|Žádné obrázky k převedení do šeda
+195|Bez ztráty kvality
+196|Bez ztráty kvality: metadata odstraněna, písma zredukována
+197|Bez ztráty kvality{0}
+198|Uvnitř není video, uloženo jako zvuk M4A
+199|Nic uvnitř
+200|Nedostatek paměti
+201|Není co vložit: zkopírujte soubory v Průzkumníku nebo nejdřív pořiďte snímek obrazovky.
+202|Nic se neušetřilo
+203|Zatím nic. Komprimované soubory se zobrazí tady.
+204|Vypnuto: všechny soubory používají toto nastavení. Zapnuto: otevřete soubor v seznamu a dejte mu vlastní velikost a formáty.
+205|Vypnuto: velikost, formáty a možnosti typů souborů se při každém spuštění programu vrátí na výchozí.
+206|Office
+207|Soubory Office tu nelze zobrazit. Otevřete výsledek a zkontrolujte ho.
+208|Zapnuto: otevřete video (nebo zvuk) v seznamu a nastavte, kde začíná a končí. Cílová velikost počítá jen ponechanou část.
+209|Otevřít
+210|Otevřít složku
+211|Otevřete ho ve Fotkách nebo v Malování, uložte znovu jako JPG nebo PNG a zkuste to znovu.
+212|Otevřete ho ve Wordu, PowerPointu nebo Excelu a uložte novou kopii .docx/.pptx/.xlsx.
+213|Otevřete ho heslem a uložte nebo vytiskněte kopii bez ochrany, pak to zkuste znovu.
+214|Otevřít výsledek
+215|Otevřete možnosti souboru a nastavte delší část k ponechání.
+216|Otevřít soubor protokolu
+217|Možnosti tohoto souboru
+218|Možnosti tohoto souboru{0}
+219|Opus
+220|Nebo ho převeďte na Opus, který při malých velikostech zní lépe.
+221|Nebo si sami snižte rozlišení v bloku Video.
+222|Nebo ho ořízněte na potřebnou část (možnosti souboru, Oříznout).
+223|Nebo použijte Sdílet → FileCompressor z Galerie, WhatsAppu nebo Souborů. Nic neopustí tento telefon.
+224|Originál obnoven
+225|Originál obnoven{0}
+226|Soubory PDF a Office lze jen komprimovat
+227|Stránka {0} z {1}
+228|Procenta
+229|Procenta
+230|Fotka
+231|Fotky
+232|Fotky se zmenší jen tolik, kolik je potřeba k dosažení velikosti. Černobílé hodně zmenší skeny. Převod stránek na obrázky je pro skeny nejmenší, ale text pak už nejde označit.
+233|Zvolte větší velikost v MB nebo vyšší procento.
+234|Zvolte vyšší procento nebo větší velikost v MB.
+235|Zvolte, kam soubory půjdou, nebo si vše nastavte níže.
+236|Obrázky
+237|Přehrát
+238|Možné příčiny
+239|Předvolba „{0}“ uložena.
+240|Předchozí stránka
+241|Vytiskněte ho do nového PDF a zkuste to znovu.
+242|Soukromí
+243|Program
+244|Rychlé předvolby
+245|Čte se PDF
+246|Ke kontrole
+247|Převést stránky na obrázky
+248|Převést naskenované stránky na obrázky
+249|Stránky se převádějí na obrázky
+250|Zredukováno na 256 barev
+251|Pamatovat si poslední nastavení
+252|Odstranit data EXIF
+253|Odstranit polohu GPS a EXIF (obsahuje GPS)
+254|Odstranit polohu GPS a data EXIF
+255|Odebrat ze seznamu
+256|Odeberte ho ze seznamu a přidejte znovu.
+257|Odstranit metadata
+258|Odstranit náhledy a přílohy
+259|Odstranit náhledy a přílohy{0}
+260|Odebráno z nabídky pravého tlačítka.
+261|Odstraní, kde a jakým telefonem byla fotka pořízena. Samotný obrázek se nezmění a zůstane správně otočený.
+262|Nahradit aktuálním nastavením
+263|Změnit na přesnou velikost
+264|Změnit velikost na {0} × {1} px{2}
+265|Zmenšeno na šířku {0} px
+266|Rozlišení
+267|Obnovit a smazat komprimovanou kopii
+268|Obnovit a ponechat komprimovanou kopii
+269|Obnovit originál
+270|Obnovit originál?
+271|Výsledky jsou ve složce Compressed
+272|Výsledky jdou do Compressed jako nazev_compressed{0}
+273|Stejně jako ostatní
+274|Uložit
+275|Uložit všechny zkontrolované
+276|Uložit všech {0} bez kontroly
+277|Uložit jako
+278|Uložit jako předvolbu
+279|Uložit aktuální…
+280|Uložit výsledky do
+281|Uložit do
+282|Uloženo jako {0}
+283|Uloženo jako {0} (z {1})
+284|Nastavení podle typu souboru
+285|Zkratky
+286|Zobrazit ve složce
+287|Velikost tohoto souboru
+288|Velikost v pixelech
+289|Velikost, formáty a možnosti všech karet se uloží pod tímto názvem. Pravým tlačítkem na některou svou předvolbu ji můžete změnit nebo smazat.
+290|Přeskočit soubory menší než cíl
+291|Přeskočeno
+292|Některé vzácné varianty (neobvyklé TIFF nebo HEIC) nejsou podporovány.
+293|Něco se nečekaně pokazilo
+294|Zvuk
+295|Rychlost
+296|Začátek (m:ss)
+297|Začátek a konec jsou od sebe méně než půl sekundy.
+298|Zastavit a zavřít
+299|Zastavit teď? Nedokončené originály zůstanou nedotčené.
+300|Zastaveno, originál nedotčen
+301|Zastaveno.
+302|Zastavuje se…
+303|Podporované soubory
+304|Přepnout mezi světlým a tmavým
+305|Systém
+306|Klepnutím přidáte soubory
+307|Telegram
+308|PDF jen s textem: menší už to bez ztráty kvality nebude
+309|Soubor Office nelze otevřít
+310|PDF nelze otevřít
+311|Disk je plný
+312|Konec musí být po začátku.
+313|Jádro se nečekaně zastavilo.
+314|Soubor ffmpeg.exe vedle programu byl odstraněn nebo ho zablokoval antivirus.
+315|Soubor nelze přečíst
+316|Soubor nemá zvukovou stopu ke komprimaci ani vytažení.
+317|Soubor se vždy lépe zabalí. Když je tohle zapnuté, zmenší se i velké obrázky uvnitř. Videa a zvuky uvnitř zůstanou, jak jsou. Soubory si ponechají svůj formát.
+318|Soubor je chráněn heslem
+319|Soubor je chráněný, takže jeho obsah nelze přečíst ani přepsat.
+320|Soubor je velmi velký (například obří fotka nebo PDF) a jádro se zastavilo.
+321|Soubor je velmi velký (například obří fotka nebo PDF).
+322|Soubor už tam není
+323|Soubor může být poškozený nebo ve variantě, kterou program nezvládá.
+324|Soubor může být poškozený nebo neúplný (například přerušené stahování či kopírování).
+325|Soubor může být poškozený nebo stažený jen zčásti.
+326|Soubor může být poškozený nebo to navzdory příponě není obrázek.
+327|Soubor může mít porušené časové značky nebo neobvyklou strukturu.
+328|Originál už ve složce Original není.
+329|Do cílové složky nelze zapisovat, proto se použije výchozí složka.
+330|Cílová složka může být jen pro čtení nebo chráněná, nebo je soubor otevřený v jiném programu.
+331|Stránky vypadají úplně stejně. Soubor se navíc pokaždé lépe zabalí. Digitálně podepsaná PDF zůstávají vždy nedotčená a písma ve vyplnitelných formulářích zůstávají celá.
+332|Fotka se vejde do tohoto rámečku a zachová tvar. Nechte jednu stranu prázdnou, chcete-li nastavit jen druhou. Menší fotky se nezvětšují.
+333|Obrázek nelze otevřít
+334|Zvolená velikost je příliš malá
+335|Zvolená velikost je pro toto video příliš malá
+336|Ořez je příliš krátký
+337|Chybí jádro pro video
+338|Jádro pro video/zvuk nedokázalo tento soubor přečíst ani zapsat
+339|Celý soubor trvá {0}. Nechte pole prázdné, chcete-li ponechat začátek nebo konec.
+340|Uvnitř nejsou žádné obrázky ke komprimaci.
+341|Na komprimovanou kopii není dost volného místa.
+342|V tomto souboru není zvuk
+343|Toto PDF je chráněno heslem.
+344|Tento soubor tu nelze zobrazit{0}
+345|Tento soubor není platný dokument Office (nebo je chráněn heslem).
+346|Tento soubor není platný dokument Office.
+347|Tyto soubory nejsou podporované.
+348|Tip: Ctrl+V vloží soubory zkopírované v Průzkumníku nebo snímek obrazovky.
+349|Oříznout
+350|Zredukovat písma
+351|Zredukovat písma na použitá písmena
+352|Zkuste nejdřív „Jen převést“ do MP4 a pak komprimovat převedený soubor.
+353|Zkusit znovu
+354|Zkuste soubor znovu samostatně.
+355|Jednotka
+356|Použijte nejdřív „Jen převést“ do MP4 a pak komprimujte převedený soubor.
+357|Použít výchozí
+358|Video
+359|Videa
+360|Videa, fotky, PDF, zvuk a soubory Office, offline
+361|Videa a zvuky vložené v souboru zůstaly, jak byly.
+362|Počkejte, až seznam doběhne.
+363|Co zkusit
+364|Po dokončení
+365|Během komprimace
+366|Proč se to nepovedlo?
+367|Windows nedovolil soubor zapsat
+368|Windows nedovoluje zapisovat do této složky. Zvolte jinou.
+369|Oznámení Windows
+370|Bez ztráty kvality
+371|Word, PowerPoint a Excel
+372|Pracuje se
+373|Napište čas jako minuty:sekundy, například 1:30.
+374|Vaše předvolba: {0}.
+375|asi {0} {1} na soubor
+376|už dobře komprimováno
+377|animace, {0} snímků
+378|přílohy odstraněny
+379|pod cílem
+380|nelze přečíst
+381|nelze převést
+382|tento obrázek nelze otevřít: {0}
+383|nelze přečíst délku
+384|nelze přečíst délku tohoto zvuku
+385|ořez {0}–{1}
+386|ffmpeg nemohl soubor zpracovat: žádné stopy
+387|ffmpeg nemohl soubor zpracovat: žádné video
+388|ffmpeg nemohl soubor zpracovat: nečitelný
+389|ffmpeg nemohl soubor zpracovat: {0}
+390|chybí ffmpeg
+391|písma zredukována
+392|jen změna formátu
+393|se vrátí ze složky Original tam, kde byl.
+394|ponecháno jako TIFF: {0} pojme jen jednu stránku
+395|metadata odstraněna
+396|žádná zvuková stopa
+397|žádné obrázky
+398|nebo je přidejte tlačítky. Nic neopustí tento počítač.
+399|vlastní nastavení
+400|stránky jako obrázky
+401|ke kontrole
+402|stejný formát
+403|cíl je příliš malý
+404|cíl je příliš malý: toto video trvá {0} min, potřebuje aspoň {1} MB
+405|jen text
+406|konec
+407|ořez ponechá méně než půl sekundy
+408|náhledy odstraněny
+409|neznámá chyba
+410|neznámý formát
+411|neznámý formát {0}
+412|{0} ({1} bajtů)
+413|hotovo {0}, ušetřeno {1}
+414|Přeskočeno souborů: {0} (nepodporovaný typ).
+415|Souborů: {0}
+416|Souborů: {0}, {1}
+417|{0} se vrátí ze složky Original tam, kde byl.
+418|Stránek: {0}
+419|Fotek: {0}
+420|Vynechány obrázkové titulky: {0} ({2} je nepodporuje, MKV ano)
+421|Obrázků: {0}
+422|Ke kontrole: {0}
+423|Ke kontrole: {0}. Klikněte na každý, porovnejte a pak uložte.
+424|Uloženo do složky Compressed: {0}.
+425|{0} {1} z {2}
+426|{0} % velikosti
+427|· originál obnoven
+428|Toto video trvá {0} min: při této velikosti potřebuje aspoň {1} MB.

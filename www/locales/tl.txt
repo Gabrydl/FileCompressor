@@ -1,0 +1,428 @@
+1|"I-compress gamit ang FileCompressor" sa right-click menu
+2|(ngayon {0}×{1})
+3|(sinusuri pa…)
+4|, mga {0} pagkatapos
+5|, mas maliit na sa napiling laki
+6|, susuriin bago i-save
+7|, binura ang naka-compress na kopya.
+8|, o pindutin ang Ctrl+V.
+9|, ang mga orihinal sa Original. Inililipat lang ang mga orihinal pagkatapos ma-save ang naka-compress na kopya nila.
+10|, nananatili ang mga orihinal kung nasaan sila.
+11|, hindi gagalawin
+12|1 file
+13|1 file, {0}
+14|1 pahina
+15|1 larawan
+16|1080p na MP4 sa 30 fps at mga JPG na larawan, mga kalahati ng laki.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|<b>{0}</b> ang natipid sa kabuuan, 1 file
+24|<b>{0}</b> ang natipid sa kabuuan, {1} file
+25|Ihinto
+26|Mga 15 MB bawat file, MP4 na video at JPG na larawan: kasya sa 16 MB na limitasyon ng WhatsApp.
+27|Mga 18 MB bawat file, para kumasya sa 25 MB na attachment ng email.
+28|Mga 19 MB bawat file, MP4 na video at JPG na larawan: kasya sa libreng 20 MB na limitasyon ng Discord.
+29|Mga {0} pagkatapos
+30|Magdagdag ng folder
+31|Magdagdag ng mga file
+32|Magdagdag ng folder
+33|Magdagdag ng mga file para magsimula.
+34|Naidagdag sa right-click menu.
+35|Pagkatapos
+36|Lahat ng file
+37|Naitago ang lahat ng {0} pahina
+38|Mas maliit na sa napiling laki
+39|Nasa format na iyon na
+40|Nasa listahan na.
+41|Mono na
+42|Maayos nang naka-compress, hindi na mapaliit pa
+43|Animated na {0}: isang frame lang ang itatago ng {1}, hindi ginalaw
+44|Naitago ang animation ({0} frame)
+45|Naitago ang animation bilang {0} ({1} frame): hindi kaya ng {2} ang animation
+46|Hitsura
+47|Sa laking iyon, masyadong kaunti ang bits bawat segundo para sa maayos na video o audio.
+48|Audio
+49|Audio lang, kinuha mula sa video
+50|Auto
+51|Ibinababa lang ng Auto ang resolution at frame rate kapag kailangan ng napiling laki. Mas mabagal ang Pinakamahusay na kalidad.
+52|Bumalik sa default na folder.
+53|Balanse
+54|Bago
+55|Pinakamahusay na kalidad
+56|Itim at puti
+57|Hindi makakapag-save doon
+58|Kanselahin
+59|Palitan ang folder
+60|Baguhin ang settings
+61|Suriin bago i-save (view na bago/pagkatapos)
+62|Suriin ito
+63|Tingnan kung bumubukas nang maayos ang file sa PDF reader.
+64|Tingnan kung tumutugtog nang maayos ang file sa player.
+65|Suriin ang una
+66|Pumili ng ibang destination folder gamit ang "Palitan ang folder".
+67|Paglilinis (walang nawawalang kalidad)
+68|Burahin ang history
+69|I-clear ang listahan
+70|I-click ang isang file para ikumpara ang bago at pagkatapos
+71|I-click ang larawan para makita ito nang mas malaki.
+72|I-click para ikumpara ang bago at pagkatapos, saka i-save
+73|Isara
+74|Isara ang ibang programa at subukan ulit, o iproseso ang file na ito nang mag-isa.
+75|Isara ang mga programang gumagamit ng file.
+76|Ikumpara ang bago at pagkatapos
+77|I-compress
+78|I-compress ang mga larawan
+79|I-compress ang mga larawan ({0} sa loob)
+80|I-compress ang mga larawan sa loob
+81|I-compress ang mga larawan sa loob ({0} malaki)
+82|I-compress gamit ang FileCompressor
+83|Naka-compress
+84|Kino-compress
+85|Kino-compress ang mga larawan
+86|Kino-compress ang mga larawan
+87|Kino-compress ang {0} frame
+88|Kino-compress ang {0} pahina
+89|I-convert
+90|I-convert lang
+91|I-convert sa mono
+92|Kino-convert
+93|Hindi naidagdag sa right-click menu.
+94|Hindi lubos naabot ang target nang hindi sinisira ang kalidad.
+95|Hindi lubos naabot ang target nang hindi sinisira ang animation
+96|Hindi lubos naabot ang target nang hindi sinisira ang mga pahina
+97|Hindi lubos naabot ang target nang hindi sinisira ang larawan
+98|Hindi lubos naabot ang target nang hindi sinisira ang mga larawan
+99|Hindi lubos naabot ang target nang hindi sinisira ang mga larawan.
+100|Hindi nailipat ang orihinal sa folder na Original.
+101|Hindi mabuksan ang PDF na ito
+102|Hindi mabuksan ang PDF na ito ({0})
+103|Hindi naibalik: {0}
+104|Hindi na-save: {0}
+105|Hindi isinama ang cover na larawan (hindi ito kaya ng {0})
+106|Nagpe-paste ang Ctrl+V ng mga file at screenshot
+107|Putulin ang simula o dulo
+108|Madilim
+109|Burahin ang preset na ito
+110|Ibang settings sa bawat file
+111|May digital signature: hindi gagalawin para manatiling valid ang pirma
+112|May digital signature: hindi ginalaw para manatiling valid ang pirma
+113|Itapon
+114|Itinapon, hindi ginalaw ang orihinal
+115|Discord
+116|Gawin ulit gamit ang kasalukuyang settings
+117|Tapos na
+118|Tapos na: 1 file, {0} ang natipid.
+119|Tapos na: {0} file, {1} ang natipid.
+120|I-drag palabas ng window ang mga tapos nang file
+121|I-drop dito ang mga file o folder
+122|I-drop kahit saan sa window{0}
+123|I-drop nang diretso sa WhatsApp, Discord, email o folder.
+124|I-drop para idagdag
+125|Inalis ang EXIF
+126|Mapupunta ang bawat file sa mga {0}% ng laki nito: ang 1 GB na video ay magiging mga {1}, ang 600 KB na PDF ay mga {2} KB.
+127|Naghihintay sa listahan ang bawat resulta bilang "Susuriin": buksan ito, ikumpara ang mga pahina o larawan nang magkatabi, saka I-save o Itapon.
+128|Email
+129|Dulo (m:ss)
+130|Dinadala ang bawat file sa mga {0} {1}.
+131|Eksaktong laki
+132|I-extract ulit ang buong zip at panatilihin ang lahat ng file sa folder.
+133|Pumalya
+134|Mabilis
+135|FileCompressor.log, sa folder ng programa: kung ano ang ginawa at bawat error
+136|Mga file
+137|Nilalaktawan ang mga file na mas maliit na.
+138|Ino-optimize pa rin ang mga file na mas maliit na, nang hindi tumututok nang mas mababa.
+139|May mga file pang kino-compress.
+140|Nagpapalit ng format ang mga file nang walang target na laki. Piliin ang mga format sa bawat tab sa ibaba. Kapag pinapayagan ng container (halimbawa MKV papuntang MP4), hindi nire-re-encode ang video, kaya walang nawawalang kalidad. Nilalaktawan ang mga PDF at Office file.
+141|Mga file o buong folder
+142|Fillable form: buo ang mga font
+143|Huling laki sa porsyento
+144|Huling laki ng bawat file
+145|Inaayos ang laki
+146|Tapos na.
+147|Buo ang mga font (fillable form)
+148|Halimbawa: Email 300 KB
+149|Format
+150|Pagpalit ng format lang
+151|Bilis ng frame
+152|Magbakante ng espasyo o pumili ng ibang destination folder.
+153|Sa susunod na pagbukas, babalik sa default ang settings.
+154|Inalis ang GPS location at EXIF
+155|Pangkalahatan
+156|Hinahati ang laki ng mga voice recording (lecture, voice note, tawag) nang walang naririnig na pagbaba ng kalidad. Iwanang naka-off para sa musika.
+157|History
+158|History at natipid na espasyo
+159|Binura ang history.
+160|Gaano kaliit
+161|Kung video ito, pumili ng video format sa halip na MP3/M4A.
+162|Kung na-quarantine ng antivirus ang ffmpeg.exe, ibalik ito at payagan.
+163|Sa Windows 11, nasa "Show more options" ito. Kapag inilipat mo ang folder ng programa, maa-update ito sa susunod na pagbukas.
+164|Instagram
+165|Baka lumang .doc/.ppt/.xls na file ito na pinalitan ng pangalan bilang .docx/.pptx/.xlsx.
+166|Baka protektado ito ng password.
+167|Baka gumagamit ito ng di-karaniwang codec o may copy protection (DRM, tulad ng mga binili na pelikula).
+168|Inilipat, pinalitan ng pangalan o binura ito pagkatapos idagdag sa listahan.
+169|Magtago ng history
+170|Isang bahagi lang ang itago
+171|Itago ang orihinal
+172|Ituloy
+173|Itinatago ang {0}: mula {1} hanggang {2}.
+174|Wika
+175|Iwanang blangko ang isang kahon para itago ang simula o dulo.
+176|Maliwanag
+177|Maliwanag / madilim
+178|Protektado ng password: hindi mabasa
+179|M4A (audio lang)
+180|MP3 (audio lang)
+181|MP4 hanggang 1080p, mga 40% ng orihinal na laki.
+182|Max na taas
+183|Max na lapad
+184|Ilipat ang mga orihinal sa folder na Original
+185|Multi-page na TIFF ({0} pahina): ang unang pahina lang ang itatago ng {1}, hindi ginalaw
+186|Multi-page na TIFF na may magkakaibang laki ng pahina: hindi ginalaw
+187|Pangalan
+188|Susunod na pahina
+189|Walang EXIF data
+190|Walang malalaking larawan
+191|Walang naka-embed na font
+192|Walang metadata
+193|Walang larawan
+194|Walang larawang gagawing gray
+195|Walang nawawalang kalidad
+196|Walang nawawalang kalidad: inalis ang metadata, pinaikli ang mga font
+197|Walang nawawalang kalidad{0}
+198|Walang video sa loob, na-save bilang M4A audio
+199|Wala sa loob
+200|Kulang ang memory
+201|Walang ipe-paste: kopyahin ang mga file sa Explorer, o kumuha muna ng screenshot.
+202|Walang natipid
+203|Wala pa. Dito lalabas ang mga naka-compress na file.
+204|Off: pare-pareho ang settings ng lahat ng file. On: buksan ang isang file sa listahan para bigyan ito ng sariling laki at format.
+205|Off: babalik sa default ang laki, format at mga opsyon ng bawat uri ng file tuwing bubuksan ang programa.
+206|Office
+207|Hindi maipapakita dito ang mga Office file. Buksan ang resulta para suriin ito.
+208|On: buksan ang isang video (o audio) sa listahan para itakda kung saan ito nagsisimula at nagtatapos. Ang bahaging itinago lang ang binibilang ng target na laki.
+209|Buksan
+210|Buksan ang folder
+211|Buksan ito sa Photos o Paint, i-save ulit bilang JPG o PNG, saka subukan ulit.
+212|Buksan ito sa Word, PowerPoint o Excel at mag-save ng bagong .docx/.pptx/.xlsx na kopya.
+213|Buksan ito gamit ang password at mag-save o mag-print ng kopyang walang proteksyon, saka subukan ulit.
+214|Buksan ang resulta
+215|Buksan ang mga opsyon ng file at magtakda ng mas mahabang bahaging itatago.
+216|Buksan ang log file
+217|Mga opsyon para sa file na ito
+218|Mga opsyon para sa file na ito{0}
+219|Opus
+220|O i-convert ito sa Opus, na mas maganda ang tunog sa maliliit na laki.
+221|O ikaw mismo ang magbaba ng resolution sa block na Video.
+222|O putulin ito sa bahaging kailangan mo (mga opsyon ng file, Putulin).
+223|O gamitin ang Share → FileCompressor mula sa Gallery, WhatsApp o Files. Walang lumalabas sa phone na ito.
+224|Naibalik ang orihinal
+225|Naibalik ang orihinal{0}
+226|Ang mga PDF at Office file ay compress lang ang puwede
+227|Pahina {0} ng {1}
+228|Porsyento
+229|Porsyento
+230|Larawan
+231|Mga larawan
+232|Pinaliliit lang ang mga larawan hangga't kailangan para maabot ang laki. Malaki ang naliliit sa mga scan kapag black and white. Pinakamaliit para sa mga scan ang muling paggawa ng mga pahina bilang larawan, pero hindi na mapipili ang text.
+233|Pumili ng mas malaking laki sa MB, o mas mataas na porsyento.
+234|Pumili ng mas mataas na porsyento o mas malaking laki sa MB.
+235|Piliin kung saan pupunta ang mga file, o ikaw na ang magtakda ng lahat sa ibaba.
+236|Mga larawan
+237|I-play
+238|Mga posibleng dahilan
+239|Na-save ang preset na "{0}".
+240|Nakaraang pahina
+241|I-print ito sa bagong PDF, saka subukan ulit.
+242|Privacy
+243|Programa
+244|Mabilisang preset
+245|Binabasa ang PDF
+246|Susuriin
+247|Gawin ulit ang mga pahina bilang larawan
+248|Gawin ulit ang mga na-scan na pahina bilang larawan
+249|Ginagawa ulit ang mga pahina bilang larawan
+250|Ibinaba sa 256 na kulay
+251|Tandaan ang huling settings
+252|Alisin ang EXIF data
+253|Alisin ang GPS location at EXIF (may GPS)
+254|Alisin ang GPS location at EXIF data
+255|Alisin sa listahan
+256|Alisin ito sa listahan at idagdag ulit.
+257|Alisin ang metadata
+258|Alisin ang mga thumbnail at attachment
+259|Alisin ang mga thumbnail at attachment{0}
+260|Inalis sa right-click menu.
+261|Inaalis kung saan at gamit ang aling phone kinuha ang larawan. Hindi nagbabago ang mismong larawan at nananatili itong tama ang ayos.
+262|Palitan ng kasalukuyang settings
+263|I-resize sa eksaktong laki
+264|I-resize sa {0} × {1} px{2}
+265|Na-resize sa {0} px na lapad
+266|Resolution
+267|Ibalik at burahin ang naka-compress na kopya
+268|Ibalik at itago ang naka-compress na kopya
+269|Ibalik ang orihinal
+270|Ibalik ang orihinal?
+271|Nasa folder na Compressed ang mga resulta
+272|Pumupunta ang mga resulta sa Compressed bilang pangalan_compressed{0}
+273|Kapareho ng iba
+274|I-save
+275|I-save ang lahat ng nasuri
+276|I-save ang lahat ng {0} nang hindi sinusuri
+277|I-save bilang
+278|I-save bilang preset
+279|I-save ang kasalukuyan…
+280|I-save ang mga resulta sa
+281|I-save sa
+282|Na-save bilang {0}
+283|Na-save bilang {0} (mula sa {1})
+284|Settings ayon sa uri ng file
+285|Mga shortcut
+286|Ipakita sa folder
+287|Laki para sa file na ito
+288|Laki sa pixel
+289|Sine-save sa pangalang ito ang laki, mga format at mga opsyon ng bawat tab. I-right-click ang isa sa mga preset mo para baguhin o burahin ito.
+290|Laktawan ang mga file na mas maliit na sa target
+291|Nilaktawan
+292|Hindi suportado ang ilang bihirang variant (di-karaniwang TIFF o HEIC).
+293|May hindi inaasahang nagkamali
+294|Tunog
+295|Bilis
+296|Simula (m:ss)
+297|Mas maikli sa kalahating segundo ang pagitan ng simula at dulo.
+298|Ihinto at isara
+299|Ihinto na? Hindi gagalawin ang mga orihinal na hindi pa tapos.
+300|Inihinto, hindi ginalaw ang orihinal
+301|Inihinto.
+302|Inihihinto…
+303|Mga suportadong file
+304|Magpalit sa maliwanag at madilim
+305|System
+306|I-tap para magdagdag ng mga file
+307|Telegram
+308|PDF na text lang: hindi na ito liliit pa nang walang nawawalang kalidad
+309|Hindi mabuksan ang Office file
+310|Hindi mabuksan ang PDF
+311|Puno na ang disk
+312|Dapat nasa pagkatapos ng simula ang dulo.
+313|Biglang huminto ang engine.
+314|Inalis o hinarang ng antivirus ang ffmpeg.exe na katabi ng programa.
+315|Hindi mabasa ang file
+316|Walang audio track ang file na puwedeng i-compress o kunin.
+317|Laging mas siksik ang pagkaka-pack ng file. Kapag naka-on ito, pinaliliit din ang malalaking larawan sa loob. Hindi ginagalaw ang mga video at tunog sa loob. Pareho pa rin ang format ng mga file.
+318|Protektado ng password ang file
+319|Protektado ang file, kaya hindi mabasa o maisulat ulit ang laman nito.
+320|Napakalaki ng file (halimbawa malaking larawan o PDF) at huminto ang engine.
+321|Napakalaki ng file (halimbawa malaking larawan o PDF).
+322|Wala na ang file
+323|Baka sira ang file o nasa variant na hindi kaya ng programa.
+324|Baka sira o kulang ang file (halimbawa naputol na download o kopya).
+325|Baka sira ang file o bahagi lang ang na-download.
+326|Baka sira ang file, o hindi talaga larawan kahit ganoon ang extension.
+327|Baka sira ang mga timestamp ng file o kakaiba ang istruktura nito.
+328|Wala na sa folder na Original ang orihinal.
+329|Hindi masulatan ang destination folder, kaya ang default na folder ang ginagamit.
+330|Baka read-only o protektado ang destination folder, o bukas ang file sa ibang programa.
+331|Eksaktong pareho ang hitsura ng mga pahina. Mas siksik din ang pagkaka-pack ng file bawat beses. Hindi kailanman ginagalaw ang mga PDF na may digital signature, at buo ang mga font sa fillable form.
+332|Kakasya ang larawan sa kahong ito at mananatili ang hugis nito. Iwanang blangko ang isang gilid para itakda lang ang isa. Hindi pinalalaki ang mas maliliit na larawan.
+333|Hindi mabuksan ang larawan
+334|Masyadong maliit ang napiling laki
+335|Masyadong maliit ang napiling laki para sa video na ito
+336|Masyadong maikli ang putol
+337|Nawawala ang video engine
+338|Hindi nabasa o naisulat ng video/audio engine ang file na ito
+339|{0} ang haba ng buong file. Iwanang blangko ang isang kahon para itago ang simula o dulo.
+340|Walang larawan sa loob na ico-compress.
+341|Kulang ang bakanteng espasyo para isulat ang naka-compress na kopya.
+342|Walang tunog ang file na ito
+343|Protektado ng password ang PDF na ito.
+344|Hindi maipapakita dito ang file na ito{0}
+345|Hindi valid na Office document ang file na ito (o protektado ng password).
+346|Hindi valid na Office document ang file na ito.
+347|Hindi suportado ang mga file na iyon.
+348|Tip: Nagpe-paste ang Ctrl+V ng mga file na kinopya sa Explorer, o ng screenshot.
+349|Putulin
+350|Paikliin ang mga font
+351|Paikliin ang mga font sa mga letrang ginamit
+352|Subukan muna ang "I-convert lang" papuntang MP4, saka i-compress ang na-convert na file.
+353|Subukan ulit
+354|Subukan ulit ang file nang mag-isa.
+355|Unit
+356|Gamitin muna ang "I-convert lang" papuntang MP4, saka i-compress ang na-convert na file.
+357|Gamitin ang default
+358|Video
+359|Mga video
+360|Mga video, larawan, PDF, audio at Office file, offline
+361|Hindi ginalaw ang mga video at audio na naka-embed sa file.
+362|Hintaying matapos ang listahan.
+363|Ano ang susubukan
+364|Kapag tapos na
+365|Habang nagko-compress
+366|Bakit ito pumalya?
+367|Hindi pinayagan ng Windows na isulat ang file
+368|Hindi pinapayagan ng Windows ang pagsulat sa folder na iyon. Pumili ng iba.
+369|Notification ng Windows
+370|Walang nawawalang kalidad
+371|Word, PowerPoint at Excel
+372|Ginagawa
+373|Isulat ang oras bilang minuto:segundo, halimbawa 1:30.
+374|Ang preset mo: {0}.
+375|mga {0} {1} bawat file
+376|maayos nang naka-compress
+377|animated, {0} frame
+378|inalis ang mga attachment
+379|mas maliit sa target
+380|hindi mabasa
+381|hindi ma-convert
+382|hindi mabuksan ang larawang ito: {0}
+383|hindi mabasa ang haba
+384|hindi mabasa ang haba ng audio na ito
+385|putol {0}–{1}
+386|hindi naproseso ng ffmpeg ang file: walang stream
+387|hindi naproseso ng ffmpeg ang file: walang video
+388|hindi naproseso ng ffmpeg ang file: hindi mabasa
+389|hindi naproseso ng ffmpeg ang file: {0}
+390|nawawala ang ffmpeg
+391|pinaikli ang mga font
+392|pagpalit ng format lang
+393|babalik mula sa folder na Original sa dati nitong lugar.
+394|itinago bilang TIFF: isang pahina lang ang kaya ng {0}
+395|inalis ang metadata
+396|walang audio track
+397|walang larawan
+398|o idagdag gamit ang mga button. Walang lumalabas sa computer na ito.
+399|sariling settings
+400|mga pahina bilang larawan
+401|susuriin
+402|parehong format
+403|masyadong maliit ang target
+404|masyadong maliit ang target: {0} min ang video na ito, kailangan ng hindi bababa sa {1} MB
+405|text lang
+406|ang dulo
+407|mas maikli sa kalahating segundo ang natitira sa putol
+408|inalis ang mga thumbnail
+409|hindi kilalang error
+410|hindi kilalang format
+411|hindi kilalang format {0}
+412|{0} ({1} bytes)
+413|{0} tapos, {1} ang natipid
+414|{0} file ang nilaktawan: hindi suportado ang uri.
+415|{0} file
+416|{0} file, {1}
+417|Babalik ang {0} mula sa folder na Original sa dati nitong lugar.
+418|{0} pahina
+419|{0} larawan
+420|{0} subtitle track na larawan ang hindi isinama (hindi kaya ng {2}, kaya ng MKV)
+421|{0} larawan
+422|{0} susuriin
+423|{0} susuriin: i-click ang bawat isa para ikumpara, saka i-save.
+424|{0} ang na-save sa folder na Compressed.
+425|{0} {1} ng {2}
+426|{0}% ng laki
+427|· naibalik ang orihinal
+428|{0} min ang video na ito: sa laking ito, kailangan ng hindi bababa sa {1} MB.

@@ -79,20 +79,35 @@ object Office {
         val orig = src.length()
         ctx.stage("Compressing pictures")
         var best: Built? = null
-        for ((k, step) in LADDER.withIndex()) {
+        val ladder = if (s.officePhotos) LADDER else listOf(0 to 0)   // 0 = pictures left alone, only packed tighter
+        for ((k, step) in ladder.withIndex()) {
             val r = build(src, File(ctx.tmp, "o$k.${src.extLower()}"), step.first, step.second, ctx)
             val size = r.file.length()
             val b = best
             if (b == null || size < b.file.length()) { b?.file?.delete(); best = r } else r.file.delete()
-            ctx.progress((k + 1).toDouble() / LADDER.size)
+            ctx.progress((k + 1).toDouble() / ladder.size)
             if (size <= target || r.count == 0) break
         }
         val b = best!!
-        if (b.file.length() >= orig * 0.99) throw Skip(if (b.count > 0) "already well compressed" else "There are no pictures inside to compress.")
+        if (b.file.length() >= orig * 0.99) throw Skip(if (b.count > 0 || !s.officePhotos) "already well compressed" else "There are no pictures inside to compress.")
         b.file.renameTo(out)
         val notes = mutableListOf<String>()
         if (out.length() > target * 1.05) notes.add("Couldn't fully reach the target without ruining the pictures.")
         if (b.media) notes.add("Videos/audio embedded in the file were left as they are.")
         return Result(out, out.length(), notes.joinToString(" "))
     }
+
+    /** How many pictures are inside, how many are big, and whether it is signed (for the tick boxes). */
+    fun inspect(src: File): org.json.JSONObject = try {
+        ZipFile(src).use { z ->
+            var pics = 0; var big = 0; var signed = false
+            for (e in z.entries()) {
+                if (e.name.startsWith("_xmlsignatures/", true) && !e.isDirectory) signed = true
+                if (!e.name.contains("/media/") || !PICTURE.containsMatchIn(e.name)) continue
+                pics++
+                if (e.size >= 40000) big++
+            }
+            org.json.JSONObject().put("pictures", pics).put("big", big).put("signed", signed)
+        }
+    } catch (_: Exception) { org.json.JSONObject().put("unreadable", true) }
 }

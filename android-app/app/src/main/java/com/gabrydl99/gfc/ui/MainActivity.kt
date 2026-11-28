@@ -34,6 +34,9 @@ import androidx.webkit.WebViewAssetLoader
 import com.gabrydl99.gfc.work.AppLog
 import com.gabrydl99.gfc.work.CompressService
 import com.gabrydl99.gfc.work.Engine
+import com.gabrydl99.gfc.work.Preview
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import kotlin.concurrent.thread
 import kotlin.math.roundToInt
@@ -96,7 +99,15 @@ class MainActivity : ComponentActivity() {
             setSupportMultipleWindows(false)
         }
         web.webViewClient = object : WebViewClient() {
-            override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? = assets.shouldInterceptRequest(request.url)
+            override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
+                val u = request.url
+                if (u.host == HOST && (u.path ?: "").startsWith("/local/")) {
+                    // pictures of the before/after view and the files it plays (only those Preview handed out)
+                    val f = Preview.fileOf(u.lastPathSegment ?: "") ?: return WebResourceResponse("text/plain", "utf-8", 404, "Not found", emptyMap(), null)
+                    return try { WebResourceResponse(mimeOf(f), null, f.inputStream()) } catch (_: Exception) { null }
+                }
+                return assets.shouldInterceptRequest(u)
+            }
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                 if (request.url.host == HOST) return false
                 openExternal(request.url)
@@ -265,6 +276,37 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface fun initialSettings(): String = Engine.settingsJson()
         @JavascriptInterface fun putSettings(json: String?) { if (json != null) Engine.putSettings(json) }
         @JavascriptInterface fun log(level: String?, msg: String?) { AppLog.line(level ?: "INFO", msg ?: "") }
+        /** Slow work asked by the page: runs on its own thread, the answer comes back through window.__gfcReply(id, json). */
+        @JavascriptInterface fun call(id: Int, method: String?, arg: String?) {
+            thread {
+                val res: String = try {
+                    when (method) {
+                        "start" -> {
+                            Engine.prepare(arg ?: "{}")
+                            runOnUiThread { doOp(5, "") }
+                            "true"
+                        }
+                        "inspect" -> {
+                            val ids = JSONArray(arg ?: "[]")
+                            val o = JSONObject()
+                            for (k in 0 until ids.length()) o.put(ids.getInt(k).toString(), Engine.inspect(ids.getInt(k)))
+                            o.toString()
+                        }
+                        "preview" -> { val j = JSONObject(arg ?: "{}"); Preview.make(j.getJSONObject("item"), j.optInt("page")).toString() }
+                        "reviewSave" -> { val j = JSONObject(arg ?: "{}"); Engine.reviewSave(j.getInt("id"), (j.optJSONObject("settings") ?: JSONObject()).toString()).toString() }
+                        "reviewDiscard" -> { Engine.reviewDiscard(arg ?: ""); "true" }
+                        "history" -> { val h = Engine.history(); val r = JSONArray(); for (k in h.length() - 1 downTo 0) r.put(h.get(k)); r.toString() }
+                        "historyClear" -> { Engine.historyClear(); "true" }
+                        "restore" -> { val j = JSONObject(arg ?: "{}"); Engine.restore(j.getJSONObject("entry"), j.optBoolean("removeCopy")).toString() }
+                        else -> "null"
+                    }
+                } catch (e: Throwable) {
+                    AppLog.error("Page call $method failed", e)
+                    JSONObject().put("ok", false).put("error", e.message ?: e.javaClass.simpleName).toString()
+                }
+                runOnUiThread { if (!isDestroyed) web.evaluateJavascript("window.__gfcReply&&window.__gfcReply($id, ${JSONObject.quote(res)})", null) }
+            }
+        }
         /** "OK:<file name>" when the log was saved in Download, otherwise "ERR:<reason>". */
         @JavascriptInterface fun saveLog(): String = try { "OK:" + AppLog.saveToDownloads(this@MainActivity) } catch (e: Throwable) {
             AppLog.error("Save log failed", e); "ERR:" + (e.message ?: e.javaClass.simpleName)

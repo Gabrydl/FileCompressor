@@ -1,11 +1,11 @@
 name: Android APK
 
-# Builds the phone app from android-app/ (Kotlin engine + the android-www page). The APK is kept as a build artifact and
+# Builds the phone app from android-app/ (Kotlin engine) and www/ (the same page as the Windows app). The APK is kept as a build artifact and
 # in the pre-release "android-build" (never "latest", so installed apps don't offer it as an update).
 # The APK is unsigned here: sign it with keys/filecompressor (tools/apk_repack.py) so it installs over the app on the phone.
 on:
   push:
-    paths: ["android-app/**", "android-www/**", ".github/workflows/android.yml"]
+    paths: ["android-app/**", "www/**", ".github/workflows/android.yml"]
   workflow_dispatch:
 
 permissions:

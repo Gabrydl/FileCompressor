@@ -25,18 +25,43 @@ class Settings(private val j: JSONObject) {
     fun num(k: String, d: Double): Double = if (!j.has(k) || j.isNull(k)) d else j.optDouble(k, d).let { if (it.isNaN()) d else it }
     fun bool(k: String, d: Boolean): Boolean = if (!j.has(k) || j.isNull(k)) d else j.optBoolean(k, d)
 
-    val mode get() = str("mode", "PERCENT")          // PERCENT, MB or CONVERT
+    /** PERCENT, SIZE (targetBytes) or CONVERT; "MB" (targetMb) is the 1.7 name of SIZE. */
+    val mode get() = str("mode", "PERCENT").let { if (it == "MB") "SIZE" else it }
     val percent get() = num("percent", 30.0)
-    val targetMb get() = num("targetMb", 10.0)
+    val targetBytes get() = if (j.has("targetBytes") && !j.isNull("targetBytes")) num("targetBytes", 10 * MB) else num("targetMb", 10.0) * MB
     val resolution get() = str("resolution", "auto")
     val fps get() = str("fps", "auto")
     val speed get() = str("speed", "balanced")
     val videoFormat get() = str("videoFormat", "keep")
     val imageFormat get() = str("imageFormat", "keep")
     val audioFormat get() = str("audioFormat", "keep")
-    val pdfAsPictures get() = bool("pdfAsPictures", false)
     val moveOriginals get() = bool("moveOriginals", false)
     val outputDir get() = str("outputDir", "")
+    val skipSmaller get() = bool("skipSmaller", true)
+    val preview get() = bool("preview", false)
+    val history get() = bool("history", true)
+    // what each kind of file may change (the tick boxes of the page)
+    val photoStripExif get() = bool("photoStripExif", false)
+    val photoResize get() = bool("photoResize", false)
+    val photoW get() = num("photoW", 0.0)
+    val photoH get() = num("photoH", 0.0)
+    val audioMono get() = bool("audioMono", false)
+    val pdfMeta get() = bool("pdfMeta", true)
+    val pdfExtras get() = bool("pdfExtras", true)
+    val pdfPhotos get() = bool("pdfPhotos", true)
+    val pdfGray get() = bool("pdfGray", false)
+    val pdfAsPictures get() = bool("pdfAsPictures", false)
+    val officePhotos get() = bool("officePhotos", true)
+    // keep only a part of a video or audio (seconds; 0 = from the start / to the end)
+    val trimStart get() = num("trimStart", 0.0)
+    val trimEnd get() = num("trimEnd", 0.0)
+
+    /** These settings with the file's own ones on top (its own size, format, tick boxes, trim). */
+    fun merged(vararg extra: JSONObject?): Settings {
+        val c = JSONObject(j.toString())
+        for (e in extra) if (e != null) for (k in e.keys()) c.put(k, e.get(k))
+        return Settings(c)
+    }
 
     /** A copy with some values changed. */
     fun with(vararg kv: Pair<String, Any>): Settings {
@@ -47,8 +72,8 @@ class Settings(private val j: JSONObject) {
 }
 
 /** One file being worked on: progress, stage, stop button and a private work folder. */
-class Ctx(val item: Engine.Item, val tmp: File) {
-    val aborted: Boolean get() = Engine.abortRequested
+class Ctx(val item: Engine.Item, val tmp: File, private val cancellable: Boolean = true) {
+    val aborted: Boolean get() = cancellable && Engine.abortRequested
     fun stage(t: String) { item.stage = t }
     fun progress(p: Double) { item.progress = p.coerceIn(0.0, 1.0) }
     fun check() { if (aborted) throw Skip("stopped") }
@@ -65,6 +90,12 @@ fun diagnose(msg: String?, kind: String): Why {
     return when {
         "ffmpeg is missing" in m -> d("The video engine is missing", listOf("The app was installed without its video engine, or the phone blocked it."), listOf("Install the app again from the latest release."))
         "password" in m -> d("The file is locked with a password", listOf("The file is protected, so its content can't be read or rewritten."), listOf("Open it with the password and save or print a copy without protection, then try again."))
+        "trim leaves" in m -> d("The trim is too short", listOf("Start and end are less than half a second apart."), listOf("Open the file's options and set a longer part to keep."))
+        "needs at least" in m -> {
+            val x = Regex("""(\d+) min long, it needs at least (\d+) MB""").find(msg ?: "")?.groupValues
+            d("The size you picked is too small for this video", listOf("This video is ${x?.get(1) ?: "?"} min long: at this size it needs at least ${x?.get(2) ?: "?"} MB."),
+                listOf("Pick a bigger size in MB, or a higher percentage.", "Or trim it to the part you need (file options, Trim)."))
+        }
         "target too small" in m -> d("The size you picked is too small", listOf("At that size there are too few bits per second left for a watchable video or audio."),
             listOf("Pick a higher percentage or a bigger size.", if (kind == "VIDEO") "Or lower the resolution yourself in Settings." else "Or convert it to Opus, which sounds better at small sizes."))
         "no audio" in m || "no streams" in m -> d("There's no sound in this file", listOf("The file has no audio track to compress or extract."), listOf("If it's a video, choose a video format instead of MP3/M4A."))
@@ -89,6 +120,7 @@ fun skipReason(msg: String?): String = when (msg) {
     "below target" -> "Already below the size you picked"
     "already well compressed" -> "Already well compressed, couldn't make it smaller"
     "cannot convert" -> "PDF and Office files can only be compressed"
+    "discarded" -> "Discarded, original untouched"
     else -> msg ?: "Skipped"
 }
 
