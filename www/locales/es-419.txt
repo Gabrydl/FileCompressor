@@ -426,3 +426,79 @@
 426|el {0}% del tamaño
 427|· original restaurado
 428|Este video dura {0} min: con este tamaño necesita al menos {1} MB.
+429|(predeterminada)
+430|Unos {0} {1} por archivo
+431|Permitir
+432|Permitir el acceso a todos los archivos
+433|Solo conversión, sin objetivo de tamaño
+434|No se pudo guardar el registro: {0}
+435|Descargar la versión {0}
+436|Los formatos se quedan como están. Toca para cambiarlos
+437|Más tarde
+438|Registro guardado en Descargas: {0}
+439|Necesario para mover los originales a la carpeta Original, guardar en cualquier carpeta y leer videos grandes sin copiarlos antes.
+440|Abrir ajustes
+441|Guardar registro
+442|Guarda en un archivo de texto en Descargas lo que hizo la app y cada error
+443|Ajustes
+444|Compartir el resultado
+445|Actualización disponible
+446|La versión {0} está lista (tienes la {1}). Abre el archivo descargado para instalarla sobre esta app; tus ajustes se mantienen.
+447|hasta {0}p
+448|audio {0}
+449|videos {0}
+450|{0} % del tamaño original
+451|1 archivo terminado
+452|Agregar archivos con
+453|Permite el acceso a todos los archivos cuando la app lo pida.
+454|GIF animado: convertirlo a un formato de foto conservaría solo un fotograma, se deja intacto
+455|WebP animado: se deja intacto
+456|WebP animado: el celular no puede recomprimirlo sin perder la animación, se deja intacto
+457|Animación mantenida como GIF ({0} fotogramas): {1} no admite animación
+458|No se puede abrir este archivo.
+459|Elige otra carpeta de destino en Ajustes.
+460|Cierra otras apps y vuelve a intentarlo, o procesa este archivo solo.
+461|Comprimiendo {0} de {1}
+462|Compresión
+463|No se pudo alcanzar del todo el objetivo sin arruinar la calidad
+464|No se pudo mover el original a la carpeta Original
+465|Vuelve a instalar la app desde la última versión.
+466|Puede usar un códec poco común o estar protegido contra copia (DRM).
+467|Mantenido como GIF: el celular no puede crear WebP animados
+468|Mono
+469|TIFF de varias páginas ({0} páginas): el celular solo podría guardar la primera página, se deja intacto
+470|Ninguna app del celular puede abrir este archivo.
+471|No se encontró ningún navegador para abrir el enlace.
+472|No se encontró ningún gestor de archivos.
+473|No hay archivos que la app pueda comprimir en esa carpeta.
+474|Sin pérdida de calidad: {0}
+475|Sin recodificar: sin pérdida de calidad
+476|Solo se conservó la primera pista de audio, para ajustarse al tamaño
+477|Ábrela en la Galería, guarda o comparte una copia en JPG y vuelve a intentarlo.
+478|O baja tú mismo la resolución en Ajustes.
+479|Almacenamiento del celular
+480|Elige una carpeta del almacenamiento del celular o de la tarjeta SD.
+481|Elige un porcentaje más alto o un tamaño mayor.
+482|PDF protegido (restricciones de edición): se deja intacto
+483|Leyendo el archivo
+484|Redimensionado a {0}
+485|Los resultados están en {0}
+486|Guardarlo sin revisar
+487|Guardando
+488|Compartir
+489|Iniciando
+490|Iniciando…
+491|Puede que la app no tenga acceso a todos los archivos o que la carpeta de destino esté protegida.
+492|La app se instaló sin su motor de video o el celular lo bloqueó.
+493|El archivo ya no está.
+494|El archivo puede estar dañado o en una variante que la app no admite.
+495|El original se quedó donde está (la app que lo compartió no permite moverlo)
+496|El celular no permitió escribir el archivo
+497|El almacenamiento del celular está lleno
+498|Recortado {0}–{1}
+499|Imagen muy grande: abierta a menor tamaño
+500|Calidad muy baja: el video es largo para este tamaño
+501|Los videos/audios incrustados en el archivo se quedaron como están
+502|Espera a que termine el trabajo actual y luego agrega más archivos.
+503|{0} pistas de audio conservadas
+504|{0} archivos terminados

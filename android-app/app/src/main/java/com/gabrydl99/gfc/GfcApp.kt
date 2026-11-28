@@ -9,6 +9,7 @@ class GfcApp : Application() {
     override fun onCreate() {
         super.onCreate()
         AppLog.init(this)
+        com.gabrydl99.gfc.work.Tr.init(this)
         Engine.init(this)
         PDFBoxResourceLoader.init(applicationContext)
     }

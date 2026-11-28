@@ -426,3 +426,79 @@
 426|{0}% of the size
 427|· original restored
 428|This video is {0} min long: at this size it needs at least {1} MB.
+429|(default)
+430|About {0} {1} per file
+431|Allow
+432|Allow access to all files
+433|Convert only, no size goal
+434|Couldn't save the log: {0}
+435|Download version {0}
+436|Formats stay as they are. Tap to change
+437|Later
+438|Log saved in Download: {0}
+439|Needed to move originals into the Original folder, to save in any folder and to read big videos without copying them first.
+440|Open settings
+441|Save log
+442|Saves what the app did and every error as a text file in Download
+443|Settings
+444|Share result
+445|Update available
+446|Version {0} is ready (you have {1}). Open the downloaded file to install it over this app; your settings stay.
+447|up to {0}p
+448|{0} audio
+449|{0} videos
+450|{0}% of the original size
+451|1 file finished
+452|Add files with
+453|Allow access to all files when the app asks.
+454|Animated GIF: converting it to a photo format would keep only one frame, left untouched
+455|Animated WebP: left untouched
+456|Animated WebP: the phone can't re-compress it without losing the animation, left untouched
+457|Animation kept as GIF ({0} frames): {1} can't hold an animation
+458|Can't open this file.
+459|Choose another output folder in Settings.
+460|Close other apps and try again, or process this file on its own.
+461|Compressing {0} of {1}
+462|Compression
+463|Couldn't fully reach the target without ruining quality
+464|Couldn't move the original into the Original folder
+465|Install the app again from the latest release.
+466|It may use an unusual codec, or be copy-protected (DRM).
+467|Kept as GIF: the phone can't make animated WebP
+468|Mono
+469|Multi-page TIFF ({0} pages): the phone could save only the first page, left untouched
+470|No app on the phone can open this file.
+471|No browser found to open the link.
+472|No file manager found.
+473|No files the app can compress in that folder.
+474|No quality lost: {0}
+475|Not re-encoded: no quality lost
+476|Only the first audio track kept, to fit the size
+477|Open it in the Gallery, save or share a copy as JPG, then retry.
+478|Or lower the resolution yourself in Settings.
+479|Phone storage
+480|Pick a folder in the phone storage or SD card.
+481|Pick a higher percentage or a bigger size.
+482|Protected PDF (editing restrictions): left untouched
+483|Reading the file
+484|Resized to {0}
+485|Results are in {0}
+486|Save it without checking
+487|Saving
+488|Share
+489|Starting
+490|Starting…
+491|The app may not have access to all files, or the output folder is protected.
+492|The app was installed without its video engine, or the phone blocked it.
+493|The file isn't there anymore.
+494|The file may be damaged or in a variant the app doesn't handle.
+495|The original was left where it is (the app that shared it doesn't allow moving it)
+496|The phone didn't allow writing the file
+497|The phone storage is full
+498|Trimmed {0}–{1}
+499|Very large picture: opened at a lower size
+500|Very low quality: the video is long for this size
+501|Videos/audio embedded in the file were left as they are
+502|Wait for the current run to finish, then add more files.
+503|{0} audio tracks kept
+504|{0} files finished

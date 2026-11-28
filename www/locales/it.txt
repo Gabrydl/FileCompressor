@@ -426,3 +426,79 @@
 426|il {0}% della dimensione
 427|· originale ripristinato
 428|Questo video dura {0} min: a questa dimensione servono almeno {1} MB.
+429|(predefinita)
+430|Circa {0} {1} per file
+431|Consenti
+432|Consenti l'accesso a tutti i file
+433|Solo conversione, senza obiettivo di dimensione
+434|Impossibile salvare il log: {0}
+435|Scarica la versione {0}
+436|I formati restano come sono. Tocca per cambiarli
+437|Più tardi
+438|Log salvato in Download: {0}
+439|Serve per spostare gli originali nella cartella Original, salvare in qualsiasi cartella e leggere i video grandi senza prima copiarli.
+440|Apri le impostazioni
+441|Salva log
+442|Salva in un file di testo in Download cosa ha fatto l'app e ogni errore
+443|Impostazioni
+444|Condividi il risultato
+445|Aggiornamento disponibile
+446|La versione {0} è pronta (hai la {1}). Apri il file scaricato per installarla sopra questa app; le impostazioni restano.
+447|fino a {0}p
+448|audio {0}
+449|video {0}
+450|{0}% della dimensione originale
+451|1 file completato
+452|Aggiungi file con
+453|Consenti l'accesso a tutti i file quando l'app lo chiede.
+454|GIF animata: convertirla in un formato foto terrebbe un solo fotogramma, lasciata intatta
+455|WebP animata: lasciata intatta
+456|WebP animata: il telefono non può ricomprimerla senza perdere l'animazione, lasciata intatta
+457|Animazione mantenuta come GIF ({0} fotogrammi): {1} non può contenere un'animazione
+458|Impossibile aprire questo file.
+459|Scegli un'altra cartella di destinazione nelle Impostazioni.
+460|Chiudi le altre app e riprova, oppure elabora questo file da solo.
+461|Compressione {0} di {1}
+462|Compressione
+463|Impossibile raggiungere del tutto l'obiettivo senza rovinare la qualità
+464|Impossibile spostare l'originale nella cartella Original
+465|Reinstalla l'app dall'ultima versione pubblicata.
+466|Potrebbe usare un codec insolito o essere protetto da copia (DRM).
+467|Mantenuta come GIF: il telefono non può creare WebP animate
+468|Mono
+469|TIFF multipagina ({0} pagine): il telefono potrebbe salvare solo la prima pagina, lasciato intatto
+470|Nessuna app sul telefono può aprire questo file.
+471|Nessun browser trovato per aprire il link.
+472|Nessun gestore file trovato.
+473|Nessun file comprimibile dall'app in quella cartella.
+474|Nessuna perdita di qualità: {0}
+475|Non ricodificato: nessuna perdita di qualità
+476|Tenuta solo la prima traccia audio, per stare nella dimensione
+477|Aprila nella Galleria, salva o condividi una copia in JPG, poi riprova.
+478|Oppure abbassa tu la risoluzione nelle Impostazioni.
+479|Memoria del telefono
+480|Scegli una cartella nella memoria del telefono o nella scheda SD.
+481|Scegli una percentuale più alta o una dimensione maggiore.
+482|PDF protetto (limiti di modifica): lasciato intatto
+483|Lettura del file
+484|Ridimensionato a {0}
+485|I risultati sono in {0}
+486|Salvalo senza controllare
+487|Salvataggio
+488|Condividi
+489|Avvio
+490|Avvio…
+491|L'app potrebbe non avere accesso a tutti i file, oppure la cartella di destinazione è protetta.
+492|L'app è stata installata senza il suo motore video, oppure il telefono l'ha bloccato.
+493|Il file non c'è più.
+494|Il file potrebbe essere danneggiato o in una variante che l'app non gestisce.
+495|L'originale è rimasto dov'è (l'app che l'ha condiviso non permette di spostarlo)
+496|Il telefono non ha permesso di scrivere il file
+497|La memoria del telefono è piena
+498|Tagliato {0}–{1}
+499|Immagine molto grande: aperta a dimensione ridotta
+500|Qualità molto bassa: il video è lungo per questa dimensione
+501|Video/audio incorporati nel file sono rimasti come sono
+502|Aspetta che finisca il lavoro in corso, poi aggiungi altri file.
+503|{0} tracce audio mantenute
+504|{0} file completati

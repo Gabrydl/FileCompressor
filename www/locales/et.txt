@@ -426,3 +426,79 @@
 426|{0}% suurusest
 427|· originaal taastatud
 428|See video kestab {0} min: selle suuruse juures on vaja vähemalt {1} MB.
+429|(vaikimisi)
+430|Umbes {0} {1} faili kohta
+431|Luba
+432|Luba juurdepääs kõigile failidele
+433|Ainult teisendamine, ilma suuruse eesmärgita
+434|Logi ei õnnestunud salvestada: {0}
+435|Laadi alla versioon {0}
+436|Vormingud jäävad samaks. Muutmiseks puuduta
+437|Hiljem
+438|Logi salvestati kausta Allalaadimised: {0}
+439|Vajalik originaalide teisaldamiseks kausta Original, salvestamiseks mis tahes kausta ja suurte videote lugemiseks ilma neid enne kopeerimata.
+440|Ava seaded
+441|Salvesta logi
+442|Salvestab tekstifailina kausta Allalaadimised, mida rakendus tegi, ja iga vea
+443|Seaded
+444|Jaga tulemust
+445|Uuendus saadaval
+446|Versioon {0} on valmis (sul on {1}). Ava allalaaditud fail, et see selle rakenduse peale installida; sinu seaded jäävad alles.
+447|kuni {0}p
+448|{0}-heli
+449|{0}-videod
+450|{0}% algsest suurusest
+451|1 fail valmis
+452|Lisa faile rakendusega
+453|Luba juurdepääs kõigile failidele, kui rakendus seda küsib.
+454|Animeeritud GIF: fotovormingusse teisendamine jätaks alles ainult ühe kaadri, jäeti puutumata
+455|Animeeritud WebP: jäeti puutumata
+456|Animeeritud WebP: telefon ei saa seda uuesti tihendada animatsiooni kaotamata, jäeti puutumata
+457|Animatsioon jäeti GIF-iks ({0} kaadrit): {1} ei toeta animatsiooni
+458|Seda faili ei saa avada.
+459|Vali seadetes teine sihtkaust.
+460|Sulge teised rakendused ja proovi uuesti või töötle see fail eraldi.
+461|Tihendan {0}/{1}
+462|Tihendamine
+463|Eesmärki ei õnnestunud täielikult saavutada kvaliteeti rikkumata
+464|Originaali ei õnnestunud teisaldada kausta Original
+465|Installi rakendus uuesti uusimast väljalaskest.
+466|See võib kasutada ebatavalist koodekit või olla kopeerimiskaitsega (DRM).
+467|Jäeti GIF-iks: telefon ei oska teha animeeritud WebP-d
+468|Mono
+469|Mitmeleheküljeline TIFF ({0} lehekülge): telefon saaks salvestada ainult esimese lehekülje, jäeti puutumata
+470|Ükski telefoni rakendus ei saa seda faili avada.
+471|Lingi avamiseks ei leitud brauserit.
+472|Failihaldurit ei leitud.
+473|Selles kaustas pole faile, mida rakendus saaks tihendada.
+474|Kvaliteet ei kannatanud: {0}
+475|Ei kodeeritud ümber: kvaliteet ei kannatanud
+476|Alles jäeti ainult esimene helirada, et suurus sobiks
+477|Ava see galeriis, salvesta või jaga koopiat JPG-na ja proovi uuesti.
+478|Või vähenda eraldusvõimet ise seadetes.
+479|Telefoni salvestusruum
+480|Vali kaust telefoni salvestusruumis või SD-kaardil.
+481|Vali suurem protsent või suurem suurus.
+482|Kaitstud PDF (muutmispiirangud): jäeti puutumata
+483|Faili lugemine
+484|Suurus muudetud: {0}
+485|Tulemused on kohas {0}
+486|Salvesta kontrollimata
+487|Salvestamine
+488|Jaga
+489|Alustamine
+490|Alustamine…
+491|Rakendusel ei pruugi olla juurdepääsu kõigile failidele või on sihtkaust kaitstud.
+492|Rakendus installiti ilma videomootorita või telefon blokeeris selle.
+493|Faili pole enam seal.
+494|Fail võib olla kahjustatud või variandis, mida rakendus ei toeta.
+495|Originaal jäi oma kohale (seda jaganud rakendus ei luba teisaldamist)
+496|Telefon ei lubanud faili kirjutada
+497|Telefoni salvestusruum on täis
+498|Kärbitud {0}–{1}
+499|Väga suur pilt: avati väiksemas suuruses
+500|Väga madal kvaliteet: video on selle suuruse jaoks pikk
+501|Faili manustatud videod/helid jäeti samaks
+502|Oota, kuni praegune töö lõpeb, ja lisa siis rohkem faile.
+503|{0} helirada jäeti alles
+504|{0} faili valmis

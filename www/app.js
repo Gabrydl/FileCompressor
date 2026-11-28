@@ -218,7 +218,7 @@ function drawSettings() {
   if (document.activeElement !== $("photoW")) $("photoW").value = S.photoW || "";
   if (document.activeElement !== $("photoH")) $("photoH").value = S.photoH || "";
   $("pxRow").classList.toggle("off", !S.photoResize);
-  $("outPath").textContent = "\u200e" + (H.outLabel ? H.outLabel(S.outputDir) : S.outputDir) + (PHONE && S.outputDir === H.defaultOutDir() ? T("  (default)") : "");
+  $("outPath").textContent = "\u200e" + (H.outLabel ? H.outLabel(S.outputDir).replace(/^Phone storage/, T("Phone storage")) : S.outputDir) + (PHONE && S.outputDir === H.defaultOutDir() ? "  " + T("(default)") : "");
   $("outPath").title = S.outputDir;
   $("saveHelp").textContent = T("Results go in Compressed as name_compressed{0}", (S.moveOriginals ? T(", originals in Original. Originals are moved only after their compressed copy is saved.") : T(", originals stay where they are.")));
   seg($("themeSeg"), storeGet("theme", "auto"), v => setTheme(v));
@@ -451,7 +451,7 @@ function drawList(anim = false) {
   $("clearBtn").classList.toggle("hidden", running);
   const rev = items.filter(i => i.status === "review").length;
   $("saveAllBtn").classList.toggle("hidden", running || !rev);
-  $("saveAllBtn").textContent = T("Save all {0} without checking", rev);
+  $("saveAllBtn").textContent = rev === 1 ? T("Save it without checking") : T("Save all {0} without checking", rev);
   drawAction();
 }
 /** Update one row in place (no re-render), so the bars animate smoothly. */

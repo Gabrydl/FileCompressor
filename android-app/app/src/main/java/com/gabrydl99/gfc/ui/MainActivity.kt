@@ -35,6 +35,7 @@ import com.gabrydl99.gfc.work.AppLog
 import com.gabrydl99.gfc.work.CompressService
 import com.gabrydl99.gfc.work.Engine
 import com.gabrydl99.gfc.work.Preview
+import com.gabrydl99.gfc.work.Tr
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -165,10 +166,10 @@ class MainActivity : ComponentActivity() {
 
     private fun add(list: List<Uri>) = thread {
         val skipped = Engine.addUris(list)
-        if (skipped > 0) toast("$skipped file(s) skipped: type not supported.")
+        if (skipped > 0) toast(Tr.t("{0} file(s) skipped: type not supported.", skipped))
     }
 
-    private fun toast(t: String) = runOnUiThread { Toast.makeText(this, t, Toast.LENGTH_LONG).show() }
+    private fun toast(t: String) = runOnUiThread { Toast.makeText(this, Tr.t(t), Toast.LENGTH_LONG).show() }
 
     // ------------------------------------------------------------------ what the page asks for
     private fun doOp(code: Int, arg: String) {
@@ -180,7 +181,7 @@ class MainActivity : ComponentActivity() {
                     putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
                     putExtra(Intent.EXTRA_MIME_TYPES, MIMES)
                 }
-                try { pickFiles.launch(Intent.createChooser(i, "Add files with")) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
+                try { pickFiles.launch(Intent.createChooser(i, Tr.t("Add files with"))) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
             }
             2 -> try { pickFolder.launch(null) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
             3 -> try { pickOut.launch(null) } catch (_: ActivityNotFoundException) { toast("No file manager found.") }
@@ -222,7 +223,7 @@ class MainActivity : ComponentActivity() {
         val f = File(p)
         if (!f.exists()) { toast("The file isn't there anymore."); return }
         val uri = try { FileProvider.getUriForFile(this, "$packageName.files", f) } catch (_: Exception) { toast("Can't open this file."); return }
-        val i = if (share) Intent.createChooser(Intent(Intent.ACTION_SEND).setType(mimeOf(f)).putExtra(Intent.EXTRA_STREAM, uri).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), "Share")
+        val i = if (share) Intent.createChooser(Intent(Intent.ACTION_SEND).setType(mimeOf(f)).putExtra(Intent.EXTRA_STREAM, uri).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), Tr.t("Share"))
         else Intent(Intent.ACTION_VIEW).setDataAndType(uri, mimeOf(f)).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         try { startActivity(i) } catch (_: ActivityNotFoundException) { toast("No app on the phone can open this file.") }
     }
@@ -241,7 +242,7 @@ class MainActivity : ComponentActivity() {
                 } catch (_: Exception) { }
             }
         }
-        toast("Results are in " + dir.absolutePath.replace(Environment.getExternalStorageDirectory().absolutePath, "Phone storage"))
+        toast(Tr.t("Results are in {0}", dir.absolutePath.replace(Environment.getExternalStorageDirectory().absolutePath, Tr.t("Phone storage"))))
     }
 
     private fun docIdOf(path: String): String? {
@@ -276,6 +277,7 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface fun initialSettings(): String = Engine.settingsJson()
         @JavascriptInterface fun putSettings(json: String?) { if (json != null) Engine.putSettings(json) }
         @JavascriptInterface fun log(level: String?, msg: String?) { AppLog.line(level ?: "INFO", msg ?: "") }
+        @JavascriptInterface fun setLang(code: String?) { Tr.setLang(this@MainActivity, code ?: "") }
         /** Slow work asked by the page: runs on its own thread, the answer comes back through window.__gfcReply(id, json). */
         @JavascriptInterface fun call(id: Int, method: String?, arg: String?) {
             thread {

@@ -426,3 +426,79 @@
 426|{0}% der Größe
 427|· Original wiederhergestellt
 428|Dieses Video ist {0} min lang: bei dieser Größe braucht es mindestens {1} MB.
+429|(Standard)
+430|Etwa {0} {1} pro Datei
+431|Erlauben
+432|Zugriff auf alle Dateien erlauben
+433|Nur umwandeln, ohne Größenziel
+434|Das Protokoll konnte nicht gespeichert werden: {0}
+435|Version {0} herunterladen
+436|Formate bleiben wie sie sind. Zum Ändern tippen
+437|Später
+438|Protokoll in Download gespeichert: {0}
+439|Nötig, um Originale in den Ordner Original zu verschieben, in jedem Ordner zu speichern und große Videos ohne vorheriges Kopieren zu lesen.
+440|Einstellungen öffnen
+441|Protokoll speichern
+442|Speichert, was die App getan hat, und jeden Fehler als Textdatei in Download
+443|Einstellungen
+444|Ergebnis teilen
+445|Update verfügbar
+446|Version {0} ist bereit (du hast {1}). Öffne die heruntergeladene Datei, um sie über diese App zu installieren; deine Einstellungen bleiben.
+447|bis {0}p
+448|{0}-Audio
+449|{0}-Videos
+450|{0} % der Originalgröße
+451|1 Datei fertig
+452|Dateien hinzufügen mit
+453|Erlaube den Zugriff auf alle Dateien, wenn die App danach fragt.
+454|Animiertes GIF: In ein Fotoformat umgewandelt bliebe nur ein Bild übrig, unverändert gelassen
+455|Animiertes WebP: unverändert gelassen
+456|Animiertes WebP: Das Handy kann es nicht neu komprimieren, ohne die Animation zu verlieren, unverändert gelassen
+457|Animation als GIF behalten ({0} Bilder): {1} kann keine Animation enthalten
+458|Diese Datei kann nicht geöffnet werden.
+459|Wähle in den Einstellungen einen anderen Zielordner.
+460|Schließe andere Apps und versuche es erneut, oder verarbeite diese Datei einzeln.
+461|Komprimiere {0} von {1}
+462|Komprimierung
+463|Das Ziel ließ sich nicht ganz erreichen, ohne die Qualität zu ruinieren
+464|Das Original konnte nicht in den Ordner Original verschoben werden
+465|Installiere die App erneut aus der neuesten Version.
+466|Sie verwendet vielleicht einen ungewöhnlichen Codec oder ist kopiergeschützt (DRM).
+467|Als GIF behalten: Das Handy kann kein animiertes WebP erstellen
+468|Mono
+469|Mehrseitiges TIFF ({0} Seiten): Das Handy könnte nur die erste Seite speichern, unverändert gelassen
+470|Keine App auf dem Handy kann diese Datei öffnen.
+471|Kein Browser gefunden, um den Link zu öffnen.
+472|Kein Dateimanager gefunden.
+473|In diesem Ordner gibt es keine Dateien, die die App komprimieren kann.
+474|Kein Qualitätsverlust: {0}
+475|Nicht neu kodiert: kein Qualitätsverlust
+476|Nur die erste Tonspur behalten, damit es in die Größe passt
+477|Öffne es in der Galerie, speichere oder teile eine Kopie als JPG und versuche es erneut.
+478|Oder senke die Auflösung selbst in den Einstellungen.
+479|Telefonspeicher
+480|Wähle einen Ordner im Telefonspeicher oder auf der SD-Karte.
+481|Wähle einen höheren Prozentsatz oder eine größere Größe.
+482|Geschütztes PDF (Bearbeitungsbeschränkungen): unverändert gelassen
+483|Datei wird gelesen
+484|Verkleinert auf {0}
+485|Die Ergebnisse sind in {0}
+486|Ohne Prüfung speichern
+487|Wird gespeichert
+488|Teilen
+489|Wird gestartet
+490|Wird gestartet…
+491|Die App hat vielleicht keinen Zugriff auf alle Dateien, oder der Zielordner ist geschützt.
+492|Die App wurde ohne ihre Video-Engine installiert, oder das Handy hat sie blockiert.
+493|Die Datei ist nicht mehr da.
+494|Die Datei ist vielleicht beschädigt oder in einer Variante, die die App nicht unterstützt.
+495|Das Original blieb, wo es ist (die App, die es geteilt hat, erlaubt kein Verschieben)
+496|Das Handy hat das Schreiben der Datei nicht erlaubt
+497|Der Telefonspeicher ist voll
+498|Gekürzt {0}–{1}
+499|Sehr großes Bild: in kleinerer Größe geöffnet
+500|Sehr geringe Qualität: Das Video ist für diese Größe lang
+501|In die Datei eingebettete Videos/Audios blieben unverändert
+502|Warte, bis der aktuelle Durchlauf fertig ist, und füge dann weitere Dateien hinzu.
+503|{0} Tonspuren behalten
+504|{0} Dateien fertig

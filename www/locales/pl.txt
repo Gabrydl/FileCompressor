@@ -426,3 +426,79 @@
 426|{0}% rozmiaru
 427|· przywrócono oryginał
 428|Ten film trwa {0} min: przy tym rozmiarze potrzeba co najmniej {1} MB.
+429|(domyślny)
+430|Około {0} {1} na plik
+431|Zezwól
+432|Zezwól na dostęp do wszystkich plików
+433|Tylko konwersja, bez docelowego rozmiaru
+434|Nie udało się zapisać dziennika: {0}
+435|Pobierz wersję {0}
+436|Formaty zostają bez zmian. Dotknij, aby zmienić
+437|Później
+438|Dziennik zapisany w folderze Pobrane: {0}
+439|Potrzebne, aby przenosić oryginały do folderu Original, zapisywać w dowolnym folderze i odczytywać duże filmy bez wcześniejszego kopiowania.
+440|Otwórz ustawienia
+441|Zapisz dziennik
+442|Zapisuje w pliku tekstowym w folderze Pobrane, co zrobiła aplikacja, i każdy błąd
+443|Ustawienia
+444|Udostępnij wynik
+445|Dostępna aktualizacja
+446|Wersja {0} jest gotowa (masz {1}). Otwórz pobrany plik, aby zainstalować ją na tej aplikacji; ustawienia zostaną.
+447|do {0}p
+448|dźwięk {0}
+449|filmy {0}
+450|{0}% oryginalnego rozmiaru
+451|1 plik gotowy
+452|Dodaj pliki za pomocą
+453|Zezwól na dostęp do wszystkich plików, gdy aplikacja o to poprosi.
+454|Animowany GIF: konwersja do formatu zdjęcia zachowałaby tylko jedną klatkę, pozostawiono bez zmian
+455|Animowany WebP: pozostawiono bez zmian
+456|Animowany WebP: telefon nie może go ponownie skompresować bez utraty animacji, pozostawiono bez zmian
+457|Animację zachowano jako GIF ({0} klatek): {1} nie obsługuje animacji
+458|Nie można otworzyć tego pliku.
+459|Wybierz inny folder docelowy w Ustawieniach.
+460|Zamknij inne aplikacje i spróbuj ponownie albo przetwórz ten plik osobno.
+461|Kompresowanie {0} z {1}
+462|Kompresja
+463|Nie udało się w pełni osiągnąć celu bez zepsucia jakości
+464|Nie udało się przenieść oryginału do folderu Original
+465|Zainstaluj aplikację ponownie z najnowszego wydania.
+466|Może używać nietypowego kodeka lub być chroniony przed kopiowaniem (DRM).
+467|Zachowano jako GIF: telefon nie potrafi tworzyć animowanych WebP
+468|Mono
+469|Wielostronicowy TIFF ({0} stron): telefon zapisałby tylko pierwszą stronę, pozostawiono bez zmian
+470|Żadna aplikacja w telefonie nie otworzy tego pliku.
+471|Nie znaleziono przeglądarki, aby otworzyć link.
+472|Nie znaleziono menedżera plików.
+473|W tym folderze nie ma plików, które aplikacja może skompresować.
+474|Bez utraty jakości: {0}
+475|Bez ponownego kodowania: bez utraty jakości
+476|Zachowano tylko pierwszą ścieżkę dźwiękową, aby zmieścić się w rozmiarze
+477|Otwórz je w Galerii, zapisz lub udostępnij kopię jako JPG i spróbuj ponownie.
+478|Albo sam obniż rozdzielczość w Ustawieniach.
+479|Pamięć telefonu
+480|Wybierz folder w pamięci telefonu lub na karcie SD.
+481|Wybierz wyższy procent lub większy rozmiar.
+482|Chroniony PDF (ograniczenia edycji): pozostawiono bez zmian
+483|Odczyt pliku
+484|Zmieniono rozmiar na {0}
+485|Wyniki są w {0}
+486|Zapisz bez sprawdzania
+487|Zapisywanie
+488|Udostępnij
+489|Rozpoczynanie
+490|Rozpoczynanie…
+491|Aplikacja może nie mieć dostępu do wszystkich plików albo folder docelowy jest chroniony.
+492|Aplikację zainstalowano bez silnika wideo albo telefon go zablokował.
+493|Pliku już tam nie ma.
+494|Plik może być uszkodzony lub w wariancie, którego aplikacja nie obsługuje.
+495|Oryginał został na swoim miejscu (aplikacja, która go udostępniła, nie pozwala go przenieść)
+496|Telefon nie pozwolił zapisać pliku
+497|Pamięć telefonu jest pełna
+498|Przycięto {0}–{1}
+499|Bardzo duży obraz: otwarto w mniejszym rozmiarze
+500|Bardzo niska jakość: film jest długi jak na ten rozmiar
+501|Filmy/dźwięki osadzone w pliku pozostały bez zmian
+502|Poczekaj, aż bieżące zadanie się zakończy, a potem dodaj kolejne pliki.
+503|Zachowano {0} ścieżek dźwiękowych
+504|Gotowe pliki: {0}

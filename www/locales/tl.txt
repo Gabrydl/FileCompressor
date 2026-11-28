@@ -426,3 +426,79 @@
 426|{0}% ng laki
 427|· naibalik ang orihinal
 428|{0} min ang video na ito: sa laking ito, kailangan ng hindi bababa sa {1} MB.
+429|(default)
+430|Mga {0} {1} bawat file
+431|Payagan
+432|Payagan ang access sa lahat ng file
+433|Pag-convert lang, walang target na laki
+434|Hindi ma-save ang log: {0}
+435|I-download ang bersyon {0}
+436|Mananatili ang mga format. I-tap para baguhin
+437|Mamaya
+438|Na-save ang log sa Download: {0}
+439|Kailangan para ilipat ang mga orihinal sa folder na Original, mag-save sa kahit anong folder at mabasa ang malalaking video nang hindi muna kinokopya.
+440|Buksan ang mga setting
+441|I-save ang log
+442|Sine-save bilang text file sa Download ang ginawa ng app at bawat error
+443|Mga setting
+444|Ibahagi ang resulta
+445|May update
+446|Handa na ang bersyon {0} (nasa {1} ka). Buksan ang na-download na file para i-install ito sa ibabaw ng app na ito; mananatili ang mga setting mo.
+447|hanggang {0}p
+448|{0} na audio
+449|{0} na video
+450|{0}% ng orihinal na laki
+451|Tapos na ang 1 file
+452|Magdagdag ng file gamit ang
+453|Payagan ang access sa lahat ng file kapag hiningi ng app.
+454|Animated GIF: kung i-convert sa format ng larawan, isang frame lang ang matitira, hindi ginalaw
+455|Animated WebP: hindi ginalaw
+456|Animated WebP: hindi ito ma-compress ulit ng telepono nang hindi nawawala ang animation, hindi ginalaw
+457|Pinanatiling GIF ang animation ({0} frame): hindi kaya ng {1} ang animation
+458|Hindi mabuksan ang file na ito.
+459|Pumili ng ibang output folder sa Mga setting.
+460|Isara ang ibang app at subukan ulit, o iproseso nang mag-isa ang file na ito.
+461|Kino-compress ang {0} sa {1}
+462|Pag-compress
+463|Hindi lubos na naabot ang target nang hindi nasisira ang kalidad
+464|Hindi mailipat ang orihinal sa folder na Original
+465|I-install ulit ang app mula sa pinakabagong release.
+466|Maaaring hindi pangkaraniwang codec ang gamit nito, o may proteksyon sa pagkopya (DRM).
+467|Pinanatiling GIF: hindi makagawa ang telepono ng animated WebP
+468|Mono
+469|Multi-page TIFF ({0} pahina): unang pahina lang ang ma-save ng telepono, hindi ginalaw
+470|Walang app sa telepono na makakabukas ng file na ito.
+471|Walang nakitang browser para buksan ang link.
+472|Walang nakitang file manager.
+473|Walang file sa folder na iyon na kayang i-compress ng app.
+474|Walang nawalang kalidad: {0}
+475|Hindi ni-re-encode: walang nawalang kalidad
+476|Unang audio track lang ang itinira, para kumasya sa laki
+477|Buksan ito sa Gallery, i-save o ibahagi ang kopya bilang JPG, saka subukan ulit.
+478|O ikaw mismo ang magbaba ng resolution sa Mga setting.
+479|Storage ng telepono
+480|Pumili ng folder sa storage ng telepono o sa SD card.
+481|Pumili ng mas mataas na porsiyento o mas malaking laki.
+482|Protektadong PDF (may limitasyon sa pag-edit): hindi ginalaw
+483|Binabasa ang file
+484|Binago ang laki sa {0}
+485|Nasa {0} ang mga resulta
+486|I-save nang hindi tinitingnan
+487|Sine-save
+488|Ibahagi
+489|Nagsisimula
+490|Nagsisimula…
+491|Maaaring walang access ang app sa lahat ng file, o protektado ang output folder.
+492|Na-install ang app nang walang video engine nito, o hinarang ito ng telepono.
+493|Wala na roon ang file.
+494|Maaaring sira ang file o nasa uri na hindi kaya ng app.
+495|Naiwan ang orihinal kung nasaan ito (hindi pinapayagan ng app na nagbahagi nito na ilipat ito)
+496|Hindi pinayagan ng telepono na isulat ang file
+497|Puno na ang storage ng telepono
+498|Pinutol {0}–{1}
+499|Napakalaking larawan: binuksan sa mas maliit na laki
+500|Napakababang kalidad: mahaba ang video para sa laking ito
+501|Hindi ginalaw ang mga video/audio na naka-embed sa file
+502|Hintayin matapos ang kasalukuyang proseso, saka magdagdag ng iba pang file.
+503|{0} audio track ang itinira
+504|Tapos na ang {0} file

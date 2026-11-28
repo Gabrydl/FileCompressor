@@ -426,3 +426,79 @@
 426|{0} % velikosti
 427|· originál obnoven
 428|Toto video trvá {0} min: při této velikosti potřebuje aspoň {1} MB.
+429|(výchozí)
+430|Asi {0} {1} na soubor
+431|Povolit
+432|Povolit přístup ke všem souborům
+433|Jen převod, bez cílové velikosti
+434|Protokol se nepodařilo uložit: {0}
+435|Stáhnout verzi {0}
+436|Formáty zůstanou, jak jsou. Klepnutím je změníte
+437|Později
+438|Protokol uložen do složky Stažené: {0}
+439|Potřebné k přesunu originálů do složky Original, k ukládání do libovolné složky a ke čtení velkých videí bez předchozího kopírování.
+440|Otevřít nastavení
+441|Uložit protokol
+442|Uloží do textového souboru ve Stažených, co aplikace dělala, a každou chybu
+443|Nastavení
+444|Sdílet výsledek
+445|Je dostupná aktualizace
+446|Verze {0} je připravena (máte {1}). Otevřete stažený soubor a nainstalujte ji přes tuto aplikaci; nastavení zůstane.
+447|až {0}p
+448|zvuk {0}
+449|videa {0}
+450|{0} % původní velikosti
+451|1 soubor hotov
+452|Přidat soubory pomocí
+453|Povolte přístup ke všem souborům, když o něj aplikace požádá.
+454|Animovaný GIF: převod do formátu fotky by zachoval jen jeden snímek, ponecháno beze změny
+455|Animovaný WebP: ponecháno beze změny
+456|Animovaný WebP: telefon ho nedokáže znovu zkomprimovat bez ztráty animace, ponecháno beze změny
+457|Animace ponechána jako GIF ({0} snímků): {1} animaci neumí
+458|Tento soubor nelze otevřít.
+459|V Nastavení zvolte jinou cílovou složku.
+460|Zavřete ostatní aplikace a zkuste to znovu, nebo zpracujte tento soubor samostatně.
+461|Komprimuji {0} z {1}
+462|Komprimace
+463|Cíle nešlo plně dosáhnout bez zničení kvality
+464|Originál se nepodařilo přesunout do složky Original
+465|Nainstalujte aplikaci znovu z nejnovějšího vydání.
+466|Může používat neobvyklý kodek nebo být chráněn proti kopírování (DRM).
+467|Ponecháno jako GIF: telefon neumí vytvořit animovaný WebP
+468|Mono
+469|Vícestránkový TIFF ({0} stran): telefon by uložil jen první stranu, ponecháno beze změny
+470|Žádná aplikace v telefonu tento soubor neotevře.
+471|Nebyl nalezen prohlížeč k otevření odkazu.
+472|Nebyl nalezen správce souborů.
+473|V této složce nejsou soubory, které aplikace umí zkomprimovat.
+474|Bez ztráty kvality: {0}
+475|Nepřekódováno: bez ztráty kvality
+476|Ponechána jen první zvuková stopa, aby se vešla do velikosti
+477|Otevřete ji v Galerii, uložte nebo sdílejte kopii jako JPG a zkuste to znovu.
+478|Nebo sami snižte rozlišení v Nastavení.
+479|Úložiště telefonu
+480|Vyberte složku v úložišti telefonu nebo na SD kartě.
+481|Zvolte vyšší procento nebo větší velikost.
+482|Chráněné PDF (omezení úprav): ponecháno beze změny
+483|Čtení souboru
+484|Zmenšeno na {0}
+485|Výsledky jsou v {0}
+486|Uložit bez kontroly
+487|Ukládání
+488|Sdílet
+489|Spouštění
+490|Spouštění…
+491|Aplikace možná nemá přístup ke všem souborům, nebo je cílová složka chráněná.
+492|Aplikace byla nainstalována bez videomodulu, nebo ho telefon zablokoval.
+493|Soubor už tam není.
+494|Soubor může být poškozený nebo v podobě, kterou aplikace nepodporuje.
+495|Originál zůstal na svém místě (aplikace, která ho sdílela, neumožňuje přesun)
+496|Telefon nepovolil zápis souboru
+497|Úložiště telefonu je plné
+498|Oříznuto {0}–{1}
+499|Velmi velký obrázek: otevřen v menší velikosti
+500|Velmi nízká kvalita: video je na tuto velikost dlouhé
+501|Videa/zvuky vložené v souboru zůstaly beze změny
+502|Počkejte na dokončení aktuálního běhu a pak přidejte další soubory.
+503|Ponecháno {0} zvukových stop
+504|Hotovo souborů: {0}

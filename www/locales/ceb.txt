@@ -426,3 +426,79 @@
 426|{0}% sa gidak-on
 427|· nabalik ang orihinal
 428|{0} min kining video: niining gidak-on, kinahanglan og dili moubos sa {1} MB.
+429|(default)
+430|Mga {0} {1} kada file
+431|Tugoti
+432|Tugoti ang access sa tanang file
+433|Pag-convert ra, walay target nga gidak-on
+434|Dili ma-save ang log: {0}
+435|I-download ang bersyon {0}
+436|Magpabilin ang mga format. I-tap aron usbon
+437|Unya
+438|Na-save ang log sa Download: {0}
+439|Gikinahanglan aron mabalhin ang mga orihinal sa folder nga Original, maka-save sa bisan unsang folder ug mabasa ang dagkong video nga dili una kopyahon.
+440|Ablihi ang mga setting
+441|I-save ang log
+442|Gi-save isip text file sa Download ang gibuhat sa app ug matag error
+443|Mga setting
+444|Ipaambit ang resulta
+445|Adunay update
+446|Andam na ang bersyon {0} (naa ka sa {1}). Ablihi ang na-download nga file aron i-install kini ibabaw niining app; magpabilin ang imong mga setting.
+447|hangtod {0}p
+448|{0} nga audio
+449|{0} nga video
+450|{0}% sa orihinal nga gidak-on
+451|Nahuman na ang 1 file
+452|Pagdugang og file gamit ang
+453|Tugoti ang access sa tanang file kung mangayo ang app.
+454|Animated GIF: kung i-convert sa format sa litrato, usa ra ka frame ang mabilin, wala gihilabti
+455|Animated WebP: wala gihilabti
+456|Animated WebP: dili kini ma-compress pag-usab sa telepono nga dili mawala ang animation, wala gihilabti
+457|Gipabilin nga GIF ang animation ({0} ka frame): dili makahupot og animation ang {1}
+458|Dili maablihan kini nga file.
+459|Pili og laing output folder sa Mga setting.
+460|Isira ang ubang app ug sulayi pag-usab, o iproseso nga usa ra kini nga file.
+461|Gi-compress ang {0} sa {1}
+462|Pag-compress
+463|Dili hingpit naabot ang target nga dili madaot ang kalidad
+464|Dili mabalhin ang orihinal sa folder nga Original
+465|I-install pag-usab ang app gikan sa pinakabag-ong release.
+466|Basin talagsaon nga codec ang gamit niini, o naay proteksyon sa pagkopya (DRM).
+467|Gipabilin nga GIF: dili makahimo ang telepono og animated WebP
+468|Mono
+469|Multi-page TIFF ({0} ka panid): unang panid ra ang ma-save sa telepono, wala gihilabti
+470|Walay app sa telepono nga makaabli niini nga file.
+471|Walay nakit-ang browser aron ablihan ang link.
+472|Walay nakit-ang file manager.
+473|Walay file sa maong folder nga ma-compress sa app.
+474|Walay nawala nga kalidad: {0}
+475|Wala gi-re-encode: walay nawala nga kalidad
+476|Unang audio track ra ang gipabilin, aron mohaum sa gidak-on
+477|Ablihi kini sa Gallery, i-save o ipaambit ang kopya isip JPG, dayon sulayi pag-usab.
+478|O ikaw mismo ang mopaubos sa resolution sa Mga setting.
+479|Storage sa telepono
+480|Pili og folder sa storage sa telepono o sa SD card.
+481|Pili og mas taas nga porsiyento o mas dako nga gidak-on.
+482|Protektado nga PDF (adunay limitasyon sa pag-edit): wala gihilabti
+483|Gibasa ang file
+484|Giusab ang gidak-on ngadto sa {0}
+485|Anaa sa {0} ang mga resulta
+486|I-save nga dili tan-awon
+487|Gi-save
+488|Ipaambit
+489|Nagsugod
+490|Nagsugod…
+491|Basin walay access ang app sa tanang file, o protektado ang output folder.
+492|Na-install ang app nga walay video engine niini, o gibabagan kini sa telepono.
+493|Wala na didto ang file.
+494|Basin guba ang file o naa sa klase nga dili kaya sa app.
+495|Nabilin ang orihinal kung asa kini (dili motugot ang app nga nagpaambit niini nga ibalhin kini)
+496|Wala gitugotan sa telepono nga isulat ang file
+497|Puno na ang storage sa telepono
+498|Giputol {0}–{1}
+499|Dako kaayo nga litrato: giablihan sa mas gamay nga gidak-on
+500|Ubos kaayo nga kalidad: taas ang video para niini nga gidak-on
+501|Wala gihilabti ang mga video/audio nga naka-embed sa file
+502|Hulata nga mahuman ang kasamtangang proseso, dayon pagdugang og laing file.
+503|{0} ka audio track ang gipabilin
+504|Nahuman na ang {0} ka file

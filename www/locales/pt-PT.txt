@@ -426,3 +426,79 @@
 426|{0}% do tamanho
 427|· original restaurado
 428|Este vídeo tem {0} min: nesse tamanho precisa de pelo menos {1} MB.
+429|(padrão)
+430|Cerca de {0} {1} por ficheiro
+431|Permitir
+432|Permitir acesso a todos os ficheiros
+433|Só conversão, sem meta de tamanho
+434|Não foi possível guardar o log: {0}
+435|Transferir a versão {0}
+436|Os formatos ficam como estão. Toque para mudar
+437|Depois
+438|Log guardado em Download: {0}
+439|Necessário para mover os originais para a pasta Original, guardar em qualquer pasta e ler vídeos grandes sem copiá-los antes.
+440|Abrir definições
+441|Guardar log
+442|Guarda num ficheiro de texto em Download o que a aplicação fez e cada erro
+443|Definições
+444|Compartilhar o resultado
+445|Atualização disponível
+446|A versão {0} está pronta (tem a {1}). Abra o ficheiro transferido para instalá-la por cima desta aplicação; as suas definições mantêm-se.
+447|até {0}p
+448|áudio {0}
+449|vídeos {0}
+450|{0}% do tamanho original
+451|1 ficheiro concluído
+452|Adicionar ficheiros com
+453|Permita o acesso a todos os ficheiros quando a aplicação pedir.
+454|GIF animado: convertê-lo em formato de foto manteria só um quadro, deixado intacto
+455|WebP animado: deixado intacto
+456|WebP animado: o telemóvel não consegue recomprimi-lo sem perder a animação, deixado intacto
+457|Animação mantida como GIF ({0} quadros): {1} não comporta animação
+458|Não é possível abrir este ficheiro.
+459|Escolha outra pasta de destino nas Definições.
+460|Feche outros aplicações e tente de novo, ou processe este ficheiro sozinho.
+461|A comprimir {0} de {1}
+462|Compressão
+463|Não deu para atingir totalmente a meta sem estragar a qualidade
+464|Não foi possível mover o original para a pasta Original
+465|Instale a aplicação novamente a partir da versão mais recente.
+466|Pode usar um codec incomum ou ter proteção contra cópia (DRM).
+467|Mantido como GIF: o telemóvel não consegue criar WebP animado
+468|Mono
+469|TIFF de várias páginas ({0} páginas): o telemóvel só conseguiria guardar a primeira página, deixado intacto
+470|Nenhuma aplicação do telemóvel consegue abrir este ficheiro.
+471|Nenhum navegador encontrado para abrir o link.
+472|Nenhum gerenciador de ficheiros encontrado.
+473|Nenhum ficheiro que a aplicação consiga comprimir nessa pasta.
+474|Sem perda de qualidade: {0}
+475|Não recodificado: sem perda de qualidade
+476|Só a primeira faixa de áudio foi mantida, para caber no tamanho
+477|Abra-a na Galeria, guarde ou compartilhe uma cópia em JPG e tente de novo.
+478|Ou reduza mesmo a resolução nas Definições.
+479|Armazenamento do telemóvel
+480|Escolha uma pasta no armazenamento do telemóvel ou no cartão SD.
+481|Escolha uma porcentagem maior ou um tamanho maior.
+482|PDF protegido (restrições de edição): deixado intacto
+483|A ler o ficheiro
+484|Redimensionado para {0}
+485|Os resultados estão em {0}
+486|Guardar sem verificar
+487|A salvar
+488|Compartilhar
+489|A iniciar
+490|A iniciar…
+491|A aplicação pode não ter acesso a todos os ficheiros, ou a pasta de destino está protegida.
+492|A aplicação foi instalada sem o seu motor de vídeo, ou o telemóvel bloqueou-a.
+493|O ficheiro não está mais lá.
+494|O ficheiro pode estar danificado ou numa variante que a aplicação não suporta.
+495|O original ficou onde está (a aplicação que o partilhou não permite movê-lo)
+496|O telemóvel não permitiu gravar o ficheiro
+497|O armazenamento do telemóvel está cheio
+498|Cortado {0}–{1}
+499|Imagem muito grande: aberta em tamanho menor
+500|Qualidade muito baixa: o vídeo é longo para este tamanho
+501|Vídeos/áudios incorporados ao ficheiro ficaram como estão
+502|Espere o trabalho atual terminar e depois adicione mais ficheiros.
+503|{0} faixas de áudio mantidas
+504|{0} ficheiros concluídos

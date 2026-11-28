@@ -426,3 +426,79 @@
 426|{0} % koosta
 427|· alkuperäinen palautettu
 428|Tämä video kestää {0} min: tässä koossa se tarvitsee vähintään {1} Mt.
+429|(oletus)
+430|Noin {0} {1} tiedostoa kohden
+431|Salli
+432|Salli pääsy kaikkiin tiedostoihin
+433|Vain muunnos, ei kokotavoitetta
+434|Lokia ei voitu tallentaa: {0}
+435|Lataa versio {0}
+436|Muodot pysyvät ennallaan. Muuta napauttamalla
+437|Myöhemmin
+438|Loki tallennettu Lataukset-kansioon: {0}
+439|Tarvitaan alkuperäisten siirtämiseen Original-kansioon, tallentamiseen mihin tahansa kansioon ja suurten videoiden lukemiseen kopioimatta niitä ensin.
+440|Avaa asetukset
+441|Tallenna loki
+442|Tallentaa tekstitiedostona Lataukset-kansioon, mitä sovellus teki, ja jokaisen virheen
+443|Asetukset
+444|Jaa tulos
+445|Päivitys saatavilla
+446|Versio {0} on valmis (sinulla on {1}). Avaa ladattu tiedosto asentaaksesi sen tämän sovelluksen päälle; asetuksesi säilyvät.
+447|enintään {0}p
+448|{0}-ääni
+449|{0}-videot
+450|{0} % alkuperäisestä koosta
+451|1 tiedosto valmis
+452|Lisää tiedostoja sovelluksella
+453|Salli pääsy kaikkiin tiedostoihin, kun sovellus kysyy.
+454|Animoitu GIF: kuvamuotoon muuntaminen säilyttäisi vain yhden ruudun, jätetty ennalleen
+455|Animoitu WebP: jätetty ennalleen
+456|Animoitu WebP: puhelin ei voi pakata sitä uudelleen menettämättä animaatiota, jätetty ennalleen
+457|Animaatio säilytetty GIF-muodossa ({0} ruutua): {1} ei tue animaatiota
+458|Tätä tiedostoa ei voi avata.
+459|Valitse toinen kohdekansio asetuksista.
+460|Sulje muut sovellukset ja yritä uudelleen, tai käsittele tämä tiedosto yksinään.
+461|Pakataan {0}/{1}
+462|Pakkaus
+463|Tavoitetta ei saatu täysin saavutettua pilaamatta laatua
+464|Alkuperäistä ei voitu siirtää Original-kansioon
+465|Asenna sovellus uudelleen uusimmasta julkaisusta.
+466|Se saattaa käyttää harvinaista koodekkia tai olla kopiosuojattu (DRM).
+467|Säilytetty GIF-muodossa: puhelin ei osaa tehdä animoitua WebP:tä
+468|Mono
+469|Monisivuinen TIFF ({0} sivua): puhelin voisi tallentaa vain ensimmäisen sivun, jätetty ennalleen
+470|Mikään puhelimen sovellus ei voi avata tätä tiedostoa.
+471|Linkin avaamiseen ei löytynyt selainta.
+472|Tiedostonhallintaa ei löytynyt.
+473|Kansiossa ei ole tiedostoja, joita sovellus voi pakata.
+474|Laatu ei heikentynyt: {0}
+475|Ei uudelleenkoodattu: laatu ei heikentynyt
+476|Vain ensimmäinen ääniraita säilytettiin, jotta koko riittää
+477|Avaa se Galleriassa, tallenna tai jaa kopio JPG-muodossa ja yritä uudelleen.
+478|Tai laske tarkkuutta itse asetuksista.
+479|Puhelimen tallennustila
+480|Valitse kansio puhelimen tallennustilasta tai SD-kortilta.
+481|Valitse suurempi prosentti tai suurempi koko.
+482|Suojattu PDF (muokkausrajoitukset): jätetty ennalleen
+483|Luetaan tiedostoa
+484|Koko muutettu: {0}
+485|Tulokset ovat kohteessa {0}
+486|Tallenna tarkistamatta
+487|Tallennetaan
+488|Jaa
+489|Aloitetaan
+490|Aloitetaan…
+491|Sovelluksella ei ehkä ole pääsyä kaikkiin tiedostoihin, tai kohdekansio on suojattu.
+492|Sovellus asennettiin ilman videomoottoria, tai puhelin esti sen.
+493|Tiedostoa ei enää ole.
+494|Tiedosto voi olla vioittunut tai muodossa, jota sovellus ei tue.
+495|Alkuperäinen jäi paikalleen (sen jakanut sovellus ei salli siirtämistä)
+496|Puhelin ei sallinut tiedoston kirjoittamista
+497|Puhelimen tallennustila on täynnä
+498|Rajattu {0}–{1}
+499|Erittäin suuri kuva: avattu pienempänä
+500|Erittäin heikko laatu: video on pitkä tähän kokoon
+501|Tiedostoon upotetut videot/äänet jätettiin ennalleen
+502|Odota nykyisen ajon valmistumista ja lisää sitten lisää tiedostoja.
+503|{0} ääniraitaa säilytetty
+504|{0} tiedostoa valmis

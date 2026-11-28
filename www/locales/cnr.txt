@@ -426,3 +426,79 @@
 426|{0}% veličine
 427|· original vraćen
 428|Ovaj video traje {0} min: pri ovoj veličini treba mu najmanje {1} MB.
+429|(zadano)
+430|Oko {0} {1} po datoteci
+431|Dozvoli
+432|Dozvoli pristup svim datotekama
+433|Samo pretvorba, bez ciljane veličine
+434|Zapisnik nije moguće sačuvati: {0}
+435|Preuzmi verziju {0}
+436|Formati ostaju isti. Dodirni za promjenu
+437|Kasnije
+438|Zapisnik sačuvan u Preuzimanja: {0}
+439|Potrebno za premještanje izvornika u folder Original, spremanje u bilo koju folder i čitanje velikih videa bez prethodnog kopiranja.
+440|Otvori postavke
+441|Sačuvaj zapisnik
+442|Sprema u tekstnu datoteku u Preuzimanja što je aplikacija radila i svaku pogrešku
+443|Postavke
+444|Podijeli rezultat
+445|Dostupno je ažuriranje
+446|Verzija {0} je spremna (imaš {1}). Otvori preuzetu datoteku da je instaliraš preko ove aplikacije; postavke ostaju.
+447|do {0}p
+448|{0} zvuk
+449|{0} video-snimci
+450|{0} % izvorne veličine
+451|1 datoteka gotova
+452|Dodaj datoteke pomoću
+453|Dozvoli pristup svim datotekama kad aplikacija zatraži.
+454|Animirani GIF: pretvorba u format fotografije zadržala bi samo jedan kadar, ostavljeno netaknuto
+455|Animirani WebP: ostavljeno netaknuto
+456|Animirani WebP: telefon ga ne može ponovo sažeti bez gubitka animacije, ostavljeno netaknuto
+457|Animacija zadržana kao GIF ({0} kadrova): {1} ne podržava animaciju
+458|Ova se datoteka ne može otvoriti.
+459|Izaberi drugu odredišnu folder u Postavkama.
+460|Zatvori druge aplikacije i pokušaj ponovo ili obradi ovu datoteku zasebno.
+461|Sažimanje {0} od {1}
+462|Sažimanje
+463|Cilj nije bilo moguće posve postići bez uništavanja kvalitete
+464|Izvornik nije moguće premjestiti u folder Original
+465|Ponovo instaliraj aplikaciju iz najnovijeg izdanja.
+466|Možda koristi neobičan kodek ili je zaštićena od kopiranja (DRM).
+467|Zadržano kao GIF: telefon ne može izraditi animirani WebP
+468|Mono
+469|Višestranični TIFF ({0} stranica): telefon bi mogao sačuvati samo prvu stranicu, ostavljeno netaknuto
+470|Nijedna aplikacija na telefonu ne može otvoriti ovu datoteku.
+471|Nije pronađen preglednik za otvaranje poveznice.
+472|Nije pronađen upravitelj datoteka.
+473|U toj folderu nema datoteka koje aplikacija može sažeti.
+474|Bez gubitka kvalitete: {0}
+475|Nije ponovo kodirano: bez gubitka kvalitete
+476|Zadržan je samo prvi zvučni zapis, da stane u veličinu
+477|Otvori je u Galeriji, sačuvaj ili podijeli kopiju kao JPG pa pokušaj ponovo.
+478|Ili sam smanji razlučivost u Postavkama.
+479|Pohrana telefona
+480|Izaberi folder u pohrani telefona ili na SD kartici.
+481|Izaberi veći procenat ili veću veličinu.
+482|Zaštićeni PDF (ograničenja uređivanja): ostavljeno netaknuto
+483|Čitanje datoteke
+484|Promijenjena veličina na {0}
+485|Rezultati su u {0}
+486|Sačuvaj bez provjere
+487|Čuvanje
+488|Podijeli
+489|Pokretanje
+490|Pokretanje…
+491|Aplikacija možda nema pristup svim datotekama ili je odredišna folder zaštićena.
+492|Aplikacija je instalirana bez video pogona ili ga je telefon blokirao.
+493|Datoteke više nema.
+494|Datoteka je možda oštećena ili u varijanti koju aplikacija ne podržava.
+495|Izvornik je ostao gdje jest (aplikacija koja ga je podijelila ne dozvoljava premještanje)
+496|Telefon nije dozvolio zapisivanje datoteke
+497|Pohrana telefona je puna
+498|Izrezano {0}–{1}
+499|Vrlo velika slika: otvorena u manjoj veličini
+500|Vrlo niska kvaliteta: videozapis je dug za ovu veličinu
+501|Video-snimci/zvukovi ugrađeni u datoteku ostali su isti
+502|Sačekaj da trenutni posao završi, a zatim dodaj još datoteka.
+503|Zadržano {0} zvučnih zapisa
+504|Gotovo datoteka: {0}

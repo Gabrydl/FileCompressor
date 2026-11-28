@@ -175,6 +175,9 @@
       try { var r = String(A.saveLog()); return r.indexOf("OK:") === 0 ? { ok: true, name: r.slice(3) } : { ok: false, error: r.replace(/^ERR:/, "") }; }
       catch (e) { return { ok: false, error: String(e && e.message || e) }; }
     },
-    ready: function () { ready = true; tick(); },
+    ready: function () {
+      try { A.setLang(document.documentElement.lang || "en"); } catch (e) { /* older app */ }   // notifications in the same language
+      ready = true; tick();
+    },
   };
 })();
