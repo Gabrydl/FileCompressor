@@ -32,4 +32,9 @@ contextBridge.exposeInMainWorld("Desktop", {
   notify: (title, body, folder) => ipcRenderer.send("notify", title, body, folder),
   focused: () => ipcRenderer.sendSync("focused"),
   explorerMenu: (on) => ipcRenderer.invoke("explorer-menu", on),
+  // 1.8.0: languages and the log file
+  lang: () => ipcRenderer.sendSync("lang-get"),
+  setLang: (c) => ipcRenderer.sendSync("lang-set", c),
+  log: (level, msg) => ipcRenderer.send("log", level, String(msg)),
+  openLog: () => ipcRenderer.send("open-log"),
 });

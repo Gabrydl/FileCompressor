@@ -173,11 +173,20 @@ async function compressVideo(src, out, s, target, ctx) {
   out = out.replace(/\.[^.]+$/, "." + fmt);
   const inp = input(src, s, info);
   const totalKbps = target * 8 / inp.dur / 1000;
-  const nA = Math.max(1, info.audioCodecs.length);
-  const aK = info.audio ? Math.max(32, Math.round(audioKbps(totalKbps) / Math.sqrt(nA))) : 0;
+  let nA = Math.max(1, info.audioCodecs.length);
+  let aK = info.audio ? Math.max(32, Math.round(audioKbps(totalKbps) / Math.sqrt(nA))) : 0;
   let vK = totalKbps * 0.955 - aK * (info.audio ? nA : 0);
   const sub = subtitleArgs(info, fmt);
-  if (vK < 50) throw new Fail("target too small");
+  // long recordings (a whole match) with a small goal: keep only the first audio track (game recorders put the
+  // microphone on a second one), then accept a very low bitrate instead of refusing
+  let oneTrack = false;
+  if (vK < 50 && info.audio && nA > 1) { oneTrack = true; nA = 1; aK = 32; vK = totalKbps * 0.955 - aK; }
+  if (vK < 30) {
+    const minMB = Math.ceil(inp.dur * (30 + (info.audio ? 32 : 0)) * 1000 / 8 / 0.955 / 1048576);
+    const mins = Math.round(inp.dur / 60);
+    throw new Fail(`target too small: this video is ${mins} min long, it needs at least ${minMB} MB`);
+  }
+  const tiny = vK < 50;
   const sz = pickSize(info, s, vK);
   const vf = videoFilters(info, sz);
   const webm = fmt === "webm";
@@ -195,7 +204,8 @@ async function compressVideo(src, out, s, target, ctx) {
     const base = [...inp.args, "-map", "0:V:0", ...(vf.length ? ["-vf", vf.join(",")] : []), ...vcodec, "-passlogfile", passlog];
     ctx.stage(tries ? "Fine-tuning size" : "Compressing");
     await run([...base, "-pass", "1", "-an", "-f", webm ? "webm" : "mp4", nul], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0, to: 0.45 });
-    const acodec = !info.audio ? ["-an"] : webm ? ["-map", "0:a", "-c:a", "libopus", "-b:a", `${aK}k`] : ["-map", "0:a", "-c:a", "aac", "-b:a", `${aK}k`];
+    const amap = oneTrack ? "0:a:0" : "0:a";
+    const acodec = !info.audio ? ["-an"] : webm ? ["-map", amap, "-c:a", "libopus", "-b:a", `${aK}k`] : ["-map", amap, "-c:a", "aac", "-b:a", `${aK}k`];
     const cont = fmt === "mp4" || fmt === "mov" ? ["-movflags", "+faststart"] : [];
     await run([...base, "-pass", "2", ...acodec, ...sub.args, "-map_metadata", "0", ...cont, out], { duration: inp.dur, onProgress: ctx.progress, signal: ctx.signal, from: 0.45, to: 1 });
     size = fs.statSync(out).size;
@@ -205,7 +215,7 @@ async function compressVideo(src, out, s, target, ctx) {
     tries++;
   }
   const note = size > target * 1.05 ? "Couldn't fully reach the target without ruining quality." : "";
-  return { out, size, note: [inp.note, notes.length ? "Resized to " + notes.join(", ") : "", info.audioCodecs.length > 1 ? `${info.audioCodecs.length} audio tracks kept` : "", sub.note, note].filter(Boolean).join(". ") };
+  return { out, size, note: [inp.note, notes.length ? "Resized to " + notes.join(", ") : "", oneTrack ? "Only the first audio track kept, to fit the size" : info.audioCodecs.length > 1 ? `${info.audioCodecs.length} audio tracks kept` : "", tiny ? "Very low quality: the video is long for this size" : "", sub.note, note].filter(Boolean).join(". ") };
 }
 
 // ------------------------------------------------------------------ convert a video (no size goal)

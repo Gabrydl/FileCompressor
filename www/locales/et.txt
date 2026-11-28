@@ -1,0 +1,504 @@
+1|„Paki FileCompressoriga” paremklõpsu menüüs
+2|(nüüd {0}×{1})
+3|(kontrollin veel…)
+4|, lõpuks umbes {0}
+5|, juba valitud suurusest väiksem
+6|, kontrollimiseks enne salvestamist
+7|, pakitud koopia kustutatud.
+8|, või vajuta Ctrl+V.
+9|, originaalid kausta Original. Originaalid teisaldatakse alles siis, kui nende pakitud koopia on salvestatud.
+10|, originaalid jäävad oma kohale.
+11|, jäetakse puutumata
+12|1 fail
+13|1 fail, {0}
+14|1 lehekülg
+15|1 foto
+16|1080p MP4 30 kaadriga sekundis ja JPG-fotod, umbes pool suurusest.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|kokku säästetud <b>{0}</b>, 1 fail
+24|kokku säästetud <b>{0}</b>, {1} faili
+25|Katkesta
+26|Umbes 15 MB faili kohta, MP4-videod ja JPG-fotod: mahub WhatsAppi 16 MB piiri sisse.
+27|Umbes 18 MB faili kohta, et see mahuks 25 MB e-kirja manusesse.
+28|Umbes 19 MB faili kohta, MP4-videod ja JPG-fotod: mahub Discordi tasuta 20 MB piiri sisse.
+29|Lõpuks umbes {0}
+30|Lisa kaust
+31|Lisa failid
+32|Lisa kaust
+33|Alustamiseks lisa faile.
+34|Lisatud paremklõpsu menüüsse.
+35|Pärast
+36|Kõik failid
+37|Kõik {0} lehekülge alles
+38|Juba valitud suurusest väiksem
+39|Juba selles vormingus
+40|Juba loendis.
+41|Juba mono
+42|Juba hästi pakitud, väiksemaks ei saanud
+43|Animeeritud {0}: {1} jätaks alles ainult ühe kaadri, jäetud puutumata
+44|Animatsioon säilitatud ({0} kaadrit)
+45|Animatsioon säilitatud vormingus {0} ({1} kaadrit): {2} ei toeta animatsiooni
+46|Välimus
+47|Selle suuruse juures jääb vaadatava video või heli jaoks liiga vähe bitte sekundis.
+48|Heli
+49|Ainult heli, võetud videost
+50|Auto
+51|Auto vähendab eraldusvõimet ja kaadrisagedust ainult siis, kui valitud suurus seda nõuab. Parim kvaliteet on aeglasem.
+52|Tagasi vaikekausta.
+53|Tasakaalus
+54|Enne
+55|Parim kvaliteet
+56|Mustvalge
+57|Sinna ei saa salvestada
+58|Tühista
+59|Muuda kausta
+60|Muuda seadeid
+61|Kontrolli enne salvestamist (enne/pärast vaade)
+62|Kontrolli
+63|Kontrolli, et fail avaneks PDF-lugejas õigesti.
+64|Kontrolli, et fail mängiks pleieris õigesti.
+65|Kontrolli esimest
+66|Vali nupuga „Muuda kausta” teine sihtkaust.
+67|Puhastamine (kvaliteeti kaotamata)
+68|Tühjenda ajalugu
+69|Tühjenda loend
+70|Klõpsa failil, et võrrelda enne ja pärast
+71|Klõpsa pildil, et seda suuremalt näha.
+72|Klõpsa, et võrrelda enne ja pärast, siis salvesta
+73|Sulge
+74|Sulge teised programmid ja proovi uuesti või töötle see fail eraldi.
+75|Sulge programmid, mis faili kasutavad.
+76|Võrdle enne ja pärast
+77|Paki
+78|Paki fotod
+79|Paki fotod ({0} sees)
+80|Paki sees olevad pildid
+81|Paki sees olevad pildid ({0} suurt)
+82|Paki FileCompressoriga
+83|Pakitud
+84|Pakkimine
+85|Fotode pakkimine
+86|Piltide pakkimine
+87|{0} kaadri pakkimine
+88|{0} lehekülje pakkimine
+89|Teisenda
+90|Ainult teisenda
+91|Teisenda monoks
+92|Teisendamine
+93|Paremklõpsu menüüsse lisamine ebaõnnestus.
+94|Eesmärki ei saanud täielikult saavutada kvaliteeti rikkumata.
+95|Eesmärki ei saanud täielikult saavutada animatsiooni rikkumata
+96|Eesmärki ei saanud täielikult saavutada lehekülgi rikkumata
+97|Eesmärki ei saanud täielikult saavutada pilti rikkumata
+98|Eesmärki ei saanud täielikult saavutada pilte rikkumata
+99|Eesmärki ei saanud täielikult saavutada pilte rikkumata.
+100|Originaali ei saanud teisaldada kausta Original.
+101|Seda PDF-i ei saa avada
+102|Seda PDF-i ei saa avada ({0})
+103|Taastamine ebaõnnestus: {0}
+104|Salvestamine ebaõnnestus: {0}
+105|Kaanepilt jäeti välja ({0} ei toeta seda)
+106|Ctrl+V kleebib faile ja ekraanipilte
+107|Lõika algus või lõpp ära
+108|Tume
+109|Kustuta see eelseade
+110|Igale failile erinevad seaded
+111|Digiallkirjastatud: jäetakse puutumata, et allkiri jääks kehtima
+112|Digiallkirjastatud: jäeti puutumata, et allkiri jääks kehtima
+113|Loobu
+114|Loobutud, originaal puutumata
+115|Discord
+116|Tee uuesti praeguste seadetega
+117|Valmis
+118|Valmis: 1 fail, säästetud {0}.
+119|Valmis: {0} faili, säästetud {1}.
+120|Valmis failide lohistamine aknast välja
+121|Lohista failid või kaustad siia
+122|Lase need lahti ükskõik kus aknas{0}
+123|Lohista need otse WhatsAppi, Discordi, e-kirja või kausta.
+124|Lisamiseks lase lahti
+125|EXIF eemaldatud
+126|Iga fail jõuab umbes {0}%-ni oma suurusest: 1 GB video saab umbes {1}, 600 KB PDF umbes {2} KB.
+127|Iga tulemus ootab loendis olekuga „Kontrollimiseks”: ava see, võrdle lehekülgi või pilte kõrvuti, siis vali Salvesta või Loobu.
+128|E-post
+129|Lõpp (m:ss)
+130|Iga fail viiakse umbes suuruseni {0} {1}.
+131|Täpne suurus
+132|Paki kogu zip uuesti lahti ja jäta kõik failid kausta.
+133|Ebaõnnestus
+134|Kiire
+135|FileCompressor.log programmi kaustas: mida tehti ja iga viga
+136|Failid
+137|Juba väiksemad failid jäetakse vahele.
+138|Juba väiksemaid faile optimeeritakse siiski, ilma madalamale sihtimata.
+139|Faile pakitakse veel.
+140|Failid vahetavad vormingut ilma suurust sihtimata. Vali vormingud allolevatel vahekaartidel. Kui konteiner seda lubab (nt MKV-st MP4-ks), videot uuesti ei kodeerita, nii et kvaliteeti ei kaota. PDF- ja Office'i failid jäetakse vahele.
+141|Failid või terved kaustad
+142|Täidetav vorm: fondid jäetakse terveks
+143|Lõppsuurus protsentides
+144|Iga faili lõppsuurus
+145|Suuruse täpsustamine
+146|Lõpetatud.
+147|Fondid jäeti terveks (täidetav vorm)
+148|Näiteks: E-post 300 KB
+149|Vorming
+150|Ainult vormingu muutmine
+151|Kaadrisagedus
+152|Vabasta ruumi või vali teine sihtkaust.
+153|Alates järgmisest käivitusest lähevad seaded tagasi vaikeväärtustele.
+154|GPS-asukoht ja EXIF eemaldatud
+155|Üldine
+156|Poolitab kõnesalvestiste (loengud, häälsõnumid, kõned) suuruse kuuldava kaota. Muusika jaoks jäta välja lülitatuks.
+157|Ajalugu
+158|Ajalugu ja säästetud ruum
+159|Ajalugu tühjendatud.
+160|Kui väikeseks
+161|Kui see on video, vali MP3/M4A asemel videovorming.
+162|Kui viirusetõrje pani ffmpeg.exe karantiini, taasta see ja luba see.
+163|Windows 11-s on see jaotises „Kuva rohkem suvandeid”. Kui teisaldad programmi kausta, uueneb see järgmisel käivitusel.
+164|Instagram
+165|See võib olla vana .doc/.ppt/.xls-fail, mis on ümber nimetatud .docx/.pptx/.xlsx-iks.
+166|See võib olla parooliga kaitstud.
+167|See võib kasutada ebatavalist koodekit või olla kopeerimiskaitsega (DRM, nagu ostetud filmid).
+168|See teisaldati, nimetati ümber või kustutati pärast loendisse lisamist.
+169|Pea ajalugu
+170|Jäta alles ainult osa
+171|Jäta originaal
+172|Jätka
+173|Alles jääb {0}: {1}–{2}.
+174|Keel
+175|Jäta väli tühjaks, et alles jätta algus või lõpp.
+176|Hele
+177|Hele / tume
+178|Parooliga kaitstud: ei saa lugeda
+179|M4A (ainult heli)
+180|MP3 (ainult heli)
+181|MP4 kuni 1080p, umbes 40% algsest suurusest.
+182|Maks. kõrgus
+183|Maks. laius
+184|Teisalda originaalid kausta Original
+185|Mitmeleheküljeline TIFF ({0} lehekülge): {1} jätaks alles ainult esimese lehekülje, jäetud puutumata
+186|Mitmeleheküljeline TIFF erineva suurusega lehekülgedega: jäetud puutumata
+187|Nimi
+188|Järgmine lehekülg
+189|EXIF-andmeid pole
+190|Suuri pilte pole
+191|Manustatud fonte pole
+192|Metaandmeid pole
+193|Fotosid pole
+194|Pole pilte, mida halliks muuta
+195|Kvaliteeti kaotamata
+196|Kvaliteeti kaotamata: metaandmed eemaldatud, fondid kärbitud
+197|Kvaliteeti kaotamata{0}
+198|Sees pole videot, salvestatud M4A-helina
+199|Mitte midagi
+200|Mälu ei jätku
+201|Pole midagi kleepida: kopeeri failid Exploreris või tee enne ekraanipilt.
+202|Midagi ei säästetud
+203|Veel mitte midagi. Pakitud failid ilmuvad siia.
+204|Väljas: kõik failid kasutavad neid seadeid. Sees: ava loendis fail, et anda talle oma suurus ja vormingud.
+205|Väljas: suurus, vormingud ja failitüüpide valikud lähevad iga kord programmi avamisel tagasi vaikeväärtustele.
+206|Office
+207|Office'i faile ei saa siin näidata. Kontrollimiseks ava tulemus.
+208|Sees: ava loendis video (või heli), et määrata, kus see algab ja lõpeb. Sihtsuurus arvestab ainult allesjäävat osa.
+209|Ava
+210|Ava kaust
+211|Ava see rakenduses Fotod või Paint, salvesta uuesti JPG- või PNG-na ja proovi siis uuesti.
+212|Ava see Wordis, PowerPointis või Excelis ja salvesta uus .docx/.pptx/.xlsx-koopia.
+213|Ava see parooliga ja salvesta või prindi kaitseta koopia, siis proovi uuesti.
+214|Ava tulemus
+215|Ava faili valikud ja määra pikem allesjäetav osa.
+216|Ava logifail
+217|Selle faili valikud
+218|Selle faili valikud{0}
+219|Opus
+220|Või teisenda see Opuseks, mis kõlab väikestes suurustes paremini.
+221|Või vähenda eraldusvõimet ise plokis Video.
+222|Või lõika see vajalikuks osaks (faili valikud, Lõika).
+223|Või kasuta Jaga → FileCompressor Galeriist, WhatsAppist või Failidest. Miski ei lahku sellest telefonist.
+224|Originaal taastatud
+225|Originaal taastatud{0}
+226|PDF- ja Office'i faile saab ainult pakkida
+227|Lehekülg {0}/{1}
+228|Protsent
+229|Protsent
+230|Foto
+231|Fotod
+232|Fotosid vähendatakse ainult nii palju, kui suuruse saavutamiseks vaja. Mustvalge vähendab skaneeringuid palju. Lehekülgede taastamine piltidena annab skaneeringute puhul väikseima faili, kuid teksti ei saa enam valida.
+233|Vali suurem suurus MB-des või suurem protsent.
+234|Vali suurem protsent või suurem suurus MB-des.
+235|Vali, kuhu failid lähevad, või sea kõik ise allpool.
+236|Pildid
+237|Esita
+238|Võimalikud põhjused
+239|Eelseade „{0}” salvestatud.
+240|Eelmine lehekülg
+241|Prindi see uude PDF-i ja proovi siis uuesti.
+242|Privaatsus
+243|Programm
+244|Kiired eelseaded
+245|PDF-i lugemine
+246|Kontrollimiseks
+247|Taasta leheküljed piltidena
+248|Taasta skannitud leheküljed piltidena
+249|Lehekülgede taastamine piltidena
+250|Vähendatud 256 värvini
+251|Mäleta viimaseid seadeid
+252|Eemalda EXIF-andmed
+253|Eemalda GPS-asukoht ja EXIF (on GPS)
+254|Eemalda GPS-asukoht ja EXIF-andmed
+255|Eemalda loendist
+256|Eemalda see loendist ja lisa uuesti.
+257|Eemalda metaandmed
+258|Eemalda pisipildid ja manused
+259|Eemalda pisipildid ja manused{0}
+260|Eemaldatud paremklõpsu menüüst.
+261|Eemaldab, kus ja millise telefoniga foto tehti. Pilt ise ei muutu ja jääb õigetpidi.
+262|Asenda praeguste seadetega
+263|Muuda täpsesse suurusse
+264|Muuda suuruseks {0} × {1} px{2}
+265|Muudetud laiuseks {0} px
+266|Eraldusvõime
+267|Taasta ja kustuta pakitud koopia
+268|Taasta ja jäta pakitud koopia alles
+269|Taasta originaal
+270|Kas taastada originaal?
+271|Tulemused on kaustas Compressed
+272|Tulemused lähevad kausta Compressed nimega nimi_compressed{0}
+273|Nagu teised
+274|Salvesta
+275|Salvesta kõik kontrollitud
+276|Salvesta kõik {0} kontrollimata
+277|Salvesta nimega
+278|Salvesta eelseadena
+279|Salvesta praegused…
+280|Salvesta tulemused kausta
+281|Salvesta kausta
+282|Salvestatud nimega {0}
+283|Salvestatud nimega {0} (vormingust {1})
+284|Seaded failitüübi kaupa
+285|Kiirklahvid
+286|Näita kaustas
+287|Selle faili suurus
+288|Suurus pikslites
+289|Suurus, vormingud ja kõigi vahekaartide valikud salvestatakse selle nime all. Paremklõpsa oma eelseadel, et seda muuta või kustutada.
+290|Jäta vahele failid, mis on juba sihist väiksemad
+291|Vahele jäetud
+292|Mõnda haruldast varianti (ebatavalised TIFF- või HEIC-failid) ei toetata.
+293|Midagi ootamatut läks valesti
+294|Heli
+295|Kiirus
+296|Algus (m:ss)
+297|Algus ja lõpp on teineteisest vähem kui poole sekundi kaugusel.
+298|Peata ja sulge
+299|Kas peatada kohe? Lõpetamata originaalid jäävad puutumata.
+300|Peatatud, originaal puutumata
+301|Peatatud.
+302|Peatamine…
+303|Toetatud failid
+304|Vaheta heleda ja tumeda vahel
+305|Süsteem
+306|Puuduta failide lisamiseks
+307|Telegram
+308|Ainult tekstiga PDF: väiksemaks ei saa ilma kvaliteeti kaotamata
+309|Office'i faili ei saanud avada
+310|PDF-i ei saanud avada
+311|Ketas on täis
+312|Lõpp peab olema pärast algust.
+313|Mootor peatus ootamatult.
+314|Programmi kõrval olnud fail ffmpeg.exe on eemaldatud või viirusetõrje on selle blokeerinud.
+315|Faili ei saanud lugeda
+316|Failil pole helirada, mida pakkida või välja võtta.
+317|Fail pakitakse alati tihedamalt. Kui see on sees, vähendatakse ka sees olevaid suuri pilte. Sees olevad videod ja helid jäävad, nagu on. Failid säilitavad oma vormingu.
+318|Fail on parooliga kaitstud
+319|Fail on kaitstud, seega selle sisu ei saa lugeda ega üle kirjutada.
+320|Fail on väga suur (nt hiiglaslik foto või PDF) ja mootor peatus.
+321|Fail on väga suur (nt hiiglaslik foto või PDF).
+322|Faili enam pole
+323|Fail võib olla rikutud või variandis, mida programm ei toeta.
+324|Fail võib olla rikutud või poolik (nt katkenud allalaadimine või kopeerimine).
+325|Fail võib olla rikutud või ainult osaliselt alla laaditud.
+326|Fail võib olla rikutud või laiendist hoolimata mitte päriselt pilt.
+327|Failil võivad olla vigased ajatemplid või ebatavaline ülesehitus.
+328|Originaali pole enam kaustas Original.
+329|Sihtkausta ei saa kirjutada, seega kasutatakse vaikekausta.
+330|Sihtkaust võib olla kirjutuskaitstud või kaitstud või on fail avatud teises programmis.
+331|Leheküljed näevad välja täpselt samad. Fail pakitakse ka iga kord tihedamalt. Digiallkirjastatud PDF-id jäetakse alati puutumata ja täidetavate vormide fondid jäetakse terveks.
+332|Foto mahub sellesse raami ja säilitab kuju. Jäta üks külg tühjaks, et määrata ainult teine. Väiksemaid fotosid ei suurendata.
+333|Pilti ei saanud avada
+334|Valitud suurus on liiga väike
+335|Valitud suurus on selle video jaoks liiga väike
+336|Lõige on liiga lühike
+337|Videomootor puudub
+338|Video-/helimootor ei saanud seda faili lugeda ega kirjutada
+339|Kogu fail kestab {0}. Jäta väli tühjaks, et alles jätta algus või lõpp.
+340|Sees pole pilte, mida pakkida.
+341|Pakitud koopia jaoks pole piisavalt vaba ruumi.
+342|Selles failis pole heli
+343|See PDF on parooliga kaitstud.
+344|Seda faili ei saa siin näidata{0}
+345|See fail pole kehtiv Office'i dokument (või on parooliga kaitstud).
+346|See fail pole kehtiv Office'i dokument.
+347|Neid faile ei toetata.
+348|Nõuanne: Ctrl+V kleebib Exploreris kopeeritud failid või ekraanipildi.
+349|Lõika
+350|Kärbi fonte
+351|Kärbi fondid kasutatud tähtedeni
+352|Proovi enne „Ainult teisenda” MP4-ks ja paki siis teisendatud fail.
+353|Proovi uuesti
+354|Proovi seda faili uuesti eraldi.
+355|Ühik
+356|Kasuta enne „Ainult teisenda” MP4-ks ja paki siis teisendatud fail.
+357|Kasuta vaikimisi
+358|Video
+359|Videod
+360|Videod, fotod, PDF-id, heli ja Office'i failid, võrguühenduseta
+361|Faili manustatud videod ja helid jäeti, nagu need olid.
+362|Oota, kuni loend lõpeb.
+363|Mida proovida
+364|Kui valmis
+365|Pakkimise ajal
+366|Miks see ebaõnnestus?
+367|Windows ei lubanud faili kirjutada
+368|Windows ei luba sellesse kausta kirjutada. Vali teine.
+369|Windowsi teavitus
+370|Kvaliteeti kaotamata
+371|Word, PowerPoint ja Excel
+372|Töös
+373|Kirjuta aeg kujul minutid:sekundid, näiteks 1:30.
+374|Sinu eelseade: {0}.
+375|umbes {0} {1} faili kohta
+376|juba hästi pakitud
+377|animeeritud, {0} kaadrit
+378|manused eemaldatud
+379|sihist väiksem
+380|ei saa lugeda
+381|ei saa teisendada
+382|seda pilti ei saanud avada: {0}
+383|kestust ei saanud lugeda
+384|selle heli kestust ei saanud lugeda
+385|lõige {0}–{1}
+386|ffmpeg ei saanud faili töödelda: vooge pole
+387|ffmpeg ei saanud faili töödelda: videot pole
+388|ffmpeg ei saanud faili töödelda: loetamatu
+389|ffmpeg ei saanud faili töödelda: {0}
+390|ffmpeg puudub
+391|fondid kärbitud
+392|ainult vormingu muutmine
+393|läheb kaustast Original tagasi oma kohale.
+394|jäeti TIFF-iks: {0} mahutab ainult ühe lehekülje
+395|metaandmed eemaldatud
+396|helirada pole
+397|pilte pole
+398|või lisa need nuppudega. Miski ei lahku sellest arvutist.
+399|omad seaded
+400|leheküljed piltidena
+401|kontrollimiseks
+402|sama vorming
+403|siht liiga väike
+404|siht liiga väike: see video kestab {0} min, vaja on vähemalt {1} MB
+405|ainult tekst
+406|lõpp
+407|lõige jätab alles vähem kui poole sekundi
+408|pisipildid eemaldatud
+409|tundmatu viga
+410|tundmatu vorming
+411|tundmatu vorming {0}
+412|{0} ({1} baiti)
+413|{0} valmis, {1} säästetud
+414|{0} faili jäeti vahele: tüüpi ei toetata.
+415|{0} faili
+416|{0} faili, {1}
+417|{0} läheb kaustast Original tagasi oma kohale.
+418|{0} lehekülge
+419|{0} fotot
+420|{0} pildipõhist subtiitrirada jäeti välja ({2} ei toeta neid, MKV toetab)
+421|{0} pilti
+422|{0} kontrollimiseks
+423|{0} kontrollimiseks: klõpsa igaühel, et võrrelda, siis salvesta.
+424|{0} salvestatud kausta Compressed.
+425|{0} {1}/{2}
+426|{0}% suurusest
+427|· originaal taastatud
+428|See video kestab {0} min: selle suuruse juures on vaja vähemalt {1} MB.
+429|(vaikimisi)
+430|Umbes {0} {1} faili kohta
+431|Luba
+432|Luba juurdepääs kõigile failidele
+433|Ainult teisendamine, ilma suuruse eesmärgita
+434|Logi ei õnnestunud salvestada: {0}
+435|Laadi alla versioon {0}
+436|Vormingud jäävad samaks. Muutmiseks puuduta
+437|Hiljem
+438|Logi salvestati kausta Allalaadimised: {0}
+439|Vajalik originaalide teisaldamiseks kausta Original, salvestamiseks mis tahes kausta ja suurte videote lugemiseks ilma neid enne kopeerimata.
+440|Ava seaded
+441|Salvesta logi
+442|Salvestab tekstifailina kausta Allalaadimised, mida rakendus tegi, ja iga vea
+443|Seaded
+444|Jaga tulemust
+445|Uuendus saadaval
+446|Versioon {0} on valmis (sul on {1}). Ava allalaaditud fail, et see selle rakenduse peale installida; sinu seaded jäävad alles.
+447|kuni {0}p
+448|{0}-heli
+449|{0}-videod
+450|{0}% algsest suurusest
+451|1 fail valmis
+452|Lisa faile rakendusega
+453|Luba juurdepääs kõigile failidele, kui rakendus seda küsib.
+454|Animeeritud GIF: fotovormingusse teisendamine jätaks alles ainult ühe kaadri, jäeti puutumata
+455|Animeeritud WebP: jäeti puutumata
+456|Animeeritud WebP: telefon ei saa seda uuesti tihendada animatsiooni kaotamata, jäeti puutumata
+457|Animatsioon jäeti GIF-iks ({0} kaadrit): {1} ei toeta animatsiooni
+458|Seda faili ei saa avada.
+459|Vali seadetes teine sihtkaust.
+460|Sulge teised rakendused ja proovi uuesti või töötle see fail eraldi.
+461|Tihendan {0}/{1}
+462|Tihendamine
+463|Eesmärki ei õnnestunud täielikult saavutada kvaliteeti rikkumata
+464|Originaali ei õnnestunud teisaldada kausta Original
+465|Installi rakendus uuesti uusimast väljalaskest.
+466|See võib kasutada ebatavalist koodekit või olla kopeerimiskaitsega (DRM).
+467|Jäeti GIF-iks: telefon ei oska teha animeeritud WebP-d
+468|Mono
+469|Mitmeleheküljeline TIFF ({0} lehekülge): telefon saaks salvestada ainult esimese lehekülje, jäeti puutumata
+470|Ükski telefoni rakendus ei saa seda faili avada.
+471|Lingi avamiseks ei leitud brauserit.
+472|Failihaldurit ei leitud.
+473|Selles kaustas pole faile, mida rakendus saaks tihendada.
+474|Kvaliteet ei kannatanud: {0}
+475|Ei kodeeritud ümber: kvaliteet ei kannatanud
+476|Alles jäeti ainult esimene helirada, et suurus sobiks
+477|Ava see galeriis, salvesta või jaga koopiat JPG-na ja proovi uuesti.
+478|Või vähenda eraldusvõimet ise seadetes.
+479|Telefoni salvestusruum
+480|Vali kaust telefoni salvestusruumis või SD-kaardil.
+481|Vali suurem protsent või suurem suurus.
+482|Kaitstud PDF (muutmispiirangud): jäeti puutumata
+483|Faili lugemine
+484|Suurus muudetud: {0}
+485|Tulemused on kohas {0}
+486|Salvesta kontrollimata
+487|Salvestamine
+488|Jaga
+489|Alustamine
+490|Alustamine…
+491|Rakendusel ei pruugi olla juurdepääsu kõigile failidele või on sihtkaust kaitstud.
+492|Rakendus installiti ilma videomootorita või telefon blokeeris selle.
+493|Faili pole enam seal.
+494|Fail võib olla kahjustatud või variandis, mida rakendus ei toeta.
+495|Originaal jäi oma kohale (seda jaganud rakendus ei luba teisaldamist)
+496|Telefon ei lubanud faili kirjutada
+497|Telefoni salvestusruum on täis
+498|Kärbitud {0}–{1}
+499|Väga suur pilt: avati väiksemas suuruses
+500|Väga madal kvaliteet: video on selle suuruse jaoks pikk
+501|Faili manustatud videod/helid jäeti samaks
+502|Oota, kuni praegune töö lõpeb, ja lisa siis rohkem faile.
+503|{0} helirada jäeti alles
+504|{0} faili valmis

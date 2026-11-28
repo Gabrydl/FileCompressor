@@ -1,0 +1,504 @@
+1|"Comprimir com FileCompressor" no menu do botão direito
+2|(agora {0}×{1})
+3|(ainda verificando…)
+4|, cerca de {0} ao terminar
+5|, já abaixo do tamanho escolhido
+6|, para conferir antes de salvar
+7|, cópia comprimida excluída.
+8|, ou pressione Ctrl+V.
+9|, os originais em Original. Os originais só são movidos depois que a cópia comprimida for salva.
+10|, os originais ficam onde estão.
+11|, será deixado intacto
+12|1 arquivo
+13|1 arquivo, {0}
+14|1 página
+15|1 foto
+16|MP4 em 1080p a 30 fps e fotos JPG, mais ou menos metade do tamanho.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|<b>{0}</b> economizados no total, 1 arquivo
+24|<b>{0}</b> economizados no total, {1} arquivos
+25|Interromper
+26|Cerca de 15 MB por arquivo, vídeos MP4 e fotos JPG: cabe no limite de 16 MB do WhatsApp.
+27|Cerca de 18 MB por arquivo, para caber num anexo de e-mail de 25 MB.
+28|Cerca de 19 MB por arquivo, vídeos MP4 e fotos JPG: cabe no limite gratuito de 20 MB do Discord.
+29|Cerca de {0} ao terminar
+30|Adicionar uma pasta
+31|Adicionar arquivos
+32|Adicionar pasta
+33|Adicione arquivos para começar.
+34|Adicionado ao menu do botão direito.
+35|Depois
+36|Todos os arquivos
+37|As {0} páginas foram mantidas
+38|Já abaixo do tamanho escolhido
+39|Já está nesse formato
+40|Já está na lista.
+41|Já é mono
+42|Já bem comprimido, não deu para reduzir mais
+43|{0} animado: {1} manteria só um quadro, deixado intacto
+44|Animação mantida ({0} quadros)
+45|Animação mantida como {0} ({1} quadros): {2} não suporta animação
+46|Aparência
+47|Nesse tamanho sobram poucos bits por segundo para um vídeo ou áudio assistível.
+48|Áudio
+49|Só áudio, extraído do vídeo
+50|Auto
+51|Auto reduz a resolução e a taxa de quadros só quando o tamanho escolhido exige. Melhor qualidade é mais lento.
+52|De volta à pasta padrão.
+53|Equilibrado
+54|Antes
+55|Melhor qualidade
+56|Preto e branco
+57|Não é possível salvar aí
+58|Cancelar
+59|Mudar pasta
+60|Mudar configurações
+61|Conferir antes de salvar (vista antes/depois)
+62|Conferir
+63|Verifique se o arquivo abre corretamente num leitor de PDF.
+64|Verifique se o arquivo toca corretamente num player.
+65|Conferir o primeiro
+66|Escolha outra pasta de destino com "Mudar pasta".
+67|Limpeza (sem perda de qualidade)
+68|Limpar histórico
+69|Limpar lista
+70|Clique num arquivo para comparar antes e depois
+71|Clique numa imagem para vê-la maior.
+72|Clique para comparar antes e depois e depois salve
+73|Fechar
+74|Feche outros programas e tente de novo, ou processe este arquivo sozinho.
+75|Feche os programas que usam o arquivo.
+76|Comparar antes e depois
+77|Comprimir
+78|Comprimir fotos
+79|Comprimir fotos ({0} dentro)
+80|Comprimir imagens internas
+81|Comprimir imagens internas ({0} grandes)
+82|Comprimir com FileCompressor
+83|Comprimidos
+84|Comprimindo
+85|Comprimindo fotos
+86|Comprimindo imagens
+87|Comprimindo {0} quadros
+88|Comprimindo {0} páginas
+89|Converter
+90|Só converter
+91|Converter para mono
+92|Convertendo
+93|Não foi possível adicionar ao menu do botão direito.
+94|Não deu para atingir totalmente o objetivo sem estragar a qualidade.
+95|Não deu para atingir totalmente o objetivo sem estragar a animação
+96|Não deu para atingir totalmente o objetivo sem estragar as páginas
+97|Não deu para atingir totalmente o objetivo sem estragar a imagem
+98|Não deu para atingir totalmente o objetivo sem estragar as imagens
+99|Não deu para atingir totalmente o objetivo sem estragar as imagens.
+100|Não foi possível mover o original para a pasta Original.
+101|Não foi possível abrir este PDF
+102|Não foi possível abrir este PDF ({0})
+103|Não foi possível restaurar: {0}
+104|Não foi possível salvar: {0}
+105|Imagem de capa deixada de fora ({0} não a suporta)
+106|Ctrl+V cola arquivos e capturas de tela
+107|Cortar o início ou o fim
+108|Escuro
+109|Excluir esta predefinição
+110|Configurações diferentes para cada arquivo
+111|Assinado digitalmente: será deixado intacto para a assinatura continuar válida
+112|Assinado digitalmente: deixado intacto para a assinatura continuar válida
+113|Descartar
+114|Descartado, original intacto
+115|Discord
+116|Fazer de novo com as configurações atuais
+117|Concluído
+118|Concluído: 1 arquivo, {0} economizados.
+119|Concluído: {0} arquivos, {1} economizados.
+120|Arrastar os arquivos prontos para fora da janela
+121|Solte arquivos ou pastas aqui
+122|Solte-os em qualquer lugar da janela{0}
+123|Solte-os direto no WhatsApp, no Discord, num e-mail ou numa pasta.
+124|Solte para adicionar
+125|EXIF removidos
+126|Cada arquivo fica com cerca de {0}% do tamanho: um vídeo de 1 GB fica com cerca de {1}, um PDF de 600 KB com cerca de {2} KB.
+127|Cada resultado espera na lista como "Para conferir": abra, compare páginas ou imagens lado a lado e depois Salvar ou Descartar.
+128|E-mail
+129|Fim (m:ss)
+130|Cada arquivo é levado a cerca de {0} {1}.
+131|Tamanho exato
+132|Extraia o zip inteiro de novo e mantenha todos os arquivos na pasta.
+133|Falhou
+134|Rápido
+135|FileCompressor.log, na pasta do programa: o que foi feito e cada erro
+136|Arquivos
+137|Arquivos que já são menores são pulados.
+138|Arquivos que já são menores são otimizados mesmo assim, sem mirar mais baixo.
+139|Ainda há arquivos sendo comprimidos.
+140|Os arquivos mudam de formato sem mirar num tamanho. Escolha os formatos em cada aba abaixo. Quando o contêiner permite (por exemplo de MKV para MP4) o vídeo não é recodificado, então não há perda de qualidade. PDFs e arquivos do Office são pulados.
+141|Arquivos ou pastas inteiras
+142|Formulário preenchível: as fontes são mantidas inteiras
+143|Tamanho final em porcentagem
+144|Tamanho final de cada arquivo
+145|Ajustando o tamanho
+146|Concluído.
+147|Fontes mantidas inteiras (formulário preenchível)
+148|Por exemplo: E-mail 300 KB
+149|Formato
+150|Só mudança de formato
+151|Taxa de quadros
+152|Libere espaço ou escolha outra pasta de destino.
+153|A partir da próxima abertura, as configurações voltam ao padrão.
+154|Localização GPS e EXIF removidos
+155|Geral
+156|Reduz pela metade o tamanho de gravações de voz (aulas, mensagens de voz, chamadas) sem perda audível. Deixe desligado para música.
+157|Histórico
+158|Histórico e espaço economizado
+159|Histórico limpo.
+160|Quanto reduzir
+161|Se for um vídeo, escolha um formato de vídeo em vez de MP3/M4A.
+162|Se o antivírus colocou o ffmpeg.exe em quarentena, restaure e permita.
+163|No Windows 11 fica em "Mostrar mais opções". Se você mover a pasta do programa, ele se atualiza na próxima vez que abrir.
+164|Instagram
+165|Pode ser um arquivo antigo .doc/.ppt/.xls renomeado para .docx/.pptx/.xlsx.
+166|Pode estar protegido por senha.
+167|Pode usar um codec incomum ou ter proteção contra cópia (DRM, como filmes comprados).
+168|Foi movido, renomeado ou excluído depois de ser adicionado à lista.
+169|Manter um histórico
+170|Manter só uma parte
+171|Manter original
+172|Continuar
+173|Mantendo {0}: de {1} a {2}.
+174|Idioma
+175|Deixe um campo vazio para manter o início ou o fim.
+176|Claro
+177|Claro / escuro
+178|Protegido por senha: não pode ser lido
+179|M4A (só áudio)
+180|MP3 (só áudio)
+181|MP4 até 1080p, cerca de 40% do tamanho original.
+182|Altura máx.
+183|Largura máx.
+184|Mover os originais para a pasta Original
+185|TIFF de várias páginas ({0} páginas): {1} manteria só a primeira página, deixado intacto
+186|TIFF de várias páginas com tamanhos diferentes: deixado intacto
+187|Nome
+188|Próxima página
+189|Sem dados EXIF
+190|Sem imagens grandes
+191|Sem fontes incorporadas
+192|Sem metadados
+193|Sem fotos
+194|Sem imagens para deixar cinza
+195|Sem perda de qualidade
+196|Sem perda de qualidade: metadados removidos, fontes reduzidas
+197|Sem perda de qualidade{0}
+198|Sem vídeo dentro, salvo como áudio M4A
+199|Nenhum
+200|Memória insuficiente
+201|Nada para colar: copie arquivos no Explorador ou tire uma captura de tela antes.
+202|Nada foi economizado
+203|Nada ainda. Os arquivos comprimidos aparecem aqui.
+204|Desligado: todos os arquivos usam estas configurações. Ligado: abra um arquivo da lista para dar a ele tamanho e formatos próprios.
+205|Desligado: tamanho, formatos e opções por tipo de arquivo voltam ao padrão sempre que o programa abre.
+206|Office
+207|Arquivos do Office não podem ser mostrados aqui. Abra o resultado para conferir.
+208|Ligado: abra um vídeo (ou áudio) da lista para escolher onde começa e termina. O tamanho-alvo conta só a parte que você mantém.
+209|Abrir
+210|Abrir pasta
+211|Abra no Fotos ou no Paint, salve de novo como JPG ou PNG e tente outra vez.
+212|Abra no Word, PowerPoint ou Excel e salve uma cópia nova .docx/.pptx/.xlsx.
+213|Abra com a senha e salve ou imprima uma cópia sem proteção, depois tente de novo.
+214|Abrir resultado
+215|Abra as opções do arquivo e escolha uma parte maior para manter.
+216|Abrir o arquivo de log
+217|Opções deste arquivo
+218|Opções deste arquivo{0}
+219|Opus
+220|Ou converta para Opus, que soa melhor em tamanhos pequenos.
+221|Ou reduza você mesmo a resolução no bloco Vídeo.
+222|Ou corte só a parte de que precisa (opções do arquivo, Cortar).
+223|Ou use Compartilhar → FileCompressor na Galeria, no WhatsApp ou em Arquivos. Nada sai deste celular.
+224|Original restaurado
+225|Original restaurado{0}
+226|PDFs e arquivos do Office só podem ser comprimidos
+227|Página {0} de {1}
+228|Porcentagem
+229|Porcentagem
+230|Foto
+231|Fotos
+232|As fotos só são reduzidas o necessário para chegar ao tamanho. Preto e branco reduz muito as digitalizações. Refazer as páginas como imagens é o menor para digitalizações, mas o texto não pode mais ser selecionado.
+233|Escolha um tamanho maior em MB ou uma porcentagem mais alta.
+234|Escolha uma porcentagem mais alta ou um tamanho maior em MB.
+235|Escolha para onde vão os arquivos ou ajuste tudo você mesmo abaixo.
+236|Imagens
+237|Reproduzir
+238|Possíveis causas
+239|Predefinição "{0}" salva.
+240|Página anterior
+241|Imprima num PDF novo e tente de novo.
+242|Privacidade
+243|Programa
+244|Predefinições rápidas
+245|Lendo o PDF
+246|Para conferir
+247|Refazer as páginas como imagens
+248|Refazer as páginas digitalizadas como imagens
+249|Refazendo as páginas como imagens
+250|Reduzido a 256 cores
+251|Lembrar as últimas configurações
+252|Remover dados EXIF
+253|Remover localização GPS e EXIF (tem GPS)
+254|Remover localização GPS e dados EXIF
+255|Remover da lista
+256|Remova da lista e adicione de novo.
+257|Remover metadados
+258|Remover miniaturas e anexos
+259|Remover miniaturas e anexos{0}
+260|Removido do menu do botão direito.
+261|Remove onde e com qual celular a foto foi tirada. A imagem em si não muda e continua na posição certa.
+262|Substituir pelas configurações atuais
+263|Redimensionar para um tamanho exato
+264|Redimensionar para {0} × {1} px{2}
+265|Redimensionado para {0} px de largura
+266|Resolução
+267|Restaurar e excluir a cópia comprimida
+268|Restaurar e manter a cópia comprimida
+269|Restaurar o original
+270|Restaurar o original?
+271|Os resultados estão na pasta Compressed
+272|Os resultados vão para Compressed como nome_compressed{0}
+273|Igual aos outros
+274|Salvar
+275|Salvar todos os conferidos
+276|Salvar os {0} sem conferir
+277|Salvar como
+278|Salvar como predefinição
+279|Salvar as atuais…
+280|Salvar os resultados em
+281|Salvar em
+282|Salvo como {0}
+283|Salvo como {0} (de {1})
+284|Configurações por tipo de arquivo
+285|Atalhos
+286|Mostrar na pasta
+287|Tamanho deste arquivo
+288|Tamanho em pixels
+289|Tamanho, formatos e opções de cada aba são salvos com este nome. Clique com o botão direito numa das suas predefinições para alterá-la ou excluí-la.
+290|Pular arquivos já menores que o alvo
+291|Pulado
+292|Algumas variantes raras (TIFF ou HEIC incomuns) não são suportadas.
+293|Algo deu errado
+294|Som
+295|Velocidade
+296|Início (m:ss)
+297|O início e o fim estão a menos de meio segundo um do outro.
+298|Parar e fechar
+299|Parar agora? Os originais não concluídos ficam intactos.
+300|Parado, original intacto
+301|Parado.
+302|Parando…
+303|Arquivos suportados
+304|Alternar entre claro e escuro
+305|Sistema
+306|Toque para adicionar arquivos
+307|Telegram
+308|PDF só de texto: não dá para ficar menor sem perder qualidade
+309|Não foi possível abrir o arquivo do Office
+310|Não foi possível abrir o PDF
+311|O disco está cheio
+312|O fim tem que vir depois do início.
+313|O motor parou inesperadamente.
+314|O arquivo ffmpeg.exe ao lado do programa foi removido ou bloqueado pelo antivírus.
+315|Não foi possível ler o arquivo
+316|O arquivo não tem faixa de áudio para comprimir ou extrair.
+317|O arquivo é sempre compactado melhor. Com isto ligado, as imagens grandes dentro dele também são reduzidas. Vídeos e sons dentro ficam como estão. Os arquivos mantêm o formato.
+318|O arquivo está protegido por senha
+319|O arquivo está protegido, então o conteúdo não pode ser lido nem reescrito.
+320|O arquivo é muito grande (por exemplo uma foto ou um PDF enorme) e o motor parou.
+321|O arquivo é muito grande (por exemplo uma foto ou um PDF enorme).
+322|O arquivo não está mais lá
+323|O arquivo pode estar danificado ou numa variante que o programa não suporta.
+324|O arquivo pode estar danificado ou incompleto (por exemplo um download ou uma cópia interrompidos).
+325|O arquivo pode estar danificado ou baixado só em parte.
+326|O arquivo pode estar danificado ou não ser realmente uma imagem, apesar da extensão.
+327|O arquivo pode ter marcas de tempo quebradas ou uma estrutura incomum.
+328|O original não está mais na pasta Original.
+329|Não é possível gravar na pasta de destino, então é usada a pasta padrão.
+330|A pasta de destino pode ser somente leitura ou protegida, ou o arquivo está aberto em outro programa.
+331|As páginas ficam exatamente iguais. O arquivo também é sempre compactado melhor. PDFs assinados digitalmente são sempre deixados intactos, e as fontes de formulários preenchíveis são mantidas inteiras.
+332|A foto cabe neste quadro e mantém a proporção. Deixe um lado vazio para definir só o outro. Fotos menores não são ampliadas.
+333|Não foi possível abrir a imagem
+334|O tamanho escolhido é pequeno demais
+335|O tamanho escolhido é pequeno demais para este vídeo
+336|O corte é curto demais
+337|O motor de vídeo está faltando
+338|O motor de vídeo/áudio não conseguiu ler ou gravar este arquivo
+339|O arquivo inteiro tem {0}. Deixe um campo vazio para manter o início ou o fim.
+340|Não há imagens dentro para comprimir.
+341|Não há espaço livre suficiente para gravar a cópia comprimida.
+342|Não há som neste arquivo
+343|Este PDF está protegido por senha.
+344|Este arquivo não pode ser mostrado aqui{0}
+345|Este arquivo não é um documento do Office válido (ou está protegido por senha).
+346|Este arquivo não é um documento do Office válido.
+347|Esses arquivos não são suportados.
+348|Dica: Ctrl+V cola arquivos copiados no Explorador, ou uma captura de tela.
+349|Cortar
+350|Reduzir fontes
+351|Reduzir as fontes às letras usadas
+352|Tente primeiro "Só converter" para MP4 e depois comprima o arquivo convertido.
+353|Tentar de novo
+354|Tente o arquivo de novo sozinho.
+355|Unidade
+356|Use primeiro "Só converter" para MP4 e depois comprima o arquivo convertido.
+357|Usar padrão
+358|Vídeo
+359|Vídeos
+360|Vídeos, fotos, PDFs, áudio e arquivos do Office, offline
+361|Vídeos e áudios incorporados no arquivo foram deixados como estavam.
+362|Espere a lista terminar.
+363|O que tentar
+364|Ao terminar
+365|Durante a compressão
+366|Por que falhou?
+367|O Windows não permitiu gravar o arquivo
+368|O Windows não permite gravar nessa pasta. Escolha outra.
+369|Notificação do Windows
+370|Sem perda de qualidade
+371|Word, PowerPoint e Excel
+372|Trabalhando
+373|Escreva o tempo como minutos:segundos, por exemplo 1:30.
+374|Sua predefinição: {0}.
+375|cerca de {0} {1} por arquivo
+376|já bem comprimido
+377|animado, {0} quadros
+378|anexos removidos
+379|abaixo do alvo
+380|não pode ser lido
+381|não pode ser convertido
+382|não foi possível abrir esta imagem: {0}
+383|não foi possível ler a duração
+384|não foi possível ler a duração deste áudio
+385|corte {0}–{1}
+386|o ffmpeg não conseguiu processar o arquivo: sem faixas
+387|o ffmpeg não conseguiu processar o arquivo: sem vídeo
+388|o ffmpeg não conseguiu processar o arquivo: ilegível
+389|o ffmpeg não conseguiu processar o arquivo: {0}
+390|o ffmpeg está faltando
+391|fontes reduzidas
+392|só mudança de formato
+393|volta da pasta Original para onde estava.
+394|mantido como TIFF: {0} só comporta uma página
+395|metadados removidos
+396|sem faixa de áudio
+397|sem imagens
+398|ou adicione-os com os botões. Nada sai deste computador.
+399|configurações próprias
+400|páginas como imagens
+401|para conferir
+402|mesmo formato
+403|alvo pequeno demais
+404|alvo pequeno demais: este vídeo tem {0} min, precisa de pelo menos {1} MB
+405|só texto
+406|o fim
+407|o corte deixa menos de meio segundo
+408|miniaturas removidas
+409|erro desconhecido
+410|formato desconhecido
+411|formato desconhecido {0}
+412|{0} ({1} bytes)
+413|{0} concluídos, {1} economizados
+414|{0} arquivo(s) pulado(s): tipo não suportado.
+415|{0} arquivos
+416|{0} arquivos, {1}
+417|{0} volta da pasta Original para onde estava.
+418|{0} páginas
+419|{0} fotos
+420|{0} faixas de legenda em imagem deixadas de fora ({2} não as comporta, MKV sim)
+421|{0} imagens
+422|{0} para conferir
+423|{0} para conferir: clique em cada um para comparar e depois salve.
+424|{0} salvos na pasta Compressed.
+425|{0} {1} de {2}
+426|{0}% do tamanho
+427|· original restaurado
+428|Este vídeo tem {0} min: nesse tamanho precisa de pelo menos {1} MB.
+429|(padrão)
+430|Cerca de {0} {1} por arquivo
+431|Permitir
+432|Permitir acesso a todos os arquivos
+433|Só conversão, sem meta de tamanho
+434|Não foi possível salvar o log: {0}
+435|Baixar a versão {0}
+436|Os formatos ficam como estão. Toque para mudar
+437|Depois
+438|Log salvo em Download: {0}
+439|Necessário para mover os originais para a pasta Original, salvar em qualquer pasta e ler vídeos grandes sem copiá-los antes.
+440|Abrir configurações
+441|Salvar log
+442|Salva em um arquivo de texto em Download o que o app fez e cada erro
+443|Configurações
+444|Compartilhar o resultado
+445|Atualização disponível
+446|A versão {0} está pronta (você tem a {1}). Abra o arquivo baixado para instalá-la por cima deste app; suas configurações ficam.
+447|até {0}p
+448|áudio {0}
+449|vídeos {0}
+450|{0}% do tamanho original
+451|1 arquivo concluído
+452|Adicionar arquivos com
+453|Permita o acesso a todos os arquivos quando o app pedir.
+454|GIF animado: convertê-lo em formato de foto manteria só um quadro, deixado intacto
+455|WebP animado: deixado intacto
+456|WebP animado: o celular não consegue recomprimi-lo sem perder a animação, deixado intacto
+457|Animação mantida como GIF ({0} quadros): {1} não comporta animação
+458|Não é possível abrir este arquivo.
+459|Escolha outra pasta de destino nas Configurações.
+460|Feche outros apps e tente de novo, ou processe este arquivo sozinho.
+461|Comprimindo {0} de {1}
+462|Compressão
+463|Não deu para atingir totalmente a meta sem estragar a qualidade
+464|Não foi possível mover o original para a pasta Original
+465|Instale o app novamente a partir da versão mais recente.
+466|Pode usar um codec incomum ou ter proteção contra cópia (DRM).
+467|Mantido como GIF: o celular não consegue criar WebP animado
+468|Mono
+469|TIFF de várias páginas ({0} páginas): o celular só conseguiria salvar a primeira página, deixado intacto
+470|Nenhum app do celular consegue abrir este arquivo.
+471|Nenhum navegador encontrado para abrir o link.
+472|Nenhum gerenciador de arquivos encontrado.
+473|Nenhum arquivo que o app consiga comprimir nessa pasta.
+474|Sem perda de qualidade: {0}
+475|Não recodificado: sem perda de qualidade
+476|Só a primeira faixa de áudio foi mantida, para caber no tamanho
+477|Abra-a na Galeria, salve ou compartilhe uma cópia em JPG e tente de novo.
+478|Ou reduza você mesmo a resolução nas Configurações.
+479|Armazenamento do celular
+480|Escolha uma pasta no armazenamento do celular ou no cartão SD.
+481|Escolha uma porcentagem maior ou um tamanho maior.
+482|PDF protegido (restrições de edição): deixado intacto
+483|Lendo o arquivo
+484|Redimensionado para {0}
+485|Os resultados estão em {0}
+486|Salvar sem verificar
+487|Salvando
+488|Compartilhar
+489|Iniciando
+490|Iniciando…
+491|O app pode não ter acesso a todos os arquivos, ou a pasta de destino está protegida.
+492|O app foi instalado sem seu mecanismo de vídeo, ou o celular o bloqueou.
+493|O arquivo não está mais lá.
+494|O arquivo pode estar danificado ou em uma variante que o app não suporta.
+495|O original ficou onde está (o app que o compartilhou não permite movê-lo)
+496|O celular não permitiu gravar o arquivo
+497|O armazenamento do celular está cheio
+498|Cortado {0}–{1}
+499|Imagem muito grande: aberta em tamanho menor
+500|Qualidade muito baixa: o vídeo é longo para este tamanho
+501|Vídeos/áudios incorporados ao arquivo ficaram como estão
+502|Espere o trabalho atual terminar e depois adicione mais arquivos.
+503|{0} faixas de áudio mantidas
+504|{0} arquivos concluídos

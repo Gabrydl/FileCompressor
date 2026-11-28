@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'">
 <title>FileCompressor</title>
 <script>
 (function () {
@@ -28,7 +28,24 @@
     </div>
   </header>
 
+  <nav class="ptabs" id="paneTabs" role="tablist">
+    <button data-tab="0" role="tab" class="on"><span>Files</span><span class="count" id="tabCount"></span></button>
+    <button data-tab="1" role="tab"><span>Settings</span></button>
+  </nav>
+
+  <div class="pager" id="pager">
   <main class="files" id="filesPane">
+    <div class="perm hidden" id="permCard">
+      <span data-ic="lock"></span>
+      <div><b>Allow access to all files</b>
+        <p>Needed to move originals into the Original folder, to save in any folder and to read big videos without copying them first.</p></div>
+      <button class="btn small primary" id="permBtn">Allow</button>
+    </div>
+    <button class="recipe" id="recipe" aria-label="Open settings">
+      <span data-ic="sliders"></span>
+      <span class="recipe-tx"><b id="recipeTitle"></b><small id="recipeSub"></small></span>
+      <span data-ic="right"></span>
+    </button>
     <div class="files-head" id="filesHead">
       <h2 id="filesTitle">Files</h2>
       <div class="head-btns">
@@ -47,6 +64,10 @@
       <p class="muted small" id="pasteHint">Tip: Ctrl+V pastes files copied in Explorer, or a screenshot.</p>
     </div>
     <ul class="list" id="list" aria-live="polite"></ul>
+    <div class="add-more" id="addMore">
+      <button class="btn small" id="addFiles2"><span data-ic="plus"></span><span>Add files</span></button>
+      <button class="btn small" id="addFolder2"><span data-ic="folder"></span><span>Add folder</span></button>
+    </div>
   </main>
 
   <aside class="settings" id="settings">
@@ -116,7 +137,7 @@
         <label class="switch"><input type="checkbox" data-pref="perFile"><span class="track"></span><span>Different settings for each file</span></label>
         <p class="help">Off: every file uses the settings here. On: open a file in the list to give it its own size and formats.</p>
       </section>
-      <section class="block">
+      <section class="block pc-only">
         <h3>Shortcuts</h3>
         <label class="switch"><input type="checkbox" data-pref="explorerMenu"><span class="track"></span><span>"Compress with FileCompressor" in the right-click menu</span></label>
         <p class="help" id="explorerHelp">In Windows 11 it's under "Show more options". If you move the program folder, it updates the next time the program opens.</p>
@@ -126,7 +147,7 @@
       </section>
       <section class="block">
         <h3>When it's done</h3>
-        <label class="switch"><input type="checkbox" data-pref="notify"><span class="track"></span><span>Windows notification</span></label>
+        <label class="switch pc-only"><input type="checkbox" data-pref="notify"><span class="track"></span><span>Windows notification</span></label>
         <label class="switch"><input type="checkbox" data-pref="sound"><span class="track"></span><span>Sound</span></label>
         <label class="switch"><input type="checkbox" data-pref="history"><span class="track"></span><span>Keep a history</span></label>
         <div class="folder-btns"><button class="btn small" id="openHistory"><span data-ic="history"></span><span>History and space saved</span></button></div>
@@ -231,6 +252,7 @@
       </section>
     </div>
   </aside>
+  </div>
 
   <footer class="action" id="actionBar">
     <div class="summary" id="summary"><b>Add some files to get started.</b></div>
@@ -243,6 +265,7 @@
 <div id="toast" class="toast" role="status"></div>
 <div id="dropveil" class="dropveil"><div><b>Drop to add</b><span>Files or whole folders</span></div></div>
 
+<script src="host.js"></script>
 <script type="module" src="app.js"></script>
 </body>
 </html>

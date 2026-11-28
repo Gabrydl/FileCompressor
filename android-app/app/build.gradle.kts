@@ -3,10 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-// The phone interface is the same page as the repository's android-www/ folder: it is copied into the APK at build time.
+// The phone shows the same page as the Windows app (the repository's www/ folder, with its 21 languages):
+// it is copied into the APK at build time, and host.js connects it to the phone's engine.
 val wwwOut = layout.buildDirectory.dir("generated/www")
 val copyWww by tasks.registering(Copy::class) {
-    from(rootProject.file("../android-www"))
+    from(rootProject.file("../www"))
     into(wwwOut.map { it.dir("www") })
 }
 
@@ -18,9 +19,9 @@ android {
         applicationId = "com.gabrydl99.gfc"
         minSdk = 26
         targetSdk = 35
-        // must stay above the APK already on the phone (100000), so it installs as an update
-        versionCode = (project.findProperty("appCode") as String?)?.toInt() ?: 107000
-        versionName = (project.findProperty("appVersion") as String?) ?: "1.7.0"
+        // must stay above the APK already on the phone (107000 = 1.7.0), so it installs as an update
+        versionCode = (project.findProperty("appCode") as String?)?.toInt() ?: 108000
+        versionName = (project.findProperty("appVersion") as String?) ?: "1.8.0"
     }
 
     sourceSets["main"].assets.srcDir(wwwOut)

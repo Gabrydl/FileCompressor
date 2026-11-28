@@ -1,0 +1,504 @@
+1|”Pakkaa FileCompressorilla” hiiren oikean painikkeen valikossa
+2|(nyt {0}×{1})
+3|(tarkistetaan vielä…)
+4|, noin {0} lopuksi
+5|, jo valitun koon alla
+6|, tarkistetaan ennen tallennusta
+7|, pakattu kopio poistettu.
+8|, tai paina Ctrl+V.
+9|, alkuperäiset kansioon Original. Alkuperäiset siirretään vasta, kun niiden pakattu kopio on tallennettu.
+10|, alkuperäiset pysyvät paikallaan.
+11|, jätetään ennalleen
+12|1 tiedosto
+13|1 tiedosto, {0}
+14|1 sivu
+15|1 kuva
+16|1080p-MP4 30 fps:llä ja JPG-kuvat, noin puolet koosta.
+17|15 fps
+18|2160p (4K)
+19|24 fps
+20|25 fps
+21|30 fps
+22|60 fps
+23|<b>{0}</b> säästetty yhteensä, 1 tiedosto
+24|<b>{0}</b> säästetty yhteensä, {1} tiedostoa
+25|Keskeytä
+26|Noin 15 Mt tiedostoa kohden, MP4-videot ja JPG-kuvat: mahtuu WhatsAppin 16 Mt:n rajaan.
+27|Noin 18 Mt tiedostoa kohden, jotta se mahtuu 25 Mt:n sähköpostiliitteeseen.
+28|Noin 19 Mt tiedostoa kohden, MP4-videot ja JPG-kuvat: mahtuu Discordin ilmaiseen 20 Mt:n rajaan.
+29|Noin {0} lopuksi
+30|Lisää kansio
+31|Lisää tiedostoja
+32|Lisää kansio
+33|Aloita lisäämällä tiedostoja.
+34|Lisätty hiiren oikean painikkeen valikkoon.
+35|Jälkeen
+36|Kaikki tiedostot
+37|Kaikki {0} sivua säilytetty
+38|Jo valitun koon alla
+39|Jo tässä muodossa
+40|Jo listalla.
+41|Jo mono
+42|Jo hyvin pakattu, pienemmäksi ei saatu
+43|Animoitu {0}: {1} säilyttäisi vain yhden kuvan, jätetty ennalleen
+44|Animaatio säilytetty ({0} kuvaa)
+45|Animaatio säilytetty muodossa {0} ({1} kuvaa): {2} ei tue animaatiota
+46|Ulkoasu
+47|Tässä koossa bittejä sekunnissa jää liian vähän katsottavaan videoon tai ääneen.
+48|Ääni
+49|Vain ääni, otettu videosta
+50|Auto
+51|Auto laskee tarkkuutta ja kuvataajuutta vain, kun valittu koko sitä vaatii. Paras laatu on hitaampi.
+52|Palattu oletuskansioon.
+53|Tasapainoinen
+54|Ennen
+55|Paras laatu
+56|Mustavalkoinen
+57|Sinne ei voi tallentaa
+58|Peruuta
+59|Vaihda kansio
+60|Muuta asetuksia
+61|Tarkista ennen tallennusta (ennen/jälkeen-näkymä)
+62|Tarkista
+63|Tarkista, että tiedosto aukeaa oikein PDF-lukijassa.
+64|Tarkista, että tiedosto toistuu oikein soittimessa.
+65|Tarkista ensimmäinen
+66|Valitse toinen kohdekansio painikkeella ”Vaihda kansio”.
+67|Siivous (ilman laadun heikkenemistä)
+68|Tyhjennä historia
+69|Tyhjennä lista
+70|Napsauta tiedostoa verrataksesi ennen ja jälkeen
+71|Napsauta kuvaa nähdäksesi sen isompana.
+72|Napsauta verrataksesi ennen ja jälkeen, sitten tallenna
+73|Sulje
+74|Sulje muut ohjelmat ja yritä uudelleen, tai käsittele tämä tiedosto yksinään.
+75|Sulje ohjelmat, jotka käyttävät tiedostoa.
+76|Vertaa ennen ja jälkeen
+77|Pakkaa
+78|Pakkaa kuvat
+79|Pakkaa kuvat ({0} sisällä)
+80|Pakkaa sisällä olevat kuvat
+81|Pakkaa sisällä olevat kuvat ({0} isoa)
+82|Pakkaa FileCompressorilla
+83|Pakatut
+84|Pakataan
+85|Pakataan kuvia
+86|Pakataan kuvia
+87|Pakataan {0} kuvaa
+88|Pakataan {0} sivua
+89|Muunna
+90|Vain muunnos
+91|Muunna monoksi
+92|Muunnetaan
+93|Hiiren oikean painikkeen valikkoon ei voitu lisätä.
+94|Tavoitetta ei saavutettu kokonaan pilaamatta laatua.
+95|Tavoitetta ei saavutettu kokonaan pilaamatta animaatiota
+96|Tavoitetta ei saavutettu kokonaan pilaamatta sivuja
+97|Tavoitetta ei saavutettu kokonaan pilaamatta kuvaa
+98|Tavoitetta ei saavutettu kokonaan pilaamatta kuvia
+99|Tavoitetta ei saavutettu kokonaan pilaamatta kuvia.
+100|Alkuperäistä ei voitu siirtää kansioon Original.
+101|Tätä PDF:ää ei voi avata
+102|Tätä PDF:ää ei voi avata ({0})
+103|Palautus epäonnistui: {0}
+104|Tallennus epäonnistui: {0}
+105|Kansikuva jätetty pois ({0} ei tue sitä)
+106|Ctrl+V liittää tiedostoja ja kuvakaappauksia
+107|Leikkaa alku tai loppu
+108|Tumma
+109|Poista tämä esiasetus
+110|Eri asetukset jokaiselle tiedostolle
+111|Digitaalisesti allekirjoitettu: jätetään ennalleen, jotta allekirjoitus pysyy voimassa
+112|Digitaalisesti allekirjoitettu: jätetty ennalleen, jotta allekirjoitus pysyy voimassa
+113|Hylkää
+114|Hylätty, alkuperäinen ennallaan
+115|Discord
+116|Tee uudelleen nykyisillä asetuksilla
+117|Valmis
+118|Valmis: 1 tiedosto, säästetty {0}.
+119|Valmis: {0} tiedostoa, säästetty {1}.
+120|Valmiiden tiedostojen vetäminen ulos ikkunasta
+121|Pudota tiedostoja tai kansioita tähän
+122|Pudota ne mihin tahansa ikkunassa{0}
+123|Pudota ne suoraan WhatsAppiin, Discordiin, sähköpostiin tai kansioon.
+124|Pudota lisätäksesi
+125|EXIF poistettu
+126|Jokainen tiedosto päätyy noin {0} %:iin koostaan: 1 Gt:n video on lopuksi noin {1}, 600 kt:n PDF noin {2} kt.
+127|Jokainen tulos odottaa listalla tilassa ”Tarkistettavana”: avaa se, vertaa sivuja tai kuvia rinnakkain ja valitse sitten Tallenna tai Hylkää.
+128|Sähköposti
+129|Loppu (m:ss)
+130|Jokainen tiedosto viedään noin kokoon {0} {1}.
+131|Tarkka koko
+132|Pura koko zip uudelleen ja pidä kaikki tiedostot kansiossa.
+133|Epäonnistui
+134|Nopea
+135|FileCompressor.log ohjelmakansiossa: mitä tehtiin ja jokainen virhe
+136|Tiedostot
+137|Jo pienemmät tiedostot ohitetaan.
+138|Jo pienemmät tiedostot optimoidaan silti, tavoittelematta pienempää.
+139|Tiedostoja pakataan vielä.
+140|Tiedostot vaihtavat muotoa tavoittelematta kokoa. Valitse muodot alla olevilta välilehdiltä. Kun säilö sen sallii (esim. MKV:sta MP4:ään), videota ei koodata uudelleen, joten laatu ei heikkene. PDF- ja Office-tiedostot ohitetaan.
+141|Tiedostoja tai kokonaisia kansioita
+142|Täytettävä lomake: fontit säilytetään kokonaisina
+143|Lopullinen koko prosentteina
+144|Jokaisen tiedoston lopullinen koko
+145|Kokoa hienosäädetään
+146|Valmis.
+147|Fontit säilytetty kokonaisina (täytettävä lomake)
+148|Esimerkiksi: Sähköposti 300 kt
+149|Muoto
+150|Vain muodon vaihto
+151|Kuvataajuus
+152|Vapauta tilaa tai valitse toinen kohdekansio.
+153|Seuraavasta käynnistyksestä alkaen asetukset palaavat oletuksiin.
+154|GPS-sijainti ja EXIF poistettu
+155|Yleiset
+156|Puolittaa puhetallenteiden (luennot, ääniviestit, puhelut) koon ilman kuultavaa heikkenemistä. Jätä pois päältä musiikille.
+157|Historia
+158|Historia ja säästetty tila
+159|Historia tyhjennetty.
+160|Kuinka pieneksi
+161|Jos se on video, valitse videomuoto MP3:n/M4A:n sijaan.
+162|Jos virustorjunta siirsi ffmpeg.exe:n karanteeniin, palauta se ja salli se.
+163|Windows 11:ssä se on kohdassa ”Näytä lisää vaihtoehtoja”. Jos siirrät ohjelmakansion, se päivittyy seuraavalla käynnistyskerralla.
+164|Instagram
+165|Se voi olla vanha .doc/.ppt/.xls-tiedosto, joka on nimetty uudelleen muotoon .docx/.pptx/.xlsx.
+166|Se voi olla suojattu salasanalla.
+167|Se voi käyttää harvinaista koodekkia tai olla kopiosuojattu (DRM, kuten ostetut elokuvat).
+168|Se siirrettiin, nimettiin uudelleen tai poistettiin listalle lisäämisen jälkeen.
+169|Pidä historiaa
+170|Säilytä vain osa
+171|Säilytä alkuperäinen
+172|Jatka
+173|Säilytetään {0}: {1}–{2}.
+174|Kieli
+175|Jätä kenttä tyhjäksi säilyttääksesi alun tai lopun.
+176|Vaalea
+177|Vaalea / tumma
+178|Salasanalla suojattu: ei voi lukea
+179|M4A (vain ääni)
+180|MP3 (vain ääni)
+181|MP4 enintään 1080p, noin 40 % alkuperäisestä koosta.
+182|Enim. korkeus
+183|Enim. leveys
+184|Siirrä alkuperäiset kansioon Original
+185|Monisivuinen TIFF ({0} sivua): {1} säilyttäisi vain ensimmäisen sivun, jätetty ennalleen
+186|Monisivuinen TIFF, jonka sivut ovat erikokoisia: jätetty ennalleen
+187|Nimi
+188|Seuraava sivu
+189|Ei EXIF-tietoja
+190|Ei isoja kuvia
+191|Ei upotettuja fontteja
+192|Ei metatietoja
+193|Ei valokuvia
+194|Ei kuvia harmaaksi muutettavaksi
+195|Ei laadun heikkenemistä
+196|Ei laadun heikkenemistä: metatiedot poistettu, fontit karsittu
+197|Ei laadun heikkenemistä{0}
+198|Sisällä ei ole videota, tallennettu M4A-äänenä
+199|Ei mitään
+200|Muisti ei riitä
+201|Ei liitettävää: kopioi tiedostoja Resurssienhallinnassa tai ota ensin kuvakaappaus.
+202|Mitään ei säästetty
+203|Ei vielä mitään. Pakatut tiedostot näkyvät tässä.
+204|Pois: jokainen tiedosto käyttää näitä asetuksia. Päällä: avaa tiedosto listalla antaaksesi sille oman koon ja muodot.
+205|Pois: koko, muodot ja tiedostotyyppien asetukset palaavat oletuksiin aina, kun ohjelma avataan.
+206|Office
+207|Office-tiedostoja ei voi näyttää tässä. Avaa tulos tarkistaaksesi sen.
+208|Päällä: avaa video (tai ääni) listalla asettaaksesi, mistä se alkaa ja mihin se loppuu. Tavoitekoko laskee vain säilytetyn osan.
+209|Avaa
+210|Avaa kansio
+211|Avaa se Valokuvissa tai Paintissa, tallenna uudelleen JPG- tai PNG-muodossa ja yritä sitten uudelleen.
+212|Avaa se Wordissa, PowerPointissa tai Excelissä ja tallenna uusi .docx/.pptx/.xlsx-kopio.
+213|Avaa se salasanalla ja tallenna tai tulosta kopio ilman suojausta, sitten yritä uudelleen.
+214|Avaa tulos
+215|Avaa tiedoston asetukset ja aseta pidempi säilytettävä osa.
+216|Avaa lokitiedosto
+217|Tämän tiedoston asetukset
+218|Tämän tiedoston asetukset{0}
+219|Opus
+220|Tai muunna se Opukseksi, joka kuulostaa paremmalta pienissä koissa.
+221|Tai laske tarkkuutta itse Video-osiossa.
+222|Tai leikkaa se tarvitsemaasi osaan (tiedoston asetukset, Leikkaa).
+223|Tai käytä Jaa → FileCompressor Galleriasta, WhatsAppista tai Tiedostoista. Mikään ei lähde tästä puhelimesta.
+224|Alkuperäinen palautettu
+225|Alkuperäinen palautettu{0}
+226|PDF- ja Office-tiedostoja voi vain pakata
+227|Sivu {0}/{1}
+228|Prosentti
+229|Prosentti
+230|Kuva
+231|Kuvat
+232|Kuvia pienennetään vain sen verran kuin koon saavuttaminen vaatii. Mustavalkoinen pienentää skannauksia paljon. Sivujen uudelleenrakentaminen kuvina on pienin vaihtoehto skannauksille, mutta tekstiä ei voi enää valita.
+233|Valitse isompi koko megatavuina tai suurempi prosentti.
+234|Valitse suurempi prosentti tai isompi koko megatavuina.
+235|Valitse, minne tiedostot menevät, tai säädä kaikki itse alla.
+236|Kuvat
+237|Toista
+238|Mahdolliset syyt
+239|Esiasetus ”{0}” tallennettu.
+240|Edellinen sivu
+241|Tulosta se uuteen PDF:ään ja yritä sitten uudelleen.
+242|Yksityisyys
+243|Ohjelma
+244|Pikaesiasetukset
+245|Luetaan PDF:ää
+246|Tarkistettavana
+247|Rakenna sivut uudelleen kuvina
+248|Rakenna skannatut sivut uudelleen kuvina
+249|Rakennetaan sivuja uudelleen kuvina
+250|Vähennetty 256 väriin
+251|Muista viimeisimmät asetukset
+252|Poista EXIF-tiedot
+253|Poista GPS-sijainti ja EXIF (sisältää GPS:n)
+254|Poista GPS-sijainti ja EXIF-tiedot
+255|Poista listalta
+256|Poista se listalta ja lisää uudelleen.
+257|Poista metatiedot
+258|Poista pikkukuvat ja liitteet
+259|Poista pikkukuvat ja liitteet{0}
+260|Poistettu hiiren oikean painikkeen valikosta.
+261|Poistaa tiedon siitä, missä ja millä puhelimella kuva on otettu. Itse kuva ei muutu ja pysyy oikein päin.
+262|Korvaa nykyisillä asetuksilla
+263|Muuta tarkkaan kokoon
+264|Muuta kokoon {0} × {1} px{2}
+265|Muutettu {0} px leveäksi
+266|Tarkkuus
+267|Palauta ja poista pakattu kopio
+268|Palauta ja säilytä pakattu kopio
+269|Palauta alkuperäinen
+270|Palautetaanko alkuperäinen?
+271|Tulokset ovat kansiossa Compressed
+272|Tulokset menevät kansioon Compressed nimellä nimi_compressed{0}
+273|Kuten muut
+274|Tallenna
+275|Tallenna kaikki tarkistetut
+276|Tallenna kaikki {0} tarkistamatta
+277|Tallenna nimellä
+278|Tallenna esiasetukseksi
+279|Tallenna nykyiset…
+280|Tallenna tulokset kohteeseen
+281|Tallenna kohteeseen
+282|Tallennettu nimellä {0}
+283|Tallennettu nimellä {0} (muodosta {1})
+284|Asetukset tiedostotyypeittäin
+285|Pikanäppäimet
+286|Näytä kansiossa
+287|Tämän tiedoston koko
+288|Koko pikseleinä
+289|Koko, muodot ja jokaisen välilehden asetukset tallennetaan tällä nimellä. Napsauta omaa esiasetustasi hiiren oikealla muuttaaksesi tai poistaaksesi sen.
+290|Ohita tavoitetta pienemmät tiedostot
+291|Ohitettu
+292|Joitakin harvinaisia muunnelmia (epätavallisia TIFF- tai HEIC-tiedostoja) ei tueta.
+293|Jotain odottamatonta tapahtui
+294|Ääni
+295|Nopeus
+296|Alku (m:ss)
+297|Alku ja loppu ovat alle puolen sekunnin päässä toisistaan.
+298|Pysäytä ja sulje
+299|Pysäytetäänkö nyt? Keskeneräiset alkuperäiset pysyvät ennallaan.
+300|Pysäytetty, alkuperäinen ennallaan
+301|Pysäytetty.
+302|Pysäytetään…
+303|Tuetut tiedostot
+304|Vaihda vaalean ja tumman välillä
+305|Järjestelmä
+306|Napauta lisätäksesi tiedostoja
+307|Telegram
+308|Pelkkää tekstiä sisältävä PDF: pienemmäksi ei saa ilman laadun heikkenemistä
+309|Office-tiedostoa ei voitu avata
+310|PDF:ää ei voitu avata
+311|Levy on täynnä
+312|Lopun on oltava alun jälkeen.
+313|Moottori pysähtyi odottamatta.
+314|Ohjelman vieressä ollut ffmpeg.exe on poistettu tai virustorjunta on estänyt sen.
+315|Tiedostoa ei voitu lukea
+316|Tiedostossa ei ole ääniraitaa pakattavaksi tai otettavaksi talteen.
+317|Tiedosto pakataan aina tiiviimmin. Kun tämä on päällä, myös sisällä olevat isot kuvat pienennetään. Sisällä olevat videot ja äänet jätetään ennalleen. Tiedostot säilyttävät muotonsa.
+318|Tiedosto on suojattu salasanalla
+319|Tiedosto on suojattu, joten sen sisältöä ei voi lukea eikä kirjoittaa uudelleen.
+320|Tiedosto on hyvin suuri (esim. valtava kuva tai PDF) ja moottori pysähtyi.
+321|Tiedosto on hyvin suuri (esim. valtava kuva tai PDF).
+322|Tiedostoa ei ole enää
+323|Tiedosto voi olla vioittunut tai muunnelma, jota ohjelma ei tue.
+324|Tiedosto voi olla vioittunut tai keskeneräinen (esim. keskeytynyt lataus tai kopiointi).
+325|Tiedosto voi olla vioittunut tai ladattu vain osittain.
+326|Tiedosto voi olla vioittunut tai ei tunnisteestaan huolimatta oikeasti kuva.
+327|Tiedostossa voi olla rikkinäisiä aikaleimoja tai epätavallinen rakenne.
+328|Alkuperäistä ei ole enää kansiossa Original.
+329|Kohdekansioon ei voi kirjoittaa, joten käytetään oletuskansiota.
+330|Kohdekansio voi olla vain luku -tilassa tai suojattu, tai tiedosto on auki toisessa ohjelmassa.
+331|Sivut näyttävät täsmälleen samoilta. Tiedosto myös pakataan joka kerta tiiviimmin. Digitaalisesti allekirjoitetut PDF:t jätetään aina ennalleen, ja täytettävien lomakkeiden fontit säilytetään kokonaisina.
+332|Kuva mahtuu tähän kehykseen ja säilyttää muotonsa. Jätä toinen sivu tyhjäksi asettaaksesi vain toisen. Pienempiä kuvia ei suurenneta.
+333|Kuvaa ei voitu avata
+334|Valittu koko on liian pieni
+335|Valittu koko on liian pieni tälle videolle
+336|Leikkaus on liian lyhyt
+337|Videomoottori puuttuu
+338|Video-/äänimoottori ei voinut lukea tai kirjoittaa tätä tiedostoa
+339|Koko tiedoston pituus on {0}. Jätä kenttä tyhjäksi säilyttääksesi alun tai lopun.
+340|Sisällä ei ole pakattavia kuvia.
+341|Vapaata tilaa ei ole tarpeeksi pakatulle kopiolle.
+342|Tässä tiedostossa ei ole ääntä
+343|Tämä PDF on suojattu salasanalla.
+344|Tätä tiedostoa ei voi näyttää tässä{0}
+345|Tämä tiedosto ei ole kelvollinen Office-asiakirja (tai se on suojattu salasanalla).
+346|Tämä tiedosto ei ole kelvollinen Office-asiakirja.
+347|Näitä tiedostoja ei tueta.
+348|Vinkki: Ctrl+V liittää Resurssienhallinnassa kopioidut tiedostot tai kuvakaappauksen.
+349|Leikkaa
+350|Karsi fontit
+351|Karsi fontit käytettyihin kirjaimiin
+352|Kokeile ensin ”Vain muunnos” MP4:ksi ja pakkaa sitten muunnettu tiedosto.
+353|Yritä uudelleen
+354|Yritä tiedostoa uudelleen yksinään.
+355|Yksikkö
+356|Käytä ensin ”Vain muunnos” MP4:ksi ja pakkaa sitten muunnettu tiedosto.
+357|Käytä oletusta
+358|Video
+359|Videot
+360|Videot, kuvat, PDF:t, ääni ja Office-tiedostot, ilman verkkoa
+361|Tiedostoon upotetut videot ja äänet jätettiin ennalleen.
+362|Odota, että lista valmistuu.
+363|Mitä kokeilla
+364|Kun valmista
+365|Pakkauksen aikana
+366|Miksi se epäonnistui?
+367|Windows ei sallinut tiedoston kirjoittamista
+368|Windows ei salli kirjoittamista tähän kansioon. Valitse toinen.
+369|Windowsin ilmoitus
+370|Ilman laadun heikkenemistä
+371|Word, PowerPoint ja Excel
+372|Käynnissä
+373|Kirjoita aika muodossa minuutit:sekunnit, esim. 1:30.
+374|Oma esiasetuksesi: {0}.
+375|noin {0} {1} tiedostoa kohden
+376|jo hyvin pakattu
+377|animoitu, {0} kuvaa
+378|liitteet poistettu
+379|tavoitteen alla
+380|ei voi lukea
+381|ei voi muuntaa
+382|tätä kuvaa ei voitu avata: {0}
+383|kestoa ei voitu lukea
+384|tämän äänen kestoa ei voitu lukea
+385|leikattu {0}–{1}
+386|ffmpeg ei voinut käsitellä tiedostoa: ei virtoja
+387|ffmpeg ei voinut käsitellä tiedostoa: ei videota
+388|ffmpeg ei voinut käsitellä tiedostoa: lukukelvoton
+389|ffmpeg ei voinut käsitellä tiedostoa: {0}
+390|ffmpeg puuttuu
+391|fontit karsittu
+392|vain muodon vaihto
+393|palaa kansiosta Original entiselle paikalleen.
+394|säilytetty TIFF-muodossa: {0} voi sisältää vain yhden sivun
+395|metatiedot poistettu
+396|ei ääniraitaa
+397|ei kuvia
+398|tai lisää ne painikkeilla. Mikään ei lähde tältä tietokoneelta.
+399|omat asetukset
+400|sivut kuvina
+401|tarkistettavana
+402|sama muoto
+403|tavoite liian pieni
+404|tavoite liian pieni: tämä video kestää {0} min, se tarvitsee vähintään {1} Mt
+405|vain tekstiä
+406|loppu
+407|leikkauksesta jää alle puoli sekuntia
+408|pikkukuvat poistettu
+409|tuntematon virhe
+410|tuntematon muoto
+411|tuntematon muoto {0}
+412|{0} ({1} tavua)
+413|{0} valmis, {1} säästetty
+414|{0} tiedostoa ohitettu: tyyppiä ei tueta.
+415|{0} tiedostoa
+416|{0} tiedostoa, {1}
+417|{0} palaa kansiosta Original entiselle paikalleen.
+418|{0} sivua
+419|{0} kuvaa
+420|{0} kuvamuotoista tekstitysraitaa jätetty pois ({2} ei tue niitä, MKV tukee)
+421|{0} kuvaa
+422|{0} tarkistettavana
+423|{0} tarkistettavana: napsauta jokaista verrataksesi ja tallenna sitten.
+424|{0} tallennettu kansioon Compressed.
+425|{0} {1}/{2}
+426|{0} % koosta
+427|· alkuperäinen palautettu
+428|Tämä video kestää {0} min: tässä koossa se tarvitsee vähintään {1} Mt.
+429|(oletus)
+430|Noin {0} {1} tiedostoa kohden
+431|Salli
+432|Salli pääsy kaikkiin tiedostoihin
+433|Vain muunnos, ei kokotavoitetta
+434|Lokia ei voitu tallentaa: {0}
+435|Lataa versio {0}
+436|Muodot pysyvät ennallaan. Muuta napauttamalla
+437|Myöhemmin
+438|Loki tallennettu Lataukset-kansioon: {0}
+439|Tarvitaan alkuperäisten siirtämiseen Original-kansioon, tallentamiseen mihin tahansa kansioon ja suurten videoiden lukemiseen kopioimatta niitä ensin.
+440|Avaa asetukset
+441|Tallenna loki
+442|Tallentaa tekstitiedostona Lataukset-kansioon, mitä sovellus teki, ja jokaisen virheen
+443|Asetukset
+444|Jaa tulos
+445|Päivitys saatavilla
+446|Versio {0} on valmis (sinulla on {1}). Avaa ladattu tiedosto asentaaksesi sen tämän sovelluksen päälle; asetuksesi säilyvät.
+447|enintään {0}p
+448|{0}-ääni
+449|{0}-videot
+450|{0} % alkuperäisestä koosta
+451|1 tiedosto valmis
+452|Lisää tiedostoja sovelluksella
+453|Salli pääsy kaikkiin tiedostoihin, kun sovellus kysyy.
+454|Animoitu GIF: kuvamuotoon muuntaminen säilyttäisi vain yhden ruudun, jätetty ennalleen
+455|Animoitu WebP: jätetty ennalleen
+456|Animoitu WebP: puhelin ei voi pakata sitä uudelleen menettämättä animaatiota, jätetty ennalleen
+457|Animaatio säilytetty GIF-muodossa ({0} ruutua): {1} ei tue animaatiota
+458|Tätä tiedostoa ei voi avata.
+459|Valitse toinen kohdekansio asetuksista.
+460|Sulje muut sovellukset ja yritä uudelleen, tai käsittele tämä tiedosto yksinään.
+461|Pakataan {0}/{1}
+462|Pakkaus
+463|Tavoitetta ei saatu täysin saavutettua pilaamatta laatua
+464|Alkuperäistä ei voitu siirtää Original-kansioon
+465|Asenna sovellus uudelleen uusimmasta julkaisusta.
+466|Se saattaa käyttää harvinaista koodekkia tai olla kopiosuojattu (DRM).
+467|Säilytetty GIF-muodossa: puhelin ei osaa tehdä animoitua WebP:tä
+468|Mono
+469|Monisivuinen TIFF ({0} sivua): puhelin voisi tallentaa vain ensimmäisen sivun, jätetty ennalleen
+470|Mikään puhelimen sovellus ei voi avata tätä tiedostoa.
+471|Linkin avaamiseen ei löytynyt selainta.
+472|Tiedostonhallintaa ei löytynyt.
+473|Kansiossa ei ole tiedostoja, joita sovellus voi pakata.
+474|Laatu ei heikentynyt: {0}
+475|Ei uudelleenkoodattu: laatu ei heikentynyt
+476|Vain ensimmäinen ääniraita säilytettiin, jotta koko riittää
+477|Avaa se Galleriassa, tallenna tai jaa kopio JPG-muodossa ja yritä uudelleen.
+478|Tai laske tarkkuutta itse asetuksista.
+479|Puhelimen tallennustila
+480|Valitse kansio puhelimen tallennustilasta tai SD-kortilta.
+481|Valitse suurempi prosentti tai suurempi koko.
+482|Suojattu PDF (muokkausrajoitukset): jätetty ennalleen
+483|Luetaan tiedostoa
+484|Koko muutettu: {0}
+485|Tulokset ovat kohteessa {0}
+486|Tallenna tarkistamatta
+487|Tallennetaan
+488|Jaa
+489|Aloitetaan
+490|Aloitetaan…
+491|Sovelluksella ei ehkä ole pääsyä kaikkiin tiedostoihin, tai kohdekansio on suojattu.
+492|Sovellus asennettiin ilman videomoottoria, tai puhelin esti sen.
+493|Tiedostoa ei enää ole.
+494|Tiedosto voi olla vioittunut tai muodossa, jota sovellus ei tue.
+495|Alkuperäinen jäi paikalleen (sen jakanut sovellus ei salli siirtämistä)
+496|Puhelin ei sallinut tiedoston kirjoittamista
+497|Puhelimen tallennustila on täynnä
+498|Rajattu {0}–{1}
+499|Erittäin suuri kuva: avattu pienempänä
+500|Erittäin heikko laatu: video on pitkä tähän kokoon
+501|Tiedostoon upotetut videot/äänet jätettiin ennalleen
+502|Odota nykyisen ajon valmistumista ja lisää sitten lisää tiedostoja.
+503|{0} ääniraitaa säilytetty
+504|{0} tiedostoa valmis
