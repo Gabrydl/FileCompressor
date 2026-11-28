@@ -11,6 +11,11 @@ on:
 permissions:
   contents: write
 
+# one run at a time: each one rewrites main
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: windows-latest
@@ -71,13 +76,72 @@ jobs:
           MSYS_NO_PATHCONV=1 "$MAKENSIS" -V2 "-DAPP=$APP" "-DVERSION=${{ steps.ver.outputs.v }}" "-DUNGUID={3F6B9D21-7C4E-4A8B-B1D5-9E0C2A6F4B73}_is1" "-DSRC=$(cygpath -w "$PWD/out/$APP")" "-DOUT=$(cygpath -w "$PWD/dist-installer/$APP-Setup.exe")" installer/App.nsi
           [ -f "dist-installer/$APP-Setup.exe" ] || exit 1
 
+      - name: Setup.exe + parts for "Code > Download ZIP" (GitHub refuses files over 100 MB)
+        run: |
+          mkdir -p friends
+          split -b 90M -d -a 1 --numeric-suffixes=1 "dist-installer/$APP-Setup.exe" friends/Setup-
+          for f in friends/Setup-[0-9]*; do mv "$f" "$f.bin"; done
+          PARTS=$(ls friends/Setup-*.bin | wc -l)
+          TOTAL=$(stat -c %s "dist-installer/$APP-Setup.exe")
+          MAKENSIS="/c/Program Files (x86)/NSIS/makensis.exe"
+          MSYS_NO_PATHCONV=1 "$MAKENSIS" -V2 "-DAPP=$APP" "-DVERSION=${{ steps.ver.outputs.v }}" "-DPARTS=$PARTS" "-DTOTAL=$TOTAL" "-DOUT=$(cygpath -w "$PWD/friends/Setup.exe")" installer/Launcher.nsi
+          [ -f friends/Setup.exe ] || exit 1
+          ls -l friends
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installers
+          path: |
+            dist-installer/FileCompressor-Setup.exe
+            friends/
+          retention-days: 3
+
+  publish:
+    # 1. puts Setup.exe + Setup-N.bin in the main folder of the repository, removing the previous ones from the whole history
+    #    (otherwise every update would add ~165 MB to the repository forever); 2. publishes the release for the in-app updater.
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      APP: FileCompressor
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: installers
+          path: ${{ runner.temp }}/installers
+
+      - name: Version
+        id: ver
+        run: echo "v=$(node -p "require('./desktop/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Setup.exe in the repository (only the latest one is kept)
+        id: repo
+        run: |
+          pip install --quiet git-filter-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git checkout -B main
+          git filter-repo --force --refs refs/heads/main --invert-paths --path Setup.exe --path-glob 'Setup-*.bin'
+          git remote get-url origin > /dev/null 2>&1 || git remote add origin "https://github.com/${{ github.repository }}"
+          echo "clean=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          cp "${{ runner.temp }}"/installers/friends/* .
+          git add Setup.exe Setup-*.bin
+          git commit -q -m "Setup.exe ${{ steps.ver.outputs.v }}: Code > Download ZIP, unzip everything, run Setup.exe [skip ci]"
+          # only if nobody pushed in the meantime (that push starts a new run, which does this again)
+          git push --force-with-lease=main:${{ github.sha }} origin HEAD:main
+
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="v${{ steps.ver.outputs.v }}"
-          FILES=("dist-installer/$APP-Setup.exe")
+          FILES=("${{ runner.temp }}/installers/dist-installer/$APP-Setup.exe")
           [ -f "android/$APP.apk" ] && FILES+=("android/$APP.apk")
           if gh release view "$TAG" > /dev/null 2>&1; then gh release delete "$TAG" --cleanup-tag --yes; fi
-          gh release create "$TAG" "${FILES[@]}" --title "$APP $TAG" --latest \
+          # the tag points to the commit without Setup.exe, so old installers don't stay in the repository through tags
+          gh release create "$TAG" "${FILES[@]}" --target "${{ steps.repo.outputs.clean }}" --title "$APP $TAG" --latest \
             --notes "**$APP-Setup.exe**: Windows installer (no admin needed). **$APP.apk**: phone app. Installed apps update themselves when opened."

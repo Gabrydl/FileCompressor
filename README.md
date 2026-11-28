@@ -2,9 +2,15 @@
 
 Make videos, photos, PDFs, audio and Office files smaller (or convert them), offline.
 
-## Download
+## Install on Windows
 
-The Windows installer and the Android APK are published in this repository's Releases section.
+1. On this page click **Code › Download ZIP**.
+2. Unzip the **whole** ZIP (right-click › Extract all), not just one file.
+3. Run **Setup.exe**. Keep `Setup-1.bin`, `Setup-2.bin` … next to it: they are the rest of the installer (GitHub doesn't allow
+   files over 100 MB, so it is cut in parts). The usual installer opens: language, install, and later Repair / Uninstall.
+
+If Windows shows "Windows protected your PC", click **More info › Run anyway** (the app isn't signed with a paid certificate).
+Phone: `android/FileCompressor.apk` is in the same ZIP.
 
 ## Updates
 Both apps check the latest release every time they open. On Windows **Update now** downloads the new version, replaces the program
@@ -24,6 +30,10 @@ One program: the same interface (`www/`) runs on Windows and on the phone; only 
   Not on the phone: trimming fonts inside PDFs (PdfBox can't), so that tick box isn't offered there.
 - `android/FileCompressor.apk` – signed phone build, published with the release
 - `.github/workflows/release.yml` – builds the Windows installer (NSIS, `installer/App.nsi`) and publishes release `v<version in desktop/package.json>`
+- `Setup.exe` + `Setup-N.bin` (main folder) – put there by `release.yml` on every new version: the installer cut into 90 MB parts and a
+  small `Setup.exe` (`installer/Launcher.nsi`) that joins them and runs it. The old ones are removed from the whole history of `main`
+  each time (so the repository doesn't grow by ~165 MB per version): **after each release, pull with `git fetch && git reset --hard origin/main`**
+  (or clone again) before pushing, because `main` has been rewritten.
 
 ## Building the Windows app without GitHub
 Unzip `electron-v45.3.0-win32-x64.zip` into `FileCompressor/`, delete `resources/default_app.asar`, copy `desktop/` into `resources/app/`
